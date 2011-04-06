@@ -6,68 +6,56 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
 
 /**
  *
  * @author juampa
  */
 @Entity
-public class Factura implements Serializable {
+public class Producto implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha;
-    private int numero;
-    private int remitoNro;
-    private char tipo;
-    private int total;
+    private int codigo;
+    private String descripcion;
+    private long porcentajeDeIva;
+    private boolean temporal;
 
-    public Date getFecha() {
-        return fecha;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public int getNumero() {
-        return numero;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public int getRemitoNro() {
-        return remitoNro;
+    public long getPorcentajeDeIva() {
+        return porcentajeDeIva;
     }
 
-    public void setRemitoNro(int remitoNro) {
-        this.remitoNro = remitoNro;
+    public void setPorcentajeDeIva(long porcentajeDeIva) {
+        this.porcentajeDeIva = porcentajeDeIva;
     }
 
-    public char getTipo() {
-        return tipo;
+    public boolean isTemporal() {
+        return temporal;
     }
 
-    public void setTipo(char tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
+    public void setTemporal(boolean temporal) {
+        this.temporal = temporal;
     }
 
     public Long getId() {
@@ -88,10 +76,10 @@ public class Factura implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Factura)) {
+        if (!(object instanceof Producto)) {
             return false;
         }
-        Factura other = (Factura) object;
+        Producto other = (Producto) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +88,7 @@ public class Factura implements Serializable {
 
     @Override
     public String toString() {
-        return "Negocio.Entidades.Factura[id=" + id + "]";
+        return "Negocio.Entidades.Producto[id=" + id + "]";
     }
 
 }

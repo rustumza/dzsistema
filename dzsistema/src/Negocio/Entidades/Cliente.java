@@ -6,70 +6,58 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
 
 /**
  *
  * @author juampa
  */
 @Entity
-public class Factura implements Serializable {
+public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha;
-    private int numero;
-    private int remitoNro;
-    private char tipo;
-    private int total;
+    private int codigo;
+    private String CUIT;
+    private String domicilio;
+    private String nombre;
 
-    public Date getFecha() {
-        return fecha;
+    public String getCUIT() {
+        return CUIT;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setCUIT(String CUIT) {
+        this.CUIT = CUIT;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public int getRemitoNro() {
-        return remitoNro;
+    public String getDomicilio() {
+        return domicilio;
     }
 
-    public void setRemitoNro(int remitoNro) {
-        this.remitoNro = remitoNro;
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
-    public char getTipo() {
-        return tipo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTipo(char tipo) {
-        this.tipo = tipo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
+   
     public Long getId() {
         return id;
     }
@@ -88,10 +76,10 @@ public class Factura implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Factura)) {
+        if (!(object instanceof Cliente)) {
             return false;
         }
-        Factura other = (Factura) object;
+        Cliente other = (Cliente) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +88,7 @@ public class Factura implements Serializable {
 
     @Override
     public String toString() {
-        return "Negocio.Entidades.Factura[id=" + id + "]";
+        return "Negocio.Entidades.Cliente[id=" + id + "]";
     }
 
 }

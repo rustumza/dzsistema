@@ -6,68 +6,56 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
 
 /**
  *
  * @author juampa
  */
 @Entity
-public class Factura implements Serializable {
+public class DetalleFactura implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha;
-    private int numero;
-    private int remitoNro;
-    private char tipo;
-    private int total;
+    private int cantidad;
+    private long porcentajeDeIva;
+    private long precioTotal;
+    private long precioUnitario;
 
-    public Date getFecha() {
-        return fecha;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public int getNumero() {
-        return numero;
+    public long getPorcentajeDeIva() {
+        return porcentajeDeIva;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setPorcentajeDeIva(long porcentajeDeIva) {
+        this.porcentajeDeIva = porcentajeDeIva;
     }
 
-    public int getRemitoNro() {
-        return remitoNro;
+    public long getPrecioTotal() {
+        return precioTotal;
     }
 
-    public void setRemitoNro(int remitoNro) {
-        this.remitoNro = remitoNro;
+    public void setPrecioTotal(long precioTotal) {
+        this.precioTotal = precioTotal;
     }
 
-    public char getTipo() {
-        return tipo;
+    public long getPrecioUnitario() {
+        return precioUnitario;
     }
 
-    public void setTipo(char tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
+    public void setPrecioUnitario(long precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public Long getId() {
@@ -88,10 +76,10 @@ public class Factura implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Factura)) {
+        if (!(object instanceof DetalleFactura)) {
             return false;
         }
-        Factura other = (Factura) object;
+        DetalleFactura other = (DetalleFactura) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +88,7 @@ public class Factura implements Serializable {
 
     @Override
     public String toString() {
-        return "Negocio.Entidades.Factura[id=" + id + "]";
+        return "Negocio.Entidades.DetalleFactura[id=" + id + "]";
     }
 
 }
