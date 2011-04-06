@@ -31,6 +31,9 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     /** Creates new form PantallaABMCliente */
     public PantallaABMCliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        listaClientes = controlador.ObtenerClientes();
+        CargarTabla();
     }
 
     //Muestra todos los afiliados en tabla
