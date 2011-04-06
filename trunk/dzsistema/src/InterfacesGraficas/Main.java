@@ -5,6 +5,9 @@
 
 package InterfacesGraficas;
 
+import Negocio.Entidades.Cliente;
+import Negocio.Entidades.ClienteJpaController;
+
 /**
  *
  * @author juampa
@@ -12,6 +15,11 @@ package InterfacesGraficas;
 public class Main {
 
     public static void main(String[] args) {
+
+        //Para probar persistencia
+        Cliente cliente = new Cliente();
+        ClienteJpaController fachada = new ClienteJpaController();
+        fachada.create(cliente);
         
         }
 

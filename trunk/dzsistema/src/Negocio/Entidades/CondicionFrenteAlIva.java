@@ -26,6 +26,14 @@ public class CondicionFrenteAlIva implements Serializable {
     @ManyToOne
     private TipoFactura tipoDeFactura;
 
+    public TipoFactura getTipoDeFactura() {
+        return tipoDeFactura;
+    }
+
+    public void setTipoDeFactura(TipoFactura tipoDeFactura) {
+        this.tipoDeFactura = tipoDeFactura;
+    }
+
     public String getNombre() {
         return nombre;
     }

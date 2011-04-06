@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -29,6 +31,36 @@ public class Factura implements Serializable {
     private int remitoNro;
     private char tipo;
     private int total;
+    @OneToOne
+    private DetalleFactura detalleFactura;
+    @ManyToOne
+    private CondicionDeVenta condicionDeVenta;
+    @ManyToOne
+    private TipoFactura tipoFactura;
+
+    public CondicionDeVenta getCondicionDeVenta() {
+        return condicionDeVenta;
+    }
+
+    public void setCondicionDeVenta(CondicionDeVenta condicionDeVenta) {
+        this.condicionDeVenta = condicionDeVenta;
+    }
+
+    public DetalleFactura getDetalleFactura() {
+        return detalleFactura;
+    }
+
+    public void setDetalleFactura(DetalleFactura detalleFactura) {
+        this.detalleFactura = detalleFactura;
+    }
+
+    public TipoFactura getTipoFactura() {
+        return tipoFactura;
+    }
+
+    public void setTipoFactura(TipoFactura tipoFactura) {
+        this.tipoFactura = tipoFactura;
+    }
 
     public Date getFecha() {
         return fecha;

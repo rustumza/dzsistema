@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,6 +26,16 @@ public class Producto implements Serializable {
     private String descripcion;
     private long porcentajeDeIva;
     private boolean temporal;
+    @OneToOne
+    private PrecioHistorico precioHistorico;
+
+    public PrecioHistorico getPrecioHistorico() {
+        return precioHistorico;
+    }
+
+    public void setPrecioHistorico(PrecioHistorico precioHistorico) {
+        this.precioHistorico = precioHistorico;
+    }
 
     public int getCodigo() {
         return codigo;
