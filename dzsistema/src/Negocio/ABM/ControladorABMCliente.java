@@ -13,7 +13,7 @@ import java.util.List;
  * @author juampa
  */
 public class ControladorABMCliente {
-    ExpertoABMCliente experto;
+    ExpertoABMCliente experto = new ExpertoABMCliente();
 
     public List<Cliente> buscarAfiliadoPorCUIT(int parseInt) {
         throw new UnsupportedOperationException("Not yet implemented");
