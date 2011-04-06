@@ -27,6 +27,22 @@ public class PrecioHistorico implements Serializable {
     private Date fechaDesdeQueEntroEnVigencia;
     private long precio;
 
+    public Date getFechaDesdeQueEntroEnVigencia() {
+        return fechaDesdeQueEntroEnVigencia;
+    }
+
+    public void setFechaDesdeQueEntroEnVigencia(Date fechaDesdeQueEntroEnVigencia) {
+        this.fechaDesdeQueEntroEnVigencia = fechaDesdeQueEntroEnVigencia;
+    }
+
+    public long getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(long precio) {
+        this.precio = precio;
+    }
+
     public Long getId() {
         return id;
     }

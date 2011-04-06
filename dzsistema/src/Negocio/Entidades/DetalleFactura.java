@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -25,6 +26,16 @@ public class DetalleFactura implements Serializable {
     private long porcentajeDeIva;
     private long precioTotal;
     private long precioUnitario;
+    @ManyToOne
+    private Producto producto;
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 
     public int getCantidad() {
         return cantidad;
