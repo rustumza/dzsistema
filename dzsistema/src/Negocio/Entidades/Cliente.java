@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -25,6 +26,16 @@ public class Cliente implements Serializable {
     private String CUIT;
     private String domicilio;
     private String nombre;
+    @ManyToOne
+    private CondicionFrenteAlIva condicionFrenteAlIva;
+
+    public CondicionFrenteAlIva getCondicionFrenteAlIva() {
+        return condicionFrenteAlIva;
+    }
+
+    public void setCondicionFrenteAlIva(CondicionFrenteAlIva condicionFrenteAlIva) {
+        this.condicionFrenteAlIva = condicionFrenteAlIva;
+    }
 
     public String getCUIT() {
         return CUIT;
