@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,6 +23,8 @@ public class CondicionFrenteAlIva implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nombre;
+    @ManyToOne
+    private TipoFactura tipoDeFactura;
 
     public String getNombre() {
         return nombre;
