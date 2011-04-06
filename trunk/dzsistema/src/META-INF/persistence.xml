@@ -3,6 +3,13 @@
   <persistence-unit name="dzsistemaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Negocio.Entidades.Factura</class>
+    <class>Negocio.Entidades.Cliente</class>
+    <class>Negocio.Entidades.CondicionFrenteAlIva</class>
+    <class>Negocio.Entidades.TipoFactura</class>
+    <class>Negocio.Entidades.CondicionDeVenta</class>
+    <class>Negocio.Entidades.DetalleFactura</class>
+    <class>Negocio.Entidades.Producto</class>
+    <class>Negocio.Entidades.PrecioHistorico</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dzrepresentaciones"/>
       <property name="javax.persistence.jdbc.password" value="dzr"/>
