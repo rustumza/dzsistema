@@ -15,7 +15,7 @@ import java.util.List;
  */
 class ExpertoABMCliente {
 
-    List<Cliente> ObtenerClientes() {
+    public List<Cliente> ObtenerClientes() {
         ClienteJpaController fachadaCliente = new ClienteJpaController();
         List<Cliente> listaClientes = fachadaCliente.findClienteEntities();
         return listaClientes;

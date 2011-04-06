@@ -23,7 +23,7 @@ import validar.Validar;
  */
 public class PantallaABMCliente extends javax.swing.JFrame {
 
-    ControladorABMCliente controlador;
+    ControladorABMCliente controlador = new ControladorABMCliente();
     List<Cliente> listaClientes;
     Cliente clienteAModificar;
     //AltaModificacionAfiliado ama;
@@ -42,13 +42,12 @@ public class PantallaABMCliente extends javax.swing.JFrame {
 
             Object[][] datos = null;
 
-            datos = new Object[listaClientes.size()][5];
+            datos = new Object[listaClientes.size()][4];
             for (int i = 0; i < listaClientes.size(); i++) {
                 datos[i][0] = listaClientes.get(i).getCodigo();
                 datos[i][1] = listaClientes.get(i).getCUIT();
                 datos[i][2] = listaClientes.get(i).getNombre();
                 datos[i][3] = listaClientes.get(i).getDomicilio();
-
 
             }
 
@@ -56,7 +55,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             jTableClientes.setModel(new DefaultTableModel(datos, columnNames) {
 
                 boolean[] canEdit = new boolean[]{
-                    true, true, true, true, true, true
+                    true, true, true, true
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
