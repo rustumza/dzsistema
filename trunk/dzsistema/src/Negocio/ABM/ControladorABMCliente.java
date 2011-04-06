@@ -36,4 +36,8 @@ public class ControladorABMCliente {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+    public void guardarCliente(int dni, String nombre, String apellido, String sexo, String direccion, Long id) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
 }

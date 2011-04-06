@@ -26,7 +26,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     ControladorABMCliente controlador = new ControladorABMCliente();
     List<Cliente> listaClientes;
     Cliente clienteAModificar;
-    //AltaModificacionAfiliado ama;
+    PantallaAltaModificacionCliente ama;
 
     /** Creates new form PantallaABMCliente */
     public PantallaABMCliente() {
@@ -392,23 +392,23 @@ public class PantallaABMCliente extends javax.swing.JFrame {
 
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
         // TODO add your handling code here:
-//        ama = new AltaModificacionAfiliado(controlador);
-//        ama.setGUI(this);
-//        ama.setVisible(true);
+        ama = new PantallaAltaModificacionCliente(this.controlador);
+        ama.setGUI(this);
+        ama.setVisible(true);
 }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-//        if (jTableAfiliados.getSelectedRow() != -1) {
-//            ama = new AltaModificacionAfiliado(controlador);
-//            ama.setGUI(this);
-//            ama.modificarArticulo(clienteAModificar);
-//            ama.setVisible(true);
-//        } else{
-//            JOptionPane.showMessageDialog(null, "Seleccione un afiliado para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
-//        }
-//        listaClientes = controlador.ObtenerClientes();
-//        CargarTabla();
+        if (jTableClientes.getSelectedRow() != -1) {
+            ama = new PantallaAltaModificacionCliente(this.controlador);
+            ama.setGUI(this);
+            ama.modificarCliente(clienteAModificar);
+            ama.setVisible(true);
+        } else{
+            JOptionPane.showMessageDialog(null, "Seleccione un afiliado para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+        listaClientes = controlador.ObtenerClientes();
+        CargarTabla();
 }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonElimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElimiarActionPerformed
@@ -420,7 +420,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 }
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un afiliado para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione un Cliente para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
         listaClientes = controlador.ObtenerClientes();
         CargarTabla();
