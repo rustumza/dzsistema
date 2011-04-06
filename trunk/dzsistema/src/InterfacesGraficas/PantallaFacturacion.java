@@ -43,19 +43,33 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         palabraCodigo = new javax.swing.JLabel();
         tipoFactura = new javax.swing.JLabel();
         Codigo = new javax.swing.JLabel();
-        PanelInfoFactura = new javax.swing.JPanel();
-        panelTablaProductos = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         panelInfoCliene = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        panelTalonConTotales = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        panelDatosCliente = new javax.swing.JPanel();
+        nombre = new javax.swing.JLabel();
+        domicilio = new javax.swing.JLabel();
+        nombreTextBox = new javax.swing.JTextField();
+        domicilioTextBox = new javax.swing.JTextField();
+        cuitTextBox = new javax.swing.JTextField();
+        iva = new javax.swing.JLabel();
+        ivaTextBox = new javax.swing.JTextField();
+        cuit = new javax.swing.JLabel();
+        panelCondicionDeVenta = new javax.swing.JPanel();
+        condicionDeVenta = new javax.swing.JLabel();
+        remitonro = new javax.swing.JLabel();
+        condicionDeVentaListBox = new javax.swing.JComboBox();
+        remitoNroTextBox = new javax.swing.JTextField();
         menu = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DZ Representaciones - C&C Systems");
 
+        panelCabecera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelCabecera.setMaximumSize(new java.awt.Dimension(30, 32767));
         panelCabecera.setPreferredSize(new java.awt.Dimension(255, 255));
 
@@ -63,16 +77,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelFechaYNumeroFactura.setMaximumSize(new java.awt.Dimension(100, 32767));
         panelFechaYNumeroFactura.setPreferredSize(new java.awt.Dimension(100, 255));
 
+        fechaLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 15)); // NOI18N
         fechaLabel.setText("Fecha");
 
+        numeroFacturaLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 15)); // NOI18N
         numeroFacturaLabel.setText("N°");
 
+        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
         numeroFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroFacturaActionPerformed(evt);
             }
         });
 
+        fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechaActionPerformed(evt);
@@ -83,23 +101,21 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelFechaYNumeroFactura.setLayout(panelFechaYNumeroFacturaLayout);
         panelFechaYNumeroFacturaLayout.setHorizontalGroup(
             panelFechaYNumeroFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFechaYNumeroFacturaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFechaYNumeroFacturaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelFechaYNumeroFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelFechaYNumeroFacturaLayout.createSequentialGroup()
-                        .addComponent(numeroFacturaLabel)
-                        .addGap(31, 31, 31)
-                        .addComponent(numeroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-                    .addGroup(panelFechaYNumeroFacturaLayout.createSequentialGroup()
-                        .addComponent(fechaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
+                    .addComponent(fechaLabel)
+                    .addComponent(numeroFacturaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFechaYNumeroFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numeroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelFechaYNumeroFacturaLayout.setVerticalGroup(
             panelFechaYNumeroFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFechaYNumeroFacturaLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFechaYNumeroFacturaLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(panelFechaYNumeroFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroFacturaLabel)
                     .addComponent(numeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -107,7 +123,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addGroup(panelFechaYNumeroFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fechaLabel)
                     .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
@@ -135,9 +151,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         TipoFactura.setLayout(TipoFacturaLayout);
         TipoFacturaLayout.setHorizontalGroup(
             TipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
-            .addComponent(palabraCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
-            .addComponent(Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addComponent(palabraCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addComponent(Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
         TipoFacturaLayout.setVerticalGroup(
             TipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,116 +175,177 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelCabeceraLayout.setVerticalGroup(
             panelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(TipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
 
-        jLabel4.setText("tabla con  productos");
+        panelInfoCliene.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        javax.swing.GroupLayout panelTablaProductosLayout = new javax.swing.GroupLayout(panelTablaProductos);
-        panelTablaProductos.setLayout(panelTablaProductosLayout);
-        panelTablaProductosLayout.setHorizontalGroup(
-            panelTablaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTablaProductosLayout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jLabel4)
-                .addContainerGap(491, Short.MAX_VALUE))
+        panelDatosCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        nombre.setText("Nombre");
+
+        domicilio.setText("Domicilio");
+
+        domicilioTextBox.setEnabled(false);
+
+        iva.setText("IVA");
+
+        ivaTextBox.setEnabled(false);
+
+        cuit.setText("CUIT");
+
+        javax.swing.GroupLayout panelDatosClienteLayout = new javax.swing.GroupLayout(panelDatosCliente);
+        panelDatosCliente.setLayout(panelDatosClienteLayout);
+        panelDatosClienteLayout.setHorizontalGroup(
+            panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addComponent(nombre)
+                        .addGap(18, 18, 18)
+                        .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(cuit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cuitTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addComponent(domicilio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(domicilioTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addComponent(iva)
+                        .addGap(49, 49, 49)
+                        .addComponent(ivaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-        panelTablaProductosLayout.setVerticalGroup(
-            panelTablaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTablaProductosLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel4)
-                .addContainerGap(87, Short.MAX_VALUE))
+        panelDatosClienteLayout.setVerticalGroup(
+            panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(nombre))
+                    .addComponent(nombreTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(cuit))
+                    .addComponent(cuitTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(domicilio))
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(domicilioTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(iva))
+                    .addComponent(ivaTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jLabel3.setText("info del cliente");
+        panelCondicionDeVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        condicionDeVenta.setText("Condiciones de venta");
+
+        remitonro.setText("Remito N°");
+
+        condicionDeVentaListBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        condicionDeVentaListBox.setEnabled(false);
+
+        javax.swing.GroupLayout panelCondicionDeVentaLayout = new javax.swing.GroupLayout(panelCondicionDeVenta);
+        panelCondicionDeVenta.setLayout(panelCondicionDeVentaLayout);
+        panelCondicionDeVentaLayout.setHorizontalGroup(
+            panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
+                        .addComponent(condicionDeVenta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(condicionDeVentaListBox, 0, 174, Short.MAX_VALUE))
+                    .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
+                        .addComponent(remitonro, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(remitoNroTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelCondicionDeVentaLayout.setVerticalGroup(
+            panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(condicionDeVenta)
+                    .addComponent(condicionDeVentaListBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(remitonro)
+                    .addComponent(remitoNroTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
+        );
 
         javax.swing.GroupLayout panelInfoClieneLayout = new javax.swing.GroupLayout(panelInfoCliene);
         panelInfoCliene.setLayout(panelInfoClieneLayout);
         panelInfoClieneLayout.setHorizontalGroup(
             panelInfoClieneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInfoClieneLayout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(jLabel3)
-                .addContainerGap(564, Short.MAX_VALUE))
+                .addComponent(panelDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelCondicionDeVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelInfoClieneLayout.setVerticalGroup(
             panelInfoClieneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInfoClieneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout PanelInfoFacturaLayout = new javax.swing.GroupLayout(PanelInfoFactura);
-        PanelInfoFactura.setLayout(PanelInfoFacturaLayout);
-        PanelInfoFacturaLayout.setHorizontalGroup(
-            PanelInfoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelInfoFacturaLayout.createSequentialGroup()
-                .addGroup(PanelInfoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelInfoCliene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelTablaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        PanelInfoFacturaLayout.setVerticalGroup(
-            PanelInfoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelInfoFacturaLayout.createSequentialGroup()
-                .addComponent(panelInfoCliene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTablaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-        );
-
-        jLabel2.setText("talon con totales y subtotales");
-
-        javax.swing.GroupLayout panelTalonConTotalesLayout = new javax.swing.GroupLayout(panelTalonConTotales);
-        panelTalonConTotales.setLayout(panelTalonConTotalesLayout);
-        panelTalonConTotalesLayout.setHorizontalGroup(
-            panelTalonConTotalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTalonConTotalesLayout.createSequentialGroup()
-                .addContainerGap(428, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(266, 266, 266))
-        );
-        panelTalonConTotalesLayout.setVerticalGroup(
-            panelTalonConTotalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTalonConTotalesLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(20, 20, 20))
+            .addComponent(panelDatosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCondicionDeVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
-            .addComponent(PanelInfoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelTalonConTotales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+            .addComponent(panelInfoCliene, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addComponent(panelCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelInfoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTalonConTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(panelInfoCliene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(852, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("File");
+        jMenu3.setText("Factura");
+
+        jMenuItem3.setText("buscar");
+        jMenu3.add(jMenuItem3);
+
+        menu.add(jMenu3);
+
+        jMenu4.setText("Cliente");
+        menu.add(jMenu4);
+
+        jMenu1.setText("Producto");
+
+        jMenuItem1.setText("Productos");
+        jMenu1.add(jMenuItem1);
+
         menu.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Reportes");
         menu.add(jMenu2);
 
         setJMenuBar(menu);
@@ -297,26 +374,38 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Codigo;
-    private javax.swing.JPanel PanelInfoFactura;
     private javax.swing.JPanel TipoFactura;
+    private javax.swing.JLabel condicionDeVenta;
+    private javax.swing.JComboBox condicionDeVentaListBox;
+    private javax.swing.JLabel cuit;
+    private javax.swing.JTextField cuitTextBox;
+    private javax.swing.JLabel domicilio;
+    private javax.swing.JTextField domicilioTextBox;
     private javax.swing.JFormattedTextField fecha;
     private javax.swing.JLabel fechaLabel;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel iva;
+    private javax.swing.JTextField ivaTextBox;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JTextField nombreTextBox;
     private javax.swing.JTextField numeroFactura;
     private javax.swing.JLabel numeroFacturaLabel;
     private javax.swing.JLabel palabraCodigo;
     private javax.swing.JPanel panelCabecera;
+    private javax.swing.JPanel panelCondicionDeVenta;
+    private javax.swing.JPanel panelDatosCliente;
     private javax.swing.JPanel panelFechaYNumeroFactura;
     private javax.swing.JPanel panelImagen;
     private javax.swing.JPanel panelInfoCliene;
     private javax.swing.JPanel panelPrincipal;
-    private javax.swing.JPanel panelTablaProductos;
-    private javax.swing.JPanel panelTalonConTotales;
+    private javax.swing.JTextField remitoNroTextBox;
+    private javax.swing.JLabel remitonro;
     private javax.swing.JLabel tipoFactura;
     // End of variables declaration//GEN-END:variables
 
