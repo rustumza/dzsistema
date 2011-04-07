@@ -17,9 +17,13 @@ public class Main {
     public static void main(String[] args) {
 
         //Para probar persistencia
-        Cliente cliente = new Cliente();
-        ClienteJpaController fachada = new ClienteJpaController();
-        fachada.create(cliente);
+//        Cliente cliente = new Cliente();
+//        ClienteJpaController fachada = new ClienteJpaController();
+//        fachada.create(cliente);
+
+        //Arranca pantalla principal
+        PantallaFacturacion iu = new PantallaFacturacion();
+        iu.setVisible(true);
         
         }
 

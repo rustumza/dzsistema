@@ -15,10 +15,6 @@ import java.util.List;
 public class ControladorABMCliente {
     ExpertoABMCliente experto = new ExpertoABMCliente();
 
-    public List<Cliente> buscarAfiliadoPorCUIT(int parseInt) {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
     public List<Cliente> buscarAfiliadoPorCodigo(String text) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -37,6 +33,10 @@ public class ControladorABMCliente {
     }
 
     public void guardarCliente(int dni, String nombre, String apellido, String sexo, String direccion, Long id) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public List<Cliente> buscarAfiliadoPorCUIT(String text) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 

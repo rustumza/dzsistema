@@ -295,7 +295,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCUIT.getText().isEmpty() == false){
             if(Validar.controlCUIT(jTextFieldCUIT.getText())){
-                listaClientes = controlador.buscarAfiliadoPorCUIT(Integer.parseInt(jTextFieldCUIT.getText()));
+                listaClientes = controlador.buscarAfiliadoPorCUIT(jTextFieldCUIT.getText());
                 CargarTabla();
                 limpiarFields();
             } else{
@@ -331,7 +331,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCUIT.getText().isEmpty() == false){
             if(Validar.controlCUIT(jTextFieldCUIT.getText())){
-                listaClientes = controlador.buscarAfiliadoPorCUIT(Integer.parseInt(jTextFieldCUIT.getText()));
+                listaClientes = controlador.buscarAfiliadoPorCUIT(jTextFieldCUIT.getText());
                 CargarTabla();
                 limpiarFields();
             } else{
@@ -402,7 +402,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             ama.modificarCliente(clienteAModificar);
             ama.setVisible(true);
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un afiliado para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione un Cliente para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
         listaClientes = controlador.ObtenerClientes();
         CargarTabla();
@@ -454,7 +454,9 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpiarFields() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        jTextFieldCUIT.setText("");
+        jTextFieldNombre.setText("");
+        jTextFieldCodigo.setText("");
     }
 
 }
