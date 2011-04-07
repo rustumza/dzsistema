@@ -25,8 +25,8 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
 
     /** Creates new form AltaModificacionArticulo */
     ControladorABMCliente controlador;
-    PantallaABMCliente iuABMCliente;
-    Cliente afiliado = new Cliente();
+    PantallaABMCliente PantallaABMCliente;
+    Cliente cliente = new Cliente();
 
     public PantallaAltaModificacionCliente(ControladorABMCliente controlador) {
         initComponents();
@@ -35,25 +35,19 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
     }
 
     private PantallaAltaModificacionCliente() {
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    public void modificarCliente(Cliente afiliadoAModificar) {
-//        afiliado = afiliadoAModificar;
-//        jTextFieldCUIT.setText(Integer.toString(afiliadoAModificar.getDni()));
-//        //jTextFieldDNI.setEditable(false);
-//        JTextFieldNombre.setText(afiliadoAModificar.getNombre());
-//        jTextFieldDireccion.setText(afiliadoAModificar.getApellido());
-//        jTextFieldCodigo.setText(afiliadoAModificar.getDireccion());
-//        jComboBoxReparticion.setSelectedItem(afiliadoAModificar.getReparticion().getNombre());
-//        jComboBoxIVA.setSelectedItem(afiliadoAModificar.getSexo());
-
-
+    public void modificarCliente(Cliente clienteAModificar) {
+        cliente = clienteAModificar;
+        jTextFieldCodigo.setText(Integer.toString(clienteAModificar.getCodigo()));
+        JTextFieldNombre.setText(clienteAModificar.getNombre());
+        jTextFieldDireccion.setText(clienteAModificar.getDomicilio());
+        jTextFieldCUIT.setText(clienteAModificar.getCUIT());
+        jComboBoxIVA.setSelectedItem(clienteAModificar.getCondicionFrenteAlIva());
     }
 
     void setGUI(PantallaABMCliente aThis) {
-        iuABMCliente = aThis;
-
+        PantallaABMCliente = aThis;
     }
 
     /** This method is called from within the constructor to
@@ -82,6 +76,7 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente");
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
 
@@ -239,11 +234,11 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         String apellido = jTextFieldDireccion.getText();
         String direccion = jTextFieldCodigo.getText();
         String sexo = (String) jComboBoxIVA.getSelectedItem();
-        Long id = afiliado.getId();
+        Long id = cliente.getId();
         //Actualiza la tabla del ABM
         controlador.guardarCliente(dni, nombre, apellido,sexo,direccion, id);
-        iuABMCliente.listaClientes = controlador.ObtenerClientes();
-        iuABMCliente.CargarTabla();
+        PantallaABMCliente.listaClientes = controlador.ObtenerClientes();
+        PantallaABMCliente.CargarTabla();
         this.setVisible(false);
         }
     }//GEN-LAST:event_jButtonguardarActionPerformed
