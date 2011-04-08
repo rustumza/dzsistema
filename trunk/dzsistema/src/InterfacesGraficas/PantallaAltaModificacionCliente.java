@@ -34,7 +34,8 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         this.controlador = controlador;
     }
 
-    private PantallaAltaModificacionCliente() {
+    public PantallaAltaModificacionCliente() {
+        controlador = new ControladorABMCliente();
     }
 
     public void modificarCliente(Cliente clienteAModificar) {
