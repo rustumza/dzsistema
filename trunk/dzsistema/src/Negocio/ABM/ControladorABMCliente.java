@@ -25,7 +25,7 @@ public class ControladorABMCliente {
     }
 
     public void bajaCliente(Cliente clienteAModificar) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        experto.bajaCliente(clienteAModificar);
     }
 
     public List<Cliente> buscarAfiliadoPorNombre(String text) {
@@ -36,8 +36,8 @@ public class ControladorABMCliente {
         experto.guardarAfiliado(codigo, nombre, CUIT, direccion, id);
     }
 
-    public List<Cliente> buscarAfiliadoPorCUIT(String text) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public List<Cliente> buscarAfiliadoPorCUIT(String CUIT) {
+        return experto.buscarAfiliadoPorCUIT(CUIT);
     }
 
 }
