@@ -35,6 +35,8 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
     }
 
     public PantallaAltaModificacionCliente() {
+        initComponents();
+        this.setLocationRelativeTo(null);
         controlador = new ControladorABMCliente();
     }
 
