@@ -33,7 +33,7 @@ public class ControladorABMCliente {
     }
 
     public void guardarCliente(int codigo, String nombre, String CUIT, String direccion, Long id) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        experto.guardarAfiliado(codigo, nombre, CUIT, direccion, id);
     }
 
     public List<Cliente> buscarAfiliadoPorCUIT(String text) {
