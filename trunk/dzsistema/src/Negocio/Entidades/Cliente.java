@@ -26,8 +26,17 @@ public class Cliente implements Serializable {
     private String CUIT;
     private String domicilio;
     private String nombre;
+    private boolean estado;
     @ManyToOne
     private CondicionFrenteAlIva condicionFrenteAlIva;
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public CondicionFrenteAlIva getCondicionFrenteAlIva() {
         return condicionFrenteAlIva;

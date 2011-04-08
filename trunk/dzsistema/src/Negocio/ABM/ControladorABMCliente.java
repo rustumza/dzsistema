@@ -32,7 +32,7 @@ public class ControladorABMCliente {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    public void guardarCliente(int dni, String nombre, String apellido, String sexo, String direccion, Long id) {
+    public void guardarCliente(int codigo, String nombre, String CUIT, String direccion, Long id) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
