@@ -134,4 +134,18 @@ public class ClienteJpaController {
         }
     }
 
+    public List<Cliente> buscarPorCUIT(String CUIT) {
+        EntityManager em = getEntityManager();
+        List<Cliente> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.CUIT = '"+CUIT+"'").getResultList();
+        return encontrados;
+    }
+
+    public List<Cliente> buscarDeAlta() {
+        EntityManager em = getEntityManager();
+        List<Cliente> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.estado = true").getResultList();
+        return encontrados;
+    }
+
 }
