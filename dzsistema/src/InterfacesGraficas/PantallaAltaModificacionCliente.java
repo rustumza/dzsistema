@@ -191,16 +191,16 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
     private void jButtonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonguardarActionPerformed
         // variable logica para validar si se puede guardar o modificar
         boolean condicion = true;
-        // Valida DNI
+        // Valida CUIT
         if (jTextFieldCUIT.getText().isEmpty() == false){
-            if(!Validar.controlDni(jTextFieldCUIT.getText())){
+            if(!Validar.controlCUIT(jTextFieldCUIT.getText())){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El DNI ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else{
             condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un DNI válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un CUIT válido", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
         // Valida Nombre
         if (JTextFieldNombre.getText().isEmpty() == false){
@@ -213,31 +213,31 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
             condicion=false;
             JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
-        // Valida Apellido
-        if (jTextFieldDireccion.getText().isEmpty() == false){
-            if(!Validar.controlApellido(jTextFieldDireccion.getText())){
-                condicion=false;
-                JOptionPane.showMessageDialog(null, "El Apellido ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Escriba un Apellido válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-            condicion = false;
-        }
-        if (jTextFieldCodigo.getText().isEmpty()){
+        //Valida Direccion
+        if (jTextFieldDireccion.getText().isEmpty()){
             condicion = false;
             JOptionPane.showMessageDialog(null, "Escriba una Dirección válida", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
+        //Valida codigo
+        if (jTextFieldCodigo.getText().isEmpty() == false){
+            if(!Validar.controlCodigo(jTextFieldCodigo.getText())){
+                condicion=false;
+                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
         //Verifica condicion y guarda
         if(condicion){
-        int dni = Integer.parseInt(jTextFieldCUIT.getText());
+        int codigo = Integer.parseInt(jTextFieldCodigo.getText());
         String nombre = JTextFieldNombre.getText();
-        String apellido = jTextFieldDireccion.getText();
-        String direccion = jTextFieldCodigo.getText();
-        String sexo = (String) jComboBoxIVA.getSelectedItem();
+        String direccion = jTextFieldDireccion.getText();
+        String CUIT = jTextFieldCUIT.getText();
         Long id = cliente.getId();
+        controlador.guardarCliente(codigo, nombre, CUIT,direccion, id);
         //Actualiza la tabla del ABM
-        controlador.guardarCliente(dni, nombre, apellido,sexo,direccion, id);
         PantallaABMCliente.listaClientes = controlador.ObtenerClientes();
         PantallaABMCliente.CargarTabla();
         this.setVisible(false);
