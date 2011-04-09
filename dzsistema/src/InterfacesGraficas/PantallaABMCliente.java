@@ -51,7 +51,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
 
             }
 
-            String[] columnNames = {"DNI", "CUIT", "Nombre", "Domicilio"};
+            String[] columnNames = {"Código", "CUIT", "Nombre", "Domicilio"};
             jTableClientes.setModel(new DefaultTableModel(datos, columnNames) {
 
                 boolean[] canEdit = new boolean[]{
@@ -399,7 +399,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     private void jButtonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarNombreActionPerformed
         // TODO add your handling code here:
         if (jTextFieldNombre.getText().isEmpty() == false){
-            if(Validar.controlCodigo(jTextFieldNombre.getText())){
+            if(Validar.controlApellido(jTextFieldNombre.getText())){
                 listaClientes = controlador.buscarAfiliadoPorNombre(jTextFieldCodigo.getText());
                 CargarTabla();
                 limpiarFields();

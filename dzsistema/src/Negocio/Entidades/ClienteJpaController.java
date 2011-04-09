@@ -148,4 +148,18 @@ public class ClienteJpaController {
         return encontrados;
     }
 
+    public List<Cliente> buscarPorCodigo(String codigo) {
+        EntityManager em = getEntityManager();
+        List<Cliente> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.codigo = '"+codigo+"'").getResultList();
+        return encontrados;
+    }
+
+    public List<Cliente> buscarPorNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        List<Cliente> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.nombre = '"+nombre+"'").getResultList();
+        return encontrados;
+    }
+
 }

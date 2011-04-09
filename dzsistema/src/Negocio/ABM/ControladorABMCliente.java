@@ -15,8 +15,8 @@ import java.util.List;
 public class ControladorABMCliente {
     ExpertoABMCliente experto = new ExpertoABMCliente();
 
-    public List<Cliente> buscarAfiliadoPorCodigo(String text) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public List<Cliente> buscarAfiliadoPorCodigo(String codigo) {
+        return experto.buscarAfiliadoPorCodigo(codigo);
     }
 
     public List<Cliente> ObtenerClientes() {
@@ -28,12 +28,12 @@ public class ControladorABMCliente {
         experto.bajaCliente(clienteAModificar);
     }
 
-    public List<Cliente> buscarAfiliadoPorNombre(String text) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public List<Cliente> buscarAfiliadoPorNombre(String nombre) {
+        return experto.buscarAfiliadoPorNombre(nombre);
     }
 
-    public void guardarCliente(int codigo, String nombre, String CUIT, String direccion, Long id) {
-        experto.guardarAfiliado(codigo, nombre, CUIT, direccion, id);
+    public void guardarCliente(int codigo, String nombre, String CUIT, String direccion, Long id, String iva) {
+        experto.guardarAfiliado(codigo, nombre, CUIT, direccion, id, iva);
     }
 
     public List<Cliente> buscarAfiliadoPorCUIT(String CUIT) {

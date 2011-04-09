@@ -7,6 +7,7 @@ package Negocio.ABM;
 
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
+import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.Vector;
@@ -25,7 +26,7 @@ class ExpertoABMCliente {
         return fachadaCliente.buscarDeAlta();
     }
 
-    void guardarAfiliado(int codigo, String nombre, String CUIT, String direccion, Long id) {
+    void guardarAfiliado(int codigo, String nombre, String CUIT, String direccion, Long id, String iva) {
         ClienteJpaController fachadaCliente = new ClienteJpaController();
         Cliente cliente;
         if (id == null) {
@@ -33,22 +34,28 @@ class ExpertoABMCliente {
         } else {
             cliente = fachadaCliente.findCliente(id);
         }
-
-        cliente.setCodigo(codigo);
-        cliente.setNombre(nombre);
-        cliente.setCUIT(CUIT);
-        cliente.setDomicilio(direccion);
-        cliente.setEstado(true);
-        try {
-            if (id == null) {
-                fachadaCliente.create(cliente);
-            } else {
-                fachadaCliente.edit(cliente);
+        if(fachadaCliente.buscarPorCodigo(Integer.toString(codigo))==null && fachadaCliente.buscarPorCUIT(CUIT)==null){
+            cliente.setCodigo(codigo);
+            cliente.setNombre(nombre);
+            cliente.setCUIT(CUIT);
+            cliente.setDomicilio(direccion);
+            cliente.setEstado(true);
+            CondicionFrenteAlIvaJpaController fachadaIva = new CondicionFrenteAlIvaJpaController();
+            cliente.setCondicionFrenteAlIva(fachadaIva.buscarPorNombre(iva));
+            try {
+                if (id == null) {
+                    fachadaCliente.create(cliente);
+                } else {
+                    fachadaCliente.edit(cliente);
+                }
+                JOptionPane.showMessageDialog(null, "Se guardaron los datos", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Se produjo un error", "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null, "Se guardaron los datos", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Se produjo un error", "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Codigo y/o CUIT repetido/s", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -70,6 +77,24 @@ class ExpertoABMCliente {
     public List<Cliente> buscarAfiliadoPorCUIT(String CUIT) {
         ClienteJpaController fachadaCliente = new ClienteJpaController();
         List<Cliente> encontrados = fachadaCliente.buscarPorCUIT(CUIT);
+        if(encontrados.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return encontrados;
+    }
+
+    List<Cliente> buscarAfiliadoPorCodigo(String codigo) {
+        ClienteJpaController fachadaCliente = new ClienteJpaController();
+        List<Cliente> encontrados = fachadaCliente.buscarPorCodigo(codigo);
+        if(encontrados.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return encontrados;
+    }
+
+    List<Cliente> buscarAfiliadoPorNombre(String nombre) {
+        ClienteJpaController fachadaCliente = new ClienteJpaController();
+        List<Cliente> encontrados = fachadaCliente.buscarPorNombre(nombre);
         if(encontrados.isEmpty()){
             JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }

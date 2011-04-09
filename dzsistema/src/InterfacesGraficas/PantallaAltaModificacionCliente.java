@@ -238,7 +238,8 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         String direccion = jTextFieldDireccion.getText();
         String CUIT = jTextFieldCUIT.getText();
         Long id = cliente.getId();
-        controlador.guardarCliente(codigo, nombre, CUIT,direccion, id);
+        String iva = jComboBoxIVA.getSelectedItem().toString();
+        controlador.guardarCliente(codigo, nombre, CUIT,direccion, id, iva);
         //Actualiza la tabla del ABM
         PantallaABMCliente.listaClientes = controlador.ObtenerClientes();
         PantallaABMCliente.CargarTabla();
