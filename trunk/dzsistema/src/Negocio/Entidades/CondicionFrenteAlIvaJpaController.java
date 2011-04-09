@@ -134,4 +134,11 @@ public class CondicionFrenteAlIvaJpaController {
         }
     }
 
+    public CondicionFrenteAlIva buscarPorNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        CondicionFrenteAlIva encontrado;
+        encontrado = (CondicionFrenteAlIva) em.createQuery("SELECT a FROM Cliente a WHERE a.nombre = '"+nombre+"'").getSingleResult();
+        return encontrado;
+    }
+
 }
