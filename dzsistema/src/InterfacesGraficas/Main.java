@@ -29,7 +29,7 @@ public class Main {
 //        fachada.create(iva);
 //        fachada.create(iva1);
 
-        // Setea como se ven las pantallas
+        // Setea como se ven las pantallas y arranca el sistema
         try{
             UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
         }
@@ -38,8 +38,6 @@ public class Main {
         }
         PantallaFacturacion iu = new PantallaFacturacion();        
         iu.setVisible(true);
-
-        
         }
 
 }
