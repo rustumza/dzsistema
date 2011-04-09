@@ -9,6 +9,8 @@ import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
 import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
+import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -28,9 +30,9 @@ public class Main {
 //        fachada.create(iva1);
 
         //Arranca pantalla principal
-        PantallaFacturacion iu = new PantallaFacturacion();
+        PantallaFacturacion iu = new PantallaFacturacion();        
         iu.setVisible(true);
-        
+
         
         }
 
