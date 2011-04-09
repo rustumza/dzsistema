@@ -7,6 +7,9 @@
         <Menu class="javax.swing.JMenu" name="menuCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cliente"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 1, 0, 0]"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuNuevoCliente">
@@ -541,7 +544,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="203" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelImpuestos" min="-2" max="-2" attributes="1"/>
+                      <Component id="panelImpuestos" min="-2" pref="134" max="-2" attributes="1"/>
                   </Group>
               </Group>
             </DimensionLayout>
