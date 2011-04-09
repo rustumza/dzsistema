@@ -34,7 +34,7 @@ public class Main {
             UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
         }
         catch(Exception ex) {
-            System.out.println();
+            System.out.println("Fallo lookandfell");
         }
 
         //Arranca pantalla principal
