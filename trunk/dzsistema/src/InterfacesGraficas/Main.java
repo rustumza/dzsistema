@@ -29,15 +29,6 @@ public class Main {
 //        fachada.create(iva);
 //        fachada.create(iva1);
 
-          // Setea como se ven las pantallas
-        try{
-            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
-        }
-        catch(Exception ex) {
-            System.out.println("Fallo lookandfell");
-        }
-
-        //Arranca pantalla principal
         // Setea como se ven las pantallas
         try{
             UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
