@@ -38,6 +38,13 @@ public class Main {
         }
 
         //Arranca pantalla principal
+        // Setea como se ven las pantallas
+        try{
+            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
+        }
+        catch(Exception ex) {
+            System.out.println("Fallo lookandfell");
+        }
         PantallaFacturacion iu = new PantallaFacturacion();        
         iu.setVisible(true);
 
