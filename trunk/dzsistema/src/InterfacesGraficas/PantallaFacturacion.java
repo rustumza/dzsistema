@@ -27,12 +27,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     public PantallaFacturacion() {
         initComponents();
         this.setLocationRelativeTo(null);
-        try {
-            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
-            System.out.println("se uso el look");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
         tablaDetallesFactura.setModel(new ModeloTablaProducto());
         
     }
