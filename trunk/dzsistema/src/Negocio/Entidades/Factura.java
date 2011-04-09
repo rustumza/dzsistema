@@ -30,7 +30,7 @@ public class Factura implements Serializable {
     private int numero;
     private int remitoNro;
     private char tipo;
-    private int total;
+    private float total;
     @OneToOne
     private DetalleFactura detalleFactura;
     @ManyToOne
@@ -94,7 +94,7 @@ public class Factura implements Serializable {
         this.tipo = tipo;
     }
 
-    public int getTotal() {
+    public float getTotal() {
         return total;
     }
 

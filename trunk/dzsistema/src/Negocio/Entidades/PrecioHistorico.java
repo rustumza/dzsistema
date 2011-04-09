@@ -25,7 +25,7 @@ public class PrecioHistorico implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaDesdeQueEntroEnVigencia;
-    private long precio;
+    private float precio;
 
     public Date getFechaDesdeQueEntroEnVigencia() {
         return fechaDesdeQueEntroEnVigencia;
@@ -35,7 +35,7 @@ public class PrecioHistorico implements Serializable {
         this.fechaDesdeQueEntroEnVigencia = fechaDesdeQueEntroEnVigencia;
     }
 
-    public long getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
