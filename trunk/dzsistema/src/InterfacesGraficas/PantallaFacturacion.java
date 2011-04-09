@@ -14,11 +14,14 @@ package InterfacesGraficas;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import javax.swing.UIManager;
 
+
+
 /**
  *
  * @author rustu
  */
 public class PantallaFacturacion extends javax.swing.JFrame {
+
 
     /** Creates new form PantallaFacturacion */
     public PantallaFacturacion() {
@@ -30,8 +33,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        tablaDetallesFactura.setModel(new ModeloTablaProducto());
+        
     }
-
+ 
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
