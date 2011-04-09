@@ -24,8 +24,7 @@ public class Producto implements Serializable {
     private Long id;
     private int codigo;
     private String descripcion;
-    private long porcentajeDeIva;
-    private boolean temporal;
+    private float porcentajeDeIva;
     @OneToOne
     private PrecioHistorico precioHistorico;
 
@@ -53,20 +52,12 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public long getPorcentajeDeIva() {
+    public float getPorcentajeDeIva() {
         return porcentajeDeIva;
     }
 
     public void setPorcentajeDeIva(long porcentajeDeIva) {
         this.porcentajeDeIva = porcentajeDeIva;
-    }
-
-    public boolean isTemporal() {
-        return temporal;
-    }
-
-    public void setTemporal(boolean temporal) {
-        this.temporal = temporal;
     }
 
     public Long getId() {

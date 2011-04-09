@@ -22,10 +22,10 @@ public class DetalleFactura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int cantidad;
-    private long porcentajeDeIva;
-    private long precioTotal;
-    private long precioUnitario;
+    private float cantidad;
+    private float porcentajeDeIva;
+    private float precioTotal;
+    private float precioUnitario;
     @ManyToOne
     private Producto producto;
 
@@ -37,7 +37,7 @@ public class DetalleFactura implements Serializable {
         this.producto = producto;
     }
 
-    public int getCantidad() {
+    public float getCantidad() {
         return cantidad;
     }
 
@@ -45,7 +45,7 @@ public class DetalleFactura implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public long getPorcentajeDeIva() {
+    public float getPorcentajeDeIva() {
         return porcentajeDeIva;
     }
 
@@ -53,7 +53,7 @@ public class DetalleFactura implements Serializable {
         this.porcentajeDeIva = porcentajeDeIva;
     }
 
-    public long getPrecioTotal() {
+    public float getPrecioTotal() {
         return precioTotal;
     }
 
@@ -61,7 +61,7 @@ public class DetalleFactura implements Serializable {
         this.precioTotal = precioTotal;
     }
 
-    public long getPrecioUnitario() {
+    public float getPrecioUnitario() {
         return precioUnitario;
     }
 
