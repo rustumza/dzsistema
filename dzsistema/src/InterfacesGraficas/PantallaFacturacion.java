@@ -49,7 +49,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         numeroFactura = new javax.swing.JTextField();
         fecha = new javax.swing.JTextField();
         panelImagen = new javax.swing.JPanel();
-        TipoFactura = new javax.swing.JPanel();
+        panelTipoFactura = new javax.swing.JPanel();
         palabraCodigo = new javax.swing.JLabel();
         tipoFactura = new javax.swing.JLabel();
         Codigo = new javax.swing.JLabel();
@@ -80,17 +80,16 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         impuestos = new javax.swing.JTextField();
         subtotal2 = new javax.swing.JTextField();
         ivaInsc = new javax.swing.JTextField();
-        panelTotal = new javax.swing.JPanel();
         totalLabel = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
         menu = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuCliente = new javax.swing.JMenu();
+        menuNuevoCliente = new javax.swing.JMenuItem();
+        menuModificarCliente = new javax.swing.JMenuItem();
+        menuProducto = new javax.swing.JMenu();
+        menuNuevoProducto = new javax.swing.JMenuItem();
+        menuModificarProducto = new javax.swing.JMenuItem();
+        reportes = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DZ Representaciones - C&C Systems");
@@ -173,17 +172,17 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         Codigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Codigo.setText("N° 01");
 
-        javax.swing.GroupLayout TipoFacturaLayout = new javax.swing.GroupLayout(TipoFactura);
-        TipoFactura.setLayout(TipoFacturaLayout);
-        TipoFacturaLayout.setHorizontalGroup(
-            TipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
-            .addComponent(palabraCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
-            .addComponent(Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelTipoFacturaLayout = new javax.swing.GroupLayout(panelTipoFactura);
+        panelTipoFactura.setLayout(panelTipoFacturaLayout);
+        panelTipoFacturaLayout.setHorizontalGroup(
+            panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+            .addComponent(palabraCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+            .addComponent(Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
         );
-        TipoFacturaLayout.setVerticalGroup(
-            TipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TipoFacturaLayout.createSequentialGroup()
+        panelTipoFacturaLayout.setVerticalGroup(
+            panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoFacturaLayout.createSequentialGroup()
                 .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(palabraCodigo)
@@ -200,7 +199,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelTipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -209,7 +208,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             panelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCabeceraLayout.createSequentialGroup()
                 .addGroup(panelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addComponent(panelTipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                     .addGroup(panelCabeceraLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -306,11 +305,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(condicionDeVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(condicionDeVentaListBox, 0, 161, Short.MAX_VALUE))
+                        .addComponent(condicionDeVentaListBox, 0, 187, Short.MAX_VALUE))
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonro, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(remitoNroTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
+                        .addComponent(remitoNroTextBox, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelCondicionDeVentaLayout.setVerticalGroup(
@@ -379,6 +378,12 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         ivaInsc.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
         ivaInsc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
+        totalLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        totalLabel.setText("TOTAL");
+
+        total.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
+        total.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
         javax.swing.GroupLayout panelImpuestosLayout = new javax.swing.GroupLayout(panelImpuestos);
         panelImpuestos.setLayout(panelImpuestosLayout);
         panelImpuestosLayout.setHorizontalGroup(
@@ -399,88 +404,64 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addComponent(subtotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ivaInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelImpuestosLayout.createSequentialGroup()
+                        .addComponent(ivaInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addComponent(ivaIsncLabel))
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImpuestosLayout.createSequentialGroup()
+                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImpuestosLayout.createSequentialGroup()
+                        .addComponent(totalLabel)
+                        .addGap(29, 29, 29))))
         );
         panelImpuestosLayout.setVerticalGroup(
             panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImpuestosLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(subtotalLabel)
                     .addComponent(impuestosLabel)
                     .addComponent(subtotal2Label)
-                    .addComponent(ivaIsncLabel))
+                    .addComponent(ivaIsncLabel)
+                    .addComponent(totalLabel))
                 .addGap(12, 12, 12)
                 .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(impuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subtotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ivaInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ivaInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
-        );
-
-        totalLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        totalLabel.setText("TOTAL");
-
-        total.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
-        total.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        javax.swing.GroupLayout panelTotalLayout = new javax.swing.GroupLayout(panelTotal);
-        panelTotal.setLayout(panelTotalLayout);
-        panelTotalLayout.setHorizontalGroup(
-            panelTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTotalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTotalLayout.createSequentialGroup()
-                .addContainerGap(120, Short.MAX_VALUE)
-                .addComponent(totalLabel)
-                .addContainerGap())
-        );
-        panelTotalLayout.setVerticalGroup(
-            panelTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTotalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(totalLabel)
-                .addGap(12, 12, 12)
-                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelDetalleFacturaLayout = new javax.swing.GroupLayout(panelDetalleFactura);
         panelDetalleFactura.setLayout(panelDetalleFacturaLayout);
         panelDetalleFacturaLayout.setHorizontalGroup(
             panelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
-            .addGroup(panelDetalleFacturaLayout.createSequentialGroup()
-                .addComponent(panelImpuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(panelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
+            .addComponent(panelImpuestos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelDetalleFacturaLayout.setVerticalGroup(
             panelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDetalleFacturaLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelImpuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelImpuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelCabecera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
-                    .addComponent(panelDetalleFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelInfoCliene, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelDetalleFactura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
+                    .addComponent(panelInfoCliene, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelPrincipalLayout.setVerticalGroup(
@@ -491,43 +472,43 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addComponent(panelInfoCliene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelDetalleFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(403, Short.MAX_VALUE))
+                .addContainerGap(617, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.PAGE_START);
 
-        jMenu4.setText("Cliente");
+        menuCliente.setText("Cliente");
 
-        jMenuItem2.setText("Nuevo Cliente");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuNuevoCliente.setText("Nuevo Cliente");
+        menuNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuNuevoClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem2);
+        menuCliente.add(menuNuevoCliente);
 
-        jMenuItem4.setText("Modificar Cliente");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuModificarCliente.setText("Modificar Cliente");
+        menuModificarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuModificarClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        menuCliente.add(menuModificarCliente);
 
-        menu.add(jMenu4);
+        menu.add(menuCliente);
 
-        jMenu1.setText("Producto");
+        menuProducto.setText("Producto");
 
-        jMenuItem1.setText("Nuevo Producto");
-        jMenu1.add(jMenuItem1);
+        menuNuevoProducto.setText("Nuevo Producto");
+        menuProducto.add(menuNuevoProducto);
 
-        jMenuItem5.setText("Modificar Producto");
-        jMenu1.add(jMenuItem5);
+        menuModificarProducto.setText("Modificar Producto");
+        menuProducto.add(menuModificarProducto);
 
-        menu.add(jMenu1);
+        menu.add(menuProducto);
 
-        jMenu2.setText("Reportes");
-        menu.add(jMenu2);
+        reportes.setText("Reportes");
+        menu.add(reportes);
 
         setJMenuBar(menu);
 
@@ -538,17 +519,17 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroFacturaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void menuNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoClienteActionPerformed
         // TODO add your handling code here:
         PantallaAltaModificacionCliente iu = new PantallaAltaModificacionCliente();
         iu.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_menuNuevoClienteActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menuModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteActionPerformed
         // TODO add your handling code here:
         PantallaABMCliente iu = new PantallaABMCliente();
         iu.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_menuModificarClienteActionPerformed
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
         // TODO add your handling code here:
@@ -567,7 +548,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Codigo;
-    private javax.swing.JPanel TipoFactura;
     private javax.swing.JLabel condicionDeVenta;
     private javax.swing.JComboBox condicionDeVentaListBox;
     private javax.swing.JLabel cuit;
@@ -582,15 +562,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JTextField ivaInsc;
     private javax.swing.JLabel ivaIsncLabel;
     private javax.swing.JTextField ivaTextBox;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenu menuCliente;
+    private javax.swing.JMenuItem menuModificarCliente;
+    private javax.swing.JMenuItem menuModificarProducto;
+    private javax.swing.JMenuItem menuNuevoCliente;
+    private javax.swing.JMenuItem menuNuevoProducto;
+    private javax.swing.JMenu menuProducto;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField nombreTextBox;
     private javax.swing.JTextField numeroFactura;
@@ -605,9 +584,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JPanel panelImpuestos;
     private javax.swing.JPanel panelInfoCliene;
     private javax.swing.JPanel panelPrincipal;
-    private javax.swing.JPanel panelTotal;
+    private javax.swing.JPanel panelTipoFactura;
     private javax.swing.JTextField remitoNroTextBox;
     private javax.swing.JLabel remitonro;
+    private javax.swing.JMenu reportes;
     private javax.swing.JTextField subtotal;
     private javax.swing.JTextField subtotal2;
     private javax.swing.JLabel subtotal2Label;
@@ -617,5 +597,692 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JTextField total;
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the Codigo
+     */
+    public javax.swing.JLabel getCodigo() {
+        return Codigo;
+    }
+
+    /**
+     * @param Codigo the Codigo to set
+     */
+    public void setCodigo(javax.swing.JLabel Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    /**
+     * @return the condicionDeVenta
+     */
+    public javax.swing.JLabel getCondicionDeVenta() {
+        return condicionDeVenta;
+    }
+
+    /**
+     * @param condicionDeVenta the condicionDeVenta to set
+     */
+    public void setCondicionDeVenta(javax.swing.JLabel condicionDeVenta) {
+        this.condicionDeVenta = condicionDeVenta;
+    }
+
+    /**
+     * @return the condicionDeVentaListBox
+     */
+    public javax.swing.JComboBox getCondicionDeVentaListBox() {
+        return condicionDeVentaListBox;
+    }
+
+    /**
+     * @param condicionDeVentaListBox the condicionDeVentaListBox to set
+     */
+    public void setCondicionDeVentaListBox(javax.swing.JComboBox condicionDeVentaListBox) {
+        this.condicionDeVentaListBox = condicionDeVentaListBox;
+    }
+
+    /**
+     * @return the cuit
+     */
+    public javax.swing.JLabel getCuit() {
+        return cuit;
+    }
+
+    /**
+     * @param cuit the cuit to set
+     */
+    public void setCuit(javax.swing.JLabel cuit) {
+        this.cuit = cuit;
+    }
+
+    /**
+     * @return the cuitTextBox
+     */
+    public javax.swing.JTextField getCuitTextBox() {
+        return cuitTextBox;
+    }
+
+    /**
+     * @param cuitTextBox the cuitTextBox to set
+     */
+    public void setCuitTextBox(javax.swing.JTextField cuitTextBox) {
+        this.cuitTextBox = cuitTextBox;
+    }
+
+    /**
+     * @return the domicilio
+     */
+    public javax.swing.JLabel getDomicilio() {
+        return domicilio;
+    }
+
+    /**
+     * @param domicilio the domicilio to set
+     */
+    public void setDomicilio(javax.swing.JLabel domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    /**
+     * @return the domicilioTextBox
+     */
+    public javax.swing.JTextField getDomicilioTextBox() {
+        return domicilioTextBox;
+    }
+
+    /**
+     * @param domicilioTextBox the domicilioTextBox to set
+     */
+    public void setDomicilioTextBox(javax.swing.JTextField domicilioTextBox) {
+        this.domicilioTextBox = domicilioTextBox;
+    }
+
+    /**
+     * @return the fecha
+     */
+    public javax.swing.JTextField getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(javax.swing.JTextField fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+     * @return the fechaLabel
+     */
+    public javax.swing.JLabel getFechaLabel() {
+        return fechaLabel;
+    }
+
+    /**
+     * @param fechaLabel the fechaLabel to set
+     */
+    public void setFechaLabel(javax.swing.JLabel fechaLabel) {
+        this.fechaLabel = fechaLabel;
+    }
+
+    /**
+     * @return the impuestos
+     */
+    public javax.swing.JTextField getImpuestos() {
+        return impuestos;
+    }
+
+    /**
+     * @param impuestos the impuestos to set
+     */
+    public void setImpuestos(javax.swing.JTextField impuestos) {
+        this.impuestos = impuestos;
+    }
+
+    /**
+     * @return the impuestosLabel
+     */
+    public javax.swing.JLabel getImpuestosLabel() {
+        return impuestosLabel;
+    }
+
+    /**
+     * @param impuestosLabel the impuestosLabel to set
+     */
+    public void setImpuestosLabel(javax.swing.JLabel impuestosLabel) {
+        this.impuestosLabel = impuestosLabel;
+    }
+
+    /**
+     * @return the iva
+     */
+    public javax.swing.JLabel getIva() {
+        return iva;
+    }
+
+    /**
+     * @param iva the iva to set
+     */
+    public void setIva(javax.swing.JLabel iva) {
+        this.iva = iva;
+    }
+
+    /**
+     * @return the ivaInsc
+     */
+    public javax.swing.JTextField getIvaInsc() {
+        return ivaInsc;
+    }
+
+    /**
+     * @param ivaInsc the ivaInsc to set
+     */
+    public void setIvaInsc(javax.swing.JTextField ivaInsc) {
+        this.ivaInsc = ivaInsc;
+    }
+
+    /**
+     * @return the ivaIsncLabel
+     */
+    public javax.swing.JLabel getIvaIsncLabel() {
+        return ivaIsncLabel;
+    }
+
+    /**
+     * @param ivaIsncLabel the ivaIsncLabel to set
+     */
+    public void setIvaIsncLabel(javax.swing.JLabel ivaIsncLabel) {
+        this.ivaIsncLabel = ivaIsncLabel;
+    }
+
+    /**
+     * @return the ivaTextBox
+     */
+    public javax.swing.JTextField getIvaTextBox() {
+        return ivaTextBox;
+    }
+
+    /**
+     * @param ivaTextBox the ivaTextBox to set
+     */
+    public void setIvaTextBox(javax.swing.JTextField ivaTextBox) {
+        this.ivaTextBox = ivaTextBox;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @param jScrollPane1 the jScrollPane1 to set
+     */
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    /**
+     * @return the menu
+     */
+    public javax.swing.JMenuBar getMenu() {
+        return menu;
+    }
+
+    /**
+     * @param menu the menu to set
+     */
+    public void setMenu(javax.swing.JMenuBar menu) {
+        this.menu = menu;
+    }
+
+    /**
+     * @return the menuCliente
+     */
+    public javax.swing.JMenu getMenuCliente() {
+        return menuCliente;
+    }
+
+    /**
+     * @param menuCliente the menuCliente to set
+     */
+    public void setMenuCliente(javax.swing.JMenu menuCliente) {
+        this.menuCliente = menuCliente;
+    }
+
+    /**
+     * @return the menuModificarCliente
+     */
+    public javax.swing.JMenuItem getMenuModificarCliente() {
+        return menuModificarCliente;
+    }
+
+    /**
+     * @param menuModificarCliente the menuModificarCliente to set
+     */
+    public void setMenuModificarCliente(javax.swing.JMenuItem menuModificarCliente) {
+        this.menuModificarCliente = menuModificarCliente;
+    }
+
+    /**
+     * @return the menuModificarProducto
+     */
+    public javax.swing.JMenuItem getMenuModificarProducto() {
+        return menuModificarProducto;
+    }
+
+    /**
+     * @param menuModificarProducto the menuModificarProducto to set
+     */
+    public void setMenuModificarProducto(javax.swing.JMenuItem menuModificarProducto) {
+        this.menuModificarProducto = menuModificarProducto;
+    }
+
+    /**
+     * @return the menuNuevoCliente
+     */
+    public javax.swing.JMenuItem getMenuNuevoCliente() {
+        return menuNuevoCliente;
+    }
+
+    /**
+     * @param menuNuevoCliente the menuNuevoCliente to set
+     */
+    public void setMenuNuevoCliente(javax.swing.JMenuItem menuNuevoCliente) {
+        this.menuNuevoCliente = menuNuevoCliente;
+    }
+
+    /**
+     * @return the menuNuevoProducto
+     */
+    public javax.swing.JMenuItem getMenuNuevoProducto() {
+        return menuNuevoProducto;
+    }
+
+    /**
+     * @param menuNuevoProducto the menuNuevoProducto to set
+     */
+    public void setMenuNuevoProducto(javax.swing.JMenuItem menuNuevoProducto) {
+        this.menuNuevoProducto = menuNuevoProducto;
+    }
+
+    /**
+     * @return the menuProducto
+     */
+    public javax.swing.JMenu getMenuProducto() {
+        return menuProducto;
+    }
+
+    /**
+     * @param menuProducto the menuProducto to set
+     */
+    public void setMenuProducto(javax.swing.JMenu menuProducto) {
+        this.menuProducto = menuProducto;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public javax.swing.JLabel getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(javax.swing.JLabel nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the nombreTextBox
+     */
+    public javax.swing.JTextField getNombreTextBox() {
+        return nombreTextBox;
+    }
+
+    /**
+     * @param nombreTextBox the nombreTextBox to set
+     */
+    public void setNombreTextBox(javax.swing.JTextField nombreTextBox) {
+        this.nombreTextBox = nombreTextBox;
+    }
+
+    /**
+     * @return the numeroFactura
+     */
+    public javax.swing.JTextField getNumeroFactura() {
+        return numeroFactura;
+    }
+
+    /**
+     * @param numeroFactura the numeroFactura to set
+     */
+    public void setNumeroFactura(javax.swing.JTextField numeroFactura) {
+        this.numeroFactura = numeroFactura;
+    }
+
+    /**
+     * @return the numeroFacturaLabel
+     */
+    public javax.swing.JLabel getNumeroFacturaLabel() {
+        return numeroFacturaLabel;
+    }
+
+    /**
+     * @param numeroFacturaLabel the numeroFacturaLabel to set
+     */
+    public void setNumeroFacturaLabel(javax.swing.JLabel numeroFacturaLabel) {
+        this.numeroFacturaLabel = numeroFacturaLabel;
+    }
+
+    /**
+     * @return the palabraCodigo
+     */
+    public javax.swing.JLabel getPalabraCodigo() {
+        return palabraCodigo;
+    }
+
+    /**
+     * @param palabraCodigo the palabraCodigo to set
+     */
+    public void setPalabraCodigo(javax.swing.JLabel palabraCodigo) {
+        this.palabraCodigo = palabraCodigo;
+    }
+
+    /**
+     * @return the panelCabecera
+     */
+    public javax.swing.JPanel getPanelCabecera() {
+        return panelCabecera;
+    }
+
+    /**
+     * @param panelCabecera the panelCabecera to set
+     */
+    public void setPanelCabecera(javax.swing.JPanel panelCabecera) {
+        this.panelCabecera = panelCabecera;
+    }
+
+    /**
+     * @return the panelCondicionDeVenta
+     */
+    public javax.swing.JPanel getPanelCondicionDeVenta() {
+        return panelCondicionDeVenta;
+    }
+
+    /**
+     * @param panelCondicionDeVenta the panelCondicionDeVenta to set
+     */
+    public void setPanelCondicionDeVenta(javax.swing.JPanel panelCondicionDeVenta) {
+        this.panelCondicionDeVenta = panelCondicionDeVenta;
+    }
+
+    /**
+     * @return the panelDatosCliente
+     */
+    public javax.swing.JPanel getPanelDatosCliente() {
+        return panelDatosCliente;
+    }
+
+    /**
+     * @param panelDatosCliente the panelDatosCliente to set
+     */
+    public void setPanelDatosCliente(javax.swing.JPanel panelDatosCliente) {
+        this.panelDatosCliente = panelDatosCliente;
+    }
+
+    /**
+     * @return the panelDetalleFactura
+     */
+    public javax.swing.JPanel getPanelDetalleFactura() {
+        return panelDetalleFactura;
+    }
+
+    /**
+     * @param panelDetalleFactura the panelDetalleFactura to set
+     */
+    public void setPanelDetalleFactura(javax.swing.JPanel panelDetalleFactura) {
+        this.panelDetalleFactura = panelDetalleFactura;
+    }
+
+    /**
+     * @return the panelFechaYNumeroFactura
+     */
+    public javax.swing.JPanel getPanelFechaYNumeroFactura() {
+        return panelFechaYNumeroFactura;
+    }
+
+    /**
+     * @param panelFechaYNumeroFactura the panelFechaYNumeroFactura to set
+     */
+    public void setPanelFechaYNumeroFactura(javax.swing.JPanel panelFechaYNumeroFactura) {
+        this.panelFechaYNumeroFactura = panelFechaYNumeroFactura;
+    }
+
+    /**
+     * @return the panelImagen
+     */
+    public javax.swing.JPanel getPanelImagen() {
+        return panelImagen;
+    }
+
+    /**
+     * @param panelImagen the panelImagen to set
+     */
+    public void setPanelImagen(javax.swing.JPanel panelImagen) {
+        this.panelImagen = panelImagen;
+    }
+
+    /**
+     * @return the panelImpuestos
+     */
+    public javax.swing.JPanel getPanelImpuestos() {
+        return panelImpuestos;
+    }
+
+    /**
+     * @param panelImpuestos the panelImpuestos to set
+     */
+    public void setPanelImpuestos(javax.swing.JPanel panelImpuestos) {
+        this.panelImpuestos = panelImpuestos;
+    }
+
+    /**
+     * @return the panelInfoCliene
+     */
+    public javax.swing.JPanel getPanelInfoCliene() {
+        return panelInfoCliene;
+    }
+
+    /**
+     * @param panelInfoCliene the panelInfoCliene to set
+     */
+    public void setPanelInfoCliene(javax.swing.JPanel panelInfoCliene) {
+        this.panelInfoCliene = panelInfoCliene;
+    }
+
+    /**
+     * @return the panelPrincipal
+     */
+    public javax.swing.JPanel getPanelPrincipal() {
+        return panelPrincipal;
+    }
+
+    /**
+     * @param panelPrincipal the panelPrincipal to set
+     */
+    public void setPanelPrincipal(javax.swing.JPanel panelPrincipal) {
+        this.panelPrincipal = panelPrincipal;
+    }
+
+    /**
+     * @return the panelTipoFactura
+     */
+    public javax.swing.JPanel getPanelTipoFactura() {
+        return panelTipoFactura;
+    }
+
+    /**
+     * @param panelTipoFactura the panelTipoFactura to set
+     */
+    public void setPanelTipoFactura(javax.swing.JPanel panelTipoFactura) {
+        this.panelTipoFactura = panelTipoFactura;
+    }
+
+    /**
+     * @return the remitoNroTextBox
+     */
+    public javax.swing.JTextField getRemitoNroTextBox() {
+        return remitoNroTextBox;
+    }
+
+    /**
+     * @param remitoNroTextBox the remitoNroTextBox to set
+     */
+    public void setRemitoNroTextBox(javax.swing.JTextField remitoNroTextBox) {
+        this.remitoNroTextBox = remitoNroTextBox;
+    }
+
+    /**
+     * @return the remitonro
+     */
+    public javax.swing.JLabel getRemitonro() {
+        return remitonro;
+    }
+
+    /**
+     * @param remitonro the remitonro to set
+     */
+    public void setRemitonro(javax.swing.JLabel remitonro) {
+        this.remitonro = remitonro;
+    }
+
+    /**
+     * @return the reportes
+     */
+    public javax.swing.JMenu getReportes() {
+        return reportes;
+    }
+
+    /**
+     * @param reportes the reportes to set
+     */
+    public void setReportes(javax.swing.JMenu reportes) {
+        this.reportes = reportes;
+    }
+
+    /**
+     * @return the subtotal
+     */
+    public javax.swing.JTextField getSubtotal() {
+        return subtotal;
+    }
+
+    /**
+     * @param subtotal the subtotal to set
+     */
+    public void setSubtotal(javax.swing.JTextField subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    /**
+     * @return the subtotal2
+     */
+    public javax.swing.JTextField getSubtotal2() {
+        return subtotal2;
+    }
+
+    /**
+     * @param subtotal2 the subtotal2 to set
+     */
+    public void setSubtotal2(javax.swing.JTextField subtotal2) {
+        this.subtotal2 = subtotal2;
+    }
+
+    /**
+     * @return the subtotal2Label
+     */
+    public javax.swing.JLabel getSubtotal2Label() {
+        return subtotal2Label;
+    }
+
+    /**
+     * @param subtotal2Label the subtotal2Label to set
+     */
+    public void setSubtotal2Label(javax.swing.JLabel subtotal2Label) {
+        this.subtotal2Label = subtotal2Label;
+    }
+
+    /**
+     * @return the subtotalLabel
+     */
+    public javax.swing.JLabel getSubtotalLabel() {
+        return subtotalLabel;
+    }
+
+    /**
+     * @param subtotalLabel the subtotalLabel to set
+     */
+    public void setSubtotalLabel(javax.swing.JLabel subtotalLabel) {
+        this.subtotalLabel = subtotalLabel;
+    }
+
+    /**
+     * @return the tablaDetallesFactura
+     */
+    public javax.swing.JTable getTablaDetallesFactura() {
+        return tablaDetallesFactura;
+    }
+
+    /**
+     * @param tablaDetallesFactura the tablaDetallesFactura to set
+     */
+    public void setTablaDetallesFactura(javax.swing.JTable tablaDetallesFactura) {
+        this.tablaDetallesFactura = tablaDetallesFactura;
+    }
+
+    /**
+     * @return the tipoFactura
+     */
+    public javax.swing.JLabel getTipoFactura() {
+        return tipoFactura;
+    }
+
+    /**
+     * @param tipoFactura the tipoFactura to set
+     */
+    public void setTipoFactura(javax.swing.JLabel tipoFactura) {
+        this.tipoFactura = tipoFactura;
+    }
+
+    /**
+     * @return the total
+     */
+    public javax.swing.JTextField getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(javax.swing.JTextField total) {
+        this.total = total;
+    }
+
+    /**
+     * @return the totalLabel
+     */
+    public javax.swing.JLabel getTotalLabel() {
+        return totalLabel;
+    }
+
+    /**
+     * @param totalLabel the totalLabel to set
+     */
+    public void setTotalLabel(javax.swing.JLabel totalLabel) {
+        this.totalLabel = totalLabel;
+    }
+
 
 }
