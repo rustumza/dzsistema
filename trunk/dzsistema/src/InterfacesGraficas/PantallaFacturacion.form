@@ -4,47 +4,47 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menu">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
+        <Menu class="javax.swing.JMenu" name="menuCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="menuNuevoCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nuevo Cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuNuevoClienteActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="menuModificarCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar Cliente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuModificarClienteActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="menuProducto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Producto"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="menuNuevoProducto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nuevo Producto"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="menuModificarProducto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar Producto"/>
               </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="reportes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reportes"/>
           </Properties>
@@ -70,7 +70,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-91,0,0,3,-8"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-109,0,0,4,18"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -85,11 +85,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="panelCabecera" alignment="0" pref="992" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="panelDetalleFactura" alignment="1" max="32767" attributes="0"/>
+                      <Component id="panelCabecera" alignment="0" pref="1018" max="32767" attributes="0"/>
                       <Component id="panelInfoCliene" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -104,7 +104,7 @@
                   <Component id="panelInfoCliene" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelDetalleFactura" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="403" max="32767" attributes="0"/>
+                  <EmptySpace pref="617" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,7 +132,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelImagen" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="TipoFactura" max="32767" attributes="0"/>
+                      <Component id="panelTipoFactura" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="panelFechaYNumeroFactura" min="-2" pref="229" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -143,7 +143,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="TipoFactura" alignment="1" pref="116" max="32767" attributes="1"/>
+                          <Component id="panelTipoFactura" alignment="1" pref="116" max="32767" attributes="1"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="panelFechaYNumeroFactura" min="-2" pref="109" max="-2" attributes="1"/>
@@ -262,14 +262,14 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="javax.swing.JPanel" name="TipoFactura">
+            <Container class="javax.swing.JPanel" name="panelTipoFactura">
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tipoFactura" alignment="0" pref="548" max="32767" attributes="0"/>
-                      <Component id="palabraCodigo" alignment="0" pref="548" max="32767" attributes="0"/>
-                      <Component id="Codigo" alignment="0" pref="548" max="32767" attributes="0"/>
+                      <Component id="tipoFactura" alignment="0" pref="574" max="32767" attributes="0"/>
+                      <Component id="palabraCodigo" alignment="0" pref="574" max="32767" attributes="0"/>
+                      <Component id="Codigo" alignment="0" pref="574" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -468,12 +468,12 @@
                               <Group type="102" attributes="0">
                                   <Component id="condicionDeVenta" min="-2" max="-2" attributes="1"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="condicionDeVentaListBox" pref="161" max="32767" attributes="0"/>
+                                  <Component id="condicionDeVentaListBox" pref="187" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="remitonro" min="-2" pref="66" max="-2" attributes="1"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="remitoNroTextBox" pref="242" max="32767" attributes="0"/>
+                                  <Component id="remitoNroTextBox" pref="268" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -532,24 +532,16 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="992" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelImpuestos" min="-2" pref="726" max="-2" attributes="1"/>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
-                      <Component id="panelTotal" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" alignment="0" pref="1018" max="32767" attributes="0"/>
+                  <Component id="panelImpuestos" alignment="0" max="32767" attributes="1"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="203" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelImpuestos" min="-2" pref="134" max="-2" attributes="1"/>
-                          <Component id="panelTotal" max="32767" attributes="1"/>
-                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="panelImpuestos" min="-2" pref="134" max="-2" attributes="1"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -601,22 +593,36 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ivaInsc" min="-2" pref="168" max="-2" attributes="0"/>
-                              <Component id="ivaIsncLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ivaInsc" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="ivaIsncLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="total" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="totalLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="subtotalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="impuestosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="subtotal2Label" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ivaIsncLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="totalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -624,6 +630,7 @@
                               <Component id="impuestos" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
                               <Component id="subtotal2" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
                               <Component id="ivaInsc" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
+                              <Component id="total" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
@@ -695,38 +702,6 @@
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                 </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="panelTotal">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="total" min="-2" pref="168" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="120" max="32767" attributes="0"/>
-                          <Component id="totalLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="totalLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="total" min="-2" pref="66" max="-2" attributes="0"/>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
                 <Component class="javax.swing.JLabel" name="totalLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
