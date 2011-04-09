@@ -19,12 +19,13 @@ public class Main {
     public static void main(String[] args) {
         // Script de inicializacion de Base de Datos (Hay que completarlo)
         //Inicializa la Condicion Frente al Iva
-        CondicionFrenteAlIva iva = new CondicionFrenteAlIva();
-        CondicionFrenteAlIva iva1 = new CondicionFrenteAlIva();
-        iva.setNombre("Responsable Inscripto");
-        iva.setNombre("Monotributista");
-        CondicionFrenteAlIvaJpaController fachada = new CondicionFrenteAlIvaJpaController();
-        fachada.create(iva);
+//        CondicionFrenteAlIva iva = new CondicionFrenteAlIva();
+//        CondicionFrenteAlIva iva1 = new CondicionFrenteAlIva();
+//        iva.setNombre("Responsable Inscripto");
+//        iva1.setNombre("Monotributista");
+//        CondicionFrenteAlIvaJpaController fachada = new CondicionFrenteAlIvaJpaController();
+//        fachada.create(iva);
+//        fachada.create(iva1);
 
         //Arranca pantalla principal
         PantallaFacturacion iu = new PantallaFacturacion();

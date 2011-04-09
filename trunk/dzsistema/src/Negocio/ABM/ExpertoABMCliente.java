@@ -34,7 +34,7 @@ class ExpertoABMCliente {
         } else {
             cliente = fachadaCliente.findCliente(id);
         }
-        if(fachadaCliente.buscarPorCodigo(Integer.toString(codigo))==null && fachadaCliente.buscarPorCUIT(CUIT)==null){
+        if(fachadaCliente.buscarPorCodigo(Integer.toString(codigo)).isEmpty() && fachadaCliente.buscarPorCUIT(CUIT).isEmpty()){
             cliente.setCodigo(codigo);
             cliente.setNombre(nombre);
             cliente.setCUIT(CUIT);

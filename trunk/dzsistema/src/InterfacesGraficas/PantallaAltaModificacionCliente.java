@@ -241,9 +241,11 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         String iva = jComboBoxIVA.getSelectedItem().toString();
         controlador.guardarCliente(codigo, nombre, CUIT,direccion, id, iva);
         //Actualiza la tabla del ABM
-        PantallaABMCliente.listaClientes = controlador.ObtenerClientes();
-        PantallaABMCliente.CargarTabla();
-        this.setVisible(false);
+        if(PantallaABMCliente != null){
+            PantallaABMCliente.listaClientes = controlador.ObtenerClientes();
+            PantallaABMCliente.CargarTabla();
+            this.setVisible(false);
+        }
         }
     }//GEN-LAST:event_jButtonguardarActionPerformed
 
