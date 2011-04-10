@@ -21,14 +21,21 @@ import javax.swing.UIManager;
  * @author rustu
  */
 public class PantallaFacturacion extends javax.swing.JFrame {
-
+    ControladorPanallaFacturacion controlador;
 
     /** Creates new form PantallaFacturacion */
     public PantallaFacturacion() {
         initComponents();
+        this.setLocationRelativeTo(null); 
+    }
+
+    PantallaFacturacion(ControladorPanallaFacturacion controladorP) {
+        controlador = controladorP;
+        initComponents();
         this.setLocationRelativeTo(null);
-        tablaDetallesFactura.setModel(new ModeloTablaProducto());
         
+
+
     }
  
     /** This method is called from within the constructor to
