@@ -30,14 +30,9 @@ public class Main {
 //        fachada.create(iva1);
 
         // Setea como se ven las pantallas y arranca el sistema
-        try{
-            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
-        }
-        catch(Exception ex) {
-            System.out.println("Fallo lookandfell");
-        }
-        PantallaFacturacion iu = new PantallaFacturacion();        
-        iu.setVisible(true);
+        
+            new ControladorPanallaFacturacion().iniciar();
+        
         }
 
 }

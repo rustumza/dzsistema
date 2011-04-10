@@ -9,47 +9,64 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Negocio.Entidades.*;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 /**
  *
  * @author diego
  */
-public class ModeloTablaProducto extends AbstractTableModel {
 
-    private List<DetalleFactura> listaDetalles;
-    public static String[] columnName = {"Cantidad", "Código", "Descripción, P. Unitario, Importe"};
+
+public class ModeloTablaProducto extends AbstractTableModel {
+    private static int cantidadDeColumnas = 5;
+    private static int cantidadDeFlias = 15;
+
+
+
+    //private List<DetalleFactura> listaDetalles;
+    public static String[] columnName = {"Cantidad", "Código", "Descripción", "P. Unitario", "Importe"};
     boolean[] canEdit = new boolean[]{true, true, false, true, false};
-    Object[] datos = {" "," "," "," "," "};
+    Object[][] datos = {{new Float(0.0), new Integer(0), " ", new Float(0.0), new Float(0.0)}};
+            
+            
+            //new Object[cantidadDeFlias][cantidadDeColumnas];
+
 
     public ModeloTablaProducto(){
         super();
 
+
+        /*for (int j = 0; j < cantidadDeFlias; j++) {
+                datos[j][0] = new Float(0.0);
+                datos[j][1] = new Integer(0);
+                datos[j][2] = " ";
+                datos[j][3] = new Float(0.0);
+                datos[j][4] = new Float(0.0);
+        }
+*/
 
 
     }
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
+        return canEdit[columnIndex];
     }
 
     /*public void setCellEditable(boolean edit) {
         editable = edit;
     }*/
 
-    public void setListaDetalles(List<DetalleFactura> nuevaLista) {
+    /*public void setListaDetalles(List<DetalleFactura> nuevaLista) {
         if (listaDetalles == null) {
             listaDetalles = new ArrayList<DetalleFactura>();
         }
         listaDetalles = nuevaLista;
         fireTableDataChanged();
     }
-
+*/
     public int getRowCount() {
-        if (listaDetalles != null) {
-            return listaDetalles.size();
-        } else {
-            return 0;
-        }
+        return datos.length;
     }
 
     public int getColumnCount() {
@@ -81,7 +98,7 @@ public class ModeloTablaProducto extends AbstractTableModel {
         return columnName[column];
     }
 
-    public void addRow(DetalleFactura nuevoDetalle) {
+/*    public void addRow(DetalleFactura nuevoDetalle) {
         if (listaDetalles == null) {
             listaDetalles = new ArrayList<DetalleFactura>();
         }
@@ -113,9 +130,9 @@ public class ModeloTablaProducto extends AbstractTableModel {
         listaDetalles.remove(rowIndex);
         fireTableDataChanged();
     }
-
+*/
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return datos[rowIndex][columnIndex];
     }
 
     public void agregarOtroItemBlanco(Object[] datos){
