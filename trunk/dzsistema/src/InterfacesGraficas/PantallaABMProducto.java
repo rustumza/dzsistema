@@ -92,9 +92,10 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         jButtonModificar = new javax.swing.JButton();
         jButtonElimiar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonVerPrecios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Gestionar Clientes");
+        setTitle("Gestionar Productos");
         setResizable(false);
 
         jTableProductos.setAutoCreateRowSorter(true);
@@ -241,6 +242,13 @@ public class PantallaABMProducto extends javax.swing.JFrame {
             }
         });
 
+        jButtonVerPrecios.setText("Ver Precios");
+        jButtonVerPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVerPreciosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,7 +264,9 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                         .addComponent(jButtonModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonElimiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonVerPrecios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -272,7 +282,8 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                     .addComponent(jButtonNuevo)
                     .addComponent(jButtonModificar)
                     .addComponent(jButtonElimiar)
-                    .addComponent(jButton1)))
+                    .addComponent(jButton1)
+                    .addComponent(jButtonVerPrecios)))
         );
 
         pack();
@@ -391,6 +402,12 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonVerPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPreciosActionPerformed
+        // TODO add your handling code here:
+            PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(productoAModificar);
+            iu.setVisible(true);
+    }//GEN-LAST:event_jButtonVerPreciosActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -409,6 +426,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
     private javax.swing.JButton jButtonElimiar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonNuevo;
+    private javax.swing.JButton jButtonVerPrecios;
     private javax.swing.JButton jButtonbuscarTodos;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
