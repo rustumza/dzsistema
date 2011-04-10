@@ -9,6 +9,7 @@ package InterfacesGraficas;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author rustu
@@ -39,6 +40,29 @@ public class ControladorPanallaFacturacion {
         //Asigmo el modelo
         tabla.setModel(new ModeloTablaProducto());
 
+/*
+        //prueba
+        String[] columnName = {"Cantidad", "Código", "Descripción", "P. Unitario", "Importe"};
+        String[][] datos = {{" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "},
+                            {" "," "," "," "," "}};
+                            
+        tabla.setModel(new DefaultTableModel(datos, columnName));
+*/
         //Tamaño de las columnas
         tabla.getColumnModel().getColumn(0).setPreferredWidth(70);  //cantidad
         tabla.getColumnModel().getColumn(1).setPreferredWidth(70);  //codigo
@@ -46,6 +70,10 @@ public class ControladorPanallaFacturacion {
         tabla.getColumnModel().getColumn(3).setPreferredWidth(70);  //precio unitario
         tabla.getColumnModel().getColumn(4).setPreferredWidth(70);  //importe
 
+    }
+
+    void buscarClientePorNombre(String text) {
+        
     }
 
 }

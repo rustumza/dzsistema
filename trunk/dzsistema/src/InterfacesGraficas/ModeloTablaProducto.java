@@ -29,6 +29,7 @@ public class ModeloTablaProducto extends AbstractTableModel {
 
     public ModeloTablaProducto(){
         super();
+        datos = new ArrayList<DTODetallesDeFacturaParaGUI>();
 
     }
 
