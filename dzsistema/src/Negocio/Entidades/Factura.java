@@ -29,14 +29,16 @@ public class Factura implements Serializable {
     private Date fecha;
     private int numero;
     private int remitoNro;
-    private char tipo;
     private float total;
+    private boolean estado;
     @OneToOne
     private DetalleFactura detalleFactura;
     @ManyToOne
     private CondicionDeVenta condicionDeVenta;
     @ManyToOne
     private TipoFactura tipoFactura;
+    @ManyToOne
+    private Cliente cliente;
 
     public CondicionDeVenta getCondicionDeVenta() {
         return condicionDeVenta;
@@ -86,14 +88,6 @@ public class Factura implements Serializable {
         this.remitoNro = remitoNro;
     }
 
-    public char getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(char tipo) {
-        this.tipo = tipo;
-    }
-
     public float getTotal() {
         return total;
     }
@@ -133,6 +127,34 @@ public class Factura implements Serializable {
     @Override
     public String toString() {
         return "Negocio.Entidades.Factura[id=" + id + "]";
+    }
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the estado
+     */
+    public boolean isEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
 }

@@ -13,22 +13,24 @@ package InterfacesGraficas;
 
 import Negocio.Entidades.Cliente;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author rustu
  */
 public class PantallaElegirCliente extends javax.swing.JFrame {
-
-    List<Cliente> listaClientes;
-
+ 
+    private ControladorPanallaFacturacion controlador;
+    private int filaSeleccionada;
+    private boolean seSeleccionoAlgunaFila = false;
 
     /** Creates new form PantallaElegirCliente */
-    public PantallaElegirCliente(List<Cliente> listaClientes) {
+    public PantallaElegirCliente(ControladorPanallaFacturacion controlador) {
         initComponents();
-        this.listaClientes=listaClientes;
-        CargarTabla();
+        this.controlador = controlador;
+        this.setTitle("Selección de clinte");
+        
     }
 
     /** This method is called from within the constructor to
@@ -58,11 +60,26 @@ public class PantallaElegirCliente extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                filaSeleccionada(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla);
 
         cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,41 +110,111 @@ public class PantallaElegirCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public  void CargarTabla() {
-        try {
-
-            Object[][] datos = null;
-
-            datos = new Object[listaClientes.size()][4];
-            for (int i = 0; i < listaClientes.size(); i++) {
-                datos[i][0] = listaClientes.get(i).getCodigo();
-                datos[i][1] = listaClientes.get(i).getNombre();
-                datos[i][2] = listaClientes.get(i).getCUIT();
-                
-
+    private void filaSeleccionada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filaSeleccionada
+        int fila = tabla.rowAtPoint(evt.getPoint());
+        int columna = tabla.columnAtPoint(evt.getPoint());
+        if ((fila > -1) && (columna > -1)){
+            filaSeleccionada=fila;
+            seSeleccionoAlgunaFila = true;
+            if(evt.getClickCount()==2){
+                controlador.clienteSeleccionado(filaSeleccionada);
             }
-
-            String[] columnNames = {"Código", "Nombre", "CUIT"};
-            tabla.setModel(new DefaultTableModel(datos, columnNames) {
-
-              
-
-                @Override
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
-                }
-            });
-
-        } catch (NullPointerException e) {
         }
 
 
-    }
+
+    }//GEN-LAST:event_filaSeleccionada
+
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        if(seSeleccionoAlgunaFila){
+            controlador.clienteSeleccionado(filaSeleccionada);
+        }
+    }//GEN-LAST:event_aceptarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        controlador.cancelarSeleccionDeCliente();
+    }//GEN-LAST:event_cancelarActionPerformed
+
+   
+
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
+
+
+    /**
+     * @return the controlador
+     */
+    public ControladorPanallaFacturacion getControlador() {
+        return controlador;
+    }
+
+    /**
+     * @param controlador the controlador to set
+     */
+    public void setControlador(ControladorPanallaFacturacion controlador) {
+        this.controlador = controlador;
+    }
+
+    /**
+     * @return the aceptar
+     */
+    public javax.swing.JButton getAceptar() {
+        return aceptar;
+    }
+
+    /**
+     * @param aceptar the aceptar to set
+     */
+    public void setAceptar(javax.swing.JButton aceptar) {
+        this.aceptar = aceptar;
+    }
+
+    /**
+     * @return the cancelar
+     */
+    public javax.swing.JButton getCancelar() {
+        return cancelar;
+    }
+
+    /**
+     * @param cancelar the cancelar to set
+     */
+    public void setCancelar(javax.swing.JButton cancelar) {
+        this.cancelar = cancelar;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @param jScrollPane1 the jScrollPane1 to set
+     */
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    /**
+     * @return the tabla
+     */
+    public javax.swing.JTable getTabla() {
+        return tabla;
+    }
+
+    /**
+     * @param tabla the tabla to set
+     */
+    public void setTabla(javax.swing.JTable tabla) {
+        this.tabla = tabla;
+    }
 
 }
