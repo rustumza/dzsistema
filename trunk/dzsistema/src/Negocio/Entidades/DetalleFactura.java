@@ -41,7 +41,7 @@ public class DetalleFactura implements Serializable {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(float cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -49,7 +49,7 @@ public class DetalleFactura implements Serializable {
         return porcentajeDeIva;
     }
 
-    public void setPorcentajeDeIva(long porcentajeDeIva) {
+    public void setPorcentajeDeIva(float porcentajeDeIva) {
         this.porcentajeDeIva = porcentajeDeIva;
     }
 
@@ -57,7 +57,7 @@ public class DetalleFactura implements Serializable {
         return precioTotal;
     }
 
-    public void setPrecioTotal(long precioTotal) {
+    public void setPrecioTotal(float precioTotal) {
         this.precioTotal = precioTotal;
     }
 
@@ -65,7 +65,7 @@ public class DetalleFactura implements Serializable {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(long precioUnitario) {
+    public void setPrecioUnitario(float precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 

@@ -7,6 +7,7 @@ package InterfacesGraficas;
 
 
 import Negocio.Entidades.Cliente;
+import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.Producto;
 import Negocio.Facturacion.ExpertoFacturar;
@@ -19,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import java.lang.Math.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -124,6 +126,8 @@ public class ControladorPanallaFacturacion {
         pantalla.getIva().setText(factura.getCliente().getCondicionFrenteAlIva().getNombre());
         pantalla.getTipoFactura().setText(factura.getTipoFactura().getNombre());
         pantalla.getCodigoFactura().setText("N° 0" + factura.getTipoFactura().getCodigo());
+        //Deshabilitar campos de impuestos si es necesario   //TO DO
+
         //pantalla.getFecha().setText(factura.getFecha().); buscar el metodo para mostrar la fecha // TO DO
         cargarCondicionDeVenta();
 
@@ -155,9 +159,10 @@ public class ControladorPanallaFacturacion {
         //cargar la fila a la que se le hizo doble clic en los campos de edición asi se modifica
     }
 
-    public void buscarProductoYSuInformacion(String text) {
+    public void buscarProductoYSuInformacion() {
         //buscar el producto con el codigo que me trae
-        Producto producto = experto.buscarProducto(text);
+        Producto producto = experto.buscarProducto(pantalla.getCodigo().getText(),pantalla.getFecha().getText());
+        pantalla.getFecha().setEnabled(false);
         pantalla.getCodigo().setText(String.valueOf(producto.getCodigo()));
         pantalla.getDescripcion().setText(producto.getDescripcion());
         producto.getPrecioHistorico().getPrecio();
@@ -185,8 +190,43 @@ public class ControladorPanallaFacturacion {
 
     }
 
-    public void agregarDetalleALaTabla() {
-        //agregar detalle a la tabla
+    public void agregarDetalleFactura() {
+        DTODetallesDeFacturaParaGUI dto = new DTODetallesDeFacturaParaGUI();
+        dto.setCantidad(Float.valueOf(pantalla.getCantidad().getText()));
+        dto.setCodigo(pantalla.getCodigo().getText());
+        dto.setPrecioUnitario(Float.valueOf(pantalla.getPrecioUnitario().getText()));
+        dto.setImporte(Float.valueOf(pantalla.getImporte().getText()));
+        Factura fac = experto.AgregarDetalleALaFactura(dto);
+        actualizarTablaEImpuestosYTotales(fac);
+    }
+
+    private void actualizarTablaEImpuestosYTotales(Factura fac) {
+        //sacar lista de detalles de factura de la factur
+        List<DetalleFactura> listaDetalles = new ArrayList<DetalleFactura>();
+        pantalla.getTablaDetallesFactura().setModel(new ModeloTablaProducto(listaDetalles));
+        if(fac.getTipoFactura().getNombre().equals("A") | fac.getTipoFactura().getNombre().equals("a")){
+            float subtotal = 0;
+            float total = 0;
+            float ivaInsc = 0;
+            for (DetalleFactura detalleFactura : listaDetalles) {
+                float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
+                ivaInsc = + iva;
+                total =+ detalleFactura.getPrecioTotal() + iva;
+                subtotal =+ detalleFactura.getPrecioTotal();
+            }
+            pantalla.getSubtotal().setText(String.valueOf(subtotal));
+            pantalla.getIvaInsc().setText(String.valueOf(ivaInsc));
+            pantalla.getTotal().setText(String.valueOf(total));
+
+            //REVISAR LOS DE IMPUESTO Y SUBTOTAL2
+        }else{
+            float total = 0;
+            for (DetalleFactura detalleFactura : listaDetalles) {
+                total =+ detalleFactura.getPrecioTotal();
+            }
+            pantalla.getTotal().setText(String.valueOf(total));
+        }
+
     }
 
     public void guardarFactura() {
@@ -201,6 +241,30 @@ public class ControladorPanallaFacturacion {
     public void limpiarPantalla() {
         //limpiar pantalla
     }
+
+
+
+    private void cargarCondicionDeVenta() {
+        //cargar la condicion de venta basado en la factura obtenida al buscar cliente
+        //TODO
+    }
+
+
+    void compararFechaFactura() {
+        //validar fecha primero
+        boolean sonIguales = experto.comparaFechaFactura(pantalla.getFecha().getText());
+        //Mostrar pantalla para preguntar si quiere modificar la fecha
+
+        //si quiere modificar, eliminar los detalles de la factura
+        //sino, dejar todo como esta y no cambiar la fecha
+    }
+
+
+
+
+
+
+
 
 
 //ACA COMIENZA EL CONTROL DE LA PANTALLA PARA ELEGIR CLIENTE
@@ -263,12 +327,8 @@ public class ControladorPanallaFacturacion {
 
      }
 
-    private void cargarCondicionDeVenta() {
-        //cargar la condicion de venta basado en la factura obtenida al buscar cliente
-        //TODO
-    }
 
 
-
+  
 
 }

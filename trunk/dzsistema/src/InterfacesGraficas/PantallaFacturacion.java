@@ -143,7 +143,12 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             }
         });
 
-        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
+        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
+        fecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fechaMouseDobleClic(evt);
+            }
+        });
         fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechaActionPerformed(evt);
@@ -846,11 +851,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_filaSeleccionada
 
     private void buscarProducto(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarProducto
-        controlador.buscarProductoYSuInformacion(codigo.getText());
+        controlador.buscarProductoYSuInformacion();
     }//GEN-LAST:event_buscarProducto
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-        controlador.agregarDetalleALaTabla();
+        controlador.agregarDetalleFactura();
     }//GEN-LAST:event_agregarActionPerformed
 
     private void limpiarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarPantallaActionPerformed
@@ -871,7 +876,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_validarYFormatearFecha
 
     private void verificarCambioDeFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarCambioDeFecha
-        //verificar si cambio la fecha y guardarla
+        controlador.compararFechaFactura();
     }//GEN-LAST:event_verificarCambioDeFecha
 
     private void cantidadCalcularImporte(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadCalcularImporte
@@ -883,6 +888,12 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         //es metodo es para recalcular el importe por si el usuario modifica el precio unitario del producto
         controlador.calcularImporteYSetearImporte();
     }//GEN-LAST:event_precioUnitarioCalcularImporte
+
+    private void fechaMouseDobleClic(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaMouseDobleClic
+       if(evt.getClickCount()==2){
+            fecha.setEditable(true);
+       }
+    }//GEN-LAST:event_fechaMouseDobleClic
 
 
 

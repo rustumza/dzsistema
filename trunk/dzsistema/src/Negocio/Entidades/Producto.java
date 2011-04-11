@@ -56,7 +56,7 @@ public class Producto implements Serializable {
         return porcentajeDeIva;
     }
 
-    public void setPorcentajeDeIva(long porcentajeDeIva) {
+    public void setPorcentajeDeIva(float porcentajeDeIva) {
         this.porcentajeDeIva = porcentajeDeIva;
     }
 

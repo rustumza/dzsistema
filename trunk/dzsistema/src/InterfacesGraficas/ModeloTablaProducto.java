@@ -5,6 +5,7 @@
 package InterfacesGraficas;
 
 
+import Negocio.Entidades.DetalleFactura;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -23,13 +24,19 @@ public class ModeloTablaProducto extends AbstractTableModel {
     public static String[] columnName = {"Cantidad", "Código", "Descripción", "P. Unitario", "Importe"};
     //boolean[] canEdit = new boolean[]{true, true, false, true, false}; //este arreglo en un principio permitia elegir que campos eran editables
 
-    List<DTODetallesDeFacturaParaGUI> datos;
+    List<DetalleFactura> datos;
 
 
 
     public ModeloTablaProducto(){
         super();
-        datos = new ArrayList<DTODetallesDeFacturaParaGUI>();
+        datos = new ArrayList<DetalleFactura>();
+
+    }
+
+    public ModeloTablaProducto(List<DetalleFactura> lista){
+        super();
+        datos = lista;
 
     }
 
@@ -41,9 +48,9 @@ public class ModeloTablaProducto extends AbstractTableModel {
     }
 
 
-    public void setListaDetalles(List<DTODetallesDeFacturaParaGUI> nuevaLista) {
+    public void setListaDetalles(List<DetalleFactura> nuevaLista) {
         if (datos == null) {
-            datos = new ArrayList<DTODetallesDeFacturaParaGUI>();
+            datos = new ArrayList<DetalleFactura>();
         }
         datos = nuevaLista;
         fireTableDataChanged();
@@ -63,15 +70,19 @@ public class ModeloTablaProducto extends AbstractTableModel {
             return null;
         }
 
-        DTODetallesDeFacturaParaGUI detalle = datos.get(rowIndex);
+        DetalleFactura detalle = datos.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
-                //return detalle.getFalla();
+                return String.valueOf(detalle.getCantidad());
             case 1:
-                //return detalle.getEstadoFalla();
+                return String.valueOf(detalle.getProducto().getCodigo());
             case 2:
-                //return detalle.getComentario();
+                return detalle.getProducto().getDescripcion();
+            case 3:
+                return String.valueOf(detalle.getPrecioUnitario());
+            case 4:
+                return String.valueOf(detalle.getPrecioTotal());
             default:
                 return "";
         }
@@ -82,17 +93,17 @@ public class ModeloTablaProducto extends AbstractTableModel {
         return columnName[column];
     }
 
-    public void addRow(DTODetallesDeFacturaParaGUI DTODetalle) {
+    public void addRow(DetalleFactura DTODetalle) {
         if (datos == null) {
-            datos = new ArrayList<DTODetallesDeFacturaParaGUI>();
+            datos = new ArrayList<DetalleFactura>();
         }
         datos.add(DTODetalle);
         fireTableDataChanged();
     }
 
-    public void addAllRow(List<DTODetallesDeFacturaParaGUI> nuevaLista) {
+    public void addAllRow(List<DetalleFactura> nuevaLista) {
         if (datos == null) {
-            datos = new ArrayList<DTODetallesDeFacturaParaGUI>();
+            datos = new ArrayList<DetalleFactura>();
         }
         datos.addAll(nuevaLista);
         fireTableDataChanged();
