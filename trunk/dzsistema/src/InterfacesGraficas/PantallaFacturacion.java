@@ -29,14 +29,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); 
     }
 
-    PantallaFacturacion(ControladorPanallaFacturacion controladorP) {
+    public PantallaFacturacion(ControladorPanallaFacturacion controladorP) {
         controlador = controladorP;
         initComponents();
         this.setLocationRelativeTo(null);
         condicionDeVenta.setModel(new DefaultComboBoxModel());
-        
-
-
     }
  
     /** This method is called from within the constructor to
@@ -146,7 +143,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             }
         });
 
-        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
+        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
         fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechaActionPerformed(evt);
@@ -212,9 +209,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelTipoFactura.setLayout(panelTipoFacturaLayout);
         panelTipoFacturaLayout.setHorizontalGroup(
             panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-            .addComponent(palabraCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-            .addComponent(codigoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .addComponent(palabraCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .addComponent(codigoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
         panelTipoFacturaLayout.setVerticalGroup(
             panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,11 +385,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(condicionDeVentaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(condicionDeVenta, 0, 157, Short.MAX_VALUE))
+                        .addComponent(condicionDeVenta, 0, 159, Short.MAX_VALUE))
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)))
+                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelCondicionDeVentaLayout.setVerticalGroup(
@@ -497,7 +494,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ivaIsncLabel)
                     .addComponent(ivaInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelImpuestosLayout.createSequentialGroup()
                         .addComponent(totalLabel)
@@ -535,6 +532,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         cantidadLabel.setText("Cantidad");
 
         cantidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cantidadCalcularImporte(evt);
+            }
+        });
 
         codigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         codigo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -548,6 +550,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         descripcionLabel.setText("Descripción");
 
         precioUnitario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        precioUnitario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                precioUnitarioCalcularImporte(evt);
+            }
+        });
 
         precioUnitarioLabel.setText("P. Unitario");
 
@@ -653,7 +660,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelDetalleFacturaLayout.setHorizontalGroup(
             panelDetalleFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelIngresoDetalleFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
             .addComponent(panelImpuestos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelDetalleFacturaLayout.setVerticalGroup(
@@ -696,7 +703,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelDetalleFactura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelInfoCliene, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
+                    .addComponent(panelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
                         .addComponent(limpiarPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -866,6 +873,18 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private void verificarCambioDeFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarCambioDeFecha
         //verificar si cambio la fecha y guardarla
     }//GEN-LAST:event_verificarCambioDeFecha
+
+    private void cantidadCalcularImporte(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadCalcularImporte
+        //es metodo es para recalcular el importe por si el usuario modifica la cantidad de producto
+        controlador.calcularImporteYSetearImporte();
+    }//GEN-LAST:event_cantidadCalcularImporte
+
+    private void precioUnitarioCalcularImporte(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioUnitarioCalcularImporte
+        //es metodo es para recalcular el importe por si el usuario modifica el precio unitario del producto
+        controlador.calcularImporteYSetearImporte();
+    }//GEN-LAST:event_precioUnitarioCalcularImporte
+
+
 
     /**
     * @param args the command line arguments

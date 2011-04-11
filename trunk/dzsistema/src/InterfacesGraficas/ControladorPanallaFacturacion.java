@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import java.lang.Math.*;
 
 /**
  *
@@ -158,8 +159,29 @@ public class ControladorPanallaFacturacion {
         //buscar el producto con el codigo que me trae
         Producto producto = experto.buscarProducto(text);
         pantalla.getCodigo().setText(String.valueOf(producto.getCodigo()));
-        pantalla.getCodigo().setText(producto.getDescripcion());
-        //pantalla.getCodigo().setText(String.valueOf(producto.getPrecioHistorico().);
+        pantalla.getDescripcion().setText(producto.getDescripcion());
+        producto.getPrecioHistorico().getPrecio();
+        //pantalla.getImporte().setText(producto.getPrecioHistorico()); // acordarse de ver si es factura a o b para colocar el importe con o sin iva //TO DO
+        calcularImporteYSetearImporte();
+
+
+    }
+
+    public void calcularImporteYSetearImporte() {
+        float cantidad = 0;
+        float precioUnitario = 0;
+        try{
+            cantidad = Float.valueOf(pantalla.getCantidad().getText());
+            precioUnitario = Float.valueOf(pantalla.getPrecioUnitario().getText());
+        }catch(NumberFormatException e){
+            return;
+        }catch(NullPointerException ex){
+            return;
+        }
+        float importe = cantidad * precioUnitario;
+        float importeFinal = Math.round(importe * 100)/100;
+        pantalla.getImporte().setText(String.valueOf(importeFinal));
+
 
     }
 
@@ -245,6 +267,8 @@ public class ControladorPanallaFacturacion {
         //cargar la condicion de venta basado en la factura obtenida al buscar cliente
         //TODO
     }
+
+
 
 
 }
