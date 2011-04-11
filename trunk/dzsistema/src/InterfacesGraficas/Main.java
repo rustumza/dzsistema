@@ -5,13 +5,6 @@
 
 package InterfacesGraficas;
 
-import Negocio.Entidades.Cliente;
-import Negocio.Entidades.ClienteJpaController;
-import Negocio.Entidades.CondicionFrenteAlIva;
-import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
-import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
-import javax.swing.UIManager;
-
 /**
  *
  * @author juampa
@@ -31,7 +24,7 @@ public class Main {
 
         // Setea como se ven las pantallas y arranca el sistema
         
-            new ControladorPanallaFacturacion().iniciar();
+            new ControladorPanallaFacturacion().iniciarPantalla();
         
         }
 
