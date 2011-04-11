@@ -6,10 +6,18 @@
 package InterfacesGraficas;
 
 
+import Negocio.Entidades.Cliente;
+import Negocio.Entidades.Factura;
+import Negocio.Entidades.Producto;
 import Negocio.Facturacion.ExpertoFacturar;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,8 +25,9 @@ import javax.swing.UIManager;
  */
 public class ControladorPanallaFacturacion {
 
-    PantallaFacturacion pantalla;
-    ExpertoFacturar experto;
+    private PantallaFacturacion pantalla;
+    private ExpertoFacturar experto;
+    private Factura factura;
 
     public ControladorPanallaFacturacion() {
         experto = new ExpertoFacturar();
@@ -35,6 +44,7 @@ public class ControladorPanallaFacturacion {
         pantalla = new PantallaFacturacion(this);
         configurarTabla();
         pantalla.setVisible(true);
+
 
     }
 
@@ -78,31 +88,61 @@ public class ControladorPanallaFacturacion {
 
     }
 
-    void buscarClientePorNombre(String text) {
-        //si trae mas de una hacer metodo qeu llame a la pantalla para elegir
-    }
-
-    void buscarClientePorCiut(String text) {
+    public void buscarClientePorNombre(String text) {
+        List<Cliente> listaDeClientes = experto.buscarClientePorNombre(text);
+        if(listaDeClientes.isEmpty()){
+            //si no trae ningun cliente
+            JOptionPane.showMessageDialog(pantalla, "No se ha encontrado un cliente con ese nombre", "", JOptionPane.INFORMATION_MESSAGE);
+        }else if(listaDeClientes.size() == 1){
+            //si tre un solo cliente
+            experto.buscarClientePorNumero(String.valueOf(listaDeClientes.get(0).getCodigo()));
+        }else{
+            //si trae muchos clientes
+            iniciarPantallaElegirCliente(listaDeClientes);
+        }
         
     }
 
-    void buscarClientePorNumero(String text) {
+    public void buscarClientePorCiut(String text) {
+        Factura fac = experto.buscarClientePorCuit(text);
+        cargarDatosClienteYFactura(fac);
+    }
+
+    public void buscarClientePorNumero(String text) {
+        Factura fac = experto.buscarClientePorNumero(text);
+        cargarDatosClienteYFactura(fac);
+    }
+
+
+    public void cargarDatosClienteYFactura(Factura factura){
+        this.factura = factura;
+        pantalla.getNombre().setText(factura.getCliente().getNombre());
+        pantalla.getCuit().setText(factura.getCliente().getCUIT());
+        pantalla.getDomicilio().setText(factura.getCliente().getDomicilio());
+        pantalla.getNumeroCliente().setText(String.valueOf(factura.getCliente().getCodigo()));
+        pantalla.getIva().setText(factura.getCliente().getCondicionFrenteAlIva().getNombre());
+        pantalla.getTipoFactura().setText(factura.getTipoFactura().getNombre());
+        pantalla.getCodigoFactura().setText("N° 0" + factura.getTipoFactura().getCodigo());
+        //pantalla.getFecha().setText(factura.getFecha().); buscar el metodo para mostrar la fecha // TO DO
+        cargarCondicionDeVenta();
 
     }
 
-     void habilitarCampoNombre() {
+
+
+    public void habilitarCampoNombre() {
         pantalla.getNombre().setEnabled(true);
     }
 
-    void habilitarCampoNumero() {
+    public void habilitarCampoNumero() {
         pantalla.getNumeroCliente().setEnabled(true);
     }
 
-    void habilitarCampoCuit() {
+    public void habilitarCampoCuit() {
         pantalla.getCuit().setEnabled(true);
     }
 
-    void cancelarCargaDetalle() {
+    public void cancelarCargaDetalle() {
         pantalla.getCantidad().setText("");
         pantalla.getCodigo().setText("");
         pantalla.getDescripcion().setText("");
@@ -110,29 +150,101 @@ public class ControladorPanallaFacturacion {
         pantalla.getImporte().setText("");
     }
 
-    void cargarFilaDetalleParaEditar(int fila) {
+    public void cargarFilaDetalleParaEditar(int fila) {
         //cargar la fila a la que se le hizo doble clic en los campos de edición asi se modifica
     }
 
-    void buscarProductoYSuInformacion(String text) {
+    public void buscarProductoYSuInformacion(String text) {
         //buscar el producto con el codigo que me trae
+        Producto producto = experto.buscarProducto(text);
+        pantalla.getCodigo().setText(String.valueOf(producto.getCodigo()));
+        pantalla.getCodigo().setText(producto.getDescripcion());
+        //pantalla.getCodigo().setText(String.valueOf(producto.getPrecioHistorico().);
+
     }
 
-    void agregarDetalleALaTabla() {
+    public void agregarDetalleALaTabla() {
         //agregar detalle a la tabla
     }
 
-    void guardarFactura() {
+    public void guardarFactura() {
         
     }
 
-    void imprimir() {
+    public void imprimir() {
         guardarFactura();
         //imprimir
     }
 
-    void limpiarPantalla() {
+    public void limpiarPantalla() {
         //limpiar pantalla
     }
+
+
+//ACA COMIENZA EL CONTROL DE LA PANTALLA PARA ELEGIR CLIENTE
+
+    PantallaElegirCliente pantallaElefirCliente;
+    List<Cliente> listaClientes;
+
+    public void iniciarPantallaElegirCliente(List<Cliente> listaDeClientes) {
+
+        pantallaElefirCliente = new PantallaElegirCliente(this);
+        this.listaClientes = listaDeClientes;
+        CargarTabla();
+        pantalla.setVisible(true);
+
+    }
+
+     public  void CargarTabla() {
+        try {
+
+            Object[][] datos = null;
+
+            datos = new Object[listaClientes.size()][4];
+            for (int i = 0; i < listaClientes.size(); i++) {
+                datos[i][0] = listaClientes.get(i).getCodigo();
+                datos[i][1] = listaClientes.get(i).getNombre();
+                datos[i][2] = listaClientes.get(i).getCUIT();
+
+
+            }
+
+            String[] columnNames = {"Código", "Nombre", "CUIT"};
+            pantallaElefirCliente.getTabla().setModel(new DefaultTableModel(datos, columnNames) {
+
+
+
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                }
+            });
+
+        } catch (NullPointerException e) {
+        }
+     }
+
+
+     public void clienteSeleccionado(int filaSeleccionada){
+        cerrarPantallaSeleccionCliente();
+        buscarClientePorNumero(String.valueOf(listaClientes.get(filaSeleccionada).getCodigo()));
+
+
+     }
+
+     public void cancelarSeleccionDeCliente(){
+        cerrarPantallaSeleccionCliente();
+     }
+
+     private void cerrarPantallaSeleccionCliente(){
+        pantallaElefirCliente.dispose();
+
+     }
+
+    private void cargarCondicionDeVenta() {
+        //cargar la condicion de venta basado en la factura obtenida al buscar cliente
+        //TODO
+    }
+
 
 }

@@ -140,11 +140,21 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 numeroFacturaActionPerformed(evt);
             }
         });
+        numeroFactura.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                validarYFormatearFecha(evt);
+            }
+        });
 
-        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
+        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
         fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechaActionPerformed(evt);
+            }
+        });
+        fecha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                verificarCambioDeFecha(evt);
             }
         });
 
@@ -195,10 +205,8 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         tipoFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 48));
         tipoFactura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tipoFactura.setText("A");
 
         codigoFactura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        codigoFactura.setText("N° 01");
 
         javax.swing.GroupLayout panelTipoFacturaLayout = new javax.swing.GroupLayout(panelTipoFactura);
         panelTipoFactura.setLayout(panelTipoFacturaLayout);
@@ -211,7 +219,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelTipoFacturaLayout.setVerticalGroup(
             panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoFacturaLayout.createSequentialGroup()
-                .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(palabraCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,7 +247,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCabeceraLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelTipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(panelTipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelCabeceraLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -850,6 +858,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
        controlador.limpiarPantalla();
     }//GEN-LAST:event_guardarActionPerformed
+
+    private void validarYFormatearFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_validarYFormatearFecha
+        //validar y formatear fecha
+    }//GEN-LAST:event_validarYFormatearFecha
+
+    private void verificarCambioDeFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarCambioDeFecha
+        //verificar si cambio la fecha y guardarla
+    }//GEN-LAST:event_verificarCambioDeFecha
 
     /**
     * @param args the command line arguments
