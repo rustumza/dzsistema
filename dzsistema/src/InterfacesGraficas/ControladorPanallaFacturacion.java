@@ -6,36 +6,42 @@
 package InterfacesGraficas;
 
 
+import Negocio.Facturacion.ExpertoFacturar;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rustu
  */
 public class ControladorPanallaFacturacion {
 
-    PantallaFacturacion iu;
-    
-    
+    PantallaFacturacion pantalla;
+    ExpertoFacturar experto;
 
-    public void iniciar() {
+    public ControladorPanallaFacturacion() {
+        experto = new ExpertoFacturar();
+    }
+
+    
+    public void iniciarPantalla() {
         try{
             UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
         }
         catch(Exception ex) {
             System.out.println("Fallo lookandfell");
         }
-        iu = new PantallaFacturacion(this);
+        pantalla = new PantallaFacturacion(this);
         configurarTabla();
-        iu.setVisible(true);
+        pantalla.setVisible(true);
+
     }
 
 
     public void configurarTabla() {
 
-        JTable tabla = iu.getTablaDetallesFactura();
+        JTable tabla = pantalla.getTablaDetallesFactura();
 
         //Asigmo el modelo
         tabla.setModel(new ModeloTablaProducto());
@@ -73,7 +79,60 @@ public class ControladorPanallaFacturacion {
     }
 
     void buscarClientePorNombre(String text) {
+        //si trae mas de una hacer metodo qeu llame a la pantalla para elegir
+    }
+
+    void buscarClientePorCiut(String text) {
         
+    }
+
+    void buscarClientePorNumero(String text) {
+
+    }
+
+     void habilitarCampoNombre() {
+        pantalla.getNombre().setEnabled(true);
+    }
+
+    void habilitarCampoNumero() {
+        pantalla.getNumeroCliente().setEnabled(true);
+    }
+
+    void habilitarCampoCuit() {
+        pantalla.getCuit().setEnabled(true);
+    }
+
+    void cancelarCargaDetalle() {
+        pantalla.getCantidad().setText("");
+        pantalla.getCodigo().setText("");
+        pantalla.getDescripcion().setText("");
+        pantalla.getPrecioUnitario().setText("");
+        pantalla.getImporte().setText("");
+    }
+
+    void cargarFilaDetalleParaEditar(int fila) {
+        //cargar la fila a la que se le hizo doble clic en los campos de edición asi se modifica
+    }
+
+    void buscarProductoYSuInformacion(String text) {
+        //buscar el producto con el codigo que me trae
+    }
+
+    void agregarDetalleALaTabla() {
+        //agregar detalle a la tabla
+    }
+
+    void guardarFactura() {
+        
+    }
+
+    void imprimir() {
+        guardarFactura();
+        //imprimir
+    }
+
+    void limpiarPantalla() {
+        //limpiar pantalla
     }
 
 }
