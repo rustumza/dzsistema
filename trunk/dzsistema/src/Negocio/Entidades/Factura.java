@@ -7,12 +7,14 @@ package Negocio.Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -31,14 +33,22 @@ public class Factura implements Serializable {
     private int remitoNro;
     private float total;
     private boolean estado;
-    @OneToOne
-    private DetalleFactura detalleFactura;
     @ManyToOne
     private CondicionDeVenta condicionDeVenta;
     @ManyToOne
     private TipoFactura tipoFactura;
     @ManyToOne
     private Cliente cliente;
+    @OneToMany
+    List<DetalleFactura> detalleFactura;
+
+    public List<DetalleFactura> getDetalleFactura() {
+        return detalleFactura;
+    }
+
+    public void setDetalleFactura(List<DetalleFactura> detalleFactura) {
+        this.detalleFactura = detalleFactura;
+    }
 
     public CondicionDeVenta getCondicionDeVenta() {
         return condicionDeVenta;
@@ -46,14 +56,6 @@ public class Factura implements Serializable {
 
     public void setCondicionDeVenta(CondicionDeVenta condicionDeVenta) {
         this.condicionDeVenta = condicionDeVenta;
-    }
-
-    public DetalleFactura getDetalleFactura() {
-        return detalleFactura;
-    }
-
-    public void setDetalleFactura(DetalleFactura detalleFactura) {
-        this.detalleFactura = detalleFactura;
     }
 
     public TipoFactura getTipoFactura() {
