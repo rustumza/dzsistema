@@ -37,16 +37,28 @@ public class Main {
 //        fachada.create(iva1);
 
         //pruebas locas
-//        DetalleFacturaJpaController facha = new DetalleFacturaJpaController();
-//        DetalleFactura d = new DetalleFactura();
+        //Creo factura y la guardo con detalle
+//        FacturaJpaController facha = new FacturaJpaController();
+//        Factura d = new Factura();
 //        facha.create(d);
-//        long aux = 102;
-//        facha.findDetalleFactura(aux);
+//        DetalleFactura d1 = new DetalleFactura();
+//        d.addDetalle(d1);
+//        try {
+//            facha.edit(d);
+//        } catch (NonexistentEntityException ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        // Destruyo factura y detalle en cadena
+//        FacturaJpaController facha = new FacturaJpaController();
+//        long aux = 201;
 //        try {
 //            facha.destroy(aux);
 //        } catch (NonexistentEntityException ex) {
 //            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+        //Pruebas producto
 //        ProductoJpaController facha = new ProductoJpaController();
 //        Producto p = new Producto();
 //        facha.create(p);
@@ -61,7 +73,7 @@ public class Main {
 //        }
 
             // Setea como se ven las pantallas y arranca el sistema
-             new ControladorPanallaFacturacion().iniciarPantalla();
+          new ControladorPanallaFacturacion().iniciarPantalla();
         }
 
 }
