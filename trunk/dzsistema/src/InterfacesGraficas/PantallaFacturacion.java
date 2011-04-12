@@ -840,9 +840,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         int fila = tablaDetallesFactura.rowAtPoint(evt.getPoint());
         int columna = tablaDetallesFactura.columnAtPoint(evt.getPoint());
         if ((fila > -1) && (columna > -1)){
-            filaSeleccionada=fila;
+            setFilaSeleccionada(fila);
             if(evt.getClickCount()==2){
-                controlador.cargarFilaDetalleParaEditar(filaSeleccionada);
+                controlador.cargarFilaDetalleParaEditar();
             }else if(evt.getClickCount()==1){
                 eliminar.setEnabled(true);
             }
@@ -1945,6 +1945,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
      */
     public void setLimpiarPantalla(javax.swing.JButton limpiarPantalla) {
         this.limpiarPantalla = limpiarPantalla;
+    }
+
+    /**
+     * @return the filaSeleccionada
+     */
+    public int getFilaSeleccionada() {
+        return filaSeleccionada;
+    }
+
+    /**
+     * @param filaSeleccionada the filaSeleccionada to set
+     */
+    public void setFilaSeleccionada(int filaSeleccionada) {
+        this.filaSeleccionada = filaSeleccionada;
     }
 
 
