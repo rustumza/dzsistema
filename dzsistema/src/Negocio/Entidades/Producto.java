@@ -6,12 +6,14 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,16 +28,26 @@ public class Producto implements Serializable {
     private int codigo;
     private String descripcion;
     private float porcentajeDeIva;
-    @OneToOne
-    List<PrecioHistorico> precioHistorico;
+    @OneToMany(cascade = CascadeType.ALL)
+    List<PrecioHistorico> preciosHistoricos;
 
 
-    public List<PrecioHistorico> getPrecioHistorico() {
-        return precioHistorico;
+    public Producto() {
+         preciosHistoricos = new ArrayList<PrecioHistorico>();
     }
 
-    public void setPrecioHistorico(List<PrecioHistorico> precioHistorico) {
-        this.precioHistorico = precioHistorico;
+    public void addPrecio(PrecioHistorico precio) {
+        if (!getPreciosHistoricos().contains(precio)) {
+            getPreciosHistoricos().add(precio);
+            if (precio.getProducto() != null) {
+                precio.getProducto().getPreciosHistoricos().remove(precio);
+            }
+            precio.setProducto(this);
+        }
+    }
+
+    public List<PrecioHistorico> getPreciosHistoricos() {
+        return preciosHistoricos;
     }
 
     public int getCodigo() {
