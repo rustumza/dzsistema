@@ -5,6 +5,12 @@
 
 package InterfacesGraficas;
 
+import Negocio.Entidades.DetalleFactura;
+import Negocio.Entidades.Factura;
+import Negocio.Entidades.FacturaJpaController;
+import java.util.List;
+import java.util.Vector;
+
 /**
  *
  * @author juampa
@@ -22,9 +28,20 @@ public class Main {
 //        fachada.create(iva);
 //        fachada.create(iva1);
 
+//        List<DetalleFactura> deta = new Vector();
+//        DetalleFactura det = new DetalleFactura();
+//        DetalleFactura det1= new DetalleFactura();
+//        deta.add(det);
+//        deta.add(det1);
+//        Factura fac = new Factura();
+//        fac.setDetalleFactura(deta);
+//        FacturaJpaController facha = new FacturaJpaController();
+//        facha.create(fac);
+//        System.out.println(fac.getDetalleFactura());
+
         // Setea como se ven las pantallas y arranca el sistema
         
-            new ControladorPanallaFacturacion().iniciarPantalla();
+//            new ControladorPanallaFacturacion().iniciarPantalla();
         
         }
 
