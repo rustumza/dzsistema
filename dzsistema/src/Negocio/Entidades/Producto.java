@@ -6,6 +6,7 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,13 +27,14 @@ public class Producto implements Serializable {
     private String descripcion;
     private float porcentajeDeIva;
     @OneToOne
-    private PrecioHistorico precioHistorico;
+    List<PrecioHistorico> precioHistorico;
 
-    public PrecioHistorico getPrecioHistorico() {
+
+    public List<PrecioHistorico> getPrecioHistorico() {
         return precioHistorico;
     }
 
-    public void setPrecioHistorico(PrecioHistorico precioHistorico) {
+    public void setPrecioHistorico(List<PrecioHistorico> precioHistorico) {
         this.precioHistorico = precioHistorico;
     }
 

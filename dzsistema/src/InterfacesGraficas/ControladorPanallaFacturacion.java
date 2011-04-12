@@ -12,10 +12,8 @@ import Negocio.Entidades.Factura;
 import Negocio.Entidades.Producto;
 import Negocio.Facturacion.ExpertoFacturar;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -126,7 +124,37 @@ public class ControladorPanallaFacturacion {
         pantalla.getIva().setText(factura.getCliente().getCondicionFrenteAlIva().getNombre());
         pantalla.getTipoFactura().setText(factura.getTipoFactura().getNombre());
         pantalla.getCodigoFactura().setText("N° 0" + factura.getTipoFactura().getCodigo());
-        //Deshabilitar campos de impuestos si es necesario   //TO DO
+        
+        if(factura.getTipoFactura().getNombre().equals("b") | factura.getTipoFactura().getNombre().equals("B")){
+            //deshabilitar el impuestos
+            pantalla.getSubtotal().setVisible(false);
+            pantalla.getSubtotalLabel().setVisible(false);
+            
+            pantalla.getSubtotal2().setVisible(false);
+            pantalla.getSubtotal2Label().setVisible(false);
+            
+            pantalla.getImporte().setVisible(false);
+            pantalla.getImpuestosLabel().setVisible(false);
+            
+            pantalla.getIvaInsc().setVisible(false);
+            pantalla.getIvaIsncLabel().setVisible(false);
+        }else{
+
+            //Habilitar impuestos
+            pantalla.getSubtotal().setVisible(true);
+            pantalla.getSubtotalLabel().setVisible(true);
+
+            pantalla.getSubtotal2().setVisible(true);
+            pantalla.getSubtotal2Label().setVisible(true);
+
+            pantalla.getImporte().setVisible(true);
+            pantalla.getImpuestosLabel().setVisible(true);
+
+            pantalla.getIvaInsc().setVisible(true);
+            pantalla.getIvaIsncLabel().setVisible(true);
+
+        }
+        
 
         //pantalla.getFecha().setText(factura.getFecha().); buscar el metodo para mostrar la fecha // TO DO
         cargarCondicionDeVenta();
@@ -155,8 +183,11 @@ public class ControladorPanallaFacturacion {
         pantalla.getImporte().setText("");
     }
 
-    public void cargarFilaDetalleParaEditar(int fila) {
+    public void cargarFilaDetalleParaEditar() {
         //cargar la fila a la que se le hizo doble clic en los campos de edición asi se modifica
+
+        int filaSeleccionada = pantalla.getFilaSeleccionada();
+
     }
 
     public void buscarProductoYSuInformacion() {
@@ -165,7 +196,13 @@ public class ControladorPanallaFacturacion {
         pantalla.getFecha().setEnabled(false);
         pantalla.getCodigo().setText(String.valueOf(producto.getCodigo()));
         pantalla.getDescripcion().setText(producto.getDescripcion());
-        producto.getPrecioHistorico().getPrecio();
+        if(factura.getTipoFactura().getNombre().equals("a") | factura.getTipoFactura().getNombre().equals("a")){
+            pantalla.getPrecioUnitario().setText(String.valueOf(producto.getPrecioHistorico().get(0).getPrecio()));
+        }else{
+            float importe = producto.getPrecioHistorico().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPrecioHistorico().get(0).getPrecio();
+            pantalla.getPrecioUnitario().setText(String.valueOf(importe));
+
+        }
         //pantalla.getImporte().setText(producto.getPrecioHistorico()); // acordarse de ver si es factura a o b para colocar el importe con o sin iva //TO DO
         calcularImporteYSetearImporte();
 
@@ -239,7 +276,20 @@ public class ControladorPanallaFacturacion {
     }
 
     public void limpiarPantalla() {
-        //limpiar pantalla
+            
+        
+        //Habilitar impuestos
+            pantalla.getSubtotal().setVisible(true);
+            pantalla.getSubtotalLabel().setVisible(true);
+
+            pantalla.getSubtotal2().setVisible(true);
+            pantalla.getSubtotal2Label().setVisible(true);
+
+            pantalla.getImporte().setVisible(true);
+            pantalla.getImpuestosLabel().setVisible(true);
+
+            pantalla.getIvaInsc().setVisible(true);
+            pantalla.getIvaIsncLabel().setVisible(true);
     }
 
 
