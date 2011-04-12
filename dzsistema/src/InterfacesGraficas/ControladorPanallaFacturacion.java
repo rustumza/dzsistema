@@ -308,7 +308,15 @@ public class ControladorPanallaFacturacion {
         //si quiere modificar, eliminar los detalles de la factura
         //sino, dejar todo como esta y no cambiar la fecha
     }
-
+    
+    
+    void limpiarIngresoDeDetalle() {
+        pantalla.getCantidad().setText("");
+        pantalla.getCodigo().setText("");
+        pantalla.getDescripcion().setText("");
+        pantalla.getPrecioUnitario().setText("");
+        pantalla.getImporte().setText("");
+    }
 
 
 
@@ -376,6 +384,8 @@ public class ControladorPanallaFacturacion {
         pantallaElefirCliente.dispose();
 
      }
+
+
 
 
 

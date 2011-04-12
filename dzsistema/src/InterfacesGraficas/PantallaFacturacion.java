@@ -22,6 +22,7 @@ import javax.swing.DefaultComboBoxModel;
 public class PantallaFacturacion extends javax.swing.JFrame {
     private ControladorPanallaFacturacion controlador;
     private int filaSeleccionada;
+    private int filaAModificar;
 
     /** Creates new form PantallaFacturacion */
     public PantallaFacturacion() {
@@ -839,6 +840,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private void filaSeleccionada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filaSeleccionada
         int fila = tablaDetallesFactura.rowAtPoint(evt.getPoint());
         int columna = tablaDetallesFactura.columnAtPoint(evt.getPoint());
+        controlador.limpiarIngresoDeDetalle();
         if ((fila > -1) && (columna > -1)){
             setFilaSeleccionada(fila);
             if(evt.getClickCount()==2){
