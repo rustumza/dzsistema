@@ -5,6 +5,8 @@
 
 package InterfacesGraficas;
 
+import Negocio.Entidades.CondicionFrenteAlIva;
+import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.DetalleFacturaJpaController;
 import Negocio.Entidades.Factura;
@@ -26,8 +28,8 @@ import java.util.logging.Logger;
 public class Main {
 
     public static void main(String[] args) {
-        // Script de inicializacion de Base de Datos (Hay que completarlo)
-        //Inicializa la Condicion Frente al Iva
+//         Script de inicializacion de Base de Datos //TO DO
+//        Inicializa la Condicion Frente al Iva
 //        CondicionFrenteAlIva iva = new CondicionFrenteAlIva();
 //        CondicionFrenteAlIva iva1 = new CondicionFrenteAlIva();
 //        iva.setNombre("Responsable Inscripto");
