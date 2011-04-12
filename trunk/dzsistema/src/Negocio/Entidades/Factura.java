@@ -6,6 +6,7 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -39,15 +40,25 @@ public class Factura implements Serializable {
     private TipoFactura tipoFactura;
     @ManyToOne
     private Cliente cliente;
-    @OneToMany
-    List<DetalleFactura> detalleFactura;
+    @OneToMany(cascade = CascadeType.ALL)
+    List<DetalleFactura> detallesDeFactura;
 
-    public List<DetalleFactura> getDetalleFactura() {
-        return detalleFactura;
+    public Factura() {
+         detallesDeFactura = new ArrayList<DetalleFactura>();
     }
 
-    public void setDetalleFactura(List<DetalleFactura> detalleFactura) {
-        this.detalleFactura = detalleFactura;
+    public void addDetalle(DetalleFactura detalle) {
+        if (!getDetallesDeFactura().contains(detalle)) {
+            getDetallesDeFactura().add(detalle);
+            if (detalle.getFactura() != null) {
+                detalle.getFactura().getDetallesDeFactura().remove(detalle);
+            }
+            detalle.setFactura(this);
+        }
+    }
+
+    public List<DetalleFactura> getDetallesDeFactura() {
+        return detallesDeFactura;
     }
 
     public CondicionDeVenta getCondicionDeVenta() {

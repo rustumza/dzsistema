@@ -6,10 +6,18 @@
 package InterfacesGraficas;
 
 import Negocio.Entidades.DetalleFactura;
+import Negocio.Entidades.DetalleFacturaJpaController;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
+import Negocio.Entidades.PrecioHistorico;
+import Negocio.Entidades.PrecioHistoricoJpaController;
+import Negocio.Entidades.Producto;
+import Negocio.Entidades.ProductoJpaController;
+import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,21 +36,32 @@ public class Main {
 //        fachada.create(iva);
 //        fachada.create(iva1);
 
-//        List<DetalleFactura> deta = new Vector();
-//        DetalleFactura det = new DetalleFactura();
-//        DetalleFactura det1= new DetalleFactura();
-//        deta.add(det);
-//        deta.add(det1);
-//        Factura fac = new Factura();
-//        fac.setDetalleFactura(deta);
-//        FacturaJpaController facha = new FacturaJpaController();
-//        facha.create(fac);
-//        System.out.println(fac.getDetalleFactura());
+        //pruebas locas
+//        DetalleFacturaJpaController facha = new DetalleFacturaJpaController();
+//        DetalleFactura d = new DetalleFactura();
+//        facha.create(d);
+//        long aux = 102;
+//        facha.findDetalleFactura(aux);
+//        try {
+//            facha.destroy(aux);
+//        } catch (NonexistentEntityException ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        ProductoJpaController facha = new ProductoJpaController();
+//        Producto p = new Producto();
+//        facha.create(p);
+//        PrecioHistorico h = new PrecioHistorico();
+//        p.addPrecio(h);
+//        try {
+//            facha.edit(p);
+//        } catch (NonexistentEntityException ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
-        // Setea como se ven las pantallas y arranca el sistema
-        
-//            new ControladorPanallaFacturacion().iniciarPantalla();
-        
+            // Setea como se ven las pantallas y arranca el sistema
+             new ControladorPanallaFacturacion().iniciarPantalla();
         }
 
 }

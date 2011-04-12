@@ -7,10 +7,12 @@ package Negocio.Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -26,6 +28,16 @@ public class PrecioHistorico implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaDesdeQueEntroEnVigencia;
     private float precio;
+    @ManyToOne(cascade=CascadeType.ALL)
+    private Producto producto;
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 
     public Date getFechaDesdeQueEntroEnVigencia() {
         return fechaDesdeQueEntroEnVigencia;
