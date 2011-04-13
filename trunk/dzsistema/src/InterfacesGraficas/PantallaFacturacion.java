@@ -760,9 +760,19 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         menuProducto.setText(" Producto ");
 
         menuNuevoProducto.setText("Nuevo Producto");
+        menuNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoProductoActionPerformed(evt);
+            }
+        });
         menuProducto.add(menuNuevoProducto);
 
         menuModificarProducto.setText("Modificar Producto");
+        menuModificarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarProductoActionPerformed(evt);
+            }
+        });
         menuProducto.add(menuModificarProducto);
 
         menu.add(menuProducto);
@@ -896,6 +906,18 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             fecha.setEditable(true);
        }
     }//GEN-LAST:event_fechaMouseDobleClic
+
+    private void menuNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoProductoActionPerformed
+        // TODO add your handling code here:
+        PantallaAltaModificacionProducto iu = new PantallaAltaModificacionProducto();
+        iu.setVisible(true);
+    }//GEN-LAST:event_menuNuevoProductoActionPerformed
+
+    private void menuModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarProductoActionPerformed
+        // TODO add your handling code here:
+        PantallaABMProducto iu = new PantallaABMProducto();
+        iu.setVisible(true);
+    }//GEN-LAST:event_menuModificarProductoActionPerformed
 
 
 

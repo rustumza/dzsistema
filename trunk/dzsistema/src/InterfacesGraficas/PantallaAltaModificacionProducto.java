@@ -227,7 +227,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         String descripcion = JTextFieldDescripcion.getText();
         Float IVA = Float.parseFloat(jTextFieldIVA.getText());
         Long id = producto.getId();
-        //controlador.guardarProducto(codigo, descripcion, IVA, id);
+        controlador.guardarProducto(codigo, descripcion, IVA, id);
         //Actualiza la tabla del ABM
         if(PantallaABMProducto != null){
             PantallaABMProducto.listaProductos = controlador.ObtenerProductos();
@@ -244,8 +244,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
 
     private void jButtonPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreciosActionPerformed
         // TODO add your handling code here:
-        PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(producto);
-        iu.setVisible(true);
+        //TO DO
     }//GEN-LAST:event_jButtonPreciosActionPerformed
 
     /**
