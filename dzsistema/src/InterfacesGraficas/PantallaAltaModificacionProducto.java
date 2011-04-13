@@ -68,7 +68,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         JTextFieldDescripcion = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jButtonPrecios = new javax.swing.JButton();
         jButtonguardar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -84,7 +84,12 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
 
         jLabel9.setText("Código:");
 
-        jButton2.setText("Agregar Precio Unitario");
+        jButtonPrecios.setText("Agregar Precio Unitario");
+        jButtonPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPreciosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,7 +111,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(jButtonPrecios)
                             .addComponent(jTextFieldtasaanual_r, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -125,7 +130,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(jButtonPrecios)
                 .addGap(148, 148, 148)
                 .addComponent(jTextFieldtasaanual_r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -204,11 +209,18 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         if (jTextFieldIVA.getText().isEmpty() == false){
             if(!Validar.controlCodigo(jTextFieldIVA.getText())){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El IVA ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        else{
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "Escriba un IVA válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
         //Verifica si tiene un precio inicial
-        
+        if (producto.getPreciosHistoricos().isEmpty()){
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "Agregue un precio unitario inicial para el producto", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
         //Verifica condicion y guarda
         if(condicion){
         int codigo = Integer.parseInt(jTextFieldCodigo.getText());
@@ -230,6 +242,12 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreciosActionPerformed
+        // TODO add your handling code here:
+        PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(producto);
+        iu.setVisible(true);
+    }//GEN-LAST:event_jButtonPreciosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,7 +263,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTextFieldDescripcion;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonPrecios;
     private javax.swing.JButton jButtonguardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
