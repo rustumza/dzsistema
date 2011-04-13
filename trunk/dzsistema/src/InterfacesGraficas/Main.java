@@ -28,17 +28,21 @@ import java.util.logging.Logger;
 public class Main {
 
     public static void main(String[] args) {
-//         Script de inicializacion de Base de Datos //TO DO
-//        Inicializa la Condicion Frente al Iva
-//        CondicionFrenteAlIva iva = new CondicionFrenteAlIva();
-//        CondicionFrenteAlIva iva1 = new CondicionFrenteAlIva();
-//        iva.setNombre("Responsable Inscripto");
-//        iva1.setNombre("Monotributista");
-//        CondicionFrenteAlIvaJpaController fachada = new CondicionFrenteAlIvaJpaController();
-//        fachada.create(iva);
-//        fachada.create(iva1);
 
-        //pruebas locas
+        //Script de inicializacion de Base de Datos //TO DO
+        CondicionFrenteAlIvaJpaController fachada = new CondicionFrenteAlIvaJpaController();
+        //Verifica si la base de datos se inicializo
+        if(fachada.getCondicionFrenteAlIvaCount() == 0){
+            //Inicializa la Condicion Frente al Iva
+            CondicionFrenteAlIva iva = new CondicionFrenteAlIva();
+            CondicionFrenteAlIva iva1 = new CondicionFrenteAlIva();
+            iva.setNombre("Responsable Inscripto");
+            iva1.setNombre("Monotributista");
+            fachada.create(iva);
+            fachada.create(iva1);
+        }
+
+        //pruebas locas (Esto despues lo borro)
         //Creo factura y la guardo con detalle
 //        FacturaJpaController facha = new FacturaJpaController();
 //        Factura d = new Factura();

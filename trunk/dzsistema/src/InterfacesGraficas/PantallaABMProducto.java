@@ -11,9 +11,7 @@
 
 package InterfacesGraficas;
 
-import Negocio.ABM.ControladorABMCliente;
 import Negocio.ABM.ControladorABMProducto;
-import Negocio.Entidades.Cliente;
 import Negocio.Entidades.Producto;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -28,7 +26,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
     ControladorABMProducto controlador = new ControladorABMProducto();
     List<Producto> listaProductos;
     Producto productoAModificar;
-    PantallaAltaModificacionCliente ama;
+    PantallaAltaModificacionProducto amp;
 
     /** Creates new form PantallaABMCliente */
     public PantallaABMProducto() {
@@ -363,23 +361,23 @@ public class PantallaABMProducto extends javax.swing.JFrame {
 
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
         // TODO add your handling code here:
-//        ama = new PantallaAltaModificacionCliente(this.controlador);
-//        ama.setGUI(this);
-//        ama.setVisible(true);
+        amp = new PantallaAltaModificacionProducto(this.controlador);
+        amp.setGUI(this);
+        amp.setVisible(true);
 }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-//        if (jTableProductos.getSelectedRow() != -1) {
-//            ama = new PantallaAltaModificacionCliente(this.controlador);
-//            ama.setGUI(this);
-//            ama.modificarCliente(productoAModificar);
-//            ama.setVisible(true);
-//        } else{
-//            JOptionPane.showMessageDialog(null, "Seleccione un Cliente para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
-//        }
-//        listaProductos = controlador.ObtenerProductos();
-//        CargarTabla();
+        if (jTableProductos.getSelectedRow() != -1) {
+            amp = new PantallaAltaModificacionProducto(this.controlador);
+            amp.setGUI(this);
+            amp.modificarCliente(productoAModificar);
+            amp.setVisible(true);
+        } else{
+            JOptionPane.showMessageDialog(null, "Seleccione un Producto para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+        listaProductos = controlador.ObtenerProductos();
+        CargarTabla();
 }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonElimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElimiarActionPerformed
@@ -391,7 +389,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                 }
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un Cliente para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione un Producto para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
         listaProductos = controlador.ObtenerProductos();
         CargarTabla();
