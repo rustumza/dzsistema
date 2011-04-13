@@ -12,6 +12,7 @@
 package InterfacesGraficas;
 
 import Negocio.Entidades.Producto;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,10 +26,40 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
         initComponents();
     }
 
-    PantallaPreciosHistoricos(Producto productoAModificar) {
+    public PantallaPreciosHistoricos(Producto productoAModificar) {
         initComponents();
         this.setLocationRelativeTo(null);
         producto = productoAModificar;
+        CargarTabla();
+    }
+
+    public void CargarTabla() {
+        try {
+
+            Object[][] datos = null;
+
+            datos = new Object[producto.getPreciosHistoricos().size()][2];
+            for (int i = 0; i < producto.getPreciosHistoricos().size(); i++) {
+                datos[i][0] = producto.getPreciosHistoricos().get(i).getFechaDesdeQueEntroEnVigencia();
+                datos[i][1] = producto.getPreciosHistoricos().get(i).getPrecio();
+            }
+
+            String[] columnNames = {"Fecha", "Precio Unitario"};
+            jTableProductos.setModel(new DefaultTableModel(datos, columnNames) {
+
+                boolean[] canEdit = new boolean[]{
+                    true, true
+                };
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+
+        } catch (NullPointerException e) {
+        }
+
+
     }
 
     /** This method is called from within the constructor to

@@ -37,7 +37,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
     }
 
     //Muestra todos los afiliados en tabla
-    public  void CargarTabla() {
+    public void CargarTabla() {
         try {
 
             Object[][] datos = null;
