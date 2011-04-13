@@ -10,6 +10,7 @@ import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
+import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
 import java.util.Date;
 import java.util.List;
@@ -21,10 +22,12 @@ import java.util.List;
 public class ExpertoFacturar {
 
     private Factura factura;
+    private boolean esFacuraNueva;
     
 
     public ExpertoFacturar(){
         factura = new Factura();
+        esFacuraNueva = true;
 
     }
     public Factura getFactura(){
@@ -102,7 +105,7 @@ public class ExpertoFacturar {
         if(detalleFactura.getPrecioTotal() != dto.getImporte()){
             //VER COMO MANEJAR ESTE ERROR //TO DO
         }
-        //AGREGAR DETALLE A LA FACTURA //TO DO
+        factura.addDetalle(detalleFactura);
         return factura;
     }
 
@@ -111,6 +114,23 @@ public class ExpertoFacturar {
         boolean sonIguales = true;
         //COMPARAR FECHAS,  // TODO
         return sonIguales;
+    }
+
+    public void guardarFactura() {
+        FacturaJpaController jpa = new FacturaJpaController();
+        //TO DO hacer todas las validaciones
+        jpa.create(factura);
+    }
+
+    public Factura eliminarDetalleFactura(int filaSeleccionada) {
+        if(filaSeleccionada <= factura.getDetallesDeFactura().size()){
+            factura.getDetallesDeFactura().remove(filaSeleccionada);
+            return factura;
+        }else{
+
+        //TIRAR EXCEPCION   //TO DO
+            return null;
+        }
     }
 
 

@@ -28,7 +28,7 @@ public class ControladorPanallaFacturacion {
 
     private PantallaFacturacion pantalla;
     private ExpertoFacturar experto;
-    private Factura factura;
+    //private Factura factura;
 
     public ControladorPanallaFacturacion() {
         experto = new ExpertoFacturar();
@@ -116,7 +116,7 @@ public class ControladorPanallaFacturacion {
 
 
     public void cargarDatosClienteYFactura(Factura factura){
-        this.factura = factura;
+
         pantalla.getNombre().setText(factura.getCliente().getNombre());
         pantalla.getCuit().setText(factura.getCliente().getCUIT());
         pantalla.getDomicilio().setText(factura.getCliente().getDomicilio());
@@ -176,17 +176,19 @@ public class ControladorPanallaFacturacion {
     }
 
     public void cancelarCargaDetalle() {
-        pantalla.getCantidad().setText("");
-        pantalla.getCodigo().setText("");
-        pantalla.getDescripcion().setText("");
-        pantalla.getPrecioUnitario().setText("");
-        pantalla.getImporte().setText("");
+        limpiarIngresoDeDetalle();
+        pantalla.getEliminar().setEnabled(false);
     }
 
-    public void cargarFilaDetalleParaEditar() {
+    public void cargarFilaDetalleParaEditar(int filaSeleccionada) {
         //cargar la fila a la que se le hizo doble clic en los campos de edición asi se modifica
-
-        int filaSeleccionada = pantalla.getFilaSeleccionada();
+        Factura fac = experto.getFactura();
+        DetalleFactura det = fac.getDetallesDeFactura().get(filaSeleccionada);
+        pantalla.getCantidad().setText(String.valueOf(det.getCantidad()));
+        pantalla.getCodigo().setText(String.valueOf(det.getProducto().getCodigo()));
+        pantalla.getDescripcion().setText(det.getProducto().getDescripcion());
+        pantalla.getPrecioUnitario().setText(String.valueOf(det.getPrecioUnitario()));
+        pantalla.getImporte().setText(String.valueOf(det.getPrecioTotal()));
 
     }
 
@@ -196,10 +198,11 @@ public class ControladorPanallaFacturacion {
         pantalla.getFecha().setEnabled(false);
         pantalla.getCodigo().setText(String.valueOf(producto.getCodigo()));
         pantalla.getDescripcion().setText(producto.getDescripcion());
-        if(factura.getTipoFactura().getNombre().equals("a") | factura.getTipoFactura().getNombre().equals("a")){
-            pantalla.getPrecioUnitario().setText(String.valueOf(producto.getPrecioHistorico().get(0).getPrecio()));
+        Factura factura = experto.getFactura();
+        if(factura.getTipoFactura().getNombre().equals("A") | factura.getTipoFactura().getNombre().equals("a")){
+            pantalla.getPrecioUnitario().setText(String.valueOf(producto.getPreciosHistoricos().get(0).getPrecio()));
         }else{
-            float importe = producto.getPrecioHistorico().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPrecioHistorico().get(0).getPrecio();
+            float importe = producto.getPreciosHistoricos().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPreciosHistoricos().get(0).getPrecio();
             pantalla.getPrecioUnitario().setText(String.valueOf(importe));
 
         }
@@ -267,7 +270,7 @@ public class ControladorPanallaFacturacion {
     }
 
     public void guardarFactura() {
-        
+        experto.guardarFactura();
     }
 
     public void imprimir() {
@@ -276,20 +279,21 @@ public class ControladorPanallaFacturacion {
     }
 
     public void limpiarPantalla() {
-            
-        
+        //TO DO
+        experto = new ExpertoFacturar();
+
         //Habilitar impuestos
-            pantalla.getSubtotal().setVisible(true);
-            pantalla.getSubtotalLabel().setVisible(true);
+        pantalla.getSubtotal().setVisible(true);
+        pantalla.getSubtotalLabel().setVisible(true);
 
-            pantalla.getSubtotal2().setVisible(true);
-            pantalla.getSubtotal2Label().setVisible(true);
+        pantalla.getSubtotal2().setVisible(true);
+        pantalla.getSubtotal2Label().setVisible(true);
 
-            pantalla.getImporte().setVisible(true);
-            pantalla.getImpuestosLabel().setVisible(true);
+        pantalla.getImporte().setVisible(true);
+        pantalla.getImpuestosLabel().setVisible(true);
 
-            pantalla.getIvaInsc().setVisible(true);
-            pantalla.getIvaIsncLabel().setVisible(true);
+        pantalla.getIvaInsc().setVisible(true);
+        pantalla.getIvaIsncLabel().setVisible(true);
     }
 
 
@@ -318,7 +322,12 @@ public class ControladorPanallaFacturacion {
         pantalla.getImporte().setText("");
     }
 
-
+    void eliminarDetalle(int filaSeleccionada) {
+        Factura fac = experto.eliminarDetalleFactura(filaSeleccionada);
+        limpiarIngresoDeDetalle();
+        pantalla.getEliminar().setEnabled(false);
+        pantalla.getTablaDetallesFactura().setModel(new ModeloTablaProducto(fac.getDetallesDeFactura()));
+    }
 
 
 
@@ -384,6 +393,8 @@ public class ControladorPanallaFacturacion {
         pantallaElefirCliente.dispose();
 
      }
+
+
 
 
 
