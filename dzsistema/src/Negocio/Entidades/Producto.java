@@ -28,9 +28,17 @@ public class Producto implements Serializable {
     private int codigo;
     private String descripcion;
     private float porcentajeDeIva;
+    private boolean estado;
     @OneToMany(cascade = CascadeType.ALL)
     List<PrecioHistorico> preciosHistoricos;
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public Producto() {
          preciosHistoricos = new ArrayList<PrecioHistorico>();

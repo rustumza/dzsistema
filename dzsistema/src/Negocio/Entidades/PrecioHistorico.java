@@ -28,8 +28,17 @@ public class PrecioHistorico implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaDesdeQueEntroEnVigencia;
     private float precio;
+    private boolean estado;
     @ManyToOne(cascade=CascadeType.ALL)
     private Producto producto;
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public Producto getProducto() {
         return producto;
