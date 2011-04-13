@@ -5,10 +5,80 @@
 
 package Negocio.ABM;
 
+import Negocio.Entidades.Producto;
+import Negocio.Entidades.ProductoJpaController;
+import Negocio.Entidades.exceptions.NonexistentEntityException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juampa
  */
 class ExpertoABMProducto {
+
+    List<Producto> ObtenerProductos() {
+        ProductoJpaController fachada = new ProductoJpaController();
+        return fachada.buscarDeAlta();
+    }
+
+    List<Producto> buscarProductoPorCodigo(String codigo) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    List<Producto> buscarProductoPorNombre(String nombre) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    void bajaProducto(Producto productoAModificar) {
+        try {
+            ProductoJpaController fachada = new ProductoJpaController();
+            productoAModificar.setEstado(false);
+            fachada.edit(productoAModificar);
+            JOptionPane.showMessageDialog(null, "Producto dado de baja", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Se produjo un error, vuelva a intentarlo", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            Logger.getLogger(ExpertoABMCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Se produjo un error, vuelva a intentarlo", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            Logger.getLogger(ExpertoABMCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void guardarProducto(int codigo, String descripcion, Float IVA, Long id) {
+        ProductoJpaController fachada = new ProductoJpaController();
+        Producto producto;
+        if (id == null) {
+            producto = new Producto();
+        } else {
+            producto = fachada.findProducto(id);
+        }
+        if(fachada.buscarPorCodigo(Integer.toString(codigo))==null){
+            producto.setCodigo(codigo);
+            producto.setDescripcion(descripcion);
+            producto.setPorcentajeDeIva(IVA);
+            producto.setEstado(true);
+            //Ver el tema del precio inicia
+            //TO DO
+//            CondicionFrenteAlIvaJpaController fachadaIva = new CondicionFrenteAlIvaJpaController();
+//            cliente.setCondicionFrenteAlIva(fachadaIva.buscarPorNombre(iva));
+            try {
+                if (id == null) {
+                    fachada.create(producto);
+                } else {
+                    fachada.edit(producto);
+                }
+                JOptionPane.showMessageDialog(null, "Se guardaron los datos", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Se produjo un error", "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Código repetido/s", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
 }

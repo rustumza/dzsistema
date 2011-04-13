@@ -13,22 +13,26 @@ import java.util.List;
  * @author juampa
  */
 public class ControladorABMProducto {
-    ExpertoABMProducto experto;
+    ExpertoABMProducto experto = new ExpertoABMProducto();
 
     public List<Producto> ObtenerProductos() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return experto.ObtenerProductos();
     }
 
-    public List<Producto> buscarProductoPorCodigo(String text) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public List<Producto> buscarProductoPorCodigo(String codigo) {
+        return experto.buscarProductoPorCodigo(codigo);
     }
 
-    public List<Producto> buscarProductoPorNombre(String text) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public List<Producto> buscarProductoPorNombre(String nombre) {
+        return experto.buscarProductoPorNombre(nombre);
     }
 
     public void bajaProducto(Producto productoAModificar) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        experto.bajaProducto(productoAModificar);
+    }
+
+    public void guardarProducto(int codigo, String descripcion, Float IVA, Long id) {
+        experto.guardarProducto(codigo, descripcion, IVA, id);
     }
 
 }

@@ -134,4 +134,12 @@ public class ProductoJpaController {
         }
     }
 
+    public List<Producto> buscarDeAlta() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public Object buscarPorCodigo(String toString) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
 }
