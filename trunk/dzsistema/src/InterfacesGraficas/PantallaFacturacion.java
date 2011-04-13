@@ -22,7 +22,7 @@ import javax.swing.DefaultComboBoxModel;
 public class PantallaFacturacion extends javax.swing.JFrame {
     private ControladorPanallaFacturacion controlador;
     private int filaSeleccionada;
-    private int filaAModificar;
+   
 
     /** Creates new form PantallaFacturacion */
     public PantallaFacturacion() {
@@ -222,7 +222,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelTipoFacturaLayout.setVerticalGroup(
             panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoFacturaLayout.createSequentialGroup()
-                .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(palabraCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -336,7 +336,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numeroClienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                     .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -370,7 +370,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addComponent(ivaLabel))
                     .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         panelCondicionDeVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -391,11 +391,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(condicionDeVentaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(condicionDeVenta, 0, 130, Short.MAX_VALUE))
+                        .addComponent(condicionDeVenta, 0, 148, Short.MAX_VALUE))
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelCondicionDeVentaLayout.setVerticalGroup(
@@ -689,14 +689,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         guardar.setText("Limpiar Pantalla");
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarActionPerformed(evt);
+                limpiaraPantallaActionPerformed(evt);
             }
         });
 
         limpiarPantalla.setText("Guardar");
         limpiarPantalla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiarPantallaActionPerformed(evt);
+                guardarActionPerformed(evt);
             }
         });
 
@@ -844,7 +844,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         //agregar la logica para eliminar detalle
-        eliminar.setEnabled(false);
+        controlador.eliminarDetalle(filaSeleccionada);
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void filaSeleccionada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filaSeleccionada
@@ -853,11 +853,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         controlador.limpiarIngresoDeDetalle();
         if ((fila > -1) && (columna > -1)){
             setFilaSeleccionada(fila);
-            if(evt.getClickCount()==2){
-                controlador.cargarFilaDetalleParaEditar();
-            }else if(evt.getClickCount()==1){
-                eliminar.setEnabled(true);
-            }
+            controlador.cargarFilaDetalleParaEditar(filaSeleccionada);
+            eliminar.setEnabled(true);
+            
         }
 
     }//GEN-LAST:event_filaSeleccionada
@@ -870,18 +868,18 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         controlador.agregarDetalleFactura();
     }//GEN-LAST:event_agregarActionPerformed
 
-    private void limpiarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarPantallaActionPerformed
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         controlador.guardarFactura();
-    }//GEN-LAST:event_limpiarPantallaActionPerformed
+    }//GEN-LAST:event_guardarActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         controlador.imprimir();
 
     }//GEN-LAST:event_imprimirActionPerformed
 
-    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-       controlador.limpiarPantalla();
-    }//GEN-LAST:event_guardarActionPerformed
+    private void limpiaraPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiaraPantallaActionPerformed
+        controlador.limpiarPantalla();
+    }//GEN-LAST:event_limpiaraPantallaActionPerformed
 
     private void validarYFormatearFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_validarYFormatearFecha
         //validar y formatear fecha
