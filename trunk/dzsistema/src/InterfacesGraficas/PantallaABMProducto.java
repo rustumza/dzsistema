@@ -297,7 +297,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
-                listaProductos = controlador.buscarProductoPorCodigo(jTextFieldCodigo.getText());
+                listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
                 CargarTabla();
                 limpiarFields();
             } else{
@@ -318,7 +318,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
-                listaProductos = controlador.buscarProductoPorCodigo(jTextFieldCodigo.getText());
+                listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
                 CargarTabla();
                 limpiarFields();
             } else{
