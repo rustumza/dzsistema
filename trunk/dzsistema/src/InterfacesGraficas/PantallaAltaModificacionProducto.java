@@ -13,6 +13,9 @@ package InterfacesGraficas;
 import Negocio.ABM.ControladorABMProducto;
 import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -244,17 +247,26 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, "Agregue un precio unitario inicial para el producto", "Información", JOptionPane.INFORMATION_MESSAGE);
 //        }
         //Verifica Precio Unitario, Fecha y los crea
+        PrecioHistorico ph = null;
         if (jTextFieldPU.isEnabled()){
             if (!jTextFieldPU.getText().isEmpty() && !jTextFieldFecha.getText().isEmpty()){
                 //TO DO
-//                PrecioHistorico ph = new PrecioHistorico();
-//                ph.setPrecio(Long.parseLong(jTextFieldPU.getText()));
-//                ph.setEstado(true);
-//                ph.setFechaDesdeQueEntroEnVigencia(null);
-            JOptionPane.showMessageDialog(null, "Primer Precio Guardado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                ph = new PrecioHistorico();
+                ph.setPrecio(Float.parseFloat(jTextFieldPU.getText()));
+                ph.setEstado(true);
+                //Transformamos String a Date
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+                Date fecha = null;
+                try {
+                    fecha = formatoDelTexto.parse(jTextFieldFecha.getText());
+                }
+                catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+                ph.setFechaDesdeQueEntroEnVigencia(fecha);
             }
             else{
-                JOptionPane.showMessageDialog(null, "Escriba un Precio Unitario Inicial su Fecha de Vigencia", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Escriba un Precio Unitario Inicial y la Fecha de su Vigencia", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         //Verifica condicion y guarda
@@ -263,7 +275,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         String descripcion = JTextFieldDescripcion.getText();
         Float IVA = Float.parseFloat(jTextFieldIVA.getText());
         Long id = producto.getId();
-        controlador.guardarProducto(codigo, descripcion, IVA, id);
+        controlador.guardarProducto(codigo, descripcion, IVA, ph, id);
         //Actualiza la tabla del ABM
         if(PantallaABMProducto != null){
             PantallaABMProducto.listaProductos = controlador.ObtenerProductos();
@@ -279,8 +291,9 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreciosActionPerformed
-        // TODO add your handling code here:
-        //TO DO
+        //add your handling code here:
+        PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos();
+        iu.setVisible(true);
     }//GEN-LAST:event_jButtonPreciosActionPerformed
 
     /**

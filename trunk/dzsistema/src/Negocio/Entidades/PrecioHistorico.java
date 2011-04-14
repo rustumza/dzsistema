@@ -60,7 +60,7 @@ public class PrecioHistorico implements Serializable {
         return precio;
     }
 
-    public void setPrecio(long precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 

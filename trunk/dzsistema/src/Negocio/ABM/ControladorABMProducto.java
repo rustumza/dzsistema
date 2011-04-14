@@ -5,6 +5,7 @@
 
 package Negocio.ABM;
 
+import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
 import java.util.List;
 
@@ -31,8 +32,8 @@ public class ControladorABMProducto {
         experto.bajaProducto(productoAModificar);
     }
 
-    public void guardarProducto(int codigo, String descripcion, Float IVA, Long id) {
-        experto.guardarProducto(codigo, descripcion, IVA, id);
+    public void guardarProducto(int codigo, String descripcion, Float IVA, PrecioHistorico ph, Long id) {
+        experto.guardarProducto(codigo, descripcion, IVA, ph, id);
     }
 
 }
