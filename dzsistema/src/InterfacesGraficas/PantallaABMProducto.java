@@ -371,7 +371,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         if (jTableProductos.getSelectedRow() != -1) {
             amp = new PantallaAltaModificacionProducto(this.controlador);
             amp.setGUI(this);
-            amp.modificarCliente(productoAModificar);
+            amp.modificarProducto(productoAModificar);
             amp.setVisible(true);
         } else{
             JOptionPane.showMessageDialog(null, "Seleccione un Producto para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
