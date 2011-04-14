@@ -5,6 +5,7 @@
 
 package Negocio.ABM;
 
+import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
@@ -47,11 +48,16 @@ class ExpertoABMProducto {
         }
     }
 
-    void guardarProducto(int codigo, String descripcion, Float IVA, Long id) {
+    void guardarProducto(int codigo, String descripcion, Float IVA, PrecioHistorico ph, Long id) {
         ProductoJpaController fachada = new ProductoJpaController();
         Producto producto;
+        //Verifica si es nuevo
         if (id == null) {
             producto = new Producto();
+            //Agrega precio inicial
+            if(ph != null){
+                producto.addPrecio(ph);
+            }
         } else {
             producto = fachada.findProducto(id);
         }
@@ -60,10 +66,6 @@ class ExpertoABMProducto {
             producto.setDescripcion(descripcion);
             producto.setPorcentajeDeIva(IVA);
             producto.setEstado(true);
-            //Ver el tema del precio inicia
-            //TO DO
-//            CondicionFrenteAlIvaJpaController fachadaIva = new CondicionFrenteAlIvaJpaController();
-//            cliente.setCondicionFrenteAlIva(fachadaIva.buscarPorNombre(iva));
             try {
                 if (id == null) {
                     fachada.create(producto);
