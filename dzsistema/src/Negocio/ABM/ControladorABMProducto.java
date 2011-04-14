@@ -20,7 +20,7 @@ public class ControladorABMProducto {
         return experto.ObtenerProductos();
     }
 
-    public List<Producto> buscarProductoPorCodigo(String codigo) {
+    public List<Producto> buscarProductoPorCodigo(int codigo) {
         return experto.buscarProductoPorCodigo(codigo);
     }
 

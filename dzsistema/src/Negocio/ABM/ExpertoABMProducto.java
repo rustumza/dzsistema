@@ -25,12 +25,14 @@ class ExpertoABMProducto {
         return fachada.buscarDeAlta();
     }
 
-    List<Producto> buscarProductoPorCodigo(String codigo) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    List<Producto> buscarProductoPorCodigo(int codigo) {
+        ProductoJpaController fachada = new ProductoJpaController();
+        return fachada.buscarPorCodigo(codigo);
     }
 
     List<Producto> buscarProductoPorNombre(String nombre) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        ProductoJpaController fachada = new ProductoJpaController();
+        return fachada.buscarPorNombre(nombre);
     }
 
     void bajaProducto(Producto productoAModificar) {
@@ -61,7 +63,7 @@ class ExpertoABMProducto {
         } else {
             producto = fachada.findProducto(id);
         }
-        if(fachada.buscarPorCodigo(Integer.toString(codigo))==null){
+        if(fachada.buscarPorCodigo(codigo).isEmpty()){
             producto.setCodigo(codigo);
             producto.setDescripcion(descripcion);
             producto.setPorcentajeDeIva(IVA);

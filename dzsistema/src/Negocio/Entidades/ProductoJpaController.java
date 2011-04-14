@@ -135,11 +135,24 @@ public class ProductoJpaController {
     }
 
     public List<Producto> buscarDeAlta() {
-        throw new UnsupportedOperationException("Not yet implemented");
+        EntityManager em = getEntityManager();
+        List<Producto> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.estado = true").getResultList();
+        return encontrados;
     }
 
-    public Object buscarPorCodigo(String toString) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public List<Producto> buscarPorCodigo(int codigo) {
+        EntityManager em = getEntityManager();
+        List<Producto> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.codigo = '"+codigo+"'").getResultList();
+        return encontrados;
+    }
+
+    public List<Producto> buscarPorNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        List<Producto> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.descripcion = '"+nombre+"'").getResultList();
+        return encontrados;
     }
 
 }
