@@ -39,6 +39,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         controlador = new ControladorABMProducto();
+        jButtonPrecios.setEnabled(false);
     }
 
     public void modificarProducto(Producto productoAModificar) {
@@ -46,9 +47,9 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         jTextFieldCodigo.setText(Integer.toString(productoAModificar.getCodigo()));
         JTextFieldDescripcion.setText(productoAModificar.getDescripcion());
         jTextFieldIVA.setText(Float.toString(productoAModificar.getPorcentajeDeIva()));
-        jTextFieldPU.disable();
-        jTextFieldFecha.disable();
-        jButtonPrecios.disable();
+        jTextFieldPU.setEnabled(false);
+        jTextFieldFecha.setEnabled(false);
+        jButtonPrecios.setEnabled(true);
     }
 
     void setGUI(PantallaABMProducto aThis) {
