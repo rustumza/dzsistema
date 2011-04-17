@@ -29,7 +29,7 @@ public class DetalleFactura implements Serializable {
     private float precioUnitario;
     @ManyToOne
     private Producto producto;
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne
     private Factura factura;
 
     public Factura getFactura() {

@@ -13,6 +13,7 @@ package InterfacesGraficas;
 
 import Negocio.ABM.ControladorABMProducto;
 import Negocio.Entidades.PrecioHistorico;
+import Negocio.Entidades.PrecioHistoricoJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
@@ -185,10 +186,19 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         // TODO add your handling code here:
+        //TO DO
         if (jTablePrecios.getSelectedRow() != -1) {
             if(producto.getPreciosHistoricos().size()>1){
                 for(int i=0;i<jTablePrecios.getRowCount();i++){
                     if(jTablePrecios.isRowSelected(i)){
+                        //Destruyo elemento
+                        PrecioHistoricoJpaController fachada1 = new PrecioHistoricoJpaController();
+                        try {
+                            fachada1.destroy(producto.getPreciosHistoricos().get(i).getId());
+                        } catch (NonexistentEntityException ex) {
+                            Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        //Quito elemento de la lista
                         producto.getPreciosHistoricos().remove(i);
                         ProductoJpaController fachada = new ProductoJpaController();
                         try {
