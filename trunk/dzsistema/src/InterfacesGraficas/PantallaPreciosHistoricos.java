@@ -234,10 +234,6 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
         });
     }
 
-    public void setProducto(Producto productoModificado){
-        producto = productoModificado;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAgregar;
