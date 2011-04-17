@@ -241,11 +241,6 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
             condicion=false;
             JOptionPane.showMessageDialog(null, "Escriba un IVA válido", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
-        //Verifica si tiene un precio inicial
-//        if (producto.getPreciosHistoricos().isEmpty()){
-//            condicion=false;
-//            JOptionPane.showMessageDialog(null, "Agregue un precio unitario inicial para el producto", "Información", JOptionPane.INFORMATION_MESSAGE);
-//        }
         //Verifica Precio Unitario, Fecha y los crea
         PrecioHistorico ph = null;
         if (jTextFieldPU.isEnabled()){
@@ -280,7 +275,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         if(PantallaABMProducto != null){
             PantallaABMProducto.listaProductos = controlador.ObtenerProductos();
             PantallaABMProducto.CargarTabla();
-            this.setVisible(false);
+            this.dispose();
         }
         }
     }//GEN-LAST:event_jButtonguardarActionPerformed

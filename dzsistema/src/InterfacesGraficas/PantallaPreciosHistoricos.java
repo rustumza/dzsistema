@@ -122,6 +122,11 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTablePrecios);
 
         jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
         jButtonBorrar.setText("Eliminar");
         jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +202,13 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        PantallaAltaModificacionPrecio iu = new PantallaAltaModificacionPrecio(producto);
+        iu.setGUI(this);
+        iu.setVisible(true);
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     /**
     * @param args the command line arguments
