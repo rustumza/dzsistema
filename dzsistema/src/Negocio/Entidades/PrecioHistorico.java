@@ -29,7 +29,7 @@ public class PrecioHistorico implements Serializable {
     private Date fechaDesdeQueEntroEnVigencia;
     private float precio;
     private boolean estado;
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private Producto producto;
 
     public boolean isEstado() {

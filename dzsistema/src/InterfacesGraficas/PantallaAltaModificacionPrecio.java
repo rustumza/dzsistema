@@ -118,6 +118,7 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
         //Verifica campo
         // TO DO
         if (jTextFieldPU.getText().isEmpty() == false){
+            //Arreglar esta validacion
             if(!Validar.controlCodigo(jTextFieldPU.getText())){
                 JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -137,7 +138,6 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
                     Logger.getLogger(PantallaAltaModificacionPrecio.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 JOptionPane.showMessageDialog(null, "Precio Guardado", "Información", JOptionPane.INFORMATION_MESSAGE);
-                GUI.setProducto(producto);
                 GUI.CargarTabla();
                 this.setVisible(false);
             }
