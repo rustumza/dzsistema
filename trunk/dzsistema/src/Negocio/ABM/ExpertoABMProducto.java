@@ -86,15 +86,4 @@ class ExpertoABMProducto {
         }
     }
 
-    void eliminarPrecioHistorico(PrecioHistorico precioAModificar) {
-        try {
-            PrecioHistoricoJpaController fachada = new PrecioHistoricoJpaController();
-            fachada.destroy(precioAModificar.getId());
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(ExpertoABMProducto.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Se produjo un error, vuelva a intentarlo", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-        }
-        JOptionPane.showMessageDialog(null, "Precio eliminado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-    }
-
 }

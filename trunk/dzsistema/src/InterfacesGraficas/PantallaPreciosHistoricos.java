@@ -14,6 +14,10 @@ package InterfacesGraficas;
 import Negocio.ABM.ControladorABMProducto;
 import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
+import Negocio.Entidades.ProductoJpaController;
+import Negocio.Entidades.exceptions.NonexistentEntityException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -185,7 +189,16 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
             if(producto.getPreciosHistoricos().size()>1){
                 for(int i=0;i<jTablePrecios.getRowCount();i++){
                     if(jTablePrecios.isRowSelected(i)){
-                        controlador.eliminarPrecioHistorico(precioAModificar);
+                        producto.getPreciosHistoricos().remove(i);
+                        ProductoJpaController fachada = new ProductoJpaController();
+                        try {
+                            fachada.edit(producto);
+                        } catch (NonexistentEntityException ex) {
+                            Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (Exception ex) {
+                            Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        JOptionPane.showMessageDialog(null, "Precio Eliminado", "Información", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
@@ -219,6 +232,10 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
                 new PantallaPreciosHistoricos().setVisible(true);
             }
         });
+    }
+
+    public void setProducto(Producto productoModificado){
+        producto = productoModificado;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

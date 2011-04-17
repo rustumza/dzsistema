@@ -35,8 +35,4 @@ public class ControladorABMProducto {
     public void guardarProducto(int codigo, String descripcion, Float IVA, PrecioHistorico ph, Long id) {
         experto.guardarProducto(codigo, descripcion, IVA, ph, id);
     }
-
-    public void eliminarPrecioHistorico(PrecioHistorico precioAModificar) {
-        experto.eliminarPrecioHistorico(precioAModificar);
-    }
 }
