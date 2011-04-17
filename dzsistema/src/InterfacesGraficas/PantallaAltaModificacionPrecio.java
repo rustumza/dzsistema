@@ -119,9 +119,10 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
         // TO DO
         if (jTextFieldPU.getText().isEmpty() == false){
             if(!Validar.controlCodigo(jTextFieldPU.getText())){
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
+                //Falta verificar que ponga los demas en false
                 nuevo.setEstado(true);
                 nuevo.setPrecio(Float.parseFloat(jTextFieldPU.getText()));
                 Date hoy = new Date();
@@ -136,8 +137,9 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
                     Logger.getLogger(PantallaAltaModificacionPrecio.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 JOptionPane.showMessageDialog(null, "Precio Guardado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                GUI.setProducto(producto);
                 GUI.CargarTabla();
-                this.dispose();
+                this.setVisible(false);
             }
         }
         else{
