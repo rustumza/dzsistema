@@ -292,7 +292,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
 
     private void jButtonPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreciosActionPerformed
         //add your handling code here:
-        PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos();
+        PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(producto, controlador);
         iu.setVisible(true);
     }//GEN-LAST:event_jButtonPreciosActionPerformed
 

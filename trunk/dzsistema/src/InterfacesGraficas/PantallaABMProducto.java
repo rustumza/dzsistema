@@ -402,7 +402,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
 
     private void jButtonVerPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPreciosActionPerformed
         // TODO add your handling code here:
-            PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(productoAModificar);
+            PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(productoAModificar, controlador);
             iu.setVisible(true);
     }//GEN-LAST:event_jButtonVerPreciosActionPerformed
 
