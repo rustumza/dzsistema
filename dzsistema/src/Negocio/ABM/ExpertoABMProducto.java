@@ -6,6 +6,7 @@
 package Negocio.ABM;
 
 import Negocio.Entidades.PrecioHistorico;
+import Negocio.Entidades.PrecioHistoricoJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
@@ -83,6 +84,17 @@ class ExpertoABMProducto {
         else{
             JOptionPane.showMessageDialog(null, "Código repetido/s", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    void eliminarPrecioHistorico(PrecioHistorico precioAModificar) {
+        try {
+            PrecioHistoricoJpaController fachada = new PrecioHistoricoJpaController();
+            fachada.destroy(precioAModificar.getId());
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ExpertoABMProducto.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Se produjo un error, vuelva a intentarlo", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        }
+        JOptionPane.showMessageDialog(null, "Precio eliminado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

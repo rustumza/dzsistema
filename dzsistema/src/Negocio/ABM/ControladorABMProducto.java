@@ -36,4 +36,7 @@ public class ControladorABMProducto {
         experto.guardarProducto(codigo, descripcion, IVA, ph, id);
     }
 
+    public void eliminarPrecioHistorico(PrecioHistorico precioAModificar) {
+        experto.eliminarPrecioHistorico(precioAModificar);
+    }
 }

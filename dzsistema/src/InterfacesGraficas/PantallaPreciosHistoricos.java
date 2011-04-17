@@ -11,7 +11,10 @@
 
 package InterfacesGraficas;
 
+import Negocio.ABM.ControladorABMProducto;
+import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,17 +22,20 @@ import javax.swing.table.DefaultTableModel;
  * @author juampa
  */
 public class PantallaPreciosHistoricos extends javax.swing.JFrame {
-    Producto producto;
+    private Producto producto;
+    private PrecioHistorico precioAModificar;
+    private ControladorABMProducto controlador;
 
     /** Creates new form PantallaPreciosHistoricos */
     public PantallaPreciosHistoricos() {
         initComponents();
     }
 
-    public PantallaPreciosHistoricos(Producto productoAModificar) {
+    public PantallaPreciosHistoricos(Producto productoAModificar, ControladorABMProducto controladorABM) {
         initComponents();
         this.setLocationRelativeTo(null);
         producto = productoAModificar;
+        controlador = controladorABM;
         CargarTabla();
     }
 
@@ -45,7 +51,7 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
             }
 
             String[] columnNames = {"Fecha", "Precio Unitario"};
-            jTableProductos.setModel(new DefaultTableModel(datos, columnNames) {
+            jTablePrecios.setModel(new DefaultTableModel(datos, columnNames) {
 
                 boolean[] canEdit = new boolean[]{
                     true, true
@@ -72,16 +78,16 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableProductos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jTablePrecios = new javax.swing.JTable();
+        jButtonAgregar = new javax.swing.JButton();
+        jButtonBorrar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Precios");
 
-        jTableProductos.setAutoCreateRowSorter(true);
-        jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePrecios.setAutoCreateRowSorter(true);
+        jTablePrecios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -108,18 +114,28 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
                 "Fecha", "Precio Unitario"
             }
         ));
-        jTableProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTablePrecios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableProductosMouseClicked(evt);
+                jTablePreciosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTableProductos);
+        jScrollPane1.setViewportView(jTablePrecios);
 
-        jButton1.setText("Agregar");
+        jButtonAgregar.setText("Agregar");
 
-        jButton2.setText("Borrar");
+        jButtonBorrar.setText("Eliminar");
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cerrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,10 +146,10 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jButtonAgregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                        .addComponent(jButtonBorrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                         .addComponent(jButton3)))
                 .addContainerGap())
         );
@@ -144,19 +160,43 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(jButtonAgregar)
+                    .addComponent(jButtonBorrar)
                     .addComponent(jButton3)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProductosMouseClicked
+    private void jTablePreciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePreciosMouseClicked
         // TODO add your handling code here:
-//        int seleccion = jTableProductos.getSelectedRow();
-//        productoAModificar = listaProductos.get(seleccion);
-}//GEN-LAST:event_jTableProductosMouseClicked
+        int seleccion = jTablePrecios.getSelectedRow();
+        precioAModificar = producto.getPreciosHistoricos().get(seleccion);
+}//GEN-LAST:event_jTablePreciosMouseClicked
+
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        // TODO add your handling code here:
+        if (jTablePrecios.getSelectedRow() != -1) {
+            if(producto.getPreciosHistoricos().size()>1){
+                for(int i=0;i<jTablePrecios.getRowCount();i++){
+                    if(jTablePrecios.isRowSelected(i)){
+                        controlador.eliminarPrecioHistorico(precioAModificar);
+                    }
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No puede eliminar el precio", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else{
+            JOptionPane.showMessageDialog(null, "Seleccione un Precio para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+        CargarTabla();
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -170,11 +210,11 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAgregar;
+    private javax.swing.JButton jButtonBorrar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableProductos;
+    private javax.swing.JTable jTablePrecios;
     // End of variables declaration//GEN-END:variables
 
 }
