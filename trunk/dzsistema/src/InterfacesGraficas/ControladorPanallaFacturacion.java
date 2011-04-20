@@ -10,6 +10,7 @@ import Negocio.Entidades.Cliente;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.Producto;
+import validar.fechaException;
 import Negocio.Facturacion.ExpertoFacturar;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import java.util.List;
@@ -18,7 +19,12 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import java.lang.Math.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import javax.swing.JPanel;
 
 /**
  *
@@ -305,8 +311,15 @@ public class ControladorPanallaFacturacion {
 
 
     void compararFechaFactura() {
-        //validar fecha primero
-        boolean sonIguales = experto.comparaFechaFactura(pantalla.getFecha().getText());
+        
+        try{
+            Factura factura = experto.cambiarFechaDeFactura(pantalla.getFecha().getText());
+            panta
+        }catch(fechaException e){
+
+            
+
+        }
         //Mostrar pantalla para preguntar si quiere modificar la fecha
 
         //si quiere modificar, eliminar los detalles de la factura
@@ -394,12 +407,35 @@ public class ControladorPanallaFacturacion {
 
      }
 
+    private Date validarFechaIngresada(String fecha) throws fechaException {
+        if(fecha.length()!=6){
+            throw new fechaException(1);
+        }
+        try {
+            String dia = fecha.substring(0, 2);
+            Integer.valueOf(dia);
+            String mes = fecha.substring(2, 4);
+            Integer.valueOf(mes);
+            String anio = fecha.substring(4, 6);
+            Integer.valueOf(anio);
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+            formatoFecha.setLenient(false);
+            Date fechaDate = formatoFecha.parse(dia + "/" + mes + "/20" + anio );
+            return fechaDate;
+        }catch(NumberFormatException ne){
+            throw new fechaException(2);
+        }catch(ParseException e) {
+            throw new fechaException(3);
+        }
 
+    }
 
+    private String formatearFecha(Date fecha){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        formatoFecha.setLenient(false);
+        return formatoFecha.format(fecha);
+    
+    }
 
-
-
-
-  
 
 }

@@ -12,6 +12,9 @@ import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
+import validar.fechaException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class ExpertoFacturar {
 
     public ExpertoFacturar(){
         factura = new Factura();
+        factura.setFecha(new Date());
         esFacuraNueva = true;
 
     }
@@ -42,37 +46,33 @@ public class ExpertoFacturar {
     }
 
     public Factura buscarClientePorCuit(String text) {
-        Factura fac = new Factura();
         ClienteJpaController clienteControler = new ClienteJpaController();
         List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(text);
-        fac = armarFacturaConCliente(listaDeClientes.get(0));
-        factura = cargarFechaYNumeroDeFactura(fac);
+        armarFacturaConCliente(listaDeClientes.get(0));
+        cargarFechaYNumeroDeFactura();
         return factura;
     }
 
     public Factura buscarClientePorNumero(String text) {
-        Factura fac = new Factura();
+
         ClienteJpaController clienteControler = new ClienteJpaController();
         List<Cliente> listaDeClientes = clienteControler.buscarPorCUIT(text);
-        fac = armarFacturaConCliente(listaDeClientes.get(0));
-        factura = cargarFechaYNumeroDeFactura(fac);
+        armarFacturaConCliente(listaDeClientes.get(0));
+        cargarFechaYNumeroDeFactura();
         return factura;
     }
 
 
-    private Factura armarFacturaConCliente(Cliente cliente){
-        Factura fac = new Factura();
-        fac.setCliente(cliente);
-        fac.setTipoFactura(fac.getCliente().getCondicionFrenteAlIva().getTipoDeFactura());
-        return fac;
+    private void armarFacturaConCliente(Cliente cliente){
+        factura.setCliente(cliente);
+        factura.setTipoFactura(factura.getCliente().getCondicionFrenteAlIva().getTipoDeFactura());
     }
 
 
-    private Factura cargarFechaYNumeroDeFactura(Factura factura) {
+    private void cargarFechaYNumeroDeFactura() {
         factura.setFecha(new Date());
         factura.setNumero(buscarUltimoNumeroFactura(factura.getTipoFactura().getNombre()));
         factura.setEstado(true);
-        return factura;
     }
 
     private int buscarUltimoNumeroFactura(String nombre) {
@@ -109,11 +109,11 @@ public class ExpertoFacturar {
         return factura;
     }
 
-    public boolean comparaFechaFactura(String text) {
-        factura.getFecha();
-        boolean sonIguales = true;
-        //COMPARAR FECHAS,  // TODO
-        return sonIguales;
+    public Factura cambiarFechaDeFactura(String text) throws fechaException{
+
+        factura.setFecha(validarFechaIngresada(text));
+        return factura;
+
     }
 
     public void guardarFactura() {
@@ -132,6 +132,31 @@ public class ExpertoFacturar {
             return null;
         }
     }
+
+
+    private Date validarFechaIngresada(String fecha) throws fechaException {
+        if(fecha.length()!=6){
+            throw new fechaException(1);
+        }
+        try {
+            String dia = fecha.substring(0, 2);
+            Integer.valueOf(dia);
+            String mes = fecha.substring(2, 4);
+            Integer.valueOf(mes);
+            String anio = fecha.substring(4, 6);
+            Integer.valueOf(anio);
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+            formatoFecha.setLenient(false);
+            Date fechaDate = formatoFecha.parse(dia + "/" + mes + "/20" + anio );
+            return fechaDate;
+        }catch(NumberFormatException ne){
+            throw new fechaException(2);
+        }catch(ParseException e) {
+            throw new fechaException(3);
+        }
+
+    }
+
 
 
 }
