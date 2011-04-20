@@ -275,8 +275,8 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         if(PantallaABMProducto != null){
             PantallaABMProducto.listaProductos = controlador.ObtenerProductos();
             PantallaABMProducto.CargarTabla();
-            this.dispose();
         }
+        this.dispose();
         }
     }//GEN-LAST:event_jButtonguardarActionPerformed
 
