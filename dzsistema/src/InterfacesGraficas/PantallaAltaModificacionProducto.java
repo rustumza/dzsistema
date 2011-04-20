@@ -43,6 +43,8 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         controlador = new ControladorABMProducto();
         jButtonPrecios.setEnabled(false);
+        jTextFieldFecha.setText("06/06/2010");
+        jTextFieldFecha.setEnabled(false);
     }
 
     public void modificarProducto(Producto productoAModificar) {
@@ -85,7 +87,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         jButtonPrecios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cliente");
+        setTitle("Producto");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
@@ -117,16 +119,19 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                         .addComponent(jTextFieldtasaanual_r, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(41, 41, 41)
+                        .addComponent(jTextFieldPU, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel6)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(41, 41, 41)
+                        .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldFecha)
-                            .addComponent(jTextFieldPU)
                             .addComponent(jTextFieldIVA)
                             .addComponent(JTextFieldDescripcion)
                             .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))))
@@ -148,13 +153,13 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                     .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldPU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(116, 116, 116)
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldPU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(114, 114, 114)
                 .addComponent(jTextFieldtasaanual_r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -197,15 +202,15 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonguardar)
                     .addComponent(jButton1)
                     .addComponent(jButtonPrecios))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -256,11 +261,11 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                 ph.setPrecio(Float.parseFloat(jTextFieldPU.getText()));
                 ph.setEstado(true);
                 //Transformamos String a Date
-                
-//                ph.setFechaDesdeQueEntroEnVigencia(fecha);
+                ph.setFechaDesdeQueEntroEnVigencia(Validar.validarFechaConBarras(jTextFieldFecha.getText()));
             }
             else{
                 JOptionPane.showMessageDialog(null, "Escriba un Precio Unitario Inicial y la Fecha de su Vigencia", "Información", JOptionPane.INFORMATION_MESSAGE);
+                condicion=false;
             }
         }
         //Verifica condicion y guarda
