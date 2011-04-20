@@ -115,14 +115,6 @@ public class ExpertoFacturar {
         return factura;
 
     }
-    public boolean comparaFechaFactura(String fecha) throws fechaException{
-        Date fechaDate = validar.Validar.validarFecha(fecha);
-        if(0 == fechaDate.compareTo(factura.getFecha()))
-            return true;
-        else
-            return false;
-
-    }
 
     public void guardarFactura() {
         FacturaJpaController jpa = new FacturaJpaController();

@@ -307,8 +307,10 @@ public class ControladorPanallaFacturacion {
 
 
     void compararFechaFactura() {
-        
+
+
         try{
+
             Factura factura = experto.cambiarFechaDeFactura(pantalla.getFecha().getText());
             //panta
         }catch(fechaException e){
