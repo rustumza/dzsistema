@@ -111,8 +111,16 @@ public class ExpertoFacturar {
 
     public Factura cambiarFechaDeFactura(String text) throws fechaException{
 
-        factura.setFecha(validarFechaIngresada(text));
+        factura.setFecha(validar.Validar.validarFecha(text));
         return factura;
+
+    }
+    public boolean comparaFechaFactura(String fecha) throws fechaException{
+        Date fechaDate = validar.Validar.validarFecha(fecha);
+        if(0 == fechaDate.compareTo(factura.getFecha()))
+            return true;
+        else
+            return false;
 
     }
 
@@ -134,28 +142,6 @@ public class ExpertoFacturar {
     }
 
 
-    private Date validarFechaIngresada(String fecha) throws fechaException {
-        if(fecha.length()!=6){
-            throw new fechaException(1);
-        }
-        try {
-            String dia = fecha.substring(0, 2);
-            Integer.valueOf(dia);
-            String mes = fecha.substring(2, 4);
-            Integer.valueOf(mes);
-            String anio = fecha.substring(4, 6);
-            Integer.valueOf(anio);
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-            formatoFecha.setLenient(false);
-            Date fechaDate = formatoFecha.parse(dia + "/" + mes + "/20" + anio );
-            return fechaDate;
-        }catch(NumberFormatException ne){
-            throw new fechaException(2);
-        }catch(ParseException e) {
-            throw new fechaException(3);
-        }
-
-    }
 
 
 
