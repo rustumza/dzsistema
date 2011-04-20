@@ -318,7 +318,7 @@ public class ControladorPanallaFacturacion {
         }
         //Mostrar pantalla para preguntar si quiere modificar la fecha
 
-        //si quiere modificar, eliminar los detalles de la factura
+        //si qquiere modificar, eliminar los detalles de la factura
         //sino, dejar todo como esta y no cambiar la fecha
     }
     
