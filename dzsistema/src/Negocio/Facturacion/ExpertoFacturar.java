@@ -30,7 +30,7 @@ public class ExpertoFacturar {
 
     public ExpertoFacturar(){
         factura = new Factura();
-        factura.setFecha(new Date());
+        factura.setFecha(validar.Validar.formatearFechaADate(new Date()));
         esFacuraNueva = true;
 
     }
@@ -70,7 +70,7 @@ public class ExpertoFacturar {
 
 
     private void cargarFechaYNumeroDeFactura() {
-        factura.setFecha(new Date());
+        factura.setFecha(validar.Validar.formatearFechaADate(new Date()));
         factura.setNumero(buscarUltimoNumeroFactura(factura.getTipoFactura().getNombre()));
         factura.setEstado(true);
     }
