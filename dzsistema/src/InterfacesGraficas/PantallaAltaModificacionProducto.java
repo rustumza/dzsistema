@@ -299,7 +299,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Date fecha = Validar.validarFecha(jTextFieldFecha.getText());
-            jTextFieldFecha.setText(Validar.formatearFecha(fecha));
+            jTextFieldFecha.setText(Validar.formatearFechaAString(fecha));
         }
         catch(validar.fechaException e){
             JOptionPane.showMessageDialog(null, "Fecha mal ingresada", "Información", JOptionPane.INFORMATION_MESSAGE);
