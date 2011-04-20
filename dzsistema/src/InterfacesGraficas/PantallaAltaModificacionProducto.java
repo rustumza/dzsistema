@@ -100,6 +100,12 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
 
         jLabel3.setText("Fecha:");
 
+        jTextFieldFecha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldFechaFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -250,15 +256,8 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                 ph.setPrecio(Float.parseFloat(jTextFieldPU.getText()));
                 ph.setEstado(true);
                 //Transformamos String a Date
-                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha = null;
-                try {
-                    fecha = formatoDelTexto.parse(jTextFieldFecha.getText());
-                }
-                catch (ParseException ex) {
-                    ex.printStackTrace();
-                }
-                ph.setFechaDesdeQueEntroEnVigencia(fecha);
+                
+//                ph.setFechaDesdeQueEntroEnVigencia(fecha);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Escriba un Precio Unitario Inicial y la Fecha de su Vigencia", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -290,6 +289,18 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(producto, controlador);
         iu.setVisible(true);
     }//GEN-LAST:event_jButtonPreciosActionPerformed
+
+    private void jTextFieldFechaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldFechaFocusLost
+        // TODO add your handling code here:
+        try{
+            Date fecha = Validar.validarFecha(jTextFieldFecha.getText());
+            jTextFieldFecha.setText(Validar.formatearFecha(fecha));
+        }
+        catch(validar.fechaException e){
+            JOptionPane.showMessageDialog(null, "Fecha mal ingresada", "Información", JOptionPane.INFORMATION_MESSAGE);
+            jTextFieldFecha.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldFechaFocusLost
 
     /**
      * @param args the command line arguments
