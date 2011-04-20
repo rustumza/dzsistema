@@ -12,6 +12,7 @@ package InterfacesGraficas;
 
 import Negocio.ABM.ControladorABMCliente;
 import Negocio.Entidades.Cliente;
+import Negocio.Entidades.ClienteJpaController;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -32,6 +33,14 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.controlador = controlador;
+        //Busca último codigo
+        ClienteJpaController fachada = new ClienteJpaController();
+        int ultimocodigo = 1;
+        if(fachada.buscarUltimoCodigo()==null){
+            ultimocodigo = ((Integer) fachada.buscarUltimoCodigo()).intValue();
+        }
+        jTextFieldCodigo.setText(String.valueOf(ultimocodigo));
+        jTextFieldCodigo.setEditable(false);
     }
 
     public PantallaAltaModificacionCliente() {

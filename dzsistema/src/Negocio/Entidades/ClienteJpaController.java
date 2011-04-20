@@ -162,4 +162,11 @@ public class ClienteJpaController {
         return encontrados;
     }
 
+    public Object buscarUltimoCodigo() {
+        EntityManager em = getEntityManager();
+        Object resultado;
+        resultado = em.createQuery("SELECT max(a.codigo) FROM Cliente a").getSingleResult();
+        return resultado;
+    }
+
 }
