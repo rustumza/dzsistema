@@ -36,17 +36,25 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         //Busca último codigo
         ClienteJpaController fachada = new ClienteJpaController();
         int ultimocodigo = 1;
-        if(fachada.buscarUltimoCodigo()==null){
-            ultimocodigo = ((Integer) fachada.buscarUltimoCodigo()).intValue();
+        if(fachada.buscarUltimoCodigo()!= null){
+            ultimocodigo = ((Integer) fachada.buscarUltimoCodigo()).intValue()+1;
         }
         jTextFieldCodigo.setText(String.valueOf(ultimocodigo));
-        jTextFieldCodigo.setEditable(false);
+        jTextFieldCodigo.setEnabled(false);
     }
 
     public PantallaAltaModificacionCliente() {
         initComponents();
         this.setLocationRelativeTo(null);
         controlador = new ControladorABMCliente();
+        //Busca último codigo
+        ClienteJpaController fachada = new ClienteJpaController();
+        int ultimocodigo = 1;
+        if(fachada.buscarUltimoCodigo()!= null){
+            ultimocodigo = ((Integer) fachada.buscarUltimoCodigo()).intValue()+1;
+        }
+        jTextFieldCodigo.setText(String.valueOf(ultimocodigo));
+        jTextFieldCodigo.setEnabled(false);
     }
 
     public void modificarCliente(Cliente clienteAModificar) {
@@ -255,6 +263,7 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
             PantallaABMCliente.CargarTabla();
             this.setVisible(false);
         }
+        this.dispose();
         }
     }//GEN-LAST:event_jButtonguardarActionPerformed
 
