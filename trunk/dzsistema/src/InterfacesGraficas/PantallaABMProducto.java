@@ -348,7 +348,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldNombre.getText().isEmpty() == false){
             if(Validar.controlApellido(jTextFieldNombre.getText())){
-                listaProductos = controlador.buscarProductoPorNombre(jTextFieldCodigo.getText());
+                listaProductos = controlador.buscarProductoPorNombre(jTextFieldNombre.getText());
                 CargarTabla();
                 limpiarFields();
             } else{

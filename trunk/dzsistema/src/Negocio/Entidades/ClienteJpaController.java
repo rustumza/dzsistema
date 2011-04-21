@@ -137,7 +137,7 @@ public class ClienteJpaController {
     public List<Cliente> buscarPorCUIT(String CUIT) {
         EntityManager em = getEntityManager();
         List<Cliente> encontrados;
-        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.CUIT = '"+CUIT+"'").getResultList();
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.CUIT = '"+CUIT+"' and a.estado = true ").getResultList();
         return encontrados;
     }
 
@@ -151,14 +151,14 @@ public class ClienteJpaController {
     public List<Cliente> buscarPorCodigo(String codigo) {
         EntityManager em = getEntityManager();
         List<Cliente> encontrados;
-        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.codigo = '"+codigo+"'").getResultList();
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.codigo = '"+codigo+"' and a.estado = true ").getResultList();
         return encontrados;
     }
 
     public List<Cliente> buscarPorNombre(String nombre) {
         EntityManager em = getEntityManager();
         List<Cliente> encontrados;
-        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.nombre = '"+nombre+"'").getResultList();
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.nombre = '"+nombre+"' and a.estado = true ").getResultList();
         return encontrados;
     }
 

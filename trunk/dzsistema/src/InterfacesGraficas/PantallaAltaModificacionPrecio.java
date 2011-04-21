@@ -114,16 +114,11 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        // TODO add your handling code here:
+        //add your handling code here:
         PrecioHistorico nuevo = new PrecioHistorico();
         //Verifica campo
-        // TO DO
         if (jTextFieldPU.getText().isEmpty() == false){
-            //Arreglar esta validacion
-            //Busca ultimo precio activo
-            for(int i=0; i<producto.getPreciosHistoricos().size();i++){
-                    producto.getPreciosHistoricos().get(i).setEstado(false);
-                }
+            //Valida Precio Unitario
             if(Validar.controlIVA(jTextFieldPU.getText()).contains("falso")){
                 JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }
