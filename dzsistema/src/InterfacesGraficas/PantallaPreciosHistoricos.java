@@ -187,9 +187,11 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
 }//GEN-LAST:event_jTablePreciosMouseClicked
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
-        // TODO add your handling code here:
+        //add your handling code here:
         //TO DO
+        //Me fijo si no se selecciono ninguno
         if (jTablePrecios.getSelectedRow() != -1) {
+            //Verifica que quede al menos un precio
             if(producto.getPreciosHistoricos().size()>1){
                 for(int i=0;i<jTablePrecios.getRowCount();i++){
                     if(jTablePrecios.isRowSelected(i)){

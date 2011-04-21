@@ -6,7 +6,6 @@
 package Negocio.ABM;
 
 import Negocio.Entidades.PrecioHistorico;
-import Negocio.Entidades.PrecioHistoricoJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
@@ -28,12 +27,20 @@ class ExpertoABMProducto {
 
     List<Producto> buscarProductoPorCodigo(int codigo) {
         ProductoJpaController fachada = new ProductoJpaController();
-        return fachada.buscarPorCodigo(codigo);
+        List<Producto> encontrados = fachada.buscarPorCodigo(codigo);
+        if(encontrados.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Producto no encontrado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return encontrados;
     }
 
     List<Producto> buscarProductoPorNombre(String nombre) {
         ProductoJpaController fachada = new ProductoJpaController();
-        return fachada.buscarPorNombre(nombre);
+        List<Producto> encontrados = fachada.buscarPorNombre(nombre);
+        if(encontrados.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Producto no encontrado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        }
+        return encontrados;
     }
 
     void bajaProducto(Producto productoAModificar) {

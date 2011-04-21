@@ -144,14 +144,14 @@ public class ProductoJpaController {
     public List<Producto> buscarPorCodigo(int codigo) {
         EntityManager em = getEntityManager();
         List<Producto> encontrados;
-        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.codigo = '"+codigo+"'").getResultList();
+        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.codigo = '"+codigo+"' and a.estado = true ").getResultList();
         return encontrados;
     }
 
     public List<Producto> buscarPorNombre(String nombre) {
         EntityManager em = getEntityManager();
         List<Producto> encontrados;
-        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.descripcion = '"+nombre+"'").getResultList();
+        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.descripcion = '"+nombre+"' and a.estado = true ").getResultList();
         return encontrados;
     }
 
