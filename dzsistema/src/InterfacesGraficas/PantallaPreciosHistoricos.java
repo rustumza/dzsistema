@@ -18,7 +18,6 @@ import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -182,7 +181,7 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTablePreciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePreciosMouseClicked
-        // TODO add your handling code here:
+        //add your handling code here:
         int seleccion = jTablePrecios.getSelectedRow();
         precioAModificar = producto.getPreciosHistoricos().get(seleccion);
 }//GEN-LAST:event_jTablePreciosMouseClicked
@@ -194,6 +193,10 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
             if(producto.getPreciosHistoricos().size()>1){
                 for(int i=0;i<jTablePrecios.getRowCount();i++){
                     if(jTablePrecios.isRowSelected(i)){
+                        //Me fijo si es el activo y si es cambio a activo al anterior
+                        if(producto.getPreciosHistoricos().get(i).isEstado()){
+                            producto.getPreciosHistoricos().get(i-1).setEstado(true);
+                        }
                         //Destruyo elemento
                         PrecioHistoricoJpaController fachada1 = new PrecioHistoricoJpaController();
                         try {
@@ -201,7 +204,7 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
                         } catch (NonexistentEntityException ex) {
                             Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        //Quito elemento de la lista
+                        //Quito elemento de la lista del producto y guardo
                         producto.getPreciosHistoricos().remove(i);
                         ProductoJpaController fachada = new ProductoJpaController();
                         try {
@@ -225,12 +228,12 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        //add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        // TODO add your handling code here:
+        //add your handling code here:
         PantallaAltaModificacionPrecio iu = new PantallaAltaModificacionPrecio(producto);
         iu.setGUI(this);
         iu.setVisible(true);

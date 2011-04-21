@@ -400,7 +400,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldNombre.getText().isEmpty() == false){
             if(Validar.controlApellido(jTextFieldNombre.getText())){
-                listaClientes = controlador.buscarAfiliadoPorNombre(jTextFieldCodigo.getText());
+                listaClientes = controlador.buscarAfiliadoPorNombre(jTextFieldNombre.getText());
                 CargarTabla();
                 limpiarFields();
             } else{

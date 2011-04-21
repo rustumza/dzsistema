@@ -155,7 +155,7 @@ public class ClienteJpaController {
         return encontrados;
     }
 
-    public List<Cliente> buscarPorNombre(String nombre) { //TO DO
+    public List<Cliente> buscarPorNombre(String nombre) {
         EntityManager em = getEntityManager();
         List<Cliente> encontrados;
         encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.nombre = '"+nombre+"'").getResultList();

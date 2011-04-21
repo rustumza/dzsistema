@@ -120,6 +120,10 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
         // TO DO
         if (jTextFieldPU.getText().isEmpty() == false){
             //Arreglar esta validacion
+            //Busca ultimo precio activo
+            for(int i=0; i<producto.getPreciosHistoricos().size();i++){
+                    producto.getPreciosHistoricos().get(i).setEstado(false);
+                }
             if(Validar.controlIVA(jTextFieldPU.getText()).contains("falso")){
                 JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }
