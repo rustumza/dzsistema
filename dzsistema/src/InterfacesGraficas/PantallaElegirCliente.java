@@ -30,6 +30,8 @@ public class PantallaElegirCliente extends javax.swing.JFrame {
         initComponents();
         this.controlador = controlador;
         this.setTitle("Selección de clinte");
+        this.setLocationRelativeTo(controlador.getPantalla());
+        this.setAlwaysOnTop(true);
         
     }
 
@@ -48,6 +50,7 @@ public class PantallaElegirCliente extends javax.swing.JFrame {
         aceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

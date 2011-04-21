@@ -13,6 +13,7 @@ import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
 import validar.fechaException;
+import validar.Validar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -116,6 +117,15 @@ public class ExpertoFacturar {
 
     }
 
+    public boolean sonFechasIguales(String fecha) throws fechaException{
+
+        Date fechaDate = Validar.validarFecha(fecha);
+        if(0 == fechaDate.compareTo(factura.getFecha()))
+            return true;
+        else
+            return false;
+    }
+
     public void guardarFactura() {
         FacturaJpaController jpa = new FacturaJpaController();
         //TO DO hacer todas las validaciones
@@ -132,6 +142,7 @@ public class ExpertoFacturar {
             return null;
         }
     }
+
 
 
 
