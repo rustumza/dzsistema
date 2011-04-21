@@ -12,6 +12,7 @@
 package InterfacesGraficas;
 
 import Negocio.Entidades.PrecioHistorico;
+import Negocio.Entidades.PrecioHistoricoJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
@@ -133,7 +134,10 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
                 Date hoy = new Date();
                 hoy = Validar.formatearFechaADate(hoy);
                 nuevo.setFechaDesdeQueEntroEnVigencia(hoy);
-                //Guardo
+                //Guardo Precio Historico
+                PrecioHistoricoJpaController fachadaPH = new PrecioHistoricoJpaController();
+                fachadaPH.create(nuevo);
+                //Asigno precio al producto y lo guardo
                 ProductoJpaController fachada = new ProductoJpaController();
                 producto.addPrecio(nuevo);
                 try {
@@ -146,7 +150,7 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Precio Guardado", "Información", JOptionPane.INFORMATION_MESSAGE);
                 //Actualizo Tabla
                 GUI.CargarTabla();
-                this.setVisible(false);
+                this.dispose();
             }
         }
         else{
