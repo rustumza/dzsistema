@@ -82,7 +82,7 @@ class ExpertoABMProducto {
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Código repetido/s", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Código repetido/s, Ingrese nuevamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

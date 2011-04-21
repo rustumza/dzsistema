@@ -243,9 +243,12 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         }
         // Valida IVA
         if (jTextFieldIVA.getText().isEmpty() == false){
-            if(!Validar.controlCodigo(jTextFieldIVA.getText())){
+            if(Validar.controlIVA(jTextFieldIVA.getText()).contains("falso")){
                 condicion=false;
                 JOptionPane.showMessageDialog(null, "El IVA ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                jTextFieldIVA.setText(Validar.controlIVA(jTextFieldIVA.getText()));
             }
         }
         else{
@@ -256,9 +259,16 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         PrecioHistorico ph = null;
         if (jTextFieldPU.isEnabled()){
             if (!jTextFieldPU.getText().isEmpty() && !jTextFieldFecha.getText().isEmpty()){
-                //TO DO
                 ph = new PrecioHistorico();
+                //Valida Precio Unitario
+                if(Validar.controlIVA(jTextFieldPU.getText()).contains("falso")){
+                condicion=false;
+                JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                jTextFieldPU.setText(Validar.controlIVA(jTextFieldPU.getText()));
                 ph.setPrecio(Float.parseFloat(jTextFieldPU.getText()));
+                }
                 ph.setEstado(true);
                 //Transformamos String a Date
                 ph.setFechaDesdeQueEntroEnVigencia(Validar.validarFechaConBarras(jTextFieldFecha.getText()));
