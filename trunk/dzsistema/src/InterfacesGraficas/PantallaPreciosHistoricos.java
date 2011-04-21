@@ -173,8 +173,8 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAgregar)
-                    .addComponent(jButtonBorrar)
-                    .addComponent(jButton3)))
+                    .addComponent(jButton3)
+                    .addComponent(jButtonBorrar)))
         );
 
         pack();
@@ -193,31 +193,33 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
         if (jTablePrecios.getSelectedRow() != -1) {
             //Verifica que quede al menos un precio
             if(producto.getPreciosHistoricos().size()>1){
-                for(int i=0;i<jTablePrecios.getRowCount();i++){
-                    if(jTablePrecios.isRowSelected(i)){
-                        //Me fijo si es el activo y si es cambio a activo al anterior
-                        if(producto.getPreciosHistoricos().get(i).isEstado()){
-                            producto.getPreciosHistoricos().get(i-1).setEstado(true);
-                        }
-                        //Destruyo elemento
-                        PrecioHistoricoJpaController fachada1 = new PrecioHistoricoJpaController();
-                        try {
-                            fachada1.destroy(producto.getPreciosHistoricos().get(i).getId());
-                        } catch (NonexistentEntityException ex) {
-                            Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        //Quito elemento de la lista del producto y guardo
-                        producto.getPreciosHistoricos().remove(i);
-                        ProductoJpaController fachada = new ProductoJpaController();
-                        try {
-                            fachada.edit(producto);
-                        } catch (NonexistentEntityException ex) {
-                            Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (Exception ex) {
-                            Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        JOptionPane.showMessageDialog(null, "Precio Eliminado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                //Me fijo si es el ultimo precio
+                if(jTablePrecios.getSelectedRow() == jTablePrecios.getRowCount()-1){
+                    //Me fijo si es el activo y si es cambio a activo al anterior
+                    if(precioAModificar.isEstado()){
+                        producto.getPreciosHistoricos().get(producto.getPreciosHistoricos().size()-1).setEstado(true);
                     }
+                    //Destruyo elemento
+                    PrecioHistoricoJpaController fachada1 = new PrecioHistoricoJpaController();
+                    try {
+                        fachada1.destroy(precioAModificar.getId());
+                    } catch (NonexistentEntityException ex) {
+                        Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //Quito elemento de la lista del producto y guardo
+                    producto.getPreciosHistoricos().remove(precioAModificar);
+                    ProductoJpaController fachada = new ProductoJpaController();
+                    try {
+                        fachada.edit(producto);
+                    } catch (NonexistentEntityException ex) {
+                        Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Precio Eliminado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Solo puede cambiarce el último precio", "Información", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
             else{
@@ -244,13 +246,13 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaPreciosHistoricos().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new PantallaPreciosHistoricos().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;

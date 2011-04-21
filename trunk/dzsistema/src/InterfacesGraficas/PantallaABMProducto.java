@@ -402,20 +402,24 @@ public class PantallaABMProducto extends javax.swing.JFrame {
 
     private void jButtonVerPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerPreciosActionPerformed
         // TODO add your handling code here:
+        if (jTableProductos.getSelectedRow() != -1) {
             PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(productoAModificar, controlador);
             iu.setVisible(true);
+        } else{
+        JOptionPane.showMessageDialog(null, "Seleccione un Producto para ver su histórico de precios", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonVerPreciosActionPerformed
 
     /**
     * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaABMProducto().setVisible(true);
-            }
-        });
-    }
+//    */
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new PantallaABMProducto().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

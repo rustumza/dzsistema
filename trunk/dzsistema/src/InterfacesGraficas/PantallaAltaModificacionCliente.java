@@ -13,8 +13,6 @@ package InterfacesGraficas;
 import Negocio.ABM.ControladorABMCliente;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import validar.Validar;
 
@@ -275,14 +273,14 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new PantallaAltaModificacionCliente().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//
+//            public void run() {
+//                new PantallaAltaModificacionCliente().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTextFieldNombre;

@@ -434,6 +434,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
 
     private void jButtonElimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElimiarActionPerformed
         if (jTableClientes.getSelectedRow() != -1) {
+            //Meter aca pantallita q pregunta
             for(int i=0;i<jTableClientes.getRowCount();i++){
                 if(jTableClientes.isRowSelected(i)){
                         clienteAModificar = listaClientes.get(i);
@@ -455,13 +456,13 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaABMCliente().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new PantallaABMCliente().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
