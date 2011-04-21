@@ -17,6 +17,8 @@ import Negocio.Entidades.PrecioHistoricoJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -51,7 +53,8 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
 
             datos = new Object[producto.getPreciosHistoricos().size()][2];
             for (int i = 0; i < producto.getPreciosHistoricos().size(); i++) {
-                datos[i][0] = producto.getPreciosHistoricos().get(i).getFechaDesdeQueEntroEnVigencia();
+                String strDate = new SimpleDateFormat("EEEE dd/MM/yyyy").format(producto.getPreciosHistoricos().get(i).getFechaDesdeQueEntroEnVigencia());
+                datos[i][0] =  strDate;
                 datos[i][1] = producto.getPreciosHistoricos().get(i).getPrecio();
             }
 

@@ -119,15 +119,21 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
         // TO DO
         if (jTextFieldPU.getText().isEmpty() == false){
             //Arreglar esta validacion
-            if(!Validar.controlCodigo(jTextFieldPU.getText())){
+            if(Validar.controlIVA(jTextFieldPU.getText()).contains("falso")){
                 JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
+                }
             else{
-                //Falta verificar que ponga los demas en false
+                //Pone a los demas precios historios con estado false
+                for(int i=0; i<producto.getPreciosHistoricos().size();i++){
+                    producto.getPreciosHistoricos().get(i).setEstado(false);
+                }
                 nuevo.setEstado(true);
-                nuevo.setPrecio(Float.parseFloat(jTextFieldPU.getText()));
+                nuevo.setPrecio(Float.parseFloat(Validar.controlIVA(jTextFieldPU.getText())));
+                //Creo fecha y la formateo
                 Date hoy = new Date();
+                hoy = Validar.formatearFechaADate(hoy);
                 nuevo.setFechaDesdeQueEntroEnVigencia(hoy);
+                //Guardo
                 ProductoJpaController fachada = new ProductoJpaController();
                 producto.addPrecio(nuevo);
                 try {
@@ -138,6 +144,7 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
                     Logger.getLogger(PantallaAltaModificacionPrecio.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 JOptionPane.showMessageDialog(null, "Precio Guardado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                //Actualizo Tabla
                 GUI.CargarTabla();
                 this.setVisible(false);
             }
