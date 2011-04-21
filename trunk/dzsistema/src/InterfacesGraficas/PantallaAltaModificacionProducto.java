@@ -13,11 +13,7 @@ package InterfacesGraficas;
 import Negocio.ABM.ControladorABMProducto;
 import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import validar.Validar;
 
@@ -269,8 +265,8 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                 jTextFieldPU.setText(Validar.controlIVA(jTextFieldPU.getText()));
                 ph.setPrecio(Float.parseFloat(jTextFieldPU.getText()));
                 }
+                //Seteamos datos
                 ph.setEstado(true);
-                //Transformamos String a Date
                 ph.setFechaDesdeQueEntroEnVigencia(Validar.validarFechaConBarras(jTextFieldFecha.getText()));
             }
             else{
