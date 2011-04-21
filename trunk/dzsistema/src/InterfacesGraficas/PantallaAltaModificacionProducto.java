@@ -32,6 +32,9 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.controlador = controlador;
+        jButtonPrecios.setEnabled(false);
+        jTextFieldFecha.setText("06/06/2010");
+        jTextFieldFecha.setEnabled(false);
     }
 
     public PantallaAltaModificacionProducto() {
@@ -49,6 +52,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         JTextFieldDescripcion.setText(productoAModificar.getDescripcion());
         jTextFieldIVA.setText(Float.toString(productoAModificar.getPorcentajeDeIva()));
         jTextFieldPU.setEnabled(false);
+        jTextFieldFecha.setText("");
         jTextFieldFecha.setEnabled(false);
         jButtonPrecios.setEnabled(true);
     }

@@ -29,12 +29,15 @@ class ExpertoABMCliente {
     void guardarAfiliado(int codigo, String nombre, String CUIT, String direccion, Long id, String iva) {
         ClienteJpaController fachadaCliente = new ClienteJpaController();
         Cliente cliente;
+        //Verifica si es nuevo o a modificar
+        boolean esnuevo = false;
         if (id == null) {
             cliente = new Cliente();
+            esnuevo = true;
         } else {
             cliente = fachadaCliente.findCliente(id);
         }
-        if(fachadaCliente.buscarPorCodigo(Integer.toString(codigo)).isEmpty() && fachadaCliente.buscarPorCUIT(CUIT).isEmpty()){
+        if((esnuevo && fachadaCliente.buscarPorCodigo(Integer.toString(codigo)).isEmpty() && fachadaCliente.buscarPorCUIT(CUIT).isEmpty()) || (!esnuevo)){
             cliente.setCodigo(codigo);
             cliente.setNombre(nombre);
             cliente.setCUIT(CUIT);
