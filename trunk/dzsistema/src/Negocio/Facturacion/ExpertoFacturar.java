@@ -145,13 +145,18 @@ public class ExpertoFacturar {
     }
 
     public void eliminarTodosLosDetallesDeFactura() {
-        factura.eliminarTodosLosDetalles();
+        eliminarTodosLosDetalles(factura);
 
     }
 
     public List<CondicionFrenteAlIva> buscarCondicionesDeIva(String nombre) {
         return null;
         //TO DO //buscar las condiciones frente al iva segun el tipo de factura (nombre)
+    }
+
+    private void eliminarTodosLosDetalles(Factura factura) {
+        //TO DO
+        // borra todo los detalles (del objeto en memoria, no de la base de datos)
     }
 
 
