@@ -315,7 +315,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCUIT.getText().isEmpty() == false){
             if(Validar.controlCUIT(jTextFieldCUIT.getText())){
-                listaClientes = controlador.buscarAfiliadoPorCUIT(jTextFieldCUIT.getText());
+                listaClientes = controlador.buscarAfiliadoPorCUIT(Validar.formatearCUIT(jTextFieldCUIT.getText()));
                 CargarTabla();
                 limpiarFields();
             } else{
@@ -351,7 +351,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCUIT.getText().isEmpty() == false){
             if(Validar.controlCUIT(jTextFieldCUIT.getText())){
-                listaClientes = controlador.buscarAfiliadoPorCUIT(jTextFieldCUIT.getText());
+                listaClientes = controlador.buscarAfiliadoPorCUIT(Validar.formatearCUIT(jTextFieldCUIT.getText()));
                 CargarTabla();
                 limpiarFields();
             } else{

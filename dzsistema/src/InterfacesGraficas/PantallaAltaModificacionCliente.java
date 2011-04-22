@@ -110,6 +110,12 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
 
         jLabel9.setText("CUIT:");
 
+        jTextFieldCUIT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCUITFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,17 +214,17 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
     private void jButtonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonguardarActionPerformed
         // variable logica para validar si se puede guardar o modificar
         boolean condicion = true;
-        // Valida CUIT
-        if (jTextFieldCUIT.getText().isEmpty() == false){
-            if(!Validar.controlCUIT(jTextFieldCUIT.getText())){
-                condicion=false;
-                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        else{
-            condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un CUIT válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
+        // Valida CUIT (no parece que sea necesario)
+//        if (jTextFieldCUIT.getText().isEmpty() == false){
+//            if(!Validar.controlCUIT(jTextFieldCUIT.getText())){
+//                condicion=false;
+//                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+//            }
+//        }
+//        else{
+//            condicion=false;
+//            JOptionPane.showMessageDialog(null, "Escriba un CUIT válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+//        }
         // Valida Nombre
         if (JTextFieldNombre.getText().isEmpty() == false){
             if(!Validar.controlApellido(JTextFieldNombre.getText())){
@@ -269,6 +275,17 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextFieldCUITFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCUITFocusLost
+        // TODO add your handling code here:
+        if(Validar.controlCUIT(jTextFieldCUIT.getText())){
+            jTextFieldCUIT.setText(Validar.formatearCUIT(jTextFieldCUIT.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            jTextFieldCUIT.requestFocus();
+        }
+    }//GEN-LAST:event_jTextFieldCUITFocusLost
 
     /**
      * @param args the command line arguments

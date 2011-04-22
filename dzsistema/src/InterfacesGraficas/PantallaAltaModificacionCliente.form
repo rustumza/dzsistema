@@ -171,6 +171,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldCUIT">
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCUITFocusLost"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
