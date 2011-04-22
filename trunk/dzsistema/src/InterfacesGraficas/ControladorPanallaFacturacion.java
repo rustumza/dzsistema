@@ -6,6 +6,7 @@
 package InterfacesGraficas;
 
 
+import InterfacesGraficas.exceptions.ClienteExcepcion;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
@@ -95,28 +96,40 @@ public class ControladorPanallaFacturacion {
     }
 
     public void buscarClientePorNombre(String text) {
-        List<Cliente> listaDeClientes = experto.buscarClientePorNombre(text);
-        if(listaDeClientes.isEmpty()){
-            //si no trae ningun cliente
-            JOptionPane.showMessageDialog(getPantalla(), "No se ha encontrado un cliente con ese nombre", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-        }else if(listaDeClientes.size() == 1){
-            //si tre un solo cliente
-            experto.buscarClientePorNumero(String.valueOf(listaDeClientes.get(0).getCodigo()));
-        }else{
-            //si trae muchos clientes
-            iniciarPantallaElegirCliente(listaDeClientes);
+        try{
+            List<Cliente> listaDeClientes = experto.buscarClientePorNombre(text);
+            if(listaDeClientes.isEmpty()){
+                //si no trae ningun cliente
+                JOptionPane.showMessageDialog(getPantalla(), "No se ha encontrado un cliente con ese nombre", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }else if(listaDeClientes.size() == 1){
+                //si tre un solo cliente
+                experto.buscarClientePorNumero(String.valueOf(listaDeClientes.get(0).getCodigo()));
+            }else{
+                //si trae muchos clientes
+                iniciarPantallaElegirCliente(listaDeClientes);
+            }
+        }catch(ClienteExcepcion e){
+
         }
         
     }
 
-    public void buscarClientePorCiut(String text) {
-        Factura fac = experto.buscarClientePorCuit(text);
-        cargarDatosClienteYFactura(fac);
+    public void buscarClientePorCiut(String cuit) {
+        try{
+            Factura fac = experto.buscarClientePorCuit(cuit);
+            cargarDatosClienteYFactura(fac);
+        }catch(ClienteExcepcion e){
+
+        }
     }
 
-    public void buscarClientePorNumero(String text) {
-        Factura fac = experto.buscarClientePorNumero(text);
-        cargarDatosClienteYFactura(fac);
+    public void buscarClientePorNumero(String numeroCliente) {
+        try{
+            Factura fac = experto.buscarClientePorNumero(numeroCliente);
+            cargarDatosClienteYFactura(fac);
+        }catch(ClienteExcepcion e){
+
+        }
     }
 
 

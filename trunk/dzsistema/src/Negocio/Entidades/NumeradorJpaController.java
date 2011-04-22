@@ -134,4 +134,13 @@ public class NumeradorJpaController {
         }
     }
 
+    public Numerador buscarNumerador() {
+        EntityManager em = getEntityManager();
+        List<Numerador> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Numerador a ").getResultList();
+        Numerador encont = encontrados.get(0);
+        return encont;
+    }
+
+
 }
