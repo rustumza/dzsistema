@@ -781,17 +781,17 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void numeroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroFacturaActionPerformed
-        // TODO add your handling code here:
+        // TO DO add your handling code here:
     }//GEN-LAST:event_numeroFacturaActionPerformed
 
     private void menuNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoClienteActionPerformed
-        // TODO add your handling code here:
+        // TO DO add your handling code here:
         PantallaAltaModificacionCliente iu = new PantallaAltaModificacionCliente();
         iu.setVisible(true);
     }//GEN-LAST:event_menuNuevoClienteActionPerformed
 
     private void menuModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteActionPerformed
-        // TODO add your handling code here:
+        // TO DO add your handling code here:
         PantallaABMCliente iu = new PantallaABMCliente();
         iu.setVisible(true);
     }//GEN-LAST:event_menuModificarClienteActionPerformed

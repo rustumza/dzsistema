@@ -6,6 +6,7 @@
 package Negocio.Facturacion;
 
 import InterfacesGraficas.DTODetallesDeFacturaParaGUI;
+import InterfacesGraficas.exceptions.ClienteExcepcion;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
 import Negocio.Entidades.CondicionFrenteAlIva;
@@ -26,11 +27,11 @@ public class ExpertoFacturar {
 
     private Factura factura;
     private boolean esFacuraNueva;
+    private List<DetalleFactura> listaDeDetallesAEliminar;
     
 
     public ExpertoFacturar(){
         factura = new Factura();
-        factura.setFecha(validar.Validar.formatearFechaADate(new Date()));
         esFacuraNueva = true;
 
     }
@@ -38,14 +39,14 @@ public class ExpertoFacturar {
         return factura;
     }
 
-    public List<Cliente> buscarClientePorNombre(String text) {
+    public List<Cliente> buscarClientePorNombre(String text) throws ClienteExcepcion{
         ClienteJpaController clienteControler = new ClienteJpaController();
         List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(text);
         return listaDeClientes;
         
     }
 
-    public Factura buscarClientePorCuit(String text) {
+    public Factura buscarClientePorCuit(String text)  throws ClienteExcepcion{
         ClienteJpaController clienteControler = new ClienteJpaController();
         List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(text);
         armarFacturaConCliente(listaDeClientes.get(0));
@@ -53,7 +54,7 @@ public class ExpertoFacturar {
         return factura;
     }
 
-    public Factura buscarClientePorNumero(String text) {
+    public Factura buscarClientePorNumero(String text)  throws ClienteExcepcion{
 
         ClienteJpaController clienteControler = new ClienteJpaController();
         List<Cliente> listaDeClientes = clienteControler.buscarPorCUIT(text);
@@ -71,15 +72,16 @@ public class ExpertoFacturar {
 
     private void cargarFechaYNumeroDeFactura() {
         factura.setFecha(validar.Validar.formatearFechaADate(new Date()));
-        factura.setNumero(buscarUltimoNumeroFactura(factura.getTipoFactura().getNombre()));
+        //factura.setNumero(buscarUltimoNumeroFactura(factura.getTipoFactura().getNombre()));
         factura.setEstado(true);
     }
 
-    private int buscarUltimoNumeroFactura(String nombre) {
+    /*private int buscarUltimoNumeroFactura(String nombre) {
+
         //buscar el ultimo numero utilizado para ese tipo de factura
         return 0;
-        //TO DO
-    }
+        //TO //DO
+    }*/
 
     public Producto buscarProducto(String nombre, String fecha) {
         //SETEAR ESA FECHA A LA FACTURA
