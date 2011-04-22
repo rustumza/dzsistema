@@ -7,6 +7,7 @@ package InterfacesGraficas;
 
 
 import Negocio.Entidades.Cliente;
+import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.Producto;
@@ -21,6 +22,7 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import java.lang.Math.*;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 
 
 /**
@@ -31,7 +33,6 @@ public class ControladorPanallaFacturacion {
 
     private PantallaFacturacion pantalla;
     private ExpertoFacturar experto;
-    private boolean deseaCambiarFecha;
     //private Factura factura;
 
     public ControladorPanallaFacturacion() {
@@ -119,7 +120,7 @@ public class ControladorPanallaFacturacion {
     }
 
 
-    public void cargarDatosClienteYFactura(Factura factura){
+     public void cargarDatosClienteYFactura(Factura factura){
 
         getPantalla().getNombre().setText(factura.getCliente().getNombre());
         getPantalla().getCuit().setText(factura.getCliente().getCUIT());
@@ -161,7 +162,7 @@ public class ControladorPanallaFacturacion {
         
 
         pantalla.getFecha().setText(Validar.formatearFechaAString(factura.getFecha()));
-        cargarCondicionDeVenta();
+        cargarCondicionDeVenta(factura);
 
     }
 
@@ -180,7 +181,7 @@ public class ControladorPanallaFacturacion {
     }
 
     public void cancelarCargaDetalle() {
-        limpiarIngresoDeDetalle();
+        limpiarSectorDeIngresoDeDetalle();
         getPantalla().getEliminar().setEnabled(false);
     }
 
@@ -309,7 +310,10 @@ public class ControladorPanallaFacturacion {
 
 
 
-    private void cargarCondicionDeVenta() {
+    private void cargarCondicionDeVenta(Factura factura) {
+        List<CondicionFrenteAlIva> listaDeCondiciones = experto.buscarCondicionesDeIva(factura.getTipoFactura().getNombre());
+        //pantalla.getCondicionDeVenta().setModel(new DefaultComboBoxModel(listaDeCondiciones));
+
         //cargar la condicion de venta basado en la factura obtenida al buscar cliente
         //TODO
     }
@@ -343,7 +347,7 @@ public class ControladorPanallaFacturacion {
     }
     
     
-    void limpiarIngresoDeDetalle() {
+    void limpiarSectorDeIngresoDeDetalle() {
         getPantalla().getCantidad().setText("");
         getPantalla().getCodigo().setText("");
         getPantalla().getDescripcion().setText("");
@@ -353,7 +357,7 @@ public class ControladorPanallaFacturacion {
 
     void eliminarDetalle(int filaSeleccionada) {
         Factura fac = experto.eliminarDetalleFactura(filaSeleccionada);
-        limpiarIngresoDeDetalle();
+        limpiarSectorDeIngresoDeDetalle();
         getPantalla().getEliminar().setEnabled(false);
         getPantalla().getTablaDetallesFactura().setModel(new ModeloTablaProducto(fac.getDetallesDeFactura()));
     }

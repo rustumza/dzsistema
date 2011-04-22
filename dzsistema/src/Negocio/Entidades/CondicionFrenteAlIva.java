@@ -70,9 +70,12 @@ public class CondicionFrenteAlIva implements Serializable {
         return true;
     }
 
+    //TO DO consultar al juampi por los toString estos
     @Override
     public String toString() {
         return "Negocio.Entidades.CondicionFrenteAlIva[id=" + id + "]";
     }
+
+
 
 }

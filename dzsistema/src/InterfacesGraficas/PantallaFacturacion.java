@@ -132,15 +132,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         numeroFacturaLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 15));
         numeroFacturaLabel.setText("N° 0001 - 00");
 
-        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
+        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
         numeroFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroFacturaActionPerformed(evt);
-            }
-        });
-        numeroFactura.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                validarYFormatearFecha(evt);
             }
         });
 
@@ -850,7 +845,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private void filaSeleccionada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filaSeleccionada
         int fila = tablaDetallesFactura.rowAtPoint(evt.getPoint());
         int columna = tablaDetallesFactura.columnAtPoint(evt.getPoint());
-        controlador.limpiarIngresoDeDetalle();
+        controlador.limpiarSectorDeIngresoDeDetalle();
         if ((fila > -1) && (columna > -1)){
             setFilaSeleccionada(fila);
             controlador.cargarFilaDetalleParaEditar(filaSeleccionada);
@@ -880,10 +875,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private void limpiaraPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiaraPantallaActionPerformed
         controlador.limpiarPantalla();
     }//GEN-LAST:event_limpiaraPantallaActionPerformed
-
-    private void validarYFormatearFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_validarYFormatearFecha
-        //validar y formatear fecha
-    }//GEN-LAST:event_validarYFormatearFecha
 
     private void verificarCambioDeFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarCambioDeFecha
         controlador.compararFechaFactura();
