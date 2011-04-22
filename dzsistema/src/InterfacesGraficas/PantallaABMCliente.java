@@ -434,11 +434,14 @@ public class PantallaABMCliente extends javax.swing.JFrame {
 
     private void jButtonElimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElimiarActionPerformed
         if (jTableClientes.getSelectedRow() != -1) {
-            //Meter aca pantallita q pregunta
-            for(int i=0;i<jTableClientes.getRowCount();i++){
-                if(jTableClientes.isRowSelected(i)){
-                        clienteAModificar = listaClientes.get(i);
-                        controlador.bajaCliente(clienteAModificar);
+            //Pregunta si esta seguro si dar de baja
+            int rta=JOptionPane.showConfirmDialog(this,"¿Está seguro que desea dar de baja el Cliente?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+            if(rta==JOptionPane.YES_OPTION){
+                for(int i=0;i<jTableClientes.getRowCount();i++){
+                    if(jTableClientes.isRowSelected(i)){
+                            clienteAModificar = listaClientes.get(i);
+                            controlador.bajaCliente(clienteAModificar);
+                    }
                 }
             }
         } else{

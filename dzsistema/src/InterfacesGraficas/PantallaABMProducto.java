@@ -382,10 +382,14 @@ public class PantallaABMProducto extends javax.swing.JFrame {
 
     private void jButtonElimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElimiarActionPerformed
         if (jTableProductos.getSelectedRow() != -1) {
-            for(int i=0;i<jTableProductos.getRowCount();i++){
-                if(jTableProductos.isRowSelected(i)){
-                        productoAModificar = listaProductos.get(i);
-                        controlador.bajaProducto(productoAModificar);
+            //Pregunta si esta seguro si dar de baja
+            int rta=JOptionPane.showConfirmDialog(this,"¿Está seguro que desea dar de baja el Producto?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+            if(rta==JOptionPane.YES_OPTION){
+                for(int i=0;i<jTableProductos.getRowCount();i++){
+                    if(jTableProductos.isRowSelected(i)){
+                            productoAModificar = listaProductos.get(i);
+                            controlador.bajaProducto(productoAModificar);
+                    }
                 }
             }
         } else{
