@@ -67,7 +67,7 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
             }
         });
 
-        jButtonCerrar.setText("Cerrar");
+        jButtonCerrar.setText("Cancelar");
         jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCerrarActionPerformed(evt);
