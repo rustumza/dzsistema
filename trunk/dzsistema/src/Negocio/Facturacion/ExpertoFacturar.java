@@ -8,14 +8,13 @@ package Negocio.Facturacion;
 import InterfacesGraficas.DTODetallesDeFacturaParaGUI;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
+import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
 import validar.fechaException;
 import validar.Validar;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -146,6 +145,11 @@ public class ExpertoFacturar {
     public void eliminarTodosLosDetallesDeFactura() {
         factura.eliminarTodosLosDetalles();
 
+    }
+
+    public List<CondicionFrenteAlIva> buscarCondicionesDeIva(String nombre) {
+        return null;
+        //TO DO //buscar las condiciones frente al iva segun el tipo de factura (nombre)
     }
 
 
