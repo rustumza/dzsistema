@@ -317,39 +317,29 @@ public class ControladorPanallaFacturacion {
 
     void compararFechaFactura() {
 
-        int rta;
-        try{
-            boolean comparacion = experto.sonFechasIguales(getPantalla().getFecha().getText());
-            if(!comparacion){
-                
-                rta=JOptionPane.showConfirmDialog(pantalla,"¿Está seguro que desea cambiar la fecha?", "¡Atención!", JOptionPane.YES_NO_OPTION);
-                
-                //PantallaConfirmarCambiarFecha pantallaConfirmarCambiarFecha = new PantallaConfirmarCambiarFecha(this);
-            }else{
-                rta=JOptionPane.YES_OPTION;
-            }
+        int rta=JOptionPane.showConfirmDialog(pantalla,"¿Está seguro que desea cambiar la fecha?", "¡Atención!", JOptionPane.YES_NO_OPTION);
 
-            if(rta==JOptionPane.YES_OPTION){
-                Factura factura = experto.cambiarFechaDeFactura(getPantalla().getFecha().getText());
-            }else{
-                pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getFactura().getFecha()));
+        if(rta==JOptionPane.YES_OPTION){
+            try{
+               experto.cambiarFechaDeFactura(getPantalla().getFecha().getText());
+               experto.eliminarTodosLosDetallesDeFactura();
+               actualizarTablaEImpuestosYTotales(experto.getFactura());
 
-            }
-            //panta
-        }catch(fechaException e){
-            JOptionPane.showMessageDialog( getPantalla(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            getPantalla().getFecha().requestFocus();
+            }catch(fechaException e){
+                JOptionPane.showMessageDialog( getPantalla(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                getPantalla().getFecha().requestFocus();
 
-        }catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(getPantalla(), "No ha ingresado ninguan fecha", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            getPantalla().getFecha().requestFocus();
+            }catch(NullPointerException ex){
+                JOptionPane.showMessageDialog(getPantalla(), "No ha ingresado ninguan fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                getPantalla().getFecha().requestFocus();
 
 
         }
-        //Mostrar pantalla para preguntar si quiere modificar la fecha
+        }else{
+            pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getFactura().getFecha()));
 
-        //si qquiere modificar, eliminar los detalles de la factura
-        //sino, dejar todo como esta y no cambiar la fecha
+        }
+         
     }
     
     
@@ -382,12 +372,12 @@ public class ControladorPanallaFacturacion {
 
         pantallaElefirCliente = new PantallaElegirCliente(this);
         this.listaClientes = listaDeClientes;
-        CargarTabla();
+        CargarTablaClientes();
         getPantalla().setVisible(true);
 
     }
 
-     public  void CargarTabla() {
+     public  void CargarTablaClientes() {
         try {
 
             Object[][] datos = null;
