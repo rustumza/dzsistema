@@ -110,9 +110,9 @@ public class ExpertoFacturar {
         return factura;
     }
 
-    public Factura cambiarFechaDeFactura(String text) throws fechaException{
+    public Factura cambiarFechaDeFactura(String fecha) throws fechaException{
 
-        factura.setFecha(validar.Validar.validarFecha(text));
+        factura.setFecha(validar.Validar.validarFecha(fecha));
         return factura;
 
     }
@@ -141,6 +141,11 @@ public class ExpertoFacturar {
         //TIRAR EXCEPCION   //TO DO
             return null;
         }
+    }
+
+    public void eliminarTodosLosDetallesDeFactura() {
+        factura.eliminarTodosLosDetalles();
+
     }
 
 
