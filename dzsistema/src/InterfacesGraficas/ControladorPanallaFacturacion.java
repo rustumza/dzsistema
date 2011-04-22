@@ -160,7 +160,7 @@ public class ControladorPanallaFacturacion {
         }
         
 
-        //pantalla.getFecha().setText(factura.getFecha().); buscar el metodo para mostrar la fecha // TO DO
+        pantalla.getFecha().setText(Validar.formatearFechaAString(factura.getFecha()));
         cargarCondicionDeVenta();
 
     }
