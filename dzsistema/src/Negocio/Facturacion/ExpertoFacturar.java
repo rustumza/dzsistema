@@ -33,34 +33,44 @@ public class ExpertoFacturar {
     public ExpertoFacturar(){
         factura = new Factura();
         esFacuraNueva = true;
+        factura.setEstado(true);
 
     }
     public Factura getFactura(){
         return factura;
     }
 
-    public List<Cliente> buscarClientePorNombre(String text) throws ClienteExcepcion{
+    public List<Cliente> buscarClientePorNombre(String nombre) throws ClienteExcepcion{
         ClienteJpaController clienteControler = new ClienteJpaController();
-        List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(text);
-        return listaDeClientes;
-        
+        List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(nombre);
+        if(listaDeClientes == null || listaDeClientes.isEmpty()){
+            throw new ClienteExcepcion(1);
+        }else{
+            return listaDeClientes;
+        }
     }
 
-    public Factura buscarClientePorCuit(String text)  throws ClienteExcepcion{
+    public Factura buscarClientePorCuit(String cuit)  throws ClienteExcepcion{
         ClienteJpaController clienteControler = new ClienteJpaController();
-        List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(text);
-        armarFacturaConCliente(listaDeClientes.get(0));
-        cargarFechaYNumeroDeFactura();
-        return factura;
+        List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(cuit);
+        if(listaDeClientes == null || listaDeClientes.isEmpty()){
+            throw new ClienteExcepcion(3);
+        }else{
+            armarFacturaConCliente(listaDeClientes.get(0));
+            return factura;
+        }
     }
 
-    public Factura buscarClientePorNumero(String text)  throws ClienteExcepcion{
+    public Factura buscarClientePorNumero(String numeroCliente)  throws ClienteExcepcion{
 
         ClienteJpaController clienteControler = new ClienteJpaController();
-        List<Cliente> listaDeClientes = clienteControler.buscarPorCUIT(text);
-        armarFacturaConCliente(listaDeClientes.get(0));
-        cargarFechaYNumeroDeFactura();
-        return factura;
+        List<Cliente> listaDeClientes = clienteControler.buscarPorCUIT(numeroCliente);
+        if(listaDeClientes == null || listaDeClientes.isEmpty()){
+            throw new ClienteExcepcion(2);
+        }else{
+            armarFacturaConCliente(listaDeClientes.get(0));
+            return factura;
+        }
     }
 
 
@@ -70,11 +80,11 @@ public class ExpertoFacturar {
     }
 
 
-    private void cargarFechaYNumeroDeFactura() {
+    /*private void cargarFechaYNumeroDeFactura() {
         factura.setFecha(validar.Validar.formatearFechaADate(new Date()));
         //factura.setNumero(buscarUltimoNumeroFactura(factura.getTipoFactura().getNombre()));
         factura.setEstado(true);
-    }
+    }*/
 
     /*private int buscarUltimoNumeroFactura(String nombre) {
 
@@ -111,10 +121,10 @@ public class ExpertoFacturar {
         return factura;
     }
 
-    public Factura cambiarFechaDeFactura(String fecha) throws fechaException{
+    public void cambiarFechaDeFactura(String fecha) throws fechaException{
 
         factura.setFecha(validar.Validar.validarFecha(fecha));
-        return factura;
+        
 
     }
 
