@@ -132,7 +132,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         numeroFacturaLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 15));
         numeroFacturaLabel.setText("N° 0001 - 00");
 
-        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
+        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
         numeroFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroFacturaActionPerformed(evt);
@@ -143,11 +143,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         fecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fechaMouseDobleClic(evt);
-            }
-        });
-        fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaActionPerformed(evt);
             }
         });
         fecha.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -268,6 +263,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         nombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 buscarClientePorNombre(evt);
+            }
+        });
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                apretarTabEnCampoFecha(evt);
             }
         });
 
@@ -796,10 +796,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         iu.setVisible(true);
     }//GEN-LAST:event_menuModificarClienteActionPerformed
 
-    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-     
-    }//GEN-LAST:event_fechaActionPerformed
-
     //busca el cliente cuando se pierde el foco del campo nombre
     private void buscarClientePorNombre(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarClientePorNombre
         getControlador().buscarClientePorNombre(getNombre().getText());
@@ -907,6 +903,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         PantallaABMProducto iu = new PantallaABMProducto();
         iu.setVisible(true);
     }//GEN-LAST:event_menuModificarProductoActionPerformed
+
+    private void apretarTabEnCampoFecha(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apretarTabEnCampoFecha
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apretarTabEnCampoFecha
 
 
 
