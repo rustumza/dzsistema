@@ -268,6 +268,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="fechaMouseDobleClic"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="focoEnFecha"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="verificarCambioDeFecha"/>
                   </Events>
                 </Component>
@@ -472,7 +473,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="domicilio">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="cuit">
@@ -488,7 +489,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="iva">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="cuitLabel">
@@ -752,6 +753,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="subtotal">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="DejaVu Sans" size="30" style="0"/>
                     </Property>
@@ -760,6 +762,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="impuestos">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="DejaVu Sans" size="30" style="0"/>
                     </Property>
@@ -768,6 +771,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="subtotal2">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="DejaVu Sans" size="30" style="0"/>
                     </Property>
@@ -776,6 +780,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="ivaInsc">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="DejaVu Sans" size="30" style="0"/>
                     </Property>
@@ -792,6 +797,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="total">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="DejaVu Sans" size="30" style="0"/>
                     </Property>
@@ -913,6 +919,7 @@
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="verificarSiHayClienteCodigo"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="buscarProducto"/>
                   </Events>
                 </Component>

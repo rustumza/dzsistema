@@ -139,13 +139,16 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             }
         });
 
-        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
+        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
         fecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fechaMouseDobleClic(evt);
             }
         });
         fecha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                focoEnFecha(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 verificarCambioDeFecha(evt);
             }
@@ -271,7 +274,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             }
         });
 
-        domicilio.setEnabled(false);
+        domicilio.setEditable(false);
 
         cuit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -286,7 +289,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         ivaLabel.setText("IVA");
 
-        iva.setEnabled(false);
+        iva.setEditable(false);
 
         cuitLabel.setText("CUIT");
 
@@ -454,22 +457,27 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         ivaIsncLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         ivaIsncLabel.setText("Iva Insc.");
 
-        subtotal.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
+        subtotal.setEditable(false);
+        subtotal.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
         subtotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        impuestos.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
+        impuestos.setEditable(false);
+        impuestos.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
         impuestos.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        subtotal2.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
+        subtotal2.setEditable(false);
+        subtotal2.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
         subtotal2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        ivaInsc.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
+        ivaInsc.setEditable(false);
+        ivaInsc.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
         ivaInsc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         totalLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         totalLabel.setText("TOTAL");
 
-        total.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
+        total.setEditable(false);
+        total.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
         total.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout panelImpuestosLayout = new javax.swing.GroupLayout(panelImpuestos);
@@ -541,6 +549,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         codigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         codigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                verificarSiHayClienteCodigo(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 buscarProducto(evt);
             }
@@ -907,6 +918,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private void apretarTabEnCampoFecha(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apretarTabEnCampoFecha
         // TODO add your handling code here:
     }//GEN-LAST:event_apretarTabEnCampoFecha
+
+    private void focoEnFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focoEnFecha
+        controlador.ponerFechaEnModoIngreso();
+    }//GEN-LAST:event_focoEnFecha
+
+    private void verificarSiHayClienteCodigo(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarSiHayClienteCodigo
+        controlador.verificarSiHayCliente();
+    }//GEN-LAST:event_verificarSiHayClienteCodigo
 
 
 

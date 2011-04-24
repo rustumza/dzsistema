@@ -98,7 +98,7 @@ public class ControladorPanallaFacturacion {
     }
 
     public void buscarClientePorNombre(String nombre) {
-        if(nombre.equals("\b")){
+        if(!(nombre.equals(""))){
             try{
                 List<Cliente> listaDeClientes = experto.buscarClientePorNombre(nombre);
                 if(listaDeClientes.size() == 1){
@@ -109,31 +109,31 @@ public class ControladorPanallaFacturacion {
                     iniciarPantallaElegirCliente(listaDeClientes);
                 }
             }catch(ClienteExcepcion e){
-                JOptionPane.showMessageDialog(getPantalla(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getNombre().requestFocus();
             }
         }
     }
 
     public void buscarClientePorCiut(String cuit) {
-        if(cuit.equals("\b")){
+        if(!(cuit.equals(""))){
             try{
                 Factura fac = experto.buscarClientePorCuit(cuit);
                 cargarDatosClienteYFactura(fac);
             }catch(ClienteExcepcion e){
-                JOptionPane.showMessageDialog(getPantalla(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getCuit().requestFocus();
             }
         }
     }
 
     public void buscarClientePorNumero(String numeroCliente) {
-        if(numeroCliente.equals("\b")){
+        if(!(numeroCliente.equals(""))){
             try{
                 Factura fac = experto.buscarClientePorNumero(numeroCliente);
                 cargarDatosClienteYFactura(fac);
             }catch(ClienteExcepcion e){
-                JOptionPane.showMessageDialog(getPantalla(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getCodigo().requestFocus();
             }
         }
@@ -219,22 +219,22 @@ public class ControladorPanallaFacturacion {
 
     public void buscarProductoYSuInformacion() {
         //buscar el producto con el codigo que me trae
-        if(getPantalla().getCodigo().getText().equals("\b")){
-            Producto producto = experto.buscarProducto(getPantalla().getCodigo().getText(),getPantalla().getFecha().getText());
-            getPantalla().getFecha().setEnabled(false);
-            getPantalla().getCodigo().setText(String.valueOf(producto.getCodigo()));
-            getPantalla().getDescripcion().setText(producto.getDescripcion());
-            Factura factura = experto.getFactura();
-            if(factura.getTipoFactura().getNombre().equals("A") | factura.getTipoFactura().getNombre().equals("a")){
-                getPantalla().getPrecioUnitario().setText(String.valueOf(producto.getPreciosHistoricos().get(0).getPrecio()));
-            }else{
-                float importe = producto.getPreciosHistoricos().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPreciosHistoricos().get(0).getPrecio();
-                getPantalla().getPrecioUnitario().setText(String.valueOf(importe));
+            if(!(getPantalla().getCodigo().getText().equals(""))){
+                Producto producto = experto.buscarProducto(getPantalla().getCodigo().getText(),getPantalla().getFecha().getText());
+                getPantalla().getFecha().setEnabled(false);
+                getPantalla().getCodigo().setText(String.valueOf(producto.getCodigo()));
+                getPantalla().getDescripcion().setText(producto.getDescripcion());
+                Factura factura = experto.getFactura();
+                if(factura.getTipoFactura().getNombre().equals("A") | factura.getTipoFactura().getNombre().equals("a")){
+                    getPantalla().getPrecioUnitario().setText(String.valueOf(producto.getPreciosHistoricos().get(0).getPrecio()));
+                }else{
+                    float importe = producto.getPreciosHistoricos().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPreciosHistoricos().get(0).getPrecio();
+                    getPantalla().getPrecioUnitario().setText(String.valueOf(importe));
 
+                }
+                //pantalla.getImporte().setText(producto.getPrecioHistorico()); // acordarse de ver si es factura a o b para colocar el importe con o sin iva //TO DO
+                calcularImporteYSetearImporte();
             }
-            //pantalla.getImporte().setText(producto.getPrecioHistorico()); // acordarse de ver si es factura a o b para colocar el importe con o sin iva //TO DO
-            calcularImporteYSetearImporte();
-        }
 
     }
 
@@ -312,7 +312,7 @@ public class ControladorPanallaFacturacion {
 
     public void limpiarPantalla() {
             
-        int rta=JOptionPane.showConfirmDialog(pantalla,"¿Está seguro que desea cancelar todo y limpiar la pantalla?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+        int rta=JOptionPane.showConfirmDialog(pantalla.getPanelInfoCliene(),"¿Está seguro que desea cancelar todo y limpiar la pantalla?", "¡Atención!", JOptionPane.YES_NO_OPTION);
         if(rta==JOptionPane.YES_OPTION){
             //TO DO
             experto = new ExpertoFacturar();
@@ -348,37 +348,37 @@ public class ControladorPanallaFacturacion {
 
     void compararFechaFactura() {
 
-        int rta=JOptionPane.showConfirmDialog(pantalla,"¿Está seguro que desea cambiar la fecha?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+        if(!(pantalla.getFecha().getText().equals(""))){
+            int rta;
+            //reviso si ya tiene fecha la factura, si tiene, pregunto si desea modificar, si no tiene, no pregunto nada
+            if(experto.getFactura().getFecha()!=null){
+                rta=JOptionPane.showConfirmDialog(pantalla.getPanelInfoCliene(),"¿Está seguro que desea cambiar la fecha?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+            }else{
+                rta = JOptionPane.YES_OPTION;
+            }
+            //basado en la respuesta, es lo que hago
+            if(rta==JOptionPane.YES_OPTION){
+                
+                try{
+                   experto.cambiarFechaDeFactura(pantalla.getFecha().getText());
+                   experto.eliminarTodosLosDetallesDeFactura();
+                   actualizarTablaEImpuestosYTotales(experto.getFactura());
+                   pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getFactura().getFecha()));
 
-        if(rta==JOptionPane.YES_OPTION){
-            System.out.println("--------------------------------------------------");
-            System.out.println(rta);
-            System.out.println(JOptionPane.YES_OPTION);
-            System.out.println("--------------------------------------------------");
-            try{
-               experto.cambiarFechaDeFactura(pantalla.getFecha().getText());
-               System.out.println(pantalla.getFecha().getText());
-               System.out.println(experto.getFactura().getFecha());
-               experto.eliminarTodosLosDetallesDeFactura();
-               actualizarTablaEImpuestosYTotales(experto.getFactura());
-               System.out.println("--------------------------------------------------");
-               System.out.println(experto.getFactura().getFecha());
-               System.out.println("--------------------------------------------------");
-               pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getFactura().getFecha()));
+                }catch(fechaException e){
+                    JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    getPantalla().getFecha().requestFocus();
 
-            }catch(fechaException e){
-                JOptionPane.showMessageDialog( getPantalla(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
-                getPantalla().getFecha().requestFocus();
+                }catch(NullPointerException ex){
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado ninguan fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    getPantalla().getFecha().requestFocus();
 
-            }catch(NullPointerException ex){
-                JOptionPane.showMessageDialog(getPantalla(), "No ha ingresado ninguan fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
-                getPantalla().getFecha().requestFocus();
-
-
+                }
         }
         }else{
+            System.out.println(experto.getFactura().getFecha());
             if(experto.getFactura().getFecha()==null){
-                pantalla.getFecha().setText("\b");
+                pantalla.getFecha().setText("");
             }else{
                 pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getFactura().getFecha()));
             }
@@ -402,7 +402,33 @@ public class ControladorPanallaFacturacion {
         getPantalla().getTablaDetallesFactura().setModel(new ModeloTablaProducto(fac.getDetallesDeFactura()));
     }
 
+    void ponerFechaEnModoIngreso() {
 
+
+        System.out.println(pantalla.getFecha().getText());
+        if(!(pantalla.getFecha().getText().equals(""))){
+            pantalla.getFecha().setText(Validar.formatearFechaConBarrasAFechaConFormatoDeIngreso(pantalla.getFecha().getText()));
+
+        }
+    }
+
+    void verificarSiHayCliente() {
+
+        if(experto.getFactura().getFecha() == null){
+            getPantalla().getFecha().requestFocus();
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Antes de seleccionar un producto debe ingresar la fecha de facturación", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if(experto.getFactura().getCliente() == null){
+            getPantalla().getNombre().requestFocus();
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Antes de seleccionar un producto debe seleccionar un cliente", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+     /**
+     * @return the pantalla
+     */
+    public PantallaFacturacion getPantalla() {
+        return pantalla;
+    }
 
 
 
@@ -467,14 +493,7 @@ public class ControladorPanallaFacturacion {
 
      }
 
-    /**
-     * @return the pantalla
-     */
-    public PantallaFacturacion getPantalla() {
-        return pantalla;
-    }
-
-
+   
 //ACA TERMINA EL CONTROL DE LA PANTALLA PARA ELEGIR CLIENTE
 
 
