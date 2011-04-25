@@ -13,7 +13,10 @@ import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
+import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
+import Negocio.Entidades.ProductoJpaController;
+import java.util.ArrayList;
 import validar.fechaException;
 import validar.Validar;
 import java.util.Date;
@@ -52,7 +55,7 @@ public class ExpertoFacturar {
 
     public Factura buscarClientePorCuit(String cuit)  throws ClienteExcepcion{
         ClienteJpaController clienteControler = new ClienteJpaController();
-        List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(cuit);
+        List<Cliente> listaDeClientes = clienteControler.buscarPorCUIT(cuit);
         if(listaDeClientes == null || listaDeClientes.isEmpty()){
             throw new ClienteExcepcion(3);
         }else{
@@ -64,7 +67,7 @@ public class ExpertoFacturar {
     public Factura buscarClientePorNumero(String numeroCliente)  throws ClienteExcepcion{
 
         ClienteJpaController clienteControler = new ClienteJpaController();
-        List<Cliente> listaDeClientes = clienteControler.buscarPorCUIT(numeroCliente);
+        List<Cliente> listaDeClientes = clienteControler.buscarPorCodigo(numeroCliente);
         if(listaDeClientes == null || listaDeClientes.isEmpty()){
             throw new ClienteExcepcion(2);
         }else{
@@ -93,17 +96,44 @@ public class ExpertoFacturar {
         //TO //DO
     }*/
 
-    public Producto buscarProducto(String nombre, String fecha) {
-        //SETEAR ESA FECHA A LA FACTURA
-        //busco producto con la fecha de la factura
-        return null;
+    public Producto buscarProductoConFechaDeFactura(String codigo) {
+        //Busca el producto pero solo trae el precio historico correspondiente a la fecha de la factura
+        ProductoJpaController productoJpa = new ProductoJpaController();
+        int codigoInt = Integer.parseInt(codigo);
+        List<Producto> listaDeProductos = productoJpa.buscarPorCodigo(codigoInt);
+        Producto producto = listaDeProductos.get(0);
+        List<PrecioHistorico> preciosHistoricos = producto.getPreciosHistoricos();
+        Date fechaFactura = factura.getFecha();
+        int anterior;
+        PrecioHistorico ph = null;
+        for (PrecioHistorico precioHistorico : preciosHistoricos) {
+            /*negativo si FechaDesdeQueEntroEnVigencia es mas vieja
+             * 0 si FechaDesdeQueEntroEnVigencia igual
+             * positiva si FechaDesdeQueEntroEnVigencia es mas nueva
+             */
+
+            int comparacion = precioHistorico.getFechaDesdeQueEntroEnVigencia().compareTo(fechaFactura);
+            if(comparacion<=0){
+                ph = precioHistorico;
+            }else{
+                break;
+            }
+        }
+        List<PrecioHistorico> listaConElPrecioHistorico = new ArrayList<PrecioHistorico>();
+        listaConElPrecioHistorico.add(ph);
+        producto.setPreciosHistoricos(listaConElPrecioHistorico);
+        return producto;
+        
         //TO DO
     }
 
-    private Producto buscarProducto(String nombre){
-        //esto es para buscar un producto que no importe la fecha del precio historico
-        //TO DO
-        return null;
+    private Producto buscarProducto(String codigo){
+        //esto es para buscar un producto con todos los precios historicos
+        ProductoJpaController productoJpa = new ProductoJpaController();
+        int codigoInt = Integer.parseInt(codigo);
+        List<Producto> listaDeProductos = productoJpa.buscarPorCodigo(codigoInt);
+        Producto producto = listaDeProductos.get(0);
+        return producto;
     }
 
     public Factura AgregarDetalleALaFactura(DTODetallesDeFacturaParaGUI dto){
