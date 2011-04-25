@@ -80,13 +80,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         tablaDetallesFactura = new javax.swing.JTable();
         panelImpuestos = new javax.swing.JPanel();
         subtotalLabel = new javax.swing.JLabel();
-        impuestosLabel = new javax.swing.JLabel();
-        subtotal2Label = new javax.swing.JLabel();
-        ivaIsncLabel = new javax.swing.JLabel();
+        iva21Label = new javax.swing.JLabel();
+        iva105Label = new javax.swing.JLabel();
         subtotal = new javax.swing.JTextField();
-        impuestos = new javax.swing.JTextField();
-        subtotal2 = new javax.swing.JTextField();
-        ivaInsc = new javax.swing.JTextField();
+        iva21 = new javax.swing.JTextField();
+        iva105 = new javax.swing.JTextField();
         totalLabel = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
         panelIngresoDetalleFactura = new javax.swing.JPanel();
@@ -139,7 +137,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             }
         });
 
-        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
+        fecha.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
         fecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fechaMouseDobleClic(evt);
@@ -448,36 +446,29 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         subtotalLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         subtotalLabel.setText("Subtotal");
 
-        impuestosLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        impuestosLabel.setText("Impuestos");
+        iva21Label.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        iva21Label.setText("IVA 21%");
 
-        subtotal2Label.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        subtotal2Label.setText("Subtotal");
-
-        ivaIsncLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
-        ivaIsncLabel.setText("Iva Insc.");
+        iva105Label.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
+        iva105Label.setText("IVA 10,5%");
 
         subtotal.setEditable(false);
-        subtotal.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
+        subtotal.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
         subtotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        impuestos.setEditable(false);
-        impuestos.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
-        impuestos.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        iva21.setEditable(false);
+        iva21.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
+        iva21.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        subtotal2.setEditable(false);
-        subtotal2.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
-        subtotal2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-
-        ivaInsc.setEditable(false);
-        ivaInsc.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
-        ivaInsc.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        iva105.setEditable(false);
+        iva105.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
+        iva105.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         totalLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 18));
         totalLabel.setText("TOTAL");
 
         total.setEditable(false);
-        total.setFont(new java.awt.Font("DejaVu Sans", 0, 30)); // NOI18N
+        total.setFont(new java.awt.Font("DejaVu Sans", 0, 30));
         total.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout panelImpuestosLayout = new javax.swing.GroupLayout(panelImpuestos);
@@ -490,20 +481,16 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelImpuestosLayout.createSequentialGroup()
                         .addComponent(subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(impuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(iva21, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelImpuestosLayout.createSequentialGroup()
                         .addComponent(subtotalLabel)
                         .addGap(107, 107, 107)
-                        .addComponent(impuestosLabel)))
+                        .addComponent(iva21Label)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subtotal2Label)
-                    .addComponent(subtotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ivaIsncLabel)
-                    .addComponent(ivaInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                    .addComponent(iva105Label)
+                    .addComponent(iva105, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
                 .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelImpuestosLayout.createSequentialGroup()
                         .addComponent(totalLabel)
@@ -524,15 +511,13 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelImpuestosLayout.createSequentialGroup()
                         .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(subtotalLabel)
-                            .addComponent(impuestosLabel)
-                            .addComponent(subtotal2Label)
-                            .addComponent(ivaIsncLabel))
+                            .addComponent(iva21Label)
+                            .addComponent(iva105Label))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelImpuestosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(impuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(subtotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ivaInsc, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(iva21, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iva105, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(26, 26, 26))
         );
 
@@ -841,65 +826,65 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_cuitHabilitarCampo
 
     private void cancelarDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarDetalleActionPerformed
-        controlador.cancelarCargaDetalle();
+        getControlador().cancelarCargaDetalle();
     }//GEN-LAST:event_cancelarDetalleActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         //agregar la logica para eliminar detalle
-        controlador.eliminarDetalle(filaSeleccionada);
+        getControlador().eliminarDetalle(getFilaSeleccionada());
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void filaSeleccionada(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filaSeleccionada
-        int fila = tablaDetallesFactura.rowAtPoint(evt.getPoint());
-        int columna = tablaDetallesFactura.columnAtPoint(evt.getPoint());
-        controlador.limpiarSectorDeIngresoDeDetalle();
+        int fila = getTablaDetallesFactura().rowAtPoint(evt.getPoint());
+        int columna = getTablaDetallesFactura().columnAtPoint(evt.getPoint());
+        getControlador().limpiarSectorDeIngresoDeDetalle();
         if ((fila > -1) && (columna > -1)){
             setFilaSeleccionada(fila);
-            controlador.cargarFilaDetalleParaEditar(filaSeleccionada);
-            eliminar.setEnabled(true);
+            getControlador().cargarFilaDetalleParaEditar(getFilaSeleccionada());
+            getEliminar().setEnabled(true);
             
         }
 
     }//GEN-LAST:event_filaSeleccionada
 
     private void buscarProducto(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarProducto
-        controlador.buscarProductoYSuInformacion();
+        getControlador().buscarProductoYSuInformacion();
     }//GEN-LAST:event_buscarProducto
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-        controlador.agregarDetalleFactura();
+        getControlador().agregarDetalleFactura();
     }//GEN-LAST:event_agregarActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        controlador.guardarFactura();
+        getControlador().guardarFactura();
     }//GEN-LAST:event_guardarActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        controlador.imprimir();
+        getControlador().imprimir();
 
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void limpiaraPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiaraPantallaActionPerformed
-        controlador.limpiarPantalla();
+        getControlador().limpiarPantalla();
     }//GEN-LAST:event_limpiaraPantallaActionPerformed
 
     private void verificarCambioDeFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarCambioDeFecha
-        controlador.compararFechaFactura();
+        getControlador().compararFechaFactura();
     }//GEN-LAST:event_verificarCambioDeFecha
 
     private void cantidadCalcularImporte(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadCalcularImporte
         //es metodo es para recalcular el importe por si el usuario modifica la cantidad de producto
-        controlador.calcularImporteYSetearImporte();
+        getControlador().calcularImporteYSetearImporte();
     }//GEN-LAST:event_cantidadCalcularImporte
 
     private void precioUnitarioCalcularImporte(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_precioUnitarioCalcularImporte
         //es metodo es para recalcular el importe por si el usuario modifica el precio unitario del producto
-        controlador.calcularImporteYSetearImporte();
+        getControlador().calcularImporteYSetearImporte();
     }//GEN-LAST:event_precioUnitarioCalcularImporte
 
     private void fechaMouseDobleClic(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaMouseDobleClic
        if(evt.getClickCount()==2){
-            fecha.setEditable(true);
+            getFecha().setEditable(true);
        }
     }//GEN-LAST:event_fechaMouseDobleClic
 
@@ -920,11 +905,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_apretarTabEnCampoFecha
 
     private void focoEnFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_focoEnFecha
-        controlador.ponerFechaEnModoIngreso();
+        getControlador().ponerFechaEnModoIngreso();
     }//GEN-LAST:event_focoEnFecha
 
     private void verificarSiHayClienteCodigo(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarSiHayClienteCodigo
-        controlador.verificarSiHayCliente();
+        getControlador().verificarSiHayCliente();
     }//GEN-LAST:event_verificarSiHayClienteCodigo
 
 
@@ -963,11 +948,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JTextField importe;
     private javax.swing.JLabel importeLabel;
     private javax.swing.JButton imprimir;
-    private javax.swing.JTextField impuestos;
-    private javax.swing.JLabel impuestosLabel;
     private javax.swing.JTextField iva;
-    private javax.swing.JTextField ivaInsc;
-    private javax.swing.JLabel ivaIsncLabel;
+    private javax.swing.JTextField iva105;
+    private javax.swing.JLabel iva105Label;
+    private javax.swing.JTextField iva21;
+    private javax.swing.JLabel iva21Label;
     private javax.swing.JLabel ivaLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton limpiarPantalla;
@@ -1002,8 +987,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JLabel remitonroLabel;
     private javax.swing.JMenu reportes;
     private javax.swing.JTextField subtotal;
-    private javax.swing.JTextField subtotal2;
-    private javax.swing.JLabel subtotal2Label;
     private javax.swing.JLabel subtotalLabel;
     private javax.swing.JTable tablaDetallesFactura;
     private javax.swing.JLabel tipoFactura;
@@ -1023,6 +1006,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
      */
     public void setControlador(ControladorPanallaFacturacion controlador) {
         this.controlador = controlador;
+    }
+
+    /**
+     * @return the filaSeleccionada
+     */
+    public int getFilaSeleccionada() {
+        return filaSeleccionada;
+    }
+
+    /**
+     * @param filaSeleccionada the filaSeleccionada to set
+     */
+    public void setFilaSeleccionada(int filaSeleccionada) {
+        this.filaSeleccionada = filaSeleccionada;
     }
 
     /**
@@ -1052,8 +1049,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     public void setCancelarDetalle(javax.swing.JButton cancelarDetalle) {
         this.cancelarDetalle = cancelarDetalle;
     }
-
-    
 
     /**
      * @return the cantidad
@@ -1336,34 +1331,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }
 
     /**
-     * @return the impuestos
-     */
-    public javax.swing.JTextField getImpuestos() {
-        return impuestos;
-    }
-
-    /**
-     * @param impuestos the impuestos to set
-     */
-    public void setImpuestos(javax.swing.JTextField impuestos) {
-        this.impuestos = impuestos;
-    }
-
-    /**
-     * @return the impuestosLabel
-     */
-    public javax.swing.JLabel getImpuestosLabel() {
-        return impuestosLabel;
-    }
-
-    /**
-     * @param impuestosLabel the impuestosLabel to set
-     */
-    public void setImpuestosLabel(javax.swing.JLabel impuestosLabel) {
-        this.impuestosLabel = impuestosLabel;
-    }
-
-    /**
      * @return the iva
      */
     public javax.swing.JTextField getIva() {
@@ -1378,31 +1345,59 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }
 
     /**
-     * @return the ivaInsc
+     * @return the iva105
      */
-    public javax.swing.JTextField getIvaInsc() {
-        return ivaInsc;
+    public javax.swing.JTextField getIva105() {
+        return iva105;
     }
 
     /**
-     * @param ivaInsc the ivaInsc to set
+     * @param iva105 the iva105 to set
      */
-    public void setIvaInsc(javax.swing.JTextField ivaInsc) {
-        this.ivaInsc = ivaInsc;
+    public void setIva105(javax.swing.JTextField iva105) {
+        this.iva105 = iva105;
     }
 
     /**
-     * @return the ivaIsncLabel
+     * @return the iva105Label
      */
-    public javax.swing.JLabel getIvaIsncLabel() {
-        return ivaIsncLabel;
+    public javax.swing.JLabel getIva105Label() {
+        return iva105Label;
     }
 
     /**
-     * @param ivaIsncLabel the ivaIsncLabel to set
+     * @param iva105Label the iva105Label to set
      */
-    public void setIvaIsncLabel(javax.swing.JLabel ivaIsncLabel) {
-        this.ivaIsncLabel = ivaIsncLabel;
+    public void setIva105Label(javax.swing.JLabel iva105Label) {
+        this.iva105Label = iva105Label;
+    }
+
+    /**
+     * @return the iva21
+     */
+    public javax.swing.JTextField getIva21() {
+        return iva21;
+    }
+
+    /**
+     * @param iva21 the iva21 to set
+     */
+    public void setIva21(javax.swing.JTextField iva21) {
+        this.iva21 = iva21;
+    }
+
+    /**
+     * @return the iva21Label
+     */
+    public javax.swing.JLabel getIva21Label() {
+        return iva21Label;
+    }
+
+    /**
+     * @param iva21Label the iva21Label to set
+     */
+    public void setIva21Label(javax.swing.JLabel iva21Label) {
+        this.iva21Label = iva21Label;
     }
 
     /**
@@ -1431,6 +1426,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
      */
     public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
         this.jScrollPane1 = jScrollPane1;
+    }
+
+    /**
+     * @return the limpiarPantalla
+     */
+    public javax.swing.JButton getLimpiarPantalla() {
+        return limpiarPantalla;
+    }
+
+    /**
+     * @param limpiarPantalla the limpiarPantalla to set
+     */
+    public void setLimpiarPantalla(javax.swing.JButton limpiarPantalla) {
+        this.limpiarPantalla = limpiarPantalla;
     }
 
     /**
@@ -1616,20 +1625,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }
 
     /**
-     * @return the pUnitario
-     */
-    public javax.swing.JTextField getPrecioUnitario() {
-        return precioUnitario;
-    }
-
-    /**
-     * @param pUnitario the pUnitario to set
-     */
-    public void setPrecioUnitario(javax.swing.JTextField precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
-
-    /**
      * @return the palabraCodigo
      */
     public javax.swing.JLabel getPalabraCodigo() {
@@ -1798,6 +1793,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }
 
     /**
+     * @return the precioUnitario
+     */
+    public javax.swing.JTextField getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    /**
+     * @param precioUnitario the precioUnitario to set
+     */
+    public void setPrecioUnitario(javax.swing.JTextField precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+
+    /**
      * @return the precioUnitarioLabel
      */
     public javax.swing.JLabel getPrecioUnitarioLabel() {
@@ -1865,34 +1874,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
      */
     public void setSubtotal(javax.swing.JTextField subtotal) {
         this.subtotal = subtotal;
-    }
-
-    /**
-     * @return the subtotal2
-     */
-    public javax.swing.JTextField getSubtotal2() {
-        return subtotal2;
-    }
-
-    /**
-     * @param subtotal2 the subtotal2 to set
-     */
-    public void setSubtotal2(javax.swing.JTextField subtotal2) {
-        this.subtotal2 = subtotal2;
-    }
-
-    /**
-     * @return the subtotal2Label
-     */
-    public javax.swing.JLabel getSubtotal2Label() {
-        return subtotal2Label;
-    }
-
-    /**
-     * @param subtotal2Label the subtotal2Label to set
-     */
-    public void setSubtotal2Label(javax.swing.JLabel subtotal2Label) {
-        this.subtotal2Label = subtotal2Label;
     }
 
     /**
@@ -1965,34 +1946,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         this.totalLabel = totalLabel;
     }
 
-    /**
-     * @return the limpiarPantalla
-     */
-    public javax.swing.JButton getLimpiarPantalla() {
-        return limpiarPantalla;
-    }
-
-    /**
-     * @param limpiarPantalla the limpiarPantalla to set
-     */
-    public void setLimpiarPantalla(javax.swing.JButton limpiarPantalla) {
-        this.limpiarPantalla = limpiarPantalla;
-    }
-
-    /**
-     * @return the filaSeleccionada
-     */
-    public int getFilaSeleccionada() {
-        return filaSeleccionada;
-    }
-
-    /**
-     * @param filaSeleccionada the filaSeleccionada to set
-     */
-    public void setFilaSeleccionada(int filaSeleccionada) {
-        this.filaSeleccionada = filaSeleccionada;
-    }
-
+    
 
    
 }
