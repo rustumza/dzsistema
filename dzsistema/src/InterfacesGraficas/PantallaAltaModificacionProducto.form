@@ -91,8 +91,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jComboBoxIVA" max="32767" attributes="1"/>
                               <Component id="jTextFieldFecha" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jTextFieldIVA" alignment="0" max="32767" attributes="1"/>
                               <Component id="JTextFieldDescripcion" alignment="0" max="32767" attributes="1"/>
                               <Component id="jTextFieldCodigo" alignment="0" pref="113" max="32767" attributes="1"/>
                           </Group>
@@ -117,7 +117,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldIVA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBoxIVA" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -140,8 +140,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="IVA:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldIVA">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldtasaanual_r">
         </Component>
@@ -175,6 +173,16 @@
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldFechaFocusLost"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBoxIVA">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="10.5"/>
+                <StringItem index="1" value="21"/>
+              </StringArray>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -50,7 +50,8 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         producto = productoAModificar;
         jTextFieldCodigo.setText(Integer.toString(productoAModificar.getCodigo()));
         JTextFieldDescripcion.setText(productoAModificar.getDescripcion());
-        jTextFieldIVA.setText(Float.toString(productoAModificar.getPorcentajeDeIva()));
+        //Sirve sin combo box, es decir cuando se ingresa iva en un jtextfield
+//        jTextFieldIVA.setText(Float.toString(productoAModificar.getPorcentajeDeIva()));
         jTextFieldPU.setEnabled(false);
         jTextFieldFecha.setText("");
         jTextFieldFecha.setEnabled(false);
@@ -72,7 +73,6 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldIVA = new javax.swing.JTextField();
         jTextFieldtasaanual_r = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         JTextFieldDescripcion = new javax.swing.JTextField();
@@ -82,6 +82,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         jTextFieldPU = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldFecha = new javax.swing.JTextField();
+        jComboBoxIVA = new javax.swing.JComboBox();
         jButtonguardar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButtonPrecios = new javax.swing.JButton();
@@ -108,6 +109,8 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxIVA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10.5", "21" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -131,8 +134,8 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxIVA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldFecha)
-                            .addComponent(jTextFieldIVA)
                             .addComponent(JTextFieldDescripcion)
                             .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -150,7 +153,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -241,20 +244,20 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
             condicion=false;
             JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
-        // Valida IVA
-        if (jTextFieldIVA.getText().isEmpty() == false){
-            if(Validar.controlIVA(jTextFieldIVA.getText()).contains("falso")){
-                condicion=false;
-                JOptionPane.showMessageDialog(null, "El IVA ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else{
-                jTextFieldIVA.setText(Validar.controlIVA(jTextFieldIVA.getText()));
-            }
-        }
-        else{
-            condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un IVA válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
+        // Valida IVA (Sirve sin combo box, es decir cuando se ingresa iva en un jtextfield)
+//        if (jTextFieldIVA.getText().isEmpty() == false){
+//            if(Validar.controlIVA(jTextFieldIVA.getText()).contains("falso")){
+//                condicion=false;
+//                JOptionPane.showMessageDialog(null, "El IVA ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+//            }
+//            else{
+//                jTextFieldIVA.setText(Validar.controlIVA(jTextFieldIVA.getText()));
+//            }
+//        }
+//        else{
+//            condicion=false;
+//            JOptionPane.showMessageDialog(null, "Escriba un IVA válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+//        }
         //Verifica Precio Unitario, Fecha y los crea
         PrecioHistorico ph = null;
         if (jTextFieldPU.isEnabled()){
@@ -282,7 +285,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         if(condicion){
         int codigo = Integer.parseInt(jTextFieldCodigo.getText());
         String descripcion = JTextFieldDescripcion.getText();
-        Float IVA = Float.parseFloat(jTextFieldIVA.getText());
+        Float IVA = Float.parseFloat(jComboBoxIVA.getSelectedItem().toString());
         Long id = producto.getId();
         controlador.guardarProducto(codigo, descripcion, IVA, ph, id);
         //Actualiza la tabla del ABM
@@ -334,6 +337,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonPrecios;
     private javax.swing.JButton jButtonguardar;
+    private javax.swing.JComboBox jComboBoxIVA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -342,7 +346,6 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldFecha;
-    private javax.swing.JTextField jTextFieldIVA;
     private javax.swing.JTextField jTextFieldPU;
     private javax.swing.JTextField jTextFieldtasaanual_r;
     // End of variables declaration//GEN-END:variables

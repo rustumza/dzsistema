@@ -14,6 +14,7 @@ import Negocio.Entidades.NumeradorJpaController;
 import Negocio.Entidades.TipoFactura;
 import Negocio.Entidades.TipoFacturaJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,7 +47,7 @@ public class Main {
             TipoFactura tipo1 = new TipoFactura();
             tipo.setCodigo(1);
             tipo.setNombre("A");
-            tipo.setCodigo(6);
+            tipo1.setCodigo(6);
             tipo1.setNombre("B");
             fachadaTP.create(tipo);
             fachadaTP.create(tipo1);
