@@ -6,10 +6,12 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -22,6 +24,16 @@ public class CondicionDeVenta implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nombre;
+    @ManyToMany
+    private List<TipoFactura> tipoFactura;
+
+    public void setTipoFactura(TipoFactura tipo) {
+        tipoFactura.add(tipo);
+    }
+
+    public List<TipoFactura> getTipoFactura() {
+        return tipoFactura;
+    }
 
     public String getNombre() {
         return nombre;

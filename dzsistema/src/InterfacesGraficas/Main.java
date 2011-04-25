@@ -5,19 +5,15 @@
 
 package InterfacesGraficas;
 
+import Negocio.Entidades.CondicionDeVenta;
+import Negocio.Entidades.CondicionDeVentaJpaController;
 import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
-import Negocio.Entidades.DetalleFactura;
-import Negocio.Entidades.DetalleFacturaJpaController;
-import Negocio.Entidades.Factura;
-import Negocio.Entidades.FacturaJpaController;
-import Negocio.Entidades.PrecioHistorico;
-import Negocio.Entidades.PrecioHistoricoJpaController;
-import Negocio.Entidades.Producto;
-import Negocio.Entidades.ProductoJpaController;
+import Negocio.Entidades.Numerador;
+import Negocio.Entidades.NumeradorJpaController;
+import Negocio.Entidades.TipoFactura;
+import Negocio.Entidades.TipoFacturaJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
-import java.util.List;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,17 +25,78 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Script de inicializacion de Base de Datos //TO DO
-        CondicionFrenteAlIvaJpaController fachada = new CondicionFrenteAlIvaJpaController();
+        //Script de inicializacion de Base de Datos
+        CondicionFrenteAlIvaJpaController fachadaCFI = new CondicionFrenteAlIvaJpaController();
         //Verifica si la base de datos se inicializo
-        if(fachada.getCondicionFrenteAlIvaCount() == 0){
+        if(fachadaCFI.getCondicionFrenteAlIvaCount() == 0){
+            //Inicializa condiciones de Venta
+            CondicionDeVentaJpaController fachadaCV = new CondicionDeVentaJpaController();
+            CondicionDeVenta condicion = new CondicionDeVenta();
+            CondicionDeVenta condicion1 = new CondicionDeVenta();
+            CondicionDeVenta condicion2 = new CondicionDeVenta();
+            condicion.setNombre("Contado");
+            condicion1.setNombre("Cuenta Corriente");
+            condicion2.setNombre("Tarjeta");
+            fachadaCV.create(condicion);
+            fachadaCV.create(condicion1);
+            fachadaCV.create(condicion2);
+            //Inicializa los tipos de factura
+            TipoFacturaJpaController fachadaTP = new TipoFacturaJpaController();
+            TipoFactura tipo = new TipoFactura();
+            TipoFactura tipo1 = new TipoFactura();
+            tipo.setCodigo(1);
+            tipo.setNombre("A");
+            tipo.setCodigo(6);
+            tipo1.setNombre("B");
+            fachadaTP.create(tipo);
+            fachadaTP.create(tipo1);
+            //Guardo las condiciones de venta de cada tipo de factura
+            tipo1.addCondicion(condicion);
+            tipo1.addCondicion(condicion1);
+            tipo1.addCondicion(condicion2);
+            tipo.addCondicion(condicion);
+            tipo.addCondicion(condicion1);
+            try {
+                fachadaTP.edit(tipo);
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                fachadaTP.edit(tipo1);
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
             //Inicializa la Condicion Frente al Iva
             CondicionFrenteAlIva iva = new CondicionFrenteAlIva();
             CondicionFrenteAlIva iva1 = new CondicionFrenteAlIva();
+            CondicionFrenteAlIva iva2 = new CondicionFrenteAlIva();
+            CondicionFrenteAlIva iva3 = new CondicionFrenteAlIva();
+            CondicionFrenteAlIva iva4 = new CondicionFrenteAlIva();
             iva.setNombre("Responsable Inscripto");
+            iva.setTipoDeFactura(tipo);
             iva1.setNombre("Monotributista");
-            fachada.create(iva);
-            fachada.create(iva1);
+            iva1.setTipoDeFactura(tipo1);
+            iva2.setNombre("Consumidor Final");
+            iva2.setTipoDeFactura(tipo1);
+            iva3.setNombre("Exento");
+            iva3.setTipoDeFactura(tipo1);
+            iva4.setNombre("No Responsable");
+            iva4.setTipoDeFactura(tipo1);
+            fachadaCFI.create(iva);
+            fachadaCFI.create(iva1);
+            fachadaCFI.create(iva2);
+            fachadaCFI.create(iva3);
+            fachadaCFI.create(iva4);
+            //Inicializa numerador
+            NumeradorJpaController fachadaN = new NumeradorJpaController();
+            Numerador numerador = new Numerador();
+            numerador.setFacturaA(1);
+            numerador.setFacturaB(2);
+            fachadaN.create(numerador);
         }
 
             // Setea como se ven las pantallas y arranca el sistema
