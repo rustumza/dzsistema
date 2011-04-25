@@ -35,6 +35,8 @@ public class ControladorPanallaFacturacion {
     private PantallaFacturacion pantalla;
     private ExpertoFacturar experto;
     //private Factura factura;
+    private final String[] CondicionesDeVentaA = {"Contado", "Cuenta corriente"};
+    private final String[] CondicionesDeVentaB = {"Contado", "Cuenta corriente", "Tarjeta"};
 
     public ControladorPanallaFacturacion() {
         experto = new ExpertoFacturar();
@@ -155,28 +157,27 @@ public class ControladorPanallaFacturacion {
             getPantalla().getSubtotal().setVisible(false);
             getPantalla().getSubtotalLabel().setVisible(false);
             
-            getPantalla().getSubtotal2().setVisible(false);
-            getPantalla().getSubtotal2Label().setVisible(false);
+            getPantalla().getIva21().setVisible(false);
+            getPantalla().getIva21Label().setVisible(false);
             
-            getPantalla().getImporte().setVisible(false);
-            getPantalla().getImpuestosLabel().setVisible(false);
+            getPantalla().getIva105().setVisible(false);
+            getPantalla().getIva105Label().setVisible(false);
             
-            getPantalla().getIvaInsc().setVisible(false);
-            getPantalla().getIvaIsncLabel().setVisible(false);
+
+            getPantalla().getCondicionDeVenta().setModel(new DefaultComboBoxModel(CondicionesDeVentaB));
         }else{
 
             //Habilitar impuestos
             getPantalla().getSubtotal().setVisible(true);
             getPantalla().getSubtotalLabel().setVisible(true);
 
-            getPantalla().getSubtotal2().setVisible(true);
-            getPantalla().getSubtotal2Label().setVisible(true);
+            getPantalla().getIva21().setVisible(true);
+            getPantalla().getIva21Label().setVisible(true);
 
-            getPantalla().getImporte().setVisible(true);
-            getPantalla().getImpuestosLabel().setVisible(true);
+            getPantalla().getIva105().setVisible(true);
+            getPantalla().getIva105Label().setVisible(true);
 
-            getPantalla().getIvaInsc().setVisible(true);
-            getPantalla().getIvaIsncLabel().setVisible(true);
+            getPantalla().getCondicionDeVenta().setModel(new DefaultComboBoxModel(CondicionesDeVentaA));
 
         }
         
@@ -267,22 +268,31 @@ public class ControladorPanallaFacturacion {
     }
 
     private void actualizarTablaEImpuestosYTotales(Factura fac) {
-        //sacar lista de detalles de factura de la factur
+        //sacar lista de detalles de factura de la factura
         List<DetalleFactura> listaDetalles = new ArrayList<DetalleFactura>();
         getPantalla().getTablaDetallesFactura().setModel(new ModeloTablaProducto(listaDetalles));
         if(experto.getFactura().getCliente() != null){
             if(fac.getTipoFactura().getNombre().equals("A") | fac.getTipoFactura().getNombre().equals("a")){
                 float subtotal = 0;
                 float total = 0;
-                float ivaInsc = 0;
+                float iva21 = 0;
+                float iva105 = 0;
                 for (DetalleFactura detalleFactura : listaDetalles) {
-                    float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
-                    ivaInsc = + iva;
-                    total =+ detalleFactura.getPrecioTotal() + iva;
-                    subtotal =+ detalleFactura.getPrecioTotal();
+                    if(detalleFactura.getPorcentajeDeIva() == 21){
+                        float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
+                        iva21 = + iva;
+                        total =+ detalleFactura.getPrecioTotal() + iva;
+                        subtotal =+ detalleFactura.getPrecioTotal();
+                    }else{
+                        float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
+                        iva105 = + iva;
+                        total =+ detalleFactura.getPrecioTotal() + iva;
+                        subtotal =+ detalleFactura.getPrecioTotal();
+                    }
                 }
                 getPantalla().getSubtotal().setText(String.valueOf(subtotal));
-                getPantalla().getIvaInsc().setText(String.valueOf(ivaInsc));
+                getPantalla().getIva21().setText(String.valueOf(iva21));
+                getPantalla().getIva105().setText(String.valueOf(iva105));
                 getPantalla().getTotal().setText(String.valueOf(total));
 
                 //REVISAR LOS DE IMPUESTO Y SUBTOTAL2
@@ -295,7 +305,8 @@ public class ControladorPanallaFacturacion {
             }
         }else{
             getPantalla().getSubtotal().setText(String.valueOf(""));
-            getPantalla().getIvaInsc().setText(String.valueOf(""));
+            getPantalla().getIva21().setText(String.valueOf(""));
+            getPantalla().getIva105().setText(String.valueOf(""));
             getPantalla().getTotal().setText(String.valueOf(""));
 
         }
@@ -321,14 +332,14 @@ public class ControladorPanallaFacturacion {
             getPantalla().getSubtotal().setVisible(true);
             getPantalla().getSubtotalLabel().setVisible(true);
 
-            getPantalla().getSubtotal2().setVisible(true);
-            getPantalla().getSubtotal2Label().setVisible(true);
+            getPantalla().getSubtotal().setVisible(true);
+            getPantalla().getSubtotalLabel().setVisible(true);
 
-            getPantalla().getImporte().setVisible(true);
-            getPantalla().getImpuestosLabel().setVisible(true);
+            getPantalla().getIva21().setVisible(true);
+            getPantalla().getIva21Label().setVisible(true);
 
-            getPantalla().getIvaInsc().setVisible(true);
-            getPantalla().getIvaIsncLabel().setVisible(true);
+            getPantalla().getIva105().setVisible(true);
+            getPantalla().getIva105Label().setVisible(true);
 
         }
 

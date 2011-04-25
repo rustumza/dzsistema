@@ -655,25 +655,20 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="subtotal" min="-2" pref="168" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="impuestos" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <Component id="iva21" min="-2" pref="168" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="subtotalLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Component id="impuestosLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="iva21Label" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="subtotal2Label" min="-2" max="-2" attributes="0"/>
-                              <Component id="subtotal2" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="iva105Label" min="-2" max="-2" attributes="0"/>
+                              <Component id="iva105" min="-2" pref="168" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ivaIsncLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="ivaInsc" min="-2" pref="168" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="96" max="32767" attributes="0"/>
+                          <EmptySpace pref="276" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="totalLabel" min="-2" max="-2" attributes="0"/>
@@ -700,16 +695,14 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="subtotalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="impuestosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="subtotal2Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ivaIsncLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="iva21Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="iva105Label" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="subtotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="impuestos" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                                      <Component id="subtotal2" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="ivaInsc" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="iva21" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Component id="iva105" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -727,28 +720,20 @@
                     <Property name="text" type="java.lang.String" value="Subtotal"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="impuestosLabel">
+                <Component class="javax.swing.JLabel" name="iva21Label">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="DejaVu Sans" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Impuestos"/>
+                    <Property name="text" type="java.lang.String" value="IVA 21%"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="subtotal2Label">
+                <Component class="javax.swing.JLabel" name="iva105Label">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="DejaVu Sans" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Subtotal"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="ivaIsncLabel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="DejaVu Sans" size="18" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Iva Insc."/>
+                    <Property name="text" type="java.lang.String" value="IVA 10,5%"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="subtotal">
@@ -760,7 +745,7 @@
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="impuestos">
+                <Component class="javax.swing.JTextField" name="iva21">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -769,16 +754,7 @@
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="subtotal2">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="DejaVu Sans" size="30" style="0"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="4"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="ivaInsc">
+                <Component class="javax.swing.JTextField" name="iva105">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
