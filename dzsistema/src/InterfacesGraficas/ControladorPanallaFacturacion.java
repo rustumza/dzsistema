@@ -220,8 +220,16 @@ public class ControladorPanallaFacturacion {
 
     public void buscarProductoYSuInformacion() {
         //buscar el producto con el codigo que me trae
-            if(!(getPantalla().getCodigo().getText().equals(""))){
-                Producto producto = experto.buscarProducto(getPantalla().getCodigo().getText(),getPantalla().getFecha().getText());
+            String codigo = getPantalla().getCodigo().getText();
+            if(!(codigo.equals(""))){
+                try{
+                    Integer.parseInt(codigo);
+                }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El código de producto ingresado no es un número entero", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    pantalla.getCodigo().requestFocus();
+
+                }
+                Producto producto = experto.buscarProductoConFechaDeFactura(codigo);
                 getPantalla().getFecha().setEnabled(false);
                 getPantalla().getCodigo().setText(String.valueOf(producto.getCodigo()));
                 getPantalla().getDescripcion().setText(producto.getDescripcion());
@@ -269,7 +277,7 @@ public class ControladorPanallaFacturacion {
 
     private void actualizarTablaEImpuestosYTotales(Factura fac) {
         //sacar lista de detalles de factura de la factura
-        List<DetalleFactura> listaDetalles = new ArrayList<DetalleFactura>();
+        List<DetalleFactura> listaDetalles = fac.getDetallesDeFactura();
         getPantalla().getTablaDetallesFactura().setModel(new ModeloTablaProducto(listaDetalles));
         if(experto.getFactura().getCliente() != null){
             if(fac.getTipoFactura().getNombre().equals("A") | fac.getTipoFactura().getNombre().equals("a")){

@@ -32,6 +32,10 @@ public class Producto implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     List<PrecioHistorico> preciosHistoricos;
 
+    public void setPreciosHistoricos(List<PrecioHistorico> preciosHistoricos) {
+        this.preciosHistoricos = preciosHistoricos;
+    }
+
     public boolean isEstado() {
         return estado;
     }
