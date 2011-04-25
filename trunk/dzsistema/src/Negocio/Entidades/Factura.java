@@ -57,12 +57,6 @@ public class Factura implements Serializable {
         }
     }
 
-    public void eliminarTodosLosDetalles(){
-
-        //TO DO preguntar bien al chango como hacerlo
-
-    }
-
     public List<DetalleFactura> getDetallesDeFactura() {
         return detallesDeFactura;
     }

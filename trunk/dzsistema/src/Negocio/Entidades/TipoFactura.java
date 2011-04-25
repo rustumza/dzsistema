@@ -6,10 +6,14 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -23,6 +27,23 @@ public class TipoFactura implements Serializable {
     private Long id;
     private int codigo;
     private String nombre;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<CondicionDeVenta> condicionesDeVenta;
+
+    public void addCondicion(CondicionDeVenta condicion) {
+        if (!getCondicionDeVenta().contains(condicion)) {
+            getCondicionDeVenta().add(condicion);
+            int indexOf = condicion.getTipoFactura().indexOf(id);
+            if (condicion.getTipoFactura().contains(id)) {
+                condicion.getTipoFactura().get(indexOf).getCondicionDeVenta().remove(condicion);
+            }
+            condicion.setTipoFactura(this);
+        }
+    }
+
+    public List<CondicionDeVenta> getCondicionDeVenta() {
+        return condicionesDeVenta;
+    }
 
     public int getCodigo() {
         return codigo;

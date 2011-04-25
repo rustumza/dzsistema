@@ -106,7 +106,7 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
 
         jLabel5.setText("IVA:");
 
-        jComboBoxIVA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Responsable Inscripto", "Monotributista" }));
+        jComboBoxIVA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Responsable Inscripto", "Monotributista", "Consumidor Final", "Exento", "No Responsable" }));
 
         jLabel9.setText("CUIT:");
 
