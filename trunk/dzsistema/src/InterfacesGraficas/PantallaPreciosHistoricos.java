@@ -61,12 +61,12 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
             String[] columnNames = {"Fecha", "Precio Unitario"};
             jTablePrecios.setModel(new DefaultTableModel(datos, columnNames) {
 
-                boolean[] canEdit = new boolean[]{
-                    true, true
-                };
+//                boolean[] canEdit = new boolean[]{
+//                    true, true, true
+//                };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
+                    return false;
                 }
             });
 

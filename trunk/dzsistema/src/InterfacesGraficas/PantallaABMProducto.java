@@ -52,12 +52,12 @@ public class PantallaABMProducto extends javax.swing.JFrame {
             String[] columnNames = {"Código", "Nombre", "IVA"};
             jTableProductos.setModel(new DefaultTableModel(datos, columnNames) {
 
-                boolean[] canEdit = new boolean[]{
-                    true, true, true
-                };
+//                boolean[] canEdit = new boolean[]{
+//                    true, true, true
+//                };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
+                    return false;
                 }
             });
 
