@@ -28,19 +28,21 @@ import java.util.List;
  */
 public class ExpertoFacturar {
 
-    private Factura factura;
-    private boolean esFacuraNueva;
-    private List<DetalleFactura> listaDeDetallesAEliminar;
+    private DtoFactura dto;
+
     
 
     public ExpertoFacturar(){
-        factura = new Factura();
-        esFacuraNueva = true;
-        factura.setEstado(true);
+        dto = new DtoFactura();
+        dto.setFactura(new Factura());
+        dto.setEsFacuraNueva(true);
+        dto.getFactura().setEstado(true);
+        dto.setListaDeDetalles(new ArrayList<DetalleFactura>());
+        dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
 
     }
-    public Factura getFactura(){
-        return factura;
+    public DtoFactura getDtoFactura(){
+        return dto;
     }
 
     public List<Cliente> buscarClientePorNombre(String nombre) throws ClienteExcepcion{
@@ -53,18 +55,18 @@ public class ExpertoFacturar {
         }
     }
 
-    public Factura buscarClientePorCuit(String cuit)  throws ClienteExcepcion{
+    public DtoFactura buscarClientePorCuit(String cuit)  throws ClienteExcepcion{
         ClienteJpaController clienteControler = new ClienteJpaController();
         List<Cliente> listaDeClientes = clienteControler.buscarPorCUIT(cuit);
         if(listaDeClientes == null || listaDeClientes.isEmpty()){
             throw new ClienteExcepcion(3);
         }else{
             armarFacturaConCliente(listaDeClientes.get(0));
-            return factura;
+            return dto;
         }
     }
 
-    public Factura buscarClientePorNumero(String numeroCliente)  throws ClienteExcepcion{
+    public DtoFactura buscarClientePorNumero(String numeroCliente)  throws ClienteExcepcion{
 
         ClienteJpaController clienteControler = new ClienteJpaController();
         List<Cliente> listaDeClientes = clienteControler.buscarPorCodigo(numeroCliente);
@@ -72,14 +74,16 @@ public class ExpertoFacturar {
             throw new ClienteExcepcion(2);
         }else{
             armarFacturaConCliente(listaDeClientes.get(0));
-            return factura;
+            return dto;
         }
     }
 
 
     private void armarFacturaConCliente(Cliente cliente){
-        factura.setCliente(cliente);
-        factura.setTipoFactura(factura.getCliente().getCondicionFrenteAlIva().getTipoDeFactura());
+        dto.getFactura().setCliente(cliente);
+        dto.getFactura().setTipoFactura(dto.getFactura().getCliente().getCondicionFrenteAlIva().getTipoDeFactura());
+        dto.setListaDeDetalles(new ArrayList<DetalleFactura>());
+        dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
     }
 
 
@@ -103,7 +107,7 @@ public class ExpertoFacturar {
         List<Producto> listaDeProductos = productoJpa.buscarPorCodigo(codigoInt);
         Producto producto = listaDeProductos.get(0);
         List<PrecioHistorico> preciosHistoricos = producto.getPreciosHistoricos();
-        Date fechaFactura = factura.getFecha();
+        Date fechaFactura = dto.getFactura().getFecha();
         int anterior;
         PrecioHistorico ph = null;
         for (PrecioHistorico precioHistorico : preciosHistoricos) {
@@ -136,24 +140,24 @@ public class ExpertoFacturar {
         return producto;
     }
 
-    public Factura AgregarDetalleALaFactura(DTODetallesDeFacturaParaGUI dto){
+    public DtoFactura AgregarDetalleALaFactura(DTODetallesDeFacturaParaGUI dtodetalle){
         DetalleFactura detalleFactura = new DetalleFactura();
-        detalleFactura.setProducto(buscarProducto(dto.getCodigo()));
+        detalleFactura.setProducto(buscarProducto(dtodetalle.getCodigo()));
         detalleFactura.setPorcentajeDeIva(detalleFactura.getProducto().getPorcentajeDeIva());
-        detalleFactura.setCantidad(dto.getCantidad());
-        detalleFactura.setPrecioUnitario(dto.getPrecioUnitario());
+        detalleFactura.setCantidad(dtodetalle.getCantidad());
+        detalleFactura.setPrecioUnitario(dtodetalle.getPrecioUnitario());
         float importe = detalleFactura.getCantidad() * detalleFactura.getPrecioUnitario();
         detalleFactura.setPrecioTotal(Math.round(importe * 100)/100);
-        if(detalleFactura.getPrecioTotal() != dto.getImporte()){
+        if(detalleFactura.getPrecioTotal() != dtodetalle.getImporte()){
             //VER COMO MANEJAR ESTE ERROR //TO DO
         }
-        factura.addDetalle(detalleFactura);
-        return factura;
+        dto.addDetalleNuevo(detalleFactura);
+        return dto;
     }
 
     public void cambiarFechaDeFactura(String fecha) throws fechaException{
 
-        factura.setFecha(validar.Validar.validarFecha(fecha));
+        dto.getFactura().setFecha(validar.Validar.validarFecha(fecha));
         
 
     }
@@ -161,7 +165,7 @@ public class ExpertoFacturar {
     public boolean sonFechasIguales(String fecha) throws fechaException{
 
         Date fechaDate = Validar.validarFecha(fecha);
-        if(0 == fechaDate.compareTo(factura.getFecha()))
+        if(0 == fechaDate.compareTo(dto.getFactura().getFecha()))
             return true;
         else
             return false;
@@ -170,13 +174,14 @@ public class ExpertoFacturar {
     public void guardarFactura() {
         FacturaJpaController jpa = new FacturaJpaController();
         //TO DO hacer todas las validaciones
-        jpa.create(factura);
+        jpa.create(dto.getFactura());
     }
 
-    public Factura eliminarDetalleFactura(int filaSeleccionada) {
-        if(filaSeleccionada <= factura.getDetallesDeFactura().size()){
-            factura.getDetallesDeFactura().remove(filaSeleccionada);
-            return factura;
+    //TO DO2 reveer este metodo
+    public DtoFactura eliminarDetalleFactura(int filaSeleccionada) {
+        if(filaSeleccionada <= dto.getFactura().getDetallesDeFactura().size()){
+            dto.eliminarDetalle(filaSeleccionada);
+            return dto;
         }else{
 
         //TIRAR EXCEPCION   //TO DO
@@ -184,24 +189,11 @@ public class ExpertoFacturar {
         }
     }
 
-    public void eliminarTodosLosDetallesDeFactura() {
-        eliminarTodosLosDetalles(factura);
+    public DtoFactura eliminarTodosLosDetallesDeFactura() {
+        dto.eliminarTodosLosDetalles();
+        return dto;
 
     }
 
-    public List<CondicionFrenteAlIva> buscarCondicionesDeIva(String nombre) {
-        return null;
-        //TO DO //buscar las condiciones frente al iva segun el tipo de factura (nombre)
-    }
-
-    private void eliminarTodosLosDetalles(Factura factura) {
-        //TO DO
-        // borra todo los detalles (del objeto en memoria, no de la base de datos)
-    }
-
-
-
-
-
-
+    
 }
