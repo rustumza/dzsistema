@@ -54,12 +54,12 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             String[] columnNames = {"Código", "CUIT", "Nombre", "Domicilio"};
             jTableClientes.setModel(new DefaultTableModel(datos, columnNames) {
 
-                boolean[] canEdit = new boolean[]{
-                    true, true, true, true
-                };
+//                boolean[] canEdit = new boolean[]{
+//                    true, true, true
+//                };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit[columnIndex];
+                    return false;
                 }
             });
 
