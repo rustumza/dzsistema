@@ -804,7 +804,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
     //busca el cliente cuando se pierde el foco del campo cuit
     private void buscarClientePorCuit(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarClientePorCuit
-        getControlador().buscarClientePorCiut(getCuit().getText());
+        getControlador().buscarClientePorCuit(getCuit().getText());
     }//GEN-LAST:event_buscarClientePorCuit
 
     
@@ -884,7 +884,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
     private void fechaMouseDobleClic(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaMouseDobleClic
        if(evt.getClickCount()==2){
-            getFecha().setEditable(true);
+            getFecha().setEnabled(true);
        }
     }//GEN-LAST:event_fechaMouseDobleClic
 
