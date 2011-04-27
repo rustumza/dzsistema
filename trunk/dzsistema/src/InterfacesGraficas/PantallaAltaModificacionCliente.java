@@ -111,6 +111,9 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         jLabel9.setText("Nombre:");
 
         jTextFieldCUIT.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldCUITFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldCUITFocusLost(evt);
             }
@@ -130,9 +133,7 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel6)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addComponent(jLabel9)
                             .addComponent(jLabel7)
                             .addComponent(jLabel5))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,6 +295,11 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
             jTextFieldCUIT.requestFocus();
         }
     }//GEN-LAST:event_jTextFieldCUITFocusLost
+
+    private void jTextFieldCUITFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCUITFocusGained
+        // TODO add your handling code here:
+        jTextFieldCUIT.setText(Validar.desformatearCUIT(jTextFieldCUIT.getText()));
+    }//GEN-LAST:event_jTextFieldCUITFocusGained
 
     /**
      * @param args the command line arguments
