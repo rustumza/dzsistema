@@ -4,6 +4,21 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="menu">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="menuFactura">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Factura"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuBuscarFactura">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar factura"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuBuscarFacturaActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="menuCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value=" Cliente "/>
@@ -156,7 +171,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="panelTipoFactura" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="panelFechaYNumeroFactura" min="-2" pref="229" max="-2" attributes="0"/>
+                      <Component id="panelFechaYNumeroFactura" min="-2" pref="233" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -165,14 +180,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="panelFechaYNumeroFactura" min="-2" pref="97" max="-2" attributes="1"/>
-                          </Group>
                           <Component id="panelTipoFactura" alignment="0" max="32767" attributes="1"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="panelImagen" max="32767" attributes="3"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="panelFechaYNumeroFactura" min="-2" pref="97" max="-2" attributes="1"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -197,18 +212,19 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="numeroFacturaLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="numeroFactura" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="numeroFactura" pref="98" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="1">
+                              <Component id="anulada" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="fechaLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fecha" max="32767" attributes="0"/>
+                                  <Component id="fecha" pref="153" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -218,7 +234,6 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="numeroFacturaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="numeroFactura" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -228,7 +243,8 @@
                               <Component id="fechaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="fecha" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="anulada" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -272,6 +288,14 @@
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="verificarCambioDeFecha"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JCheckBox" name="anulada">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Anulada"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkAnulado"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelImagen">
@@ -284,7 +308,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="90" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -294,15 +318,15 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tipoFactura" alignment="0" pref="554" max="32767" attributes="0"/>
-                      <Component id="palabraCodigo" alignment="0" pref="554" max="32767" attributes="0"/>
-                      <Component id="codigoFactura" alignment="0" pref="554" max="32767" attributes="0"/>
+                      <Component id="tipoFactura" alignment="0" pref="550" max="32767" attributes="0"/>
+                      <Component id="palabraCodigo" alignment="0" pref="550" max="32767" attributes="0"/>
+                      <Component id="codigoFactura" alignment="0" pref="550" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="tipoFactura" pref="50" max="32767" attributes="0"/>
+                          <Component id="tipoFactura" pref="43" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="palabraCodigo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -477,6 +501,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="cuit">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="4"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cuitHabilitarCampo"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="buscarClientePorCuit"/>
@@ -585,6 +612,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="remitoNro">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="4"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -910,6 +940,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="descripcion">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="precioUnitario">
                   <Properties>
@@ -931,6 +964,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="importe">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                   </Properties>
                 </Component>

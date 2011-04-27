@@ -11,12 +11,16 @@ import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
 import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
+import Negocio.Entidades.DetalleFacturaJpaController;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
+import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import validar.fechaException;
 import validar.Validar;
 import java.util.Date;
@@ -128,7 +132,7 @@ public class ExpertoFacturar {
         producto.setPreciosHistoricos(listaConElPrecioHistorico);
         return producto;
         
-        //TO DO
+        
     }
 
     private Producto buscarProducto(String codigo){
@@ -152,7 +156,7 @@ public class ExpertoFacturar {
             //VER COMO MANEJAR ESTE ERROR //TO DO
         }
         dto.addDetalleNuevo(detalleFactura);
-        return dto;
+            return dto;
     }
 
     public void cambiarFechaDeFactura(String fecha) throws fechaException{
@@ -171,15 +175,59 @@ public class ExpertoFacturar {
             return false;
     }
 
-    public void guardarFactura() {
+    public void guardarFactura(){
         FacturaJpaController jpa = new FacturaJpaController();
-        //TO DO hacer todas las validaciones
-        jpa.create(dto.getFactura());
+        DetalleFacturaJpaController jpaDetalle = new DetalleFacturaJpaController();
+        //agrego los detalles o los actualizo
+        for (DetalleFactura detalle : dto.getListaDeDetalles()) {
+            if(detalle.getId() != null){
+                try {
+                    //hacer update detalle viejos
+                    jpaDetalle.edit(detalle);
+                    dto.getFactura().addDetalle(detalle);
+                    
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                //guardarlo detalle nuevo
+                jpaDetalle.create(detalle);
+                dto.getFactura().addDetalle(detalle);
+            }
+
+            //elimino los detalles que estan para eliminiar
+            for (DetalleFactura detalleAEliminar : dto.getListaDeDetallesAEliminar()) {
+                if(detalleAEliminar.getId() != null){
+                    try {
+                        jpaDetalle.destroy(detalle.getId());
+                    } catch (NonexistentEntityException ex) {
+                        Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+        }
+        if(dto.getFactura().getId() != null){
+            // si la factura no es nueva, la actualizo
+            try {
+                jpa.edit(dto.getFactura());
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
+        }else{
+            // si la factura es nueva, la guardo
+            jpa.create(dto.getFactura());
+        }
     }
 
     //TO DO2 reveer este metodo
     public DtoFactura eliminarDetalleFactura(int filaSeleccionada) {
-        if(filaSeleccionada <= dto.getFactura().getDetallesDeFactura().size()){
+        if(filaSeleccionada < dto.getListaDeDetalles().size()){
             dto.eliminarDetalle(filaSeleccionada);
             return dto;
         }else{
@@ -195,5 +243,32 @@ public class ExpertoFacturar {
 
     }
 
+
+    public DtoFactura abrirFactura(int numero){
+        FacturaJpaController jpa = new FacturaJpaController();
+
+        dto = new DtoFactura();
+        dto.setFactura(jpa.buscarPorNumero(numero));
+        dto.setEsFacuraNueva(false);
+        dto.setListaDeDetalles(dto.getFactura().getDetallesDeFactura());
+        dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
+        dto.getFactura().vaciarListaDeDetalles();
+
+        return dto;
+    }
+
+    public DtoFactura anularFactura() {
+        dto.getFactura().setEstado(false);
+        return dto;
+    }
+
+    public DtoFactura desanularFactura(){
+        dto.getFactura().setEstado(true);
+        return dto;
+    }
+
+    public void guardarNumeroFacutra(int numeroFactura) {
+        dto.getFactura().setNumero(numeroFactura);
+    }
     
 }

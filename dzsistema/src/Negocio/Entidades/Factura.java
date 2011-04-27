@@ -170,4 +170,9 @@ public class Factura implements Serializable {
         this.estado = estado;
     }
 
+
+    public void vaciarListaDeDetalles(){
+        detallesDeFactura = new ArrayList<DetalleFactura>();
+
+    }
 }
