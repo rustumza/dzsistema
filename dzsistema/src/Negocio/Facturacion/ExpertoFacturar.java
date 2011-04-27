@@ -52,7 +52,7 @@ public class ExpertoFacturar {
 
     public List<Cliente> buscarClientePorNombre(String nombre) throws ClienteExcepcion{
         ClienteJpaController clienteControler = new ClienteJpaController();
-        List<Cliente> listaDeClientes = clienteControler.buscarPorNombre(nombre);
+        List<Cliente> listaDeClientes = clienteControler.buscarPorParteDelNombre(nombre);
         if(listaDeClientes == null || listaDeClientes.isEmpty()){
             throw new ClienteExcepcion(1);
         }else{

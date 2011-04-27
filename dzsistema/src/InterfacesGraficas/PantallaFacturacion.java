@@ -11,11 +11,7 @@
 
 package InterfacesGraficas;
 
-import Negocio.Entidades.Producto;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 
 
 /**

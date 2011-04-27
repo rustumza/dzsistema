@@ -8,10 +8,7 @@ package InterfacesGraficas;
 
 import InterfacesGraficas.exceptions.ClienteExcepcion;
 import Negocio.Entidades.Cliente;
-import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
-import Negocio.Entidades.Factura;
-import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
 import validar.fechaException;
 import validar.Validar;
@@ -23,7 +20,6 @@ import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import java.lang.Math.*;
-import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import Negocio.Facturacion.DtoFactura;
 
@@ -55,7 +51,7 @@ public class ControladorPanallaFacturacion {
         pantalla = new PantallaFacturacion(this);
         configurarTablaInicial();
         getPantalla().setVisible(true);
-        getPantalla().getAnulada().setEnabled(true);
+        getPantalla().getAnulada().setEnabled(false);
         getPantalla().getAnulada().setSelected(false);
 
     }
@@ -106,7 +102,7 @@ public class ControladorPanallaFacturacion {
                 List<Cliente> listaDeClientes = experto.buscarClientePorNombre(nombre);
                 if(listaDeClientes.size() == 1){
                     //si tre un solo cliente
-                    experto.buscarClientePorNumero(String.valueOf(listaDeClientes.get(0).getCodigo()));
+                    buscarClientePorNumero(String.valueOf(listaDeClientes.get(0).getCodigo()));
                 }else{
                     //si trae muchos clientes
                     iniciarPantallaElegirCliente(listaDeClientes);
@@ -674,7 +670,7 @@ public class ControladorPanallaFacturacion {
     private void desbloquearParcial() {
 
 
-        getPantalla().getCondicionDeVenta().setEnabled(false);
+        getPantalla().getCondicionDeVenta().setEnabled(true);
         getPantalla().getNumeroFactura().setEnabled(true);
 
         pantalla.getCantidad().setEnabled(true);
@@ -690,7 +686,7 @@ public class ControladorPanallaFacturacion {
     private void desbloquearTodo() {
 
 
-        getPantalla().getCondicionDeVenta().setEnabled(false);
+        getPantalla().getCondicionDeVenta().setEnabled(true);
         getPantalla().getNumeroFactura().setEnabled(true);
 
         pantalla.getCantidad().setEnabled(true);
@@ -749,7 +745,8 @@ public class ControladorPanallaFacturacion {
         pantallaElefirCliente = new PantallaElegirCliente(this);
         this.listaClientes = listaDeClientes;
         CargarTablaClientes();
-        getPantalla().setVisible(true);
+        pantallaElefirCliente.setVisible(true);
+        pantallaElefirCliente.setLocationRelativeTo(pantalla.getPanelDatosCliente());
 
     }
 
@@ -811,6 +808,8 @@ public class ControladorPanallaFacturacion {
 
         pantallaBuscarFactura = new PantallaBuscarFactura(this);
         pantallaBuscarFactura.setVisible(true);
+        pantallaBuscarFactura.setLocationRelativeTo(pantalla.getPanelDatosCliente());
+
 
     }
 

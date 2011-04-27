@@ -169,4 +169,12 @@ public class ClienteJpaController {
         return resultado;
     }
 
+
+    public List<Cliente> buscarPorParteDelNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        List<Cliente> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Cliente a WHERE a.nombre LIKE '%"+nombre+"%' and a.estado = true ").getResultList();
+        return encontrados;
+    }
+
 }
