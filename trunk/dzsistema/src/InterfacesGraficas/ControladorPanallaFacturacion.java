@@ -399,7 +399,7 @@ public class ControladorPanallaFacturacion {
         getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(3).setPreferredWidth(70);  //precio unitario
         getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(4).setPreferredWidth(70);  //importe
 
-        if(experto.getDtoFactura().getFactura().getCliente() != null){
+        if(dto.getFactura().getCliente() != null){
             if(dto.getFactura().getTipoFactura().getNombre().equals("A") | dto.getFactura().getTipoFactura().getNombre().equals("a")){
                 float subtotal = 0;
                 float total = 0;
