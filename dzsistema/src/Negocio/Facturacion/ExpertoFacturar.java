@@ -10,7 +10,6 @@ import InterfacesGraficas.exceptions.ClienteExcepcion;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
 import Negocio.Entidades.CondicionDeVentaJpaController;
-import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.DetalleFacturaJpaController;
 import Negocio.Entidades.Factura;
@@ -159,6 +158,19 @@ public class ExpertoFacturar {
         dto.addDetalleNuevo(detalleFactura);
         return dto;
     }
+    public DtoFactura editarDetalleALaFactura(DTODetallesDeFacturaParaGUI dtodetalle, int filaAEditar) {
+        DetalleFactura detalleFactura = dto.getListaDeDetalles().get(filaAEditar);
+        detalleFactura.setProducto(buscarProducto(dtodetalle.getCodigo()));
+        detalleFactura.setPorcentajeDeIva(detalleFactura.getProducto().getPorcentajeDeIva());
+        detalleFactura.setCantidad(dtodetalle.getCantidad());
+        detalleFactura.setPrecioUnitario(dtodetalle.getPrecioUnitario());
+        float importe = detalleFactura.getCantidad() * detalleFactura.getPrecioUnitario();
+        detalleFactura.setPrecioTotal(Math.round(importe * 100)/100);
+        if(detalleFactura.getPrecioTotal() != dtodetalle.getImporte()){
+            //VER COMO MANEJAR ESTE ERROR //TO DO
+        }
+        return dto;
+    }
 
     public void cambiarFechaDeFactura(String fecha) throws fechaException{
 
@@ -179,6 +191,19 @@ public class ExpertoFacturar {
     public void guardarFactura(){
         FacturaJpaController jpa = new FacturaJpaController();
         DetalleFacturaJpaController jpaDetalle = new DetalleFacturaJpaController();
+
+        if(dto.isEsFacuraNueva()){
+            for (DetalleFactura det : dto.getListaDeDetalles()) {
+                dto.getFactura().addDetalle(det);
+            }
+            jpa.create(dto.getFactura());
+
+        }else{
+
+
+
+        }
+
         //agrego los detalles o los actualizo
 
          /* ESTO ES LO QUE HAGA NORMALMENTE
@@ -214,7 +239,6 @@ public class ExpertoFacturar {
             }
 
         //ESTA LINEAS QUE VIENE LAS AGREGUE PARA PROBAR
-
         for (DetalleFactura det : dto.getListaDeDetalles()) {
             dto.getFactura().addDetalle(det);
         }
@@ -295,5 +319,7 @@ public class ExpertoFacturar {
     public void settotal(float total) {
         dto.getFactura().setTotal(total);
     }
+
+
 
 }

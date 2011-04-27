@@ -49,7 +49,8 @@ public class PantallaElegirCliente extends javax.swing.JFrame {
         cancelar = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Elegir cliente");
         setAlwaysOnTop(true);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -95,7 +96,7 @@ public class PantallaElegirCliente extends javax.swing.JFrame {
                         .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
