@@ -9,6 +9,7 @@ import InterfacesGraficas.DTODetallesDeFacturaParaGUI;
 import InterfacesGraficas.exceptions.ClienteExcepcion;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.ClienteJpaController;
+import Negocio.Entidades.CondicionDeVentaJpaController;
 import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.DetalleFacturaJpaController;
@@ -156,7 +157,7 @@ public class ExpertoFacturar {
             //VER COMO MANEJAR ESTE ERROR //TO DO
         }
         dto.addDetalleNuevo(detalleFactura);
-            return dto;
+        return dto;
     }
 
     public void cambiarFechaDeFactura(String fecha) throws fechaException{
@@ -179,6 +180,8 @@ public class ExpertoFacturar {
         FacturaJpaController jpa = new FacturaJpaController();
         DetalleFacturaJpaController jpaDetalle = new DetalleFacturaJpaController();
         //agrego los detalles o los actualizo
+
+         /* ESTO ES LO QUE HAGA NORMALMENTE
         for (DetalleFactura detalle : dto.getListaDeDetalles()) {
             if(detalle.getId() != null){
                 try {
@@ -196,19 +199,27 @@ public class ExpertoFacturar {
                 jpaDetalle.create(detalle);
                 dto.getFactura().addDetalle(detalle);
             }
+        }
 
+        */
             //elimino los detalles que estan para eliminiar
             for (DetalleFactura detalleAEliminar : dto.getListaDeDetallesAEliminar()) {
                 if(detalleAEliminar.getId() != null){
                     try {
-                        jpaDetalle.destroy(detalle.getId());
+                        jpaDetalle.destroy(detalleAEliminar.getId());
                     } catch (NonexistentEntityException ex) {
                         Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
 
+        //ESTA LINEAS QUE VIENE LAS AGREGUE PARA PROBAR
+
+        for (DetalleFactura det : dto.getListaDeDetalles()) {
+            dto.getFactura().addDetalle(det);
         }
+
+        //HASTA ACA!!
         if(dto.getFactura().getId() != null){
             // si la factura no es nueva, la actualizo
             try {
@@ -270,5 +281,19 @@ public class ExpertoFacturar {
     public void guardarNumeroFacutra(int numeroFactura) {
         dto.getFactura().setNumero(numeroFactura);
     }
-    
+
+    public void guardarNumeroRemito(int nroRemito) {
+        dto.getFactura().setRemitoNro(nroRemito);
+    }
+
+    public void guardarCondicionDeVenta(int condDeVenta) {
+        CondicionDeVentaJpaController jpa = new CondicionDeVentaJpaController();
+        dto.getFactura().setCondicionDeVenta(jpa.findCondicionDeVenta((long)condDeVenta));
+
+    }
+
+    public void settotal(float total) {
+        dto.getFactura().setTotal(total);
+    }
+
 }
