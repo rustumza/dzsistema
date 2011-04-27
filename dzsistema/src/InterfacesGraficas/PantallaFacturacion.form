@@ -827,15 +827,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="agregar" min="-2" pref="73" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cancelarDetalle" min="-2" pref="78" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="eliminar" min="-2" pref="78" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cantidadLabel" min="-2" max="-2" attributes="1"/>
                                       <Component id="cantidad" min="-2" pref="66" max="-2" attributes="1"/>
@@ -850,7 +843,12 @@
                                       <Component id="descripcionLabel" min="-2" max="-2" attributes="0"/>
                                       <Component id="descripcion" min="-2" pref="634" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="agregar" alignment="1" min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="precioUnitarioLabel" min="-2" max="-2" attributes="1"/>
                                       <Component id="precioUnitario" min="-2" pref="86" max="-2" attributes="1"/>
@@ -860,6 +858,11 @@
                                       <Component id="importeLabel" min="-2" max="-2" attributes="0"/>
                                       <Component id="importe" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="cancelarDetalle" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="eliminar" min="-2" pref="88" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -898,9 +901,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="agregar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cancelarDetalle" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="eliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="agregar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
