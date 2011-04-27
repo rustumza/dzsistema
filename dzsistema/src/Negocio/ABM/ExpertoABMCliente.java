@@ -95,9 +95,9 @@ class ExpertoABMCliente {
         return encontrados;
     }
 
-    List<Cliente> buscarAfiliadoPorNombre(String nombre) {
+    List<Cliente> buscarClientePorParteDelNombre(String nombre) {
         ClienteJpaController fachadaCliente = new ClienteJpaController();
-        List<Cliente> encontrados = fachadaCliente.buscarPorNombre(nombre);
+        List<Cliente> encontrados = fachadaCliente.buscarPorParteDelNombre(nombre);
         if(encontrados.isEmpty()){
             JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }
