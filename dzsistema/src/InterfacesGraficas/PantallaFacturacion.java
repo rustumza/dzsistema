@@ -106,8 +106,8 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         cancelarDetalle = new javax.swing.JButton();
         agregar = new javax.swing.JButton();
         imprimir = new javax.swing.JButton();
+        limpiar = new javax.swing.JButton();
         guardar = new javax.swing.JButton();
-        limpiarPantalla = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
         menuFactura = new javax.swing.JMenu();
         menuBuscarFactura = new javax.swing.JMenuItem();
@@ -136,10 +136,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         numeroFacturaLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 15));
         numeroFacturaLabel.setText("N° 0001 - 00");
 
-        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
-        numeroFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numeroFacturaActionPerformed(evt);
+        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
+        numeroFactura.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        numeroFactura.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                guardarNumeroFactura(evt);
             }
         });
 
@@ -697,15 +698,15 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             }
         });
 
-        guardar.setText("Limpiar Pantalla");
-        guardar.addActionListener(new java.awt.event.ActionListener() {
+        limpiar.setText("Limpiar Pantalla");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiaraPantallaActionPerformed(evt);
             }
         });
 
-        limpiarPantalla.setText("Guardar");
-        limpiarPantalla.addActionListener(new java.awt.event.ActionListener() {
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
             }
@@ -722,11 +723,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addComponent(panelInfoCliene, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                        .addComponent(limpiarPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         panelPrincipalLayout.setVerticalGroup(
@@ -739,9 +740,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addComponent(panelDetalleFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(limpiarPantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(855, Short.MAX_VALUE))
         );
 
@@ -807,10 +808,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void numeroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroFacturaActionPerformed
-        // TO DO add your handling code here:
-    }//GEN-LAST:event_numeroFacturaActionPerformed
 
     private void menuNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoClienteActionPerformed
         // TO DO add your handling code here:
@@ -956,12 +953,16 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_verificarSiHayClienteCodigo
 
     private void menuBuscarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBuscarFacturaActionPerformed
-        controlador.iniciarBusquedaDeFactura();
+        getControlador().iniciarBusquedaDeFactura();
     }//GEN-LAST:event_menuBuscarFacturaActionPerformed
 
     private void checkAnulado(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAnulado
-        controlador.anularFactura();
+        getControlador().anularFactura();
     }//GEN-LAST:event_checkAnulado
+
+    private void guardarNumeroFactura(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_guardarNumeroFactura
+        getControlador().guardarNumeroFactura();
+    }//GEN-LAST:event_guardarNumeroFactura
 
 
 
@@ -1007,7 +1008,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JLabel iva21Label;
     private javax.swing.JLabel ivaLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton limpiarPantalla;
+    private javax.swing.JButton limpiar;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenuItem menuBuscarFactura;
     private javax.swing.JMenu menuCliente;
@@ -1047,31 +1048,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JTextField total;
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
-
-    public JCheckBox getAnulada() {
-        return anulada;
-    }
-
-    public void setAnulada(JCheckBox anulada) {
-        this.anulada = anulada;
-    }
-
-    public JMenuItem getMenuBuscarFactura() {
-        return menuBuscarFactura;
-    }
-
-    public void setMenuBuscarFactura(JMenuItem menuBuscarFactura) {
-        this.menuBuscarFactura = menuBuscarFactura;
-    }
-
-    public JMenu getMenuFactura() {
-        return menuFactura;
-    }
-
-    public void setMenuFactura(JMenu menuFactura) {
-        this.menuFactura = menuFactura;
-    }
-    // End of variables declaration
 
     /**
      * @return the controlador
@@ -1113,6 +1089,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
      */
     public void setAgregar(javax.swing.JButton agregar) {
         this.agregar = agregar;
+    }
+
+    /**
+     * @return the anulada
+     */
+    public javax.swing.JCheckBox getAnulada() {
+        return anulada;
+    }
+
+    /**
+     * @param anulada the anulada to set
+     */
+    public void setAnulada(javax.swing.JCheckBox anulada) {
+        this.anulada = anulada;
     }
 
     /**
@@ -1508,17 +1498,17 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }
 
     /**
-     * @return the limpiarPantalla
+     * @return the limpiar
      */
-    public javax.swing.JButton getLimpiarPantalla() {
-        return limpiarPantalla;
+    public javax.swing.JButton getLimpiar() {
+        return limpiar;
     }
 
     /**
-     * @param limpiarPantalla the limpiarPantalla to set
+     * @param limpiar the limpiar to set
      */
-    public void setLimpiarPantalla(javax.swing.JButton limpiarPantalla) {
-        this.limpiarPantalla = limpiarPantalla;
+    public void setLimpiar(javax.swing.JButton limpiar) {
+        this.limpiar = limpiar;
     }
 
     /**
@@ -1536,6 +1526,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }
 
     /**
+     * @return the menuBuscarFactura
+     */
+    public javax.swing.JMenuItem getMenuBuscarFactura() {
+        return menuBuscarFactura;
+    }
+
+    /**
+     * @param menuBuscarFactura the menuBuscarFactura to set
+     */
+    public void setMenuBuscarFactura(javax.swing.JMenuItem menuBuscarFactura) {
+        this.menuBuscarFactura = menuBuscarFactura;
+    }
+
+    /**
      * @return the menuCliente
      */
     public javax.swing.JMenu getMenuCliente() {
@@ -1547,6 +1551,20 @@ public class PantallaFacturacion extends javax.swing.JFrame {
      */
     public void setMenuCliente(javax.swing.JMenu menuCliente) {
         this.menuCliente = menuCliente;
+    }
+
+    /**
+     * @return the menuFactura
+     */
+    public javax.swing.JMenu getMenuFactura() {
+        return menuFactura;
+    }
+
+    /**
+     * @param menuFactura the menuFactura to set
+     */
+    public void setMenuFactura(javax.swing.JMenu menuFactura) {
+        this.menuFactura = menuFactura;
     }
 
     /**
@@ -2024,6 +2042,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     public void setTotalLabel(javax.swing.JLabel totalLabel) {
         this.totalLabel = totalLabel;
     }
+
 
     
 

@@ -48,7 +48,8 @@ public class Factura implements Serializable {
     }
 
     public void addDetalle(DetalleFactura detalle) {
-        if (!getDetallesDeFactura().contains(detalle)) {
+        //if (!getDetallesDeFactura().contains(detalle)) {
+        if (!estaEnLaLista(detalle)) {
             getDetallesDeFactura().add(detalle);
             if (detalle.getFactura() != null) {
                 detalle.getFactura().getDetallesDeFactura().remove(detalle);
@@ -105,7 +106,7 @@ public class Factura implements Serializable {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 
@@ -174,5 +175,13 @@ public class Factura implements Serializable {
     public void vaciarListaDeDetalles(){
         detallesDeFactura = new ArrayList<DetalleFactura>();
 
+    }
+//este metodo es para probar!!!
+    private boolean estaEnLaLista(DetalleFactura detalle) {
+        for (DetalleFactura detalleFactura : detallesDeFactura) {
+            if(detalle==detalleFactura)
+                return true;
+        }
+        return false;
     }
 }
