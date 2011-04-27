@@ -34,9 +34,9 @@ class ExpertoABMProducto {
         return encontrados;
     }
 
-    List<Producto> buscarProductoPorNombre(String nombre) {
+    List<Producto> buscarProductoPorParteDelNombre(String nombre) {
         ProductoJpaController fachada = new ProductoJpaController();
-        List<Producto> encontrados = fachada.buscarPorNombre(nombre);
+        List<Producto> encontrados = fachada.buscarPorParteDelNombre(nombre);
         if(encontrados.isEmpty()){
             JOptionPane.showMessageDialog(null, "Producto no encontrado", "Informacion", JOptionPane.INFORMATION_MESSAGE);
         }

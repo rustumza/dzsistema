@@ -380,13 +380,9 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
         // TODO add your handling code here:
         if (jTextFieldNombre.getText().isEmpty() == false){
-            if(Validar.controlCodigo(jTextFieldNombre.getText())){
-                listaClientes = controlador.buscarAfiliadoPorNombre(jTextFieldCodigo.getText());
-                CargarTabla();
-                limpiarFields();
-            } else{
-                JOptionPane.showMessageDialog(null, "El Nombre ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
+            listaClientes = controlador.buscarClientePorParteDelNombre(jTextFieldNombre.getText());
+            CargarTabla();
+            limpiarFields();
         } else{
             JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -395,13 +391,9 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     private void jButtonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarNombreActionPerformed
         // TODO add your handling code here:
         if (jTextFieldNombre.getText().isEmpty() == false){
-            if(Validar.controlApellido(jTextFieldNombre.getText())){
-                listaClientes = controlador.buscarAfiliadoPorNombre(jTextFieldNombre.getText());
-                CargarTabla();
-                limpiarFields();
-            } else{
-                JOptionPane.showMessageDialog(null, "El Nombre ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
-            }
+            listaClientes = controlador.buscarClientePorParteDelNombre(jTextFieldNombre.getText());
+            CargarTabla();
+            limpiarFields();
         } else{
             JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
         }

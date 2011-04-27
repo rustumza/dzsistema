@@ -28,8 +28,8 @@ public class ControladorABMCliente {
         experto.bajaCliente(clienteAModificar);
     }
 
-    public List<Cliente> buscarAfiliadoPorNombre(String nombre) {
-        return experto.buscarAfiliadoPorNombre(nombre);
+    public List<Cliente> buscarClientePorParteDelNombre(String nombre) {
+        return experto.buscarClientePorParteDelNombre(nombre);
     }
 
     public void guardarCliente(int codigo, String nombre, String CUIT, String direccion, Long id, String iva) {

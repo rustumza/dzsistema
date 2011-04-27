@@ -155,4 +155,11 @@ public class ProductoJpaController {
         return encontrados;
     }
 
+    public List<Producto> buscarPorParteDelNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        List<Producto> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Producto a WHERE a.descripcion LIKE '%"+nombre+"%' and a.estado = true ").getResultList();
+        return encontrados;
+    }
+
 }

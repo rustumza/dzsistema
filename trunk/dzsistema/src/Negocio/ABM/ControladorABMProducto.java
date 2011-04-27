@@ -24,8 +24,8 @@ public class ControladorABMProducto {
         return experto.buscarProductoPorCodigo(codigo);
     }
 
-    public List<Producto> buscarProductoPorNombre(String nombre) {
-        return experto.buscarProductoPorNombre(nombre);
+    public List<Producto> buscarProductoPorParteDelNombre(String nombre) {
+        return experto.buscarProductoPorParteDelNombre(nombre);
     }
 
     public void bajaProducto(Producto productoAModificar) {

@@ -332,7 +332,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
     private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
         // TODO add your handling code here:
         if (jTextFieldNombre.getText().isEmpty() == false){
-            listaProductos = controlador.buscarProductoPorNombre(jTextFieldNombre.getText());
+            listaProductos = controlador.buscarProductoPorParteDelNombre(jTextFieldNombre.getText());
             CargarTabla();
             limpiarFields();
         } else{
@@ -343,7 +343,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
     private void jButtonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarNombreActionPerformed
         // TODO add your handling code here:
         if (jTextFieldNombre.getText().isEmpty() == false){
-            listaProductos = controlador.buscarProductoPorNombre(jTextFieldNombre.getText());
+            listaProductos = controlador.buscarProductoPorParteDelNombre(jTextFieldNombre.getText());
             CargarTabla();
             limpiarFields();
         } else{
