@@ -134,4 +134,11 @@ public class FacturaJpaController {
         }
     }
 
+    public Factura buscarPorNumero(int numero) {
+        EntityManager em = getEntityManager();
+        List<Factura> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Factura a WHERE a.numero = '"+numero+"'").getResultList();
+        return (Factura)encontrados.get(0);
+    }
+
 }

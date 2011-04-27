@@ -7,6 +7,7 @@ package Negocio.Facturacion;
 
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -102,7 +103,10 @@ public class DtoFactura {
 
    }
 
-    void eliminarTodosLosDetalles() {
+   /**
+    * elimina todos los detalles, poniendolos en el arreglo listaDeDetallesAEliminar
+    */
+   void eliminarTodosLosDetalles() {
         for (DetalleFactura detalleFactura : listaDeDetalles) {
 
             if(!contieneDetalle(detalleFactura, listaDeDetallesAEliminar)){
