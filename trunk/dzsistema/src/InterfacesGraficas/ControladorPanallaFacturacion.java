@@ -268,7 +268,11 @@ public class ControladorPanallaFacturacion {
     public void cancelarCargaDetalle() {
         limpiarSectorDeIngresoDeDetalle();
         getPantalla().getEliminar().setEnabled(false);
+        getPantalla().getAgregar().setText("Agregar");
+        filaAEditar = -1;
     }
+
+    private int filaAEditar=-1;
 
     public void cargarFilaDetalleParaEditar(int filaSeleccionada) {
         //cargar la fila a la que se le hizo doble clic en los campos de edición asi se modifica
@@ -279,6 +283,9 @@ public class ControladorPanallaFacturacion {
         getPantalla().getDescripcion().setText(det.getProducto().getDescripcion());
         getPantalla().getPrecioUnitario().setText(String.valueOf(det.getPrecioUnitario()));
         getPantalla().getImporte().setText(String.valueOf(det.getPrecioTotal()));
+        getPantalla().getAgregar().setText("Actualizar");
+        filaAEditar=filaSeleccionada;
+
 
     }
 
@@ -343,6 +350,12 @@ public class ControladorPanallaFacturacion {
                 JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado una cantidad incorrecta", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
                 return;
         }
+        try{
+            Float.valueOf(getPantalla().getPrecioUnitario().getText());
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado un precio unitario incorrecto", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         if(pantalla.getCantidad().getText().equals("")){
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado la cantidad", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
         }else if(pantalla.getCodigo().getText().equals("")){
@@ -352,22 +365,27 @@ public class ControladorPanallaFacturacion {
         }else if(pantalla.getImporte().getText().equals("")){
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado el importe", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
         }else{
-
-            DTODetallesDeFacturaParaGUI dto = new DTODetallesDeFacturaParaGUI();
-            dto.setCantidad(Float.valueOf(getPantalla().getCantidad().getText()));
-            dto.setCodigo(getPantalla().getCodigo().getText());
-
-            try{
+            DtoFactura dtoFactura = null;
+            if(filaAEditar == -1){
+                DTODetallesDeFacturaParaGUI dto = new DTODetallesDeFacturaParaGUI();
+                dto.setCantidad(Float.valueOf(getPantalla().getCantidad().getText()));
+                dto.setCodigo(getPantalla().getCodigo().getText());
                 dto.setPrecioUnitario(Float.valueOf(getPantalla().getPrecioUnitario().getText()));
-            }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado un precio unitario incorrecto", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
+                dto.setImporte(Float.valueOf(getPantalla().getImporte().getText()));
+                dtoFactura = experto.AgregarDetalleALaFactura(dto);
+            }else{
+                DTODetallesDeFacturaParaGUI dto = new DTODetallesDeFacturaParaGUI();
+                dto.setCantidad(Float.valueOf(getPantalla().getCantidad().getText()));
+                dto.setCodigo(getPantalla().getCodigo().getText());
+                dto.setPrecioUnitario(Float.valueOf(getPantalla().getPrecioUnitario().getText()));
+                dto.setImporte(Float.valueOf(getPantalla().getImporte().getText()));
+                dtoFactura = experto.editarDetalleALaFactura(dto, filaAEditar);
 
-            dto.setImporte(Float.valueOf(getPantalla().getImporte().getText()));
-            DtoFactura dtoFactura = experto.AgregarDetalleALaFactura(dto);
+            }
             actualizarTablaEImpuestosYTotales(dtoFactura);
             getPantalla().getCantidad().requestFocus();
+            getPantalla().getAgregar().setText("Agregar");
+            filaAEditar = -1;
         }
     }
 
@@ -426,6 +444,7 @@ public class ControladorPanallaFacturacion {
         getPantalla().getDescripcion().setText("");
         getPantalla().getImporte().setText("");
         getPantalla().getPrecioUnitario().setText("");
+        getPantalla().getEliminar().setEnabled(false);
 
     }
 
@@ -709,7 +728,6 @@ public class ControladorPanallaFacturacion {
         getPantalla().getTipoFactura().setEnabled(true);
         getPantalla().getCodigoFactura().setEnabled(true);
 
-            getPantalla().getCondicionDeVenta().setEnabled(false);
 
         pantalla.getFecha().setEnabled(true);
 
@@ -745,6 +763,9 @@ public class ControladorPanallaFacturacion {
         pantallaElefirCliente = new PantallaElegirCliente(this);
         this.listaClientes = listaDeClientes;
         CargarTablaClientes();
+        pantallaElefirCliente.getTabla().getColumnModel().getColumn(0).setPreferredWidth(45);  //cantidad
+        pantallaElefirCliente.getTabla().getColumnModel().getColumn(1).setPreferredWidth(200);  //codigo
+        pantallaElefirCliente.getTabla().getColumnModel().getColumn(2).setPreferredWidth(90); //descripcion
         pantallaElefirCliente.setVisible(true);
         pantallaElefirCliente.setLocationRelativeTo(pantalla.getPanelDatosCliente());
 
@@ -768,7 +789,6 @@ public class ControladorPanallaFacturacion {
             pantallaElefirCliente.getTabla().setModel(new DefaultTableModel(datos, columnNames) {
 
 
-
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return false;
@@ -789,6 +809,7 @@ public class ControladorPanallaFacturacion {
 
      public void cancelarSeleccionDeCliente(){
         cerrarPantallaSeleccionCliente();
+        pantalla.getNombre().requestFocus();
      }
 
      private void cerrarPantallaSeleccionCliente(){
