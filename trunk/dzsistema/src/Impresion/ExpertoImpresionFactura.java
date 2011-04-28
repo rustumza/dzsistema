@@ -15,7 +15,7 @@ public class ExpertoImpresionFactura {
 
     void imprimir(Factura factura) {
         ManejadorImpresion manejador = new ManejadorImpresion();
-        if(factura.getTipoFactura().getNombre().equals("A")){
+        if(factura.getTipoFactura().getNombre().equals("A") | factura.getTipoFactura().getNombre().equals("a")){
             manejador.imprimirFacturaA(factura);
         }
         else{

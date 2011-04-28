@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<background>
-		<band/>
-	</background>
-	<title>
-		<band height="79"/>
-	</title>
-	<pageHeader>
-		<band height="35"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61"/>
-	</columnHeader>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="20">
+	<property name="ireport.zoom" value="1.542173157718134"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<scriptlet name="scriptlet2" class="net.sf.jasperreports.engine.JRDefaultScriptlet"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="nroRemito" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<field name="condicionDeVenta" class="java.lang.String"/>
+	<field name="señor/es" class="java.lang.String"/>
+	<field name="domicilio" class="java.lang.String"/>
+	<field name="cuit" class="java.lang.String"/>
+	<field name="iva" class="java.lang.String"/>
+	<field name="detalles" class="java.lang.String"/>
 	<detail>
-		<band height="125"/>
+		<band height="138" splitType="Stretch"/>
+		<band height="694"/>
 	</detail>
-	<columnFooter>
-		<band height="45"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54"/>
-	</pageFooter>
-	<summary>
-		<band height="42"/>
-	</summary>
 </jasperReport>
