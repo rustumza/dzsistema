@@ -19,7 +19,7 @@ import validar.Validar;
  */
 public class FacturaBDataSource implements JRDataSource {
 
-//    private int indicadorOrdenActual = -1;
+    private boolean next = true;
     private Factura factura;
     private DetalleDataSource detalleDataSource;
 //    private int cantFilas = 0;
@@ -63,6 +63,11 @@ public class FacturaBDataSource implements JRDataSource {
     }
 
     public boolean next() throws JRException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(next == true){
+            next = false;
+            return true;
+        }else{
+            return false;
+        }
     }
 }
