@@ -109,29 +109,31 @@ public class ExpertoFacturar {
         ProductoJpaController productoJpa = new ProductoJpaController();
         int codigoInt = Integer.parseInt(codigo);
         List<Producto> listaDeProductos = productoJpa.buscarPorCodigo(codigoInt);
-        Producto producto = listaDeProductos.get(0);
-        List<PrecioHistorico> preciosHistoricos = producto.getPreciosHistoricos();
-        Date fechaFactura = dto.getFactura().getFecha();
-        int anterior;
-        PrecioHistorico ph = null;
-        for (PrecioHistorico precioHistorico : preciosHistoricos) {
-            /*negativo si FechaDesdeQueEntroEnVigencia es mas vieja
-             * 0 si FechaDesdeQueEntroEnVigencia igual
-             * positiva si FechaDesdeQueEntroEnVigencia es mas nueva
-             */
+        if(listaDeProductos.isEmpty()){
+            Producto producto = listaDeProductos.get(0);
+            List<PrecioHistorico> preciosHistoricos = producto.getPreciosHistoricos();
+            Date fechaFactura = dto.getFactura().getFecha();
+            int anterior;
+            PrecioHistorico ph = null;
+            for (PrecioHistorico precioHistorico : preciosHistoricos) {
+                /*negativo si FechaDesdeQueEntroEnVigencia es mas vieja
+                 * 0 si FechaDesdeQueEntroEnVigencia igual
+                 * positiva si FechaDesdeQueEntroEnVigencia es mas nueva
+                 */
 
-            int comparacion = precioHistorico.getFechaDesdeQueEntroEnVigencia().compareTo(fechaFactura);
-            if(comparacion<=0){
-                ph = precioHistorico;
-            }else{
-                break;
+                int comparacion = precioHistorico.getFechaDesdeQueEntroEnVigencia().compareTo(fechaFactura);
+                if(comparacion<=0){
+                    ph = precioHistorico;
+                }else{
+                    break;
+                }
             }
-        }
-        List<PrecioHistorico> listaConElPrecioHistorico = new ArrayList<PrecioHistorico>();
-        listaConElPrecioHistorico.add(ph);
-        producto.setPreciosHistoricos(listaConElPrecioHistorico);
-        return producto;
-        
+            List<PrecioHistorico> listaConElPrecioHistorico = new ArrayList<PrecioHistorico>();
+            listaConElPrecioHistorico.add(ph);
+            producto.setPreciosHistoricos(listaConElPrecioHistorico);
+            return producto;
+        }else
+            return null;
         
     }
 
