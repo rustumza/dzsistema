@@ -5,6 +5,8 @@
 
 package Impresion;
 
+import Impresion.DetalleDataSource;
+import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -19,6 +21,7 @@ public class FacturaBDataSource implements JRDataSource {
 
 //    private int indicadorOrdenActual = -1;
     private Factura factura;
+    private DetalleDataSource detalleDataSource;
 //    private int cantFilas = 0;
 
     public FacturaBDataSource() {
@@ -54,6 +57,9 @@ public class FacturaBDataSource implements JRDataSource {
             valor = String.valueOf(factura.getCliente().getCondicionFrenteAlIva().getNombre());
         }else if (jrf.getName().equals("iva")) {
             valor = String.valueOf(factura.getCliente().getCondicionFrenteAlIva().getNombre());
+        }else if (jrf.getName().equals("detalles")) {
+            detalleDataSource = new DetalleDataSource();
+            detalleDataSource.addAllDetalle(factura.getDetallesDeFactura());
         }
         return valor;
     }

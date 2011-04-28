@@ -31,14 +31,14 @@ public class DetalleDataSource implements JRDataSource {
 //        semaforosDataSource = new SemaforoDataSource();
 //    }
 
-    public void addOrden(DetalleFactura nuevoDetalle) {
+    public void addDetalle(DetalleFactura nuevoDetalle) {
         if (listaDetalles == null) {
             listaDetalles = new ArrayList<DetalleFactura>();
         }
         listaDetalles.add(nuevoDetalle);
     }
 
-    public void addAllOrden(List<DetalleFactura> nuevaLista) {
+    public void addAllDetalle(List<DetalleFactura> nuevaLista) {
         if (listaDetalles == null) {
             listaDetalles = new ArrayList<DetalleFactura>();
         }
