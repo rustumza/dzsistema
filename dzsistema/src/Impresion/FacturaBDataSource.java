@@ -49,12 +49,10 @@ public class FacturaBDataSource implements JRDataSource {
             valor = String.valueOf(factura.getCondicionDeVenta().getNombre());
         }else if (jrf.getName().equals("señor/es")) {
             valor = String.valueOf(factura.getCliente().getNombre());
-        }else if (jrf.getName().equals("domiciolio")) {
+        }else if (jrf.getName().equals("domicilio")) {
             valor = String.valueOf(factura.getCliente().getDomicilio());
         }else if (jrf.getName().equals("cuit")) {
             valor = String.valueOf(factura.getCliente().getCUIT());
-        }else if (jrf.getName().equals("iva")) {
-            valor = String.valueOf(factura.getCliente().getCondicionFrenteAlIva().getNombre());
         }else if (jrf.getName().equals("iva")) {
             valor = String.valueOf(factura.getCliente().getCondicionFrenteAlIva().getNombre());
         }else if (jrf.getName().equals("detalles")) {
