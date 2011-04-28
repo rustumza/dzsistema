@@ -20,7 +20,7 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
     ControladorPanallaFacturacion controlador;
     /** Creates new form PantallaBuscarFactura */
     public PantallaBuscarFactura(ControladorPanallaFacturacion controlador) {
-        initComponents();
+       initComponents();
        this.controlador = controlador;
        this.setLocationRelativeTo(null);
     }

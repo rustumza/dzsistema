@@ -872,9 +872,6 @@ public class ControladorPanallaFacturacion {
 
         pantallaBuscarFactura = new PantallaBuscarFactura(this);
         pantallaBuscarFactura.setVisible(true);
-        pantallaBuscarFactura.setLocationRelativeTo(pantalla.getPanelDatosCliente());
-
-
     }
 
      public void buscarFactura(String numero) {
