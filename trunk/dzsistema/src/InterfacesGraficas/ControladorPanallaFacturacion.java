@@ -23,6 +23,8 @@ import javax.swing.table.DefaultTableModel;
 import java.lang.Math.*;
 import javax.swing.DefaultComboBoxModel;
 import Negocio.Facturacion.DtoFactura;
+import java.util.Date;
+
 
 
 /**
@@ -312,6 +314,7 @@ public class ControladorPanallaFacturacion {
                         getPantalla().getPrecioUnitario().setText(String.valueOf(producto.getPreciosHistoricos().get(0).getPrecio()));
                     }else{
                         float importe = producto.getPreciosHistoricos().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPreciosHistoricos().get(0).getPrecio();
+                        importe = Math.round(importe * 100)/100;
                         getPantalla().getPrecioUnitario().setText(String.valueOf(importe));
 
                     }
@@ -607,49 +610,79 @@ public class ControladorPanallaFacturacion {
 
         if(!(pantalla.getFecha().getText().equals(""))){
             int rta;
+
+
+
+
             //reviso si ya tiene fecha la factura, si tiene, pregunto si desea modificar, si no tiene, no pregunto nada
-            if(experto.getDtoFactura().getFactura().getFecha()!=null){
-                rta=JOptionPane.showConfirmDialog(pantalla.getPanelInfoCliene(),"¿Está seguro que desea cambiar la fecha?", "¡Atención!", JOptionPane.YES_NO_OPTION);
-            }else{
-                rta = JOptionPane.YES_OPTION;
-            }
-            //basado en la respuesta, es lo que hago
-            if(rta==JOptionPane.YES_OPTION){
-                
-                try{
-                   experto.cambiarFechaDeFactura(pantalla.getFecha().getText());
-                   experto.eliminarTodosLosDetallesDeFactura();
-                   actualizarTablaEImpuestosYTotales(experto.getDtoFactura());
-                   pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+                if(experto.getDtoFactura().getFactura().getFecha()!=null){
+                    try{
+                        Date fech = Validar.validarFecha(pantalla.getFecha().getText());
+                        if(fech.compareTo(experto.getDtoFactura().getFactura().getFecha())==0){
+                            pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+                            return;
+                        }
+                    }catch(fechaException e){
+                        JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        if(experto.getDtoFactura().getFactura().getFecha() != null){
+                            getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+                        }else{
+                            getPantalla().getFecha().setText("");
+                        }
+                        getPantalla().getFecha().requestFocus();
 
-                }catch(fechaException e){
-                    JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
-                    if(experto.getDtoFactura().getFactura().getFecha() != null){
-                        getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
-                    }else{
-                        getPantalla().getFecha().setText("");
+                    }catch(NullPointerException ex){
+                        JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        if(experto.getDtoFactura().getFactura().getFecha() != null){
+                            getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+                        }else{
+                            getPantalla().getFecha().setText("");
+                        }
+                        getPantalla().getFecha().requestFocus();
+
                     }
-                    getPantalla().getFecha().requestFocus();
-
-                }catch(NullPointerException ex){
-                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
-                    if(experto.getDtoFactura().getFactura().getFecha() != null){
-                        getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
-                    }else{
-                        getPantalla().getFecha().setText("");
-                    }
-                    getPantalla().getFecha().requestFocus();
-
+                    rta=JOptionPane.showConfirmDialog(pantalla.getPanelInfoCliene(),"¿Está seguro que desea cambiar la fecha?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+                }else{
+                    rta = JOptionPane.YES_OPTION;
                 }
+                //basado en la respuesta, es lo que hago
+                if(rta==JOptionPane.YES_OPTION){
+
+                    try{
+                       experto.cambiarFechaDeFactura(pantalla.getFecha().getText());
+                       experto.eliminarTodosLosDetallesDeFactura();
+                       actualizarTablaEImpuestosYTotales(experto.getDtoFactura());
+                       pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+
+                    }catch(fechaException e){
+                        JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        if(experto.getDtoFactura().getFactura().getFecha() != null){
+                            getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+                        }else{
+                            getPantalla().getFecha().setText("");
+                        }
+                        getPantalla().getFecha().requestFocus();
+
+                    }catch(NullPointerException ex){
+                        JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        if(experto.getDtoFactura().getFactura().getFecha() != null){
+                            getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+                        }else{
+                            getPantalla().getFecha().setText("");
+                        }
+                        getPantalla().getFecha().requestFocus();
+
+                    }
+
+                }else{
+                    if(experto.getDtoFactura().getFactura().getFecha()==null){
+                        pantalla.getFecha().setText("");
+                    }else{
+                        pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
+                    }
+                }
+            
         }
-        }else{
-            if(experto.getDtoFactura().getFactura().getFecha()==null){
-                pantalla.getFecha().setText("");
-            }else{
-                pantalla.getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
-            }
-        }
-         
     }
     
     

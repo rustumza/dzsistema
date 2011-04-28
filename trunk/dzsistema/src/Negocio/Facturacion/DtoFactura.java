@@ -112,13 +112,18 @@ public class DtoFactura {
     * elimina todos los detalles, poniendolos en el arreglo listaDeDetallesAEliminar
     */
    void eliminarTodosLosDetalles() {
-        for (DetalleFactura detalleFactura : getListaDeDetalles()) {
 
+       List<DetalleFactura> aux = new ArrayList<DetalleFactura>();
+       for (DetalleFactura detalleFactura : getListaDeDetalles()) {
             if(!contieneDetalle(detalleFactura, listaDeDetallesAEliminar)){
                listaDeDetallesAEliminar.add(detalleFactura);
-               getListaDeDetalles().remove(detalleFactura);
+               aux.add(detalleFactura);
             }
 
         }
+       for (DetalleFactura detalleFactura : aux) {
+            getListaDeDetalles().remove(detalleFactura);    
+       }
+
     }
 }
