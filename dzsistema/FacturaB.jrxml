@@ -15,7 +15,18 @@
 	<field name="iva" class="java.lang.String"/>
 	<field name="detalles" class="java.lang.String"/>
 	<detail>
-		<band height="138" splitType="Stretch"/>
+		<band height="138" splitType="Stretch">
+			<textField>
+				<reportElement x="386" y="55" width="100" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="498" y="35" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+		</band>
 		<band height="694"/>
 	</detail>
 </jasperReport>
