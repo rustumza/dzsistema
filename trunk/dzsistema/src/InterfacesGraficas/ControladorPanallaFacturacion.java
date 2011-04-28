@@ -925,12 +925,18 @@ public class ControladorPanallaFacturacion {
         pantallaBuscarFactura.setVisible(true);
     }
 
-     public void buscarFactura(String numero) {
+     public void buscarFactura() {
         try{
+            String numero = pantallaBuscarFactura.getNumeroDeFactura().getText();
+            String tipo = (String) pantallaBuscarFactura.getTipoFactura().getSelectedItem();
             long numeroLong = Long.parseLong(numero);
             pantallaBuscarFactura.dispose();
-            DtoFactura dto = experto.abrirFactura(numeroLong);
-            cargarDatosFacturaAbierta(dto);
+            DtoFactura dto = experto.abrirFactura(numeroLong, tipo);
+            if(dto.getFactura() == null){
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha encontado una facura con ese numero", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                cargarDatosFacturaAbierta(dto);
+            }
         }catch(NumberFormatException e){
             pantallaBuscarFactura.dispose();
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Lo ingresado no es un número", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
