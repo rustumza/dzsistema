@@ -109,7 +109,7 @@ public class ExpertoFacturar {
         ProductoJpaController productoJpa = new ProductoJpaController();
         int codigoInt = Integer.parseInt(codigo);
         List<Producto> listaDeProductos = productoJpa.buscarPorCodigo(codigoInt);
-        if(listaDeProductos.isEmpty()){
+        if(!(listaDeProductos.isEmpty())){
             Producto producto = listaDeProductos.get(0);
             List<PrecioHistorico> preciosHistoricos = producto.getPreciosHistoricos();
             Date fechaFactura = dto.getFactura().getFecha();
