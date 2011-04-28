@@ -67,7 +67,8 @@ public class DtoFactura {
      * @return the listaDeDetalles
      */
     public List<DetalleFactura> getListaDeDetalles() {
-        return listaDeDetalles;
+        //return listaDeDetalles;
+        return factura.getDetallesDeFactura();
     }
 
     /**
@@ -79,8 +80,12 @@ public class DtoFactura {
 
 
     public void addDetalleNuevo(DetalleFactura detalleFactura) {
-        if (!contieneDetalle(detalleFactura, listaDeDetalles)) {
-            listaDeDetalles.add(detalleFactura);
+        if (!contieneDetalle(detalleFactura, getListaDeDetalles())) {
+            getListaDeDetalles().add(detalleFactura);
+            if (detalleFactura.getFactura() != null) {
+                detalleFactura.getFactura().getDetallesDeFactura().remove(detalleFactura);
+            }
+            detalleFactura.setFactura(factura);
         }
     }
 
@@ -96,9 +101,9 @@ public class DtoFactura {
    public void eliminarDetalle(int numeroDeElementoAeliminar){
 
        
-       if(!contieneDetalle(listaDeDetalles.get(numeroDeElementoAeliminar), listaDeDetallesAEliminar)){
-           listaDeDetallesAEliminar.add(listaDeDetalles.get(numeroDeElementoAeliminar));
-           listaDeDetalles.remove(numeroDeElementoAeliminar);
+       if(!contieneDetalle(getListaDeDetalles().get(numeroDeElementoAeliminar), listaDeDetallesAEliminar)){
+           listaDeDetallesAEliminar.add(getListaDeDetalles().get(numeroDeElementoAeliminar));
+            getListaDeDetalles().remove(numeroDeElementoAeliminar);
        }
 
    }
@@ -107,11 +112,11 @@ public class DtoFactura {
     * elimina todos los detalles, poniendolos en el arreglo listaDeDetallesAEliminar
     */
    void eliminarTodosLosDetalles() {
-        for (DetalleFactura detalleFactura : listaDeDetalles) {
+        for (DetalleFactura detalleFactura : getListaDeDetalles()) {
 
             if(!contieneDetalle(detalleFactura, listaDeDetallesAEliminar)){
                listaDeDetallesAEliminar.add(detalleFactura);
-               listaDeDetalles.remove(detalleFactura);
+               getListaDeDetalles().remove(detalleFactura);
             }
 
         }
