@@ -11,6 +11,9 @@
 
 package InterfacesGraficas;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author rustu
@@ -23,6 +26,8 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
        initComponents();
        this.controlador = controlador;
        this.setLocationRelativeTo(null);
+       String[] tiposDeFactura = {"A", "B"};
+       tipoFactura.setModel(new DefaultComboBoxModel(tiposDeFactura));
     }
 
     /** This method is called from within the constructor to
@@ -38,6 +43,8 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
         jButtonAceptar = new javax.swing.JButton();
         numeroDeFactura = new javax.swing.JTextField();
         numeroDeFacturaLabel = new javax.swing.JLabel();
+        tipoFacturaLabel = new javax.swing.JLabel();
+        tipoFactura = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar factura");
@@ -59,6 +66,10 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
 
         numeroDeFacturaLabel.setText("N° de factura");
 
+        tipoFacturaLabel.setText("Tipo de factura");
+
+        tipoFactura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,15 +77,19 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(numeroDeFacturaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroDeFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tipoFacturaLabel)
+                            .addComponent(numeroDeFacturaLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numeroDeFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(tipoFactura, 0, 123, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,11 +98,15 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numeroDeFacturaLabel)
                     .addComponent(numeroDeFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipoFacturaLabel)
+                    .addComponent(tipoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCerrar)
                     .addComponent(jButtonAceptar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -99,7 +118,7 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
 }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        controlador.buscarFactura(getNumeroDeFactura().getText());
+        controlador.buscarFactura();
 }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
@@ -118,7 +137,18 @@ public class PantallaBuscarFactura extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCerrar;
     private javax.swing.JTextField numeroDeFactura;
     private javax.swing.JLabel numeroDeFacturaLabel;
+    private javax.swing.JComboBox tipoFactura;
+    private javax.swing.JLabel tipoFacturaLabel;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox getTipoFactura() {
+        return tipoFactura;
+    }
+
+    public void setTipoFactura(JComboBox tipoFactura) {
+        this.tipoFactura = tipoFactura;
+    }
+    // End of variables declaration
 
     /**
      * @return the jButtonAceptar

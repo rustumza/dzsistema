@@ -295,11 +295,19 @@ public class ExpertoFacturar {
     }
 
 
-    public DtoFactura abrirFactura(long numero){
+    public DtoFactura abrirFactura(long numero, String tipo){
         FacturaJpaController jpa = new FacturaJpaController();
 
         dto = new DtoFactura();
-        dto.setFactura(jpa.buscarPorNumero(numero));
+        dto.setFactura(null);
+        List<Factura> listaFactura = jpa.buscarPorNumero(numero);
+        if(!listaFactura.isEmpty())
+            for (Factura factura : listaFactura) {
+                if(factura.getTipoFactura().getNombre().equals(tipo)){
+                    dto.setFactura(factura);
+                }
+
+        }
         dto.setEsFacuraNueva(false);
         dto.setListaDeDetalles(dto.getFactura().getDetallesDeFactura());
         dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
