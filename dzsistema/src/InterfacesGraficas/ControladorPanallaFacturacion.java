@@ -6,6 +6,7 @@
 package InterfacesGraficas;
 
 
+import Impresion.ControladorImpresionFactura;
 import InterfacesGraficas.exceptions.ClienteExcepcion;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.DetalleFactura;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import java.lang.Math.*;
 import javax.swing.DefaultComboBoxModel;
 import Negocio.Facturacion.DtoFactura;
+import com.sun.xml.internal.ws.api.addressing.AddressingVersion.EPR;
 
 
 /**
@@ -35,6 +37,7 @@ public class ControladorPanallaFacturacion {
     //private Factura factura;
     private final String[] CondicionesDeVentaA = {"Contado", "Cuenta Corriente"};
     private final String[] CondicionesDeVentaB = {"Contado", "Cuenta Corriente", "Tarjeta"};
+    boolean guardado = false;
 
     public ControladorPanallaFacturacion() {
         experto = new ExpertoFacturar();
@@ -433,11 +436,13 @@ public class ControladorPanallaFacturacion {
                 for (DetalleFactura detalleFactura : listaDetalles) {
                     if(detalleFactura.getPorcentajeDeIva() == 21){
                         float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
+                        iva = (Math.round(iva * 100))/100;
                         iva21 += iva;
                         total += detalleFactura.getPrecioTotal() + iva;
                         subtotal += detalleFactura.getPrecioTotal();
                     }else{
                         float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
+                        iva = (Math.round(iva * 100))/100;
                         iva105 += iva;
                         total += detalleFactura.getPrecioTotal() + iva;
                         subtotal += detalleFactura.getPrecioTotal();
@@ -455,6 +460,7 @@ public class ControladorPanallaFacturacion {
                 for (DetalleFactura detalleFactura : listaDetalles) {
                     total += detalleFactura.getPrecioTotal();
                 }
+                experto.settotal(total);
                 getPantalla().getTotal().setText(String.valueOf(total));
             }
         }else{
@@ -545,11 +551,12 @@ public class ControladorPanallaFacturacion {
 
         try{
             experto.guardarFactura();
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Factura guardada", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Factura guardada", "", JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception e){
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Error al guardar la factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
+            guardado = true;
             desbloquearTodo();
         }
 
@@ -559,9 +566,14 @@ public class ControladorPanallaFacturacion {
     }
 
     public void imprimir() {
-        this.guardarFactura();//??
-
-        //imprimir
+        
+        if(!guardado){
+            guardarFactura();
+            guardado = true;
+        }
+        ControladorImpresionFactura contImp = new ControladorImpresionFactura();
+        contImp.imprimir(experto.getDtoFactura().getFactura());
+        
     }
 
     public void limpiarPantalla() {
@@ -576,6 +588,7 @@ public class ControladorPanallaFacturacion {
             desbloquearTodo();
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
+            guardado = false;
         }
 
 
