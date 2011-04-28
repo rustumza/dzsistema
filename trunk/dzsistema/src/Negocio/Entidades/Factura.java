@@ -30,8 +30,8 @@ public class Factura implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-    private int numero;
-    private int remitoNro;
+    private long numero;
+    private long remitoNro;
     private float total;
     private boolean estado;
     @ManyToOne
@@ -86,19 +86,19 @@ public class Factura implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(long numero) {
         this.numero = numero;
     }
 
-    public int getRemitoNro() {
+    public long getRemitoNro() {
         return remitoNro;
     }
 
-    public void setRemitoNro(int remitoNro) {
+    public void setRemitoNro(long remitoNro) {
         this.remitoNro = remitoNro;
     }
 

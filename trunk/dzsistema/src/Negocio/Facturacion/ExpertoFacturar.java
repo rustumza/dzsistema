@@ -199,6 +199,20 @@ public class ExpertoFacturar {
             jpa.create(dto.getFactura());
 
         }else{
+            for (DetalleFactura det : dto.getListaDeDetallesAEliminar()) {
+                try {
+                    jpaDetalle.destroy(det.getId());
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            try {
+                jpa.edit(dto.getFactura());
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(ExpertoFacturar.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
 
 
@@ -227,7 +241,7 @@ public class ExpertoFacturar {
         }
 
         */
-            //elimino los detalles que estan para eliminiar
+          /*  //elimino los detalles que estan para eliminiar
             for (DetalleFactura detalleAEliminar : dto.getListaDeDetallesAEliminar()) {
                 if(detalleAEliminar.getId() != null){
                     try {
@@ -257,7 +271,7 @@ public class ExpertoFacturar {
         }else{
             // si la factura es nueva, la guardo
             jpa.create(dto.getFactura());
-        }
+        }*/
     }
 
     //TO DO2 reveer este metodo
@@ -279,7 +293,7 @@ public class ExpertoFacturar {
     }
 
 
-    public DtoFactura abrirFactura(int numero){
+    public DtoFactura abrirFactura(long numero){
         FacturaJpaController jpa = new FacturaJpaController();
 
         dto = new DtoFactura();
@@ -287,7 +301,7 @@ public class ExpertoFacturar {
         dto.setEsFacuraNueva(false);
         dto.setListaDeDetalles(dto.getFactura().getDetallesDeFactura());
         dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
-        dto.getFactura().vaciarListaDeDetalles();
+        //dto.getFactura().vaciarListaDeDetalles();
 
         return dto;
     }
@@ -302,11 +316,11 @@ public class ExpertoFacturar {
         return dto;
     }
 
-    public void guardarNumeroFacutra(int numeroFactura) {
+    public void guardarNumeroFacutra(long numeroFactura) {
         dto.getFactura().setNumero(numeroFactura);
     }
 
-    public void guardarNumeroRemito(int nroRemito) {
+    public void guardarNumeroRemito(long nroRemito) {
         dto.getFactura().setRemitoNro(nroRemito);
     }
 
