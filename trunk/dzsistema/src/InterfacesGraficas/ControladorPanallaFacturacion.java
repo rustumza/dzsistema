@@ -304,20 +304,26 @@ public class ControladorPanallaFacturacion {
                     return;
                 }
                 Producto producto = experto.buscarProductoConFechaDeFactura(codigo);
-                getPantalla().getFecha().setEnabled(false);
-                getPantalla().getCodigo().setText(String.valueOf(producto.getCodigo()));
-                getPantalla().getDescripcion().setText(producto.getDescripcion());
-                DtoFactura dto = experto.getDtoFactura();
-                if(dto.getFactura().getTipoFactura().getNombre().equals("A") | dto.getFactura().getTipoFactura().getNombre().equals("a")){
-                    getPantalla().getPrecioUnitario().setText(String.valueOf(producto.getPreciosHistoricos().get(0).getPrecio()));
-                }else{
-                    float importe = producto.getPreciosHistoricos().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPreciosHistoricos().get(0).getPrecio();
-                    getPantalla().getPrecioUnitario().setText(String.valueOf(importe));
+                if(producto != null ){
+                    getPantalla().getFecha().setEnabled(false);
+                    getPantalla().getCodigo().setText(String.valueOf(producto.getCodigo()));
+                    getPantalla().getDescripcion().setText(producto.getDescripcion());
+                    DtoFactura dto = experto.getDtoFactura();
+                    if(dto.getFactura().getTipoFactura().getNombre().equals("A") | dto.getFactura().getTipoFactura().getNombre().equals("a")){
+                        getPantalla().getPrecioUnitario().setText(String.valueOf(producto.getPreciosHistoricos().get(0).getPrecio()));
+                    }else{
+                        float importe = producto.getPreciosHistoricos().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPreciosHistoricos().get(0).getPrecio();
+                        getPantalla().getPrecioUnitario().setText(String.valueOf(importe));
 
+                    }
+
+                    calcularImporteYSetearImporte();
+                }else{
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha encontrado el producto buscado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    pantalla.getCodigo().requestFocus();
+                    return;
                 }
-                
-                calcularImporteYSetearImporte();
-        }
+            }
 
     }
 
