@@ -63,7 +63,10 @@ public class PantallaABMProducto extends javax.swing.JFrame {
 
         } catch (NullPointerException e) {
         }
-
+        //Setea tamaños de columnas
+        jTableProductos.getColumnModel().getColumn(0).setPreferredWidth(70);  //codigo
+        jTableProductos.getColumnModel().getColumn(1).setPreferredWidth(300); //nombre
+        jTableProductos.getColumnModel().getColumn(2).setPreferredWidth(70);  //iva
 
     }
 

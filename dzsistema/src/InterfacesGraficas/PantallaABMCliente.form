@@ -27,7 +27,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" pref="541" max="32767" attributes="1"/>
+                  <Component id="jScrollPane1" alignment="1" pref="563" max="32767" attributes="1"/>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jButtonNuevo" min="-2" max="-2" attributes="0"/>
@@ -135,9 +135,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jTextFieldNombre" alignment="0" pref="212" max="32767" attributes="0"/>
-                      <Component id="jTextFieldCUIT" alignment="0" pref="212" max="32767" attributes="0"/>
-                      <Component id="jTextFieldCodigo" alignment="0" pref="212" max="32767" attributes="0"/>
+                      <Component id="jTextFieldNombre" alignment="0" pref="220" max="32767" attributes="0"/>
+                      <Component id="jTextFieldCUIT" alignment="0" pref="220" max="32767" attributes="0"/>
+                      <Component id="jTextFieldCodigo" alignment="0" pref="220" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
