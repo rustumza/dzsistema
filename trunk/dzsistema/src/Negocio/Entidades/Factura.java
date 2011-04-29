@@ -34,6 +34,9 @@ public class Factura implements Serializable {
     private long remitoNro;
     private float total;
     private boolean estado;
+    private float subtotal;
+    private float iva21;
+    private float iva105;
     @ManyToOne
     private CondicionDeVenta condicionDeVenta;
     @ManyToOne
@@ -60,6 +63,30 @@ public class Factura implements Serializable {
 
     public List<DetalleFactura> getDetallesDeFactura() {
         return detallesDeFactura;
+    }
+
+    public float getIva105() {
+        return iva105;
+    }
+
+    public void setIva105(float iva105) {
+        this.iva105 = iva105;
+    }
+
+    public float getIva21() {
+        return iva21;
+    }
+
+    public void setIva21(float iva21) {
+        this.iva21 = iva21;
+    }
+
+    public float getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
     }
 
     public CondicionDeVenta getCondicionDeVenta() {
