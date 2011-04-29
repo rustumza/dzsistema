@@ -39,6 +39,10 @@ public class ExpertoFacturar {
     public ExpertoFacturar(){
         dto = new DtoFactura();
         dto.setFactura(new Factura());
+        dto.getFactura().setSubtotal(0);
+        dto.getFactura().setIva105(0);
+        dto.getFactura().setIva21(0);
+        dto.getFactura().setTotal(0);
         dto.setEsFacuraNueva(true);
         dto.getFactura().setEstado(true);
         dto.setListaDeDetalles(new ArrayList<DetalleFactura>());
@@ -344,6 +348,17 @@ public class ExpertoFacturar {
         dto.getFactura().setTotal(total);
     }
 
+    public void setSubtotal(float subtotal) {
+        dto.getFactura().setSubtotal(subtotal);
+    }
+
+    public void setIva21(float iva21) {
+        dto.getFactura().setIva21(iva21);
+    }
+
+    public void setIva105(float iva105) {
+        dto.getFactura().setIva105(iva105);
+    }
 
 
 }
