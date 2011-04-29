@@ -473,6 +473,9 @@ public class ControladorPanallaFacturacion {
                     }
                 }
                 experto.settotal(total);
+                experto.setSubtotal(subtotal);
+                experto.setIva105(iva105);
+                experto.setIva21(iva21);
                 getPantalla().getSubtotal().setText(String.valueOf(subtotal));
                 getPantalla().getIva21().setText(String.valueOf(iva21));
                 getPantalla().getIva105().setText(String.valueOf(iva105));
