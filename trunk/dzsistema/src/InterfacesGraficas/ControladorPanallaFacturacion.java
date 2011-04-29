@@ -336,6 +336,7 @@ public class ControladorPanallaFacturacion {
                     }
 
                     calcularImporteYSetearImporte();
+                    pantalla.getPrecioUnitario().requestFocus();
                 }else{
                     JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha encontrado el producto buscado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                     pantalla.getCodigo().requestFocus();

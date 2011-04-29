@@ -96,7 +96,6 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         setTitle("Gestionar Productos");
         setResizable(false);
 
-        jTableProductos.setAutoCreateRowSorter(true);
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -189,7 +188,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonBuscarCodigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                         .addComponent(jButtonbuscarTodos))
                     .addComponent(jButtonBuscarNombre))
                 .addContainerGap())
@@ -263,7 +262,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                         .addComponent(jButtonElimiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonVerPrecios)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
