@@ -107,6 +107,7 @@ public class ControladorPanallaFacturacion {
                 if(listaDeClientes.size() == 1){
                     //si tre un solo cliente
                     buscarClientePorNumero(String.valueOf(listaDeClientes.get(0).getCodigo()));
+                    getPantalla().getCondicionDeVenta().requestFocus();
                 }else{
                     //si trae muchos clientes
                     iniciarPantallaElegirCliente(listaDeClientes);
@@ -119,6 +120,32 @@ public class ControladorPanallaFacturacion {
             if(experto.getDtoFactura().getFactura().getCliente() != null){
                 pantalla.getNombre().setText(experto.getDtoFactura().getFactura().getCliente().getNombre());
                 pantalla.getNombre().setEnabled(false);
+                getPantalla().getCondicionDeVenta().requestFocus();
+            }else{
+                getPantalla().getNumeroCliente().requestFocus();
+            }
+        }
+    }
+
+
+    public void buscarClientePorNumero(String numeroCliente) {
+        if(!(numeroCliente.equals(""))){
+            try{
+                DtoFactura dto = experto.buscarClientePorNumero(numeroCliente);
+                cargarDatosClienteYFactura(dto);
+                getPantalla().getCondicionDeVenta().requestFocus();
+            }catch(ClienteExcepcion e){
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantalla.getNumeroCliente().requestFocus();
+
+            }
+        }else{
+            if(experto.getDtoFactura().getFactura().getCliente() != null){
+                pantalla.getNumeroCliente().setText(String.valueOf(experto.getDtoFactura().getFactura().getCliente().getCodigo()));
+                pantalla.getNumeroCliente().setEnabled(false);
+                getPantalla().getCondicionDeVenta().requestFocus();
+            }else{
+                getPantalla().getCuit().requestFocus();
             }
         }
     }
@@ -128,6 +155,7 @@ public class ControladorPanallaFacturacion {
             try{
                 DtoFactura dto = experto.buscarClientePorCuit(cuit);
                 cargarDatosClienteYFactura(dto);
+                getPantalla().getCondicionDeVenta().requestFocus();
             }catch(ClienteExcepcion e){
                 JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getCuit().requestFocus();
@@ -137,27 +165,14 @@ public class ControladorPanallaFacturacion {
             if(experto.getDtoFactura().getFactura().getCliente() != null){
                 pantalla.getCuit().setText(experto.getDtoFactura().getFactura().getCliente().getCUIT());
                 pantalla.getCuit().setEnabled(false);
+                getPantalla().getCondicionDeVenta().requestFocus();
+            }else{
+                getPantalla().getNombre().requestFocus();
             }
         }
     }
 
-    public void buscarClientePorNumero(String numeroCliente) {
-        if(!(numeroCliente.equals(""))){
-            try{
-                DtoFactura dto = experto.buscarClientePorNumero(numeroCliente);
-                cargarDatosClienteYFactura(dto);
-            }catch(ClienteExcepcion e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-                pantalla.getNumeroCliente().requestFocus();
-                
-            }
-        }else{
-            if(experto.getDtoFactura().getFactura().getCliente() != null){
-                pantalla.getNumeroCliente().setText(String.valueOf(experto.getDtoFactura().getFactura().getCliente().getCodigo()));
-                pantalla.getNumeroCliente().setEnabled(false);
-            }
-        }
-    }
+    
 
 
      public void cargarDatosClienteYFactura(DtoFactura dto){
@@ -274,6 +289,7 @@ public class ControladorPanallaFacturacion {
         getPantalla().getEliminar().setEnabled(false);
         getPantalla().getAgregar().setText("Agregar");
         filaAEditar = -1;
+        getPantalla().getCantidad().requestFocus();
     }
 
     private int filaAEditar=-1;
@@ -701,6 +717,7 @@ public class ControladorPanallaFacturacion {
         actualizarTablaEImpuestosYTotales(dto);
         pantalla.getAgregar().setText("Agregar");
         filaAEditar = -1;
+        getPantalla().getCantidad().requestFocus();
 
     }
 
@@ -897,8 +914,6 @@ public class ControladorPanallaFacturacion {
      public void clienteSeleccionado(int filaSeleccionada){
         cerrarPantallaSeleccionCliente();
         buscarClientePorNumero(String.valueOf(listaClientes.get(filaSeleccionada).getCodigo()));
-
-
      }
 
      public void cancelarSeleccionDeCliente(){

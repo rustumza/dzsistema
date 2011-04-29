@@ -134,6 +134,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
         numeroFactura.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        numeroFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroFacturaActionPerformed(evt);
+            }
+        });
         numeroFactura.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 guardarNumeroFactura(evt);
@@ -154,6 +159,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         fecha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 focoEnFecha(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                validarFechaIngresada(evt);
             }
         });
 
@@ -390,8 +398,23 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         remitonroLabel.setText("Remito N°");
 
         condicionDeVenta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        condicionDeVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                condicionDeVentaActionPerformed(evt);
+            }
+        });
+        condicionDeVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                condicionDeVentaKeyPressed(evt);
+            }
+        });
 
         remitoNro.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        remitoNro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remitoNroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelCondicionDeVentaLayout = new javax.swing.GroupLayout(panelCondicionDeVenta);
         panelCondicionDeVenta.setLayout(panelCondicionDeVentaLayout);
@@ -542,6 +565,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         cantidadLabel.setText("Cantidad");
 
         cantidad.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadActionPerformed(evt);
+            }
+        });
         cantidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cantidadCalcularImporte(evt);
@@ -549,6 +577,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         });
 
         codigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codigoActionPerformed(evt);
+            }
+        });
         codigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 verificarSiHayClienteCodigo(evt);
@@ -565,6 +598,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         descripcion.setEditable(false);
 
         precioUnitario.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        precioUnitario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioUnitarioActionPerformed(evt);
+            }
+        });
         precioUnitario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 precioUnitarioCalcularImporte(evt);
@@ -587,6 +625,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 eliminarActionPerformed(evt);
             }
         });
+        eliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                eliminarKeyPressed(evt);
+            }
+        });
 
         cancelarDetalle.setText("Cancelar");
         cancelarDetalle.setMaximumSize(new java.awt.Dimension(100, 29));
@@ -595,13 +638,24 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 cancelarDetalleActionPerformed(evt);
             }
         });
+        cancelarDetalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cancelarDetalleKeyPressed(evt);
+            }
+        });
 
         agregar.setText("Agregar");
+        agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         agregar.setMaximumSize(new java.awt.Dimension(100, 29));
         agregar.setMinimumSize(new java.awt.Dimension(68, 29));
         agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarActionPerformed(evt);
+            }
+        });
+        agregar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                agregarKeyPressed(evt);
             }
         });
 
@@ -708,6 +762,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
+            }
+        });
+        guardar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                guardarKeyPressed(evt);
             }
         });
 
@@ -957,8 +1016,73 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_cuitActionPerformed
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-        getControlador().compararFechaFactura();
+       getNombre().requestFocus();
     }//GEN-LAST:event_fechaActionPerformed
+
+    private void validarFechaIngresada(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_validarFechaIngresada
+        getControlador().compararFechaFactura();
+    }//GEN-LAST:event_validarFechaIngresada
+
+    private void condicionDeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_condicionDeVentaActionPerformed
+        getRemitoNro().requestFocus();
+    }//GEN-LAST:event_condicionDeVentaActionPerformed
+
+    private void remitoNroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remitoNroActionPerformed
+       getCantidad().requestFocus();
+    }//GEN-LAST:event_remitoNroActionPerformed
+
+    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
+        getCodigo().requestFocus();
+    }//GEN-LAST:event_cantidadActionPerformed
+
+    private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
+        getPrecioUnitario().requestFocus();
+    }//GEN-LAST:event_codigoActionPerformed
+
+    private void precioUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioUnitarioActionPerformed
+        getAgregar().requestFocus();
+    }//GEN-LAST:event_precioUnitarioActionPerformed
+
+    private void numeroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroFacturaActionPerformed
+        getFecha().requestFocus();
+    }//GEN-LAST:event_numeroFacturaActionPerformed
+
+    private void agregarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_agregarKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+                getControlador().agregarDetalleFactura();
+            }
+    }//GEN-LAST:event_agregarKeyPressed
+
+    private void condicionDeVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_condicionDeVentaKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+                getRemitoNro().requestFocus();
+            }
+    }//GEN-LAST:event_condicionDeVentaKeyPressed
+
+    private void cancelarDetalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cancelarDetalleKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+                getControlador().cancelarCargaDetalle();
+            }
+
+
+    }//GEN-LAST:event_cancelarDetalleKeyPressed
+
+    private void eliminarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eliminarKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+                getControlador().eliminarDetalle(getFilaSeleccionada());
+            }
+    }//GEN-LAST:event_eliminarKeyPressed
+
+    private void guardarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_guardarKeyPressed
+       if (evt.getKeyCode()==10)
+            {
+                getControlador().guardarFactura();
+            }
+    }//GEN-LAST:event_guardarKeyPressed
 
 
 
