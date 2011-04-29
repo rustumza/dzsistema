@@ -17,7 +17,7 @@
 	<field name="cuit" class="java.lang.String"/>
 	<field name="iva" class="java.lang.String"/>
 	<field name="detalles" class="net.sf.jasperreports.engine.JRDataSource"/>
-	<field name="detalle1" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="detalles1" class="net.sf.jasperreports.engine.JRDataSource"/>
 	<detail>
 		<band height="159" splitType="Stretch">
 			<textField>
@@ -63,9 +63,9 @@
 		</band>
 		<band height="238">
 			<subreport>
-				<reportElement x="15" y="12" width="571" height="200"/>
-				<dataSourceExpression><![CDATA[$F{detalle1}]]></dataSourceExpression>
-				<subreportExpression class="java.lang.String"><![CDATA["DetalleFactura_1.jasper"]]></subreportExpression>
+				<reportElement x="15" y="0" width="571" height="200"/>
+				<dataSourceExpression><![CDATA[$F{detalles}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["DetalleFactura.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 		<band height="31">
@@ -120,9 +120,9 @@
 		</band>
 		<band height="320">
 			<subreport>
-				<reportElement x="15" y="50" width="571" height="200"/>
-				<dataSourceExpression><![CDATA[$F{detalles}]]></dataSourceExpression>
-				<subreportExpression class="java.lang.String"><![CDATA["DetalleFactura.jasper"]]></subreportExpression>
+				<reportElement x="15" y="66" width="571" height="200"/>
+				<dataSourceExpression><![CDATA[$F{detalles1}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["DetalleFactura_1.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 		<band height="50">

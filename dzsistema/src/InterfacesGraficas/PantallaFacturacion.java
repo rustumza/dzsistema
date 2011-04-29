@@ -146,12 +146,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 fechaMouseDobleClic(evt);
             }
         });
+        fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaActionPerformed(evt);
+            }
+        });
         fecha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 focoEnFecha(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                verificarCambioDeFecha(evt);
             }
         });
 
@@ -272,9 +274,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 nombreHabilitarCampo(evt);
             }
         });
-        nombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                buscarClientePorNombre(evt);
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
             }
         });
         nombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -291,9 +293,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 cuitHabilitarCampo(evt);
             }
         });
-        cuit.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                buscarClientePorCuit(evt);
+        cuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuitActionPerformed(evt);
             }
         });
 
@@ -311,9 +313,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 numeroHabilitarCampo(evt);
             }
         });
-        numeroCliente.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                buscarClientePorNumero(evt);
+        numeroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeroClienteActionPerformed(evt);
             }
         });
 
@@ -818,21 +820,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         iu.setVisible(true);
     }//GEN-LAST:event_menuModificarClienteActionPerformed
 
-    //busca el cliente cuando se pierde el foco del campo nombre
-    private void buscarClientePorNombre(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarClientePorNombre
-        getControlador().buscarClientePorNombre(getNombre().getText());
-    }//GEN-LAST:event_buscarClientePorNombre
-
-    //busca el cliente cuando se pierde el foco del campo numero
-    private void buscarClientePorNumero(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarClientePorNumero
-        getControlador().buscarClientePorNumero(getNumeroCliente().getText());
-    }//GEN-LAST:event_buscarClientePorNumero
-
-    //busca el cliente cuando se pierde el foco del campo cuit
-    private void buscarClientePorCuit(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscarClientePorCuit
-        getControlador().buscarClientePorCuit(getCuit().getText());
-    }//GEN-LAST:event_buscarClientePorCuit
-
     
     //al hacerle doble clic me habilita el campo para poder buscar
     private void nombreHabilitarCampo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreHabilitarCampo
@@ -903,10 +890,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         getControlador().limpiarPantalla();
     }//GEN-LAST:event_limpiaraPantallaActionPerformed
 
-    private void verificarCambioDeFecha(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_verificarCambioDeFecha
-        getControlador().compararFechaFactura();
-    }//GEN-LAST:event_verificarCambioDeFecha
-
     private void cantidadCalcularImporte(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cantidadCalcularImporte
         //es metodo es para recalcular el importe por si el usuario modifica la cantidad de producto
         getControlador().calcularImporteYSetearImporte();
@@ -960,6 +943,22 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private void guardarNumeroFactura(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_guardarNumeroFactura
         getControlador().guardarNumeroFactura();
     }//GEN-LAST:event_guardarNumeroFactura
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        getControlador().buscarClientePorNombre(getNombre().getText());
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void numeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroClienteActionPerformed
+        getControlador().buscarClientePorNumero(getNumeroCliente().getText());
+    }//GEN-LAST:event_numeroClienteActionPerformed
+
+    private void cuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuitActionPerformed
+        getControlador().buscarClientePorCuit(getCuit().getText());
+    }//GEN-LAST:event_cuitActionPerformed
+
+    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
+        getControlador().compararFechaFactura();
+    }//GEN-LAST:event_fechaActionPerformed
 
 
 
