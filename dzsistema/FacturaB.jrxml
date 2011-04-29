@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="20">
-	<property name="ireport.zoom" value="1.542173157718134"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="0.5405222837241611"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="17"/>
 	<scriptlet name="scriptlet2" class="net.sf.jasperreports.engine.JRDefaultScriptlet"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/mnt/datos/trabajo/cyc/sitemas/trunk/dzsistema/"]]></defaultValueExpression>
+	</parameter>
 	<field name="fecha" class="java.lang.String"/>
 	<field name="numero" class="java.lang.String"/>
 	<field name="nroRemito" class="java.lang.String"/>
@@ -13,9 +16,9 @@
 	<field name="domicilio" class="java.lang.String"/>
 	<field name="cuit" class="java.lang.String"/>
 	<field name="iva" class="java.lang.String"/>
-	<field name="detalles" class="java.lang.String"/>
+	<field name="detalles" class="net.sf.jasperreports.engine.JRDataSource"/>
 	<detail>
-		<band height="138" splitType="Stretch">
+		<band height="159" splitType="Stretch">
 			<textField>
 				<reportElement x="386" y="55" width="100" height="16"/>
 				<textElement/>
@@ -26,7 +29,107 @@
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{numero}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="39" y="72" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{señor/es}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="102" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cuit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="127" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{domicilio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="92" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{condicionDeVenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="127" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nroRemito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="127" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{iva}]]></textFieldExpression>
+			</textField>
 		</band>
-		<band height="694"/>
+		<band height="238">
+			<subreport>
+				<reportElement x="15" y="17" width="571" height="200"/>
+				<dataSourceExpression><![CDATA[$F{detalles}]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA["DetalleFactura.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="31">
+			<textField>
+				<reportElement x="470" y="11" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="59"/>
+		<band height="130">
+			<textField>
+				<reportElement x="39" y="52" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{señor/es}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="82" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cuit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="107" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{domicilio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="107" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{iva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="498" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="35" width="100" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="72" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{condicionDeVenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="107" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nroRemito}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="320">
+			<subreport>
+				<reportElement x="15" y="47" width="571" height="200"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "DetalleFactura.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<textField>
+				<reportElement x="486" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 </jasperReport>

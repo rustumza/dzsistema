@@ -58,6 +58,7 @@ public class FacturaBDataSource implements JRDataSource {
         }else if (jrf.getName().equals("detalles")) {
             detalleDataSource = new DetalleDataSource();
             detalleDataSource.addAllDetalle(factura.getDetallesDeFactura());
+            valor = detalleDataSource;
         }
         return valor;
     }
