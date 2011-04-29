@@ -54,10 +54,6 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             String[] columnNames = {"Código", "CUIT", "Nombre", "Domicilio"};
             jTableClientes.setModel(new DefaultTableModel(datos, columnNames) {
 
-//                boolean[] canEdit = new boolean[]{
-//                    true, true, true
-//                };
-
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return false;
                 }
@@ -65,7 +61,11 @@ public class PantallaABMCliente extends javax.swing.JFrame {
 
         } catch (NullPointerException e) {
         }
-
+        //Setea tamaños de columnas
+        jTableClientes.getColumnModel().getColumn(0).setPreferredWidth(70);  //codigo
+        jTableClientes.getColumnModel().getColumn(1).setPreferredWidth(130); //cuit
+        jTableClientes.getColumnModel().getColumn(2).setPreferredWidth(180);  //nombre
+        jTableClientes.getColumnModel().getColumn(3).setPreferredWidth(310);  //direccion
 
     }
 

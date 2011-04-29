@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuFactura">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Factura"/>
+            <Property name="text" type="java.lang.String" value="  Factura"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuBuscarFactura">
@@ -330,7 +330,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="tipoFactura" pref="43" max="32767" attributes="0"/>
+                          <Component id="tipoFactura" pref="42" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="palabraCodigo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -422,7 +422,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="ivaLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="iva" pref="288" max="32767" attributes="0"/>
+                                  <Component id="iva" pref="299" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="nombre" min="-2" pref="293" max="-2" attributes="0"/>
@@ -431,7 +431,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="numeroCliente" pref="150" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="domicilio" alignment="0" pref="567" max="32767" attributes="0"/>
+                              <Component id="domicilio" alignment="0" pref="578" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -562,12 +562,12 @@
                               <Group type="102" attributes="0">
                                   <Component id="condicionDeVentaLabel" min="-2" max="-2" attributes="1"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="condicionDeVenta" pref="148" max="32767" attributes="0"/>
+                                  <Component id="condicionDeVenta" pref="119" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="remitonroLabel" min="-2" pref="66" max="-2" attributes="1"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="remitoNro" pref="229" max="32767" attributes="0"/>
+                                  <Component id="remitoNro" pref="213" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -582,7 +582,7 @@
                               <Component id="condicionDeVentaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="condicionDeVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="23" max="32767" attributes="0"/>
+                          <EmptySpace pref="24" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="remitonroLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="remitoNro" alignment="3" min="-2" max="-2" attributes="0"/>
