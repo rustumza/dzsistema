@@ -22,7 +22,7 @@ public class FacturaBDataSource implements JRDataSource {
     private boolean next = true;
     private Factura factura;
     private DetalleDataSource detalleDataSource;
-    private DetalleDataSource detalleDataSource1;
+    private DetalleDataSource1 detalleDataSource1;
 //    private int cantFilas = 0;
 
     public FacturaBDataSource() {
@@ -61,7 +61,7 @@ public class FacturaBDataSource implements JRDataSource {
             detalleDataSource.addAllDetalle(factura.getDetallesDeFactura());
             valor = detalleDataSource;
         }else if (jrf.getName().equals("detalles1")) {
-            detalleDataSource1 = new DetalleDataSource();
+            detalleDataSource1 = new DetalleDataSource1();
             detalleDataSource1.addAllDetalle(factura.getDetallesDeFactura());
             valor = detalleDataSource1;
         }
