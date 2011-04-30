@@ -309,14 +309,12 @@ public class ExpertoFacturar {
             for (Factura factura : listaFactura) {
                 if(factura.getTipoFactura().getNombre().equals(tipo)){
                     dto.setFactura(factura);
+                    dto.setEsFacuraNueva(false);
+                    dto.setListaDeDetalles(dto.getFactura().getDetallesDeFactura());
+                    dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
                 }
-
         }
-        dto.setEsFacuraNueva(false);
-        dto.setListaDeDetalles(dto.getFactura().getDetallesDeFactura());
-        dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
         //dto.getFactura().vaciarListaDeDetalles();
-
         return dto;
     }
 
