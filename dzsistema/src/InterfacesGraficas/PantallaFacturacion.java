@@ -11,6 +11,8 @@
 
 package InterfacesGraficas;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -385,10 +387,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addComponent(domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
+                    .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cuit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cuitLabel))
-                    .addComponent(cuit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelDatosClienteLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(ivaLabel))
