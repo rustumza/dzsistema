@@ -54,6 +54,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         fecha = new javax.swing.JTextField();
         anulada = new javax.swing.JCheckBox();
         panelImagen = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         panelTipoFactura = new javax.swing.JPanel();
         palabraCodigo = new javax.swing.JLabel();
         tipoFactura = new javax.swing.JLabel();
@@ -117,6 +118,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DZ Representaciones - C&C Systems");
+        setResizable(false);
+
+        panelPrincipal.setMaximumSize(new java.awt.Dimension(1022, 1581));
 
         panelCabecera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         panelCabecera.setMaximumSize(new java.awt.Dimension(30, 32767));
@@ -183,12 +187,12 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelFechaYNumeroFacturaLayout.createSequentialGroup()
                         .addComponent(numeroFacturaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                        .addComponent(numeroFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
                     .addComponent(anulada, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelFechaYNumeroFacturaLayout.createSequentialGroup()
                         .addComponent(fechaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
+                        .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelFechaYNumeroFacturaLayout.setVerticalGroup(
@@ -209,11 +213,13 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 159, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
         );
         panelImagenLayout.setVerticalGroup(
             panelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImagenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
         );
 
         palabraCodigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,19 +234,18 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelTipoFactura.setLayout(panelTipoFacturaLayout);
         panelTipoFacturaLayout.setHorizontalGroup(
             panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-            .addComponent(palabraCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-            .addComponent(codigoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addComponent(palabraCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addComponent(codigoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
         );
         panelTipoFacturaLayout.setVerticalGroup(
             panelTipoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTipoFacturaLayout.createSequentialGroup()
-                .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(tipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(palabraCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(codigoFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout panelCabeceraLayout = new javax.swing.GroupLayout(panelCabecera);
@@ -250,23 +255,22 @@ public class PantallaFacturacion extends javax.swing.JFrame {
             .addGroup(panelCabeceraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelCabeceraLayout.setVerticalGroup(
             panelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCabeceraLayout.createSequentialGroup()
                 .addGroup(panelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelTipoFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelCabeceraLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCabeceraLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panelTipoFactura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelFechaYNumeroFactura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -349,14 +353,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(ivaLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(iva, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
+                        .addComponent(iva, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE))
                     .addGroup(panelDatosClienteLayout.createSequentialGroup()
                         .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numeroClienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                    .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))
+                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                    .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelDatosClienteLayout.setVerticalGroup(
@@ -389,7 +393,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addComponent(ivaLabel))
                     .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelCondicionDeVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -427,11 +431,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(condicionDeVentaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(condicionDeVenta, 0, 119, Short.MAX_VALUE))
+                        .addComponent(condicionDeVenta, 0, 140, Short.MAX_VALUE))
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)))
+                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelCondicionDeVentaLayout.setVerticalGroup(
@@ -441,7 +445,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(condicionDeVentaLabel)
                     .addComponent(condicionDeVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(remitonroLabel)
                     .addComponent(remitoNro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -452,10 +456,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         panelInfoCliene.setLayout(panelInfoClieneLayout);
         panelInfoClieneLayout.setHorizontalGroup(
             panelInfoClieneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInfoClieneLayout.createSequentialGroup()
-                .addComponent(panelDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoClieneLayout.createSequentialGroup()
+                .addComponent(panelDatosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelCondicionDeVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelCondicionDeVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelInfoClieneLayout.setVerticalGroup(
             panelInfoClieneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -799,7 +803,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(855, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.PAGE_START);
@@ -1121,6 +1125,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JTextField iva21;
     private javax.swing.JLabel iva21Label;
     private javax.swing.JLabel ivaLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton limpiar;
     private javax.swing.JMenuBar menu;
