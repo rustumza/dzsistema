@@ -213,6 +213,8 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addGap(6, 6, 6))
         );
 
+        imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo dz.jpg"))); // NOI18N
+
         javax.swing.GroupLayout panelImagenLayout = new javax.swing.GroupLayout(panelImagen);
         panelImagen.setLayout(panelImagenLayout);
         panelImagenLayout.setHorizontalGroup(
@@ -352,14 +354,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(ivaLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(iva, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE))
+                        .addComponent(iva, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
                     .addGroup(panelDatosClienteLayout.createSequentialGroup()
                         .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numeroClienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
-                    .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))
+                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                    .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelDatosClienteLayout.setVerticalGroup(
@@ -433,7 +435,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)))
+                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelCondicionDeVentaLayout.setVerticalGroup(
@@ -443,7 +445,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(condicionDeVentaLabel)
                     .addComponent(condicionDeVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(remitonroLabel)
                     .addComponent(remitoNro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
