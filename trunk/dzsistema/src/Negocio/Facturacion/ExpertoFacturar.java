@@ -157,7 +157,7 @@ public class ExpertoFacturar {
         detalleFactura.setCantidad(dtodetalle.getCantidad());
         detalleFactura.setPrecioUnitario(dtodetalle.getPrecioUnitario());
         float importe = detalleFactura.getCantidad() * detalleFactura.getPrecioUnitario();
-        detalleFactura.setPrecioTotal(Math.round(importe * 100)/100);
+        detalleFactura.setPrecioTotal(((float)Math.round(importe * 100))/100);
         if(detalleFactura.getPrecioTotal() != dtodetalle.getImporte()){
             //VER COMO MANEJAR ESTE ERROR //TO DO
         }
@@ -171,7 +171,7 @@ public class ExpertoFacturar {
         detalleFactura.setCantidad(dtodetalle.getCantidad());
         detalleFactura.setPrecioUnitario(dtodetalle.getPrecioUnitario());
         float importe = detalleFactura.getCantidad() * detalleFactura.getPrecioUnitario();
-        detalleFactura.setPrecioTotal(Math.round(importe * 100)/100);
+        detalleFactura.setPrecioTotal(((float)Math.round(importe * 100))/100);
         if(detalleFactura.getPrecioTotal() != dtodetalle.getImporte()){
             //VER COMO MANEJAR ESTE ERROR //TO DO
         }

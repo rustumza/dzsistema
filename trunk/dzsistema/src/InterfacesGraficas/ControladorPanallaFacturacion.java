@@ -330,7 +330,7 @@ public class ControladorPanallaFacturacion {
                         getPantalla().getPrecioUnitario().setText(String.valueOf(producto.getPreciosHistoricos().get(0).getPrecio()));
                     }else{
                         float importe = producto.getPreciosHistoricos().get(0).getPrecio() * producto.getPorcentajeDeIva()/100 + producto.getPreciosHistoricos().get(0).getPrecio();
-                        importe = Math.round(importe * 100)/100;
+                        importe = ((float)Math.round(importe * 100))/100;
                         getPantalla().getPrecioUnitario().setText(String.valueOf(importe));
 
                     }
@@ -358,7 +358,7 @@ public class ControladorPanallaFacturacion {
             return;
         }
         float importe = cantidad * precioUnitario;
-        float importeFinal = Math.round(importe * 100)/100;
+        float importeFinal = ((float)Math.round(importe * 100))/100;
         getPantalla().getImporte().setText(String.valueOf(importeFinal));
 
 
@@ -461,18 +461,23 @@ public class ControladorPanallaFacturacion {
                 for (DetalleFactura detalleFactura : listaDetalles) {
                     if(detalleFactura.getPorcentajeDeIva() == 21){
                         float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
-                        iva = (Math.round(iva * 100))/100;
+                        iva = ((float)Math.round(iva * 100))/100;
                         iva21 += iva;
                         total += detalleFactura.getPrecioTotal() + iva;
                         subtotal += detalleFactura.getPrecioTotal();
                     }else{
                         float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
-                        iva = (Math.round(iva * 100))/100;
+                        iva = ((float)Math.round(iva * 100))/100;
                         iva105 += iva;
                         total += detalleFactura.getPrecioTotal() + iva;
                         subtotal += detalleFactura.getPrecioTotal();
                     }
                 }
+
+                total = ((float)Math.round(total * 100))/100;
+                subtotal = ((float)Math.round(subtotal * 100))/100;
+                iva105 = ((float)Math.round(iva105 * 100))/100;
+                iva21 = ((float)Math.round(iva21 * 100))/100;
                 experto.settotal(total);
                 experto.setSubtotal(subtotal);
                 experto.setIva105(iva105);
@@ -579,12 +584,12 @@ public class ControladorPanallaFacturacion {
 
         try{
             experto.guardarFactura();
+            guardado = true;
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Factura guardada", "", JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception e){
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Error al guardar la factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
-            guardado = true;
             desbloquearTodo();
         }
 
@@ -605,8 +610,8 @@ public class ControladorPanallaFacturacion {
     }
 
     public void limpiarPantalla() {
-            
-        int rta=JOptionPane.showConfirmDialog(pantalla.getPanelInfoCliene(),"¿Está seguro que desea cancelar todo y limpiar la pantalla?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+        int rta = JOptionPane.NO_OPTION;
+        rta=JOptionPane.showConfirmDialog(pantalla.getPanelInfoCliene(),"¿Está seguro que desea cancelar todo y limpiar la pantalla?", "¡Atención!", JOptionPane.YES_NO_OPTION);
         if(rta==JOptionPane.YES_OPTION){
             //TO DO
             experto = new ExpertoFacturar();
