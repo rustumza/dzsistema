@@ -44,7 +44,7 @@ public class ManejadorImpresion {
             //basta con poner mas parametro.put
             //Ej:
 //            parametro.put("nombre", factura.getNumero());
-            FacturaBDataSource facturaDS = new FacturaBDataSource();
+            FacturaADataSource facturaDS = new FacturaADataSource();
             facturaDS.addFactura(factura);
             archivoCadena = "FacturaA.jasper";
             if (archivoCadena == null) {
@@ -72,7 +72,7 @@ public class ManejadorImpresion {
         try {
             String archivoCadena = null;
             Map parametro = new HashMap();
-            FacturaADataSource facturaDS = new FacturaADataSource();
+            FacturaBDataSource facturaDS = new FacturaBDataSource();
             facturaDS.addFactura(factura);
             archivoCadena = "FacturaB.jasper";
             if (archivoCadena == null) {

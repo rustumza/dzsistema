@@ -56,6 +56,12 @@ public class FacturaADataSource implements JRDataSource {
             valor = String.valueOf(factura.getCliente().getCUIT());
         }else if (jrf.getName().equals("iva")) {
             valor = String.valueOf(factura.getCliente().getCondicionFrenteAlIva().getNombre());
+        }else if (jrf.getName().equals("subtotal")) {
+            valor = String.valueOf(factura.getSubtotal());
+        }else if (jrf.getName().equals("iva21")) {
+            valor = String.valueOf(factura.getIva21());
+        }else if (jrf.getName().equals("iva105")) {
+            valor = String.valueOf(factura.getIva105());
         }else if (jrf.getName().equals("detalles")) {
             detalleDataSource = new DetalleDataSource();
             detalleDataSource.addAllDetalle(factura.getDetallesDeFactura());
@@ -64,12 +70,6 @@ public class FacturaADataSource implements JRDataSource {
             detalleDataSource1 = new DetalleDataSource1();
             detalleDataSource1.addAllDetalle(factura.getDetallesDeFactura());
             valor = detalleDataSource1;
-        }else if (jrf.getName().equals("subtotal")) {
-            valor = String.valueOf(factura.getSubtotal());
-        }else if (jrf.getName().equals("iva21")) {
-            valor = String.valueOf(factura.getIva21());
-        }else if (jrf.getName().equals("iva105")) {
-            valor = String.valueOf(factura.getIva105());
         }
         return valor;
     }
