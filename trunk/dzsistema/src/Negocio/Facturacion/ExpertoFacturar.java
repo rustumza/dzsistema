@@ -180,7 +180,11 @@ public class ExpertoFacturar {
 
     public void cambiarFechaDeFactura(String fecha) throws fechaException{
 
-        dto.getFactura().setFecha(validar.Validar.validarFecha(fecha));
+        Date date = validar.Validar.validarFecha(fecha);
+        if(0 >= date.compareTo(validar.Validar.validarFecha("060610"))){
+            throw new fechaException(5);
+        }
+        dto.getFactura().setFecha(date);
         
 
     }
@@ -331,6 +335,22 @@ public class ExpertoFacturar {
     public void guardarNumeroFacutra(long numeroFactura) {
         
         dto.getFactura().setNumero(numeroFactura);
+    }
+
+    public boolean existeFacturaConEseNumeroDeFactura(){
+        FacturaJpaController jpa = new FacturaJpaController();
+        List<Factura> lista = jpa.buscarPorNumero(dto.getFactura().getNumero());
+        boolean retorno = false;
+        for (Factura factura : lista) {
+            if(factura.getNumero() == dto.getFactura().getNumero()){
+                if(factura.getTipoFactura().getNombre().equals(dto.getFactura().getTipoFactura().getNombre())){
+                    retorno = true;
+                    break;
+                }
+            }
+        }
+
+        return retorno;
     }
 
     public void guardarNumeroRemito(long nroRemito) {
