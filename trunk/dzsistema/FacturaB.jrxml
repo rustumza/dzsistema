@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
-	<property name="ireport.zoom" value="10.374969840400398"/>
-	<property name="ireport.x" value="4810"/>
-	<property name="ireport.y" value="1457"/>
+	<property name="ireport.zoom" value="0.7194351596368891"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<scriptlet name="scriptlet2" class="net.sf.jasperreports.engine.JRDefaultScriptlet"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/mnt/datos/trabajo/cyc/sitemas/trunk/dzsistema/"]]></defaultValueExpression>
@@ -21,40 +21,40 @@
 	<detail>
 		<band height="184" splitType="Stretch">
 			<textField>
-				<reportElement x="384" y="56" width="100" height="12"/>
+				<reportElement x="383" y="58" width="100" height="12"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="85" y="130" width="100" height="11"/>
+				<reportElement x="85" y="132" width="100" height="11"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{señor/es}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="243" y="154" width="100" height="12"/>
+				<reportElement x="243" y="156" width="100" height="12"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{cuit}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="91" y="143" width="100" height="11"/>
+				<reportElement x="91" y="144" width="100" height="11"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{domicilio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="477" y="153" width="100" height="11"/>
+				<reportElement x="477" y="157" width="100" height="11"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{condicionDeVenta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="477" y="130" width="100" height="13"/>
+				<reportElement x="477" y="133" width="100" height="11"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -77,7 +77,7 @@
 		</band>
 		<band height="63">
 			<textField>
-				<reportElement x="483" y="11" width="99" height="27"/>
+				<reportElement x="488" y="13" width="95" height="27"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
@@ -86,12 +86,12 @@
 		</band>
 		<band height="212">
 			<textField>
-				<reportElement x="383" y="89" width="100" height="15"/>
+				<reportElement x="384" y="89" width="100" height="12"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="477" y="163" width="100" height="13"/>
+				<reportElement x="477" y="165" width="100" height="11"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -112,14 +112,14 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{cuit}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="85" y="163" width="100" height="12"/>
+				<reportElement x="85" y="164" width="100" height="12"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{señor/es}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="91" y="175" width="100" height="12"/>
+				<reportElement x="91" y="176" width="100" height="12"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -142,7 +142,7 @@
 		</band>
 		<band height="94">
 			<textField>
-				<reportElement x="484" y="19" width="99" height="27"/>
+				<reportElement x="488" y="28" width="96" height="27"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
