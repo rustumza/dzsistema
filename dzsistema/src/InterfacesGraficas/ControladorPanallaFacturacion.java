@@ -343,7 +343,7 @@ public class ControladorPanallaFacturacion {
                     return;
                 }
             }
-
+            
     }
 
     public void calcularImporteYSetearImporte() {
@@ -425,6 +425,7 @@ public class ControladorPanallaFacturacion {
                     dtoFactura = experto.AgregarDetalleALaFactura(dto);
                 }else{
                     JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha llegado al límite de productos que puede vender por factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    dtoFactura = experto.getDtoFactura();
                     actualizarTablaEImpuestosYTotales(dtoFactura);
                     getPantalla().getCantidad().requestFocus();
                     return;
@@ -556,6 +557,16 @@ public class ControladorPanallaFacturacion {
             desbloquearParcial();
             getPantalla().getNumeroFactura().requestFocus();
             return;
+        }
+
+        if(!experto.esPosteriorFechaDeFacturaRespectoAFacturasAnteriores()){
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "La fecha ingresada debe ser posterior a la de las facturas anteriores", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            pantalla.getGuardar().setEnabled(true);
+            pantalla.getImprimir().setEnabled(true);
+            desbloquearTodo();
+            getPantalla().getFecha().requestFocus();
+            return;
+
         }
 
         if(!pantalla.getRemitoNro().getText().equals("")){

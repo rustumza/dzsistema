@@ -25,6 +25,7 @@ import validar.fechaException;
 import validar.Validar;
 import java.util.Date;
 import java.util.List;
+import org.eclipse.persistence.internal.jpa.parsing.DotNode;
 
 /**
  *
@@ -377,6 +378,26 @@ public class ExpertoFacturar {
 
     public void setIva105(float iva105) {
         dto.getFactura().setIva105(iva105);
+    }
+
+    public boolean esPosteriorFechaDeFacturaRespectoAFacturasAnteriores() {
+
+        FacturaJpaController jpa = new FacturaJpaController();
+        for (long i = (dto.getFactura().getNumero()-1) ; i>0; i--) {
+            List<Factura> lista = jpa.buscarPorNumero(i);
+            for (Factura factura : lista) {
+                if(factura.getTipoFactura().getNombre().equals(dto.getFactura().getTipoFactura().getNombre())){
+                    if(0 < factura.getFecha().compareTo(dto.getFactura().getFecha())){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                }
+            }
+
+        }
+
+        return true;
     }
 
 
