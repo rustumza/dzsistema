@@ -408,6 +408,7 @@ public class ControladorPanallaFacturacion {
                     for (DetalleFactura deta : experto.getDtoFactura().getListaDeDetalles()) {
                         if(deta.getProducto().getCodigo() == Integer.parseInt(dto.getCodigo())){
                             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya se ha ingresado este producto en esta factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                            getPantalla().getCodigo().requestFocus();
                             return;
                         }
                     }
