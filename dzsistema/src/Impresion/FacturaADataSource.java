@@ -45,7 +45,7 @@ public class FacturaADataSource implements JRDataSource {
         }else if (jrf.getName().equals("nroRemito")) {
             valor = String.valueOf(factura.getRemitoNro());
         }else if (jrf.getName().equals("total")) {
-            valor = String.valueOf(factura.getTotal());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(factura.getTotal());
         }else if (jrf.getName().equals("condicionDeVenta")) {
             valor = String.valueOf(factura.getCondicionDeVenta().getNombre());
         }else if (jrf.getName().equals("señor/es")) {
@@ -57,11 +57,11 @@ public class FacturaADataSource implements JRDataSource {
         }else if (jrf.getName().equals("iva")) {
             valor = String.valueOf(factura.getCliente().getCondicionFrenteAlIva().getNombre());
         }else if (jrf.getName().equals("subtotal")) {
-            valor = String.valueOf(factura.getSubtotal());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(factura.getSubtotal());
         }else if (jrf.getName().equals("iva21")) {
-            valor = String.valueOf(factura.getIva21());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(factura.getIva21());
         }else if (jrf.getName().equals("iva105")) {
-            valor = String.valueOf(factura.getIva105());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(factura.getIva105());
         }else if (jrf.getName().equals("detalles")) {
             detalleDataSource = new DetalleDataSource();
             detalleDataSource.addAllDetalle(factura.getDetallesDeFactura());

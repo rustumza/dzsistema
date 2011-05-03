@@ -18,7 +18,7 @@ public class ClienteExcepcion extends Exception{
      *
      * @param codigo Indica el motivo del error:
      **
-     **          0 - "Error: no se ha encontrado ningun cliente"
+     **          0 - "Error: no se ha encontrado un cliente"
      **          1 - "No se ha encontrado un cliente con ese nombre"
      **          2 - "No se ha encontrado un cliente con ese número de cliente"
      **          3 - "No se ha encontrado un cliente con ese cuit"
@@ -48,7 +48,7 @@ public class ClienteExcepcion extends Exception{
             return "No se ha encontrado un cliente con ese número de cliente";
         else if(codigo == 3)
             return "No se ha encontrado un cliente con ese cuit";
-        else return "Error: no se ha encontrado ningun cliente";
+        else return "Error: no se ha encontrado un cliente";
     }
 
     /**Devuelve el código de error

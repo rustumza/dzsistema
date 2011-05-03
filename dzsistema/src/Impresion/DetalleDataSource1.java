@@ -11,6 +11,7 @@ import java.util.List;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
+import validar.Validar;
 
 /**
  *
@@ -58,15 +59,15 @@ public class DetalleDataSource1 implements JRDataSource {
         Object valor = null;
 
         if (jrf.getName().equals("cantidad")) {
-            valor = String.valueOf(listaDetalles.get(indicadorOrdenActual).getCantidad());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(listaDetalles.get(indicadorOrdenActual).getCantidad());
         } else if (jrf.getName().equals("codigo")) {
             valor = String.valueOf(listaDetalles.get(indicadorOrdenActual).getProducto().getCodigo());
         } else if (jrf.getName().equals("descripcion")) {
             valor = String.valueOf(listaDetalles.get(indicadorOrdenActual).getProducto().getDescripcion());
         } else if (jrf.getName().equals("precioUnitario")) {
-            valor = String.valueOf(listaDetalles.get(indicadorOrdenActual).getPrecioUnitario());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(listaDetalles.get(indicadorOrdenActual).getPrecioUnitario());
         } else if (jrf.getName().equals("importe")) {
-            valor = String.valueOf(listaDetalles.get(indicadorOrdenActual).getPrecioTotal());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(listaDetalles.get(indicadorOrdenActual).getPrecioTotal());
         }
         return valor;
     }

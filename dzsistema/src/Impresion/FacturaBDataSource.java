@@ -45,7 +45,7 @@ public class FacturaBDataSource implements JRDataSource {
         }else if (jrf.getName().equals("nroRemito")) {
             valor = String.valueOf(factura.getRemitoNro());
         }else if (jrf.getName().equals("total")) {
-            valor = String.valueOf(factura.getTotal());
+            valor = Validar.formatearFloatAStringConDosDecimalesYComa(factura.getTotal());
         }else if (jrf.getName().equals("condicionDeVenta")) {
             valor = String.valueOf(factura.getCondicionDeVenta().getNombre());
         }else if (jrf.getName().equals("señor/es")) {
