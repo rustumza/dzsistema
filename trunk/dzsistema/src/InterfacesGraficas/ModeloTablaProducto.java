@@ -9,6 +9,7 @@ import Negocio.Entidades.DetalleFactura;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import validar.Validar;
 /**
  *
  * @author diego
@@ -80,9 +81,9 @@ public class ModeloTablaProducto extends AbstractTableModel {
             case 2:
                 return detalle.getProducto().getDescripcion();
             case 3:
-                return String.valueOf(detalle.getPrecioUnitario());
+                return Validar.formatearFloatAStringConDosDecimalesYPunto(detalle.getPrecioUnitario());
             case 4:
-                return String.valueOf(detalle.getPrecioTotal());
+                return Validar.formatearFloatAStringConDosDecimalesYPunto(detalle.getPrecioTotal());
             default:
                 return "";
         }

@@ -432,16 +432,16 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="ivaLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="iva" pref="278" max="32767" attributes="0"/>
+                                  <Component id="iva" pref="283" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="nombre" min="-2" pref="293" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="numeroClienteLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="numeroCliente" pref="129" max="32767" attributes="0"/>
+                                  <Component id="numeroCliente" pref="145" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="domicilio" alignment="0" pref="557" max="32767" attributes="0"/>
+                              <Component id="domicilio" alignment="0" pref="562" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -485,7 +485,7 @@
                               </Group>
                               <Component id="iva" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="13" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -520,6 +520,7 @@
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cuitHabilitarCampo"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuitActionPerformed"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cuitColocarEnFormatoParaEditar"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ivaLabel">
@@ -571,7 +572,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="condicionDeVentaLabel" min="-2" max="-2" attributes="1"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="condicionDeVenta" pref="140" max="32767" attributes="0"/>
+                                  <Component id="condicionDeVenta" pref="153" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="remitonroLabel" min="-2" pref="66" max="-2" attributes="1"/>

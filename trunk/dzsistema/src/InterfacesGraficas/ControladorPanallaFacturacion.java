@@ -24,6 +24,8 @@ import java.lang.Math.*;
 import javax.swing.DefaultComboBoxModel;
 import Negocio.Facturacion.DtoFactura;
 import java.util.Date;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 
 
@@ -150,16 +152,22 @@ public class ControladorPanallaFacturacion {
         }
     }
 
-    public void buscarClientePorCuit(String cuit) {
-        if(!(cuit.equals(""))){
-            try{
-                DtoFactura dto = experto.buscarClientePorCuit(cuit);
-                cargarDatosClienteYFactura(dto);
-                getPantalla().getCondicionDeVenta().requestFocus();
-            }catch(ClienteExcepcion e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+    public void buscarClientePorCuit(String cuitSinFormato) {
+        if(!(cuitSinFormato.equals(""))){
+            if(Validar.controlCUIT(cuitSinFormato)){
+                String cuit = Validar.formatearCUIT(cuitSinFormato);
+                try{
+                    DtoFactura dto = experto.buscarClientePorCuit(cuit);
+                    cargarDatosClienteYFactura(dto);
+                    getPantalla().getCondicionDeVenta().requestFocus();
+                }catch(ClienteExcepcion e){
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    pantalla.getCuit().requestFocus();
+
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getCuit().requestFocus();
-                
             }
         }else{
             if(experto.getDtoFactura().getFactura().getCliente() != null){
@@ -170,6 +178,7 @@ public class ControladorPanallaFacturacion {
                 getPantalla().getNombre().requestFocus();
             }
         }
+
     }
 
     
@@ -464,6 +473,14 @@ public class ControladorPanallaFacturacion {
         getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(3).setPreferredWidth(70);  //precio unitario
         getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(4).setPreferredWidth(70);  //importe
 
+        //alinear a la derecha las columnas
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(JLabel.RIGHT);
+        getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(0).setCellRenderer(tcr); //cantidad
+        getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(1).setCellRenderer(tcr); //codigo
+        getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(3).setCellRenderer(tcr); //precio unitario
+        getPantalla().getTablaDetallesFactura().getColumnModel().getColumn(4).setCellRenderer(tcr); //importe
+
         if(dto.getFactura().getCliente() != null){
             if(dto.getFactura().getTipoFactura().getNombre().equals("A") | dto.getFactura().getTipoFactura().getNombre().equals("a")){
                 float subtotal = 0;
@@ -494,10 +511,10 @@ public class ControladorPanallaFacturacion {
                 experto.setSubtotal(subtotal);
                 experto.setIva105(iva105);
                 experto.setIva21(iva21);
-                getPantalla().getSubtotal().setText(String.valueOf(subtotal));
-                getPantalla().getIva21().setText(String.valueOf(iva21));
-                getPantalla().getIva105().setText(String.valueOf(iva105));
-                getPantalla().getTotal().setText(String.valueOf(total));
+                getPantalla().getSubtotal().setText(Validar.formatearFloatAStringConDosDecimalesYPunto(subtotal));
+                getPantalla().getIva21().setText(Validar.formatearFloatAStringConDosDecimalesYPunto(iva21));
+                getPantalla().getIva105().setText(Validar.formatearFloatAStringConDosDecimalesYPunto(iva105));
+                getPantalla().getTotal().setText(Validar.formatearFloatAStringConDosDecimalesYPunto(total));
 
                 //REVISAR LOS DE IMPUESTO Y SUBTOTAL2
             }else{
@@ -505,8 +522,9 @@ public class ControladorPanallaFacturacion {
                 for (DetalleFactura detalleFactura : listaDetalles) {
                     total += detalleFactura.getPrecioTotal();
                 }
+                total = ((float)Math.round(total * 100))/100;
                 experto.settotal(total);
-                getPantalla().getTotal().setText(String.valueOf(total));
+                getPantalla().getTotal().setText(Validar.formatearFloatAStringConDosDecimalesYPunto(total));
             }
         }else{
             getPantalla().getSubtotal().setText(String.valueOf(""));
@@ -550,7 +568,7 @@ public class ControladorPanallaFacturacion {
             }
         }
 
-        if(experto.existeFacturaConEseNumeroDeFactura()){
+        if(experto.getDtoFactura().isEsFacuraNueva() && experto.existeFacturaConEseNumeroDeFactura()){
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya existe una factura con este número de factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
@@ -917,6 +935,10 @@ public class ControladorPanallaFacturacion {
     }
 
 
+    void colocarCuitEnFormatoParaEditar() {
+        pantalla.getCuit().setText(Validar.desformatearCUIT(pantalla.getCuit().getText()));
+    }
+
 
 
 //ACA COMIENZA EL CONTROL DE LA PANTALLA PARA ELEGIR CLIENTE
@@ -1014,6 +1036,8 @@ public class ControladorPanallaFacturacion {
         }
 
     }
+
+
 
 
 

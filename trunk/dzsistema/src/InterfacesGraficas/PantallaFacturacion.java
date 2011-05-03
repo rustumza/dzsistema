@@ -14,6 +14,8 @@ package InterfacesGraficas;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import validar.Validar;
 
 
 /**
@@ -312,6 +314,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 cuitActionPerformed(evt);
             }
         });
+        cuit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cuitColocarEnFormatoParaEditar(evt);
+            }
+        });
 
         ivaLabel.setText("IVA");
 
@@ -354,14 +361,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(ivaLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(iva, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+                        .addComponent(iva, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
                     .addGroup(panelDatosClienteLayout.createSequentialGroup()
                         .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numeroClienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-                    .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
+                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                    .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelDatosClienteLayout.setVerticalGroup(
@@ -393,7 +400,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addComponent(ivaLabel))
                     .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         panelCondicionDeVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -431,7 +438,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(condicionDeVentaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(condicionDeVenta, 0, 140, Short.MAX_VALUE))
+                        .addComponent(condicionDeVenta, 0, 153, Short.MAX_VALUE))
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
@@ -1010,7 +1017,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_numeroClienteActionPerformed
 
     private void cuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuitActionPerformed
+        
         getControlador().buscarClientePorCuit(getCuit().getText());
+
     }//GEN-LAST:event_cuitActionPerformed
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
@@ -1081,6 +1090,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 getControlador().guardarFactura();
             }
     }//GEN-LAST:event_guardarKeyPressed
+
+    private void cuitColocarEnFormatoParaEditar(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuitColocarEnFormatoParaEditar
+        controlador.colocarCuitEnFormatoParaEditar();
+    }//GEN-LAST:event_cuitColocarEnFormatoParaEditar
 
 
 
