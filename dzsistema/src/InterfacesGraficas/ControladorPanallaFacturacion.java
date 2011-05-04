@@ -878,6 +878,7 @@ public class ControladorPanallaFacturacion {
 
 
         getPantalla().getCondicionDeVenta().setEnabled(true);
+        getPantalla().getRemitoNro().setEnabled(true);
         getPantalla().getNumeroFactura().setEnabled(true);
 
         pantalla.getCantidad().setEnabled(true);
@@ -894,6 +895,7 @@ public class ControladorPanallaFacturacion {
 
 
         getPantalla().getCondicionDeVenta().setEnabled(true);
+        getPantalla().getRemitoNro().setEnabled(true);
         getPantalla().getNumeroFactura().setEnabled(true);
 
         pantalla.getCantidad().setEnabled(true);
