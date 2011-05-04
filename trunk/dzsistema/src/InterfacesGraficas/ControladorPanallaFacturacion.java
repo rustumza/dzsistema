@@ -161,12 +161,12 @@ public class ControladorPanallaFacturacion {
                     cargarDatosClienteYFactura(dto);
                     getPantalla().getCondicionDeVenta().requestFocus();
                 }catch(ClienteExcepcion e){
-                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                     pantalla.getCuit().requestFocus();
 
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getCuit().requestFocus();
             }
         }else{
@@ -325,7 +325,7 @@ public class ControladorPanallaFacturacion {
                 try{
                     Integer.parseInt(codigo);
                 }catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El código de producto ingresado no es un número entero", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El código de producto ingresado no es un número", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                     pantalla.getCodigo().requestFocus();
                     return;
                 }
@@ -384,35 +384,35 @@ public class ControladorPanallaFacturacion {
         try{
                 float a = Float.valueOf(getPantalla().getCantidad().getText());
                 if(a<=0){
-                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado una cantidad incorrecta", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado una cantidad incorrecta", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                     getPantalla().getCantidad().requestFocus();
                     return;
                 }
         }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado una cantidad incorrecta", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado una cantidad incorrecta", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 getPantalla().getCantidad().requestFocus();
                 return;
         }
         try{
             Float.valueOf(getPantalla().getPrecioUnitario().getText());
         }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado un precio unitario incorrecto", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado un precio unitario incorrecto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         if(pantalla.getCantidad().getText().equals("")){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado la cantidad", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Escriba una cantidad válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             getPantalla().getCantidad().requestFocus();
             return;
         }else if(pantalla.getCodigo().getText().equals("")){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado el producto", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado el producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             getPantalla().getCodigo().requestFocus();
             return;
         }else if(pantalla.getPrecioUnitario().getText().equals("")){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado el precio unitario", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Esciba un precio unitario válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             getPantalla().getPrecioUnitario().requestFocus();
             return;
         }else if(pantalla.getImporte().getText().equals("")){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado el importe", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado el importe", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             getPantalla().getImporte().requestFocus();
             return;
         }else{
@@ -426,14 +426,14 @@ public class ControladorPanallaFacturacion {
                     dto.setImporte(Float.valueOf(getPantalla().getImporte().getText()));
                     for (DetalleFactura deta : experto.getDtoFactura().getListaDeDetalles()) {
                         if(deta.getProducto().getCodigo() == Integer.parseInt(dto.getCodigo())){
-                            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya se ha ingresado este producto en esta factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya se ha ingresado este producto en esta factura", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                             getPantalla().getCodigo().requestFocus();
                             return;
                         }
                     }
                     dtoFactura = experto.AgregarDetalleALaFactura(dto);
                 }else{
-                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha llegado al límite de productos que puede vender por factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha llegado al límite de productos que puede vender por factura (15 productos)", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                     dtoFactura = experto.getDtoFactura();
                     actualizarTablaEImpuestosYTotales(dtoFactura);
                     getPantalla().getCantidad().requestFocus();
@@ -448,7 +448,7 @@ public class ControladorPanallaFacturacion {
                 for (DetalleFactura deta : experto.getDtoFactura().getListaDeDetalles()) {
                     if(deta.getProducto().getCodigo() == Integer.parseInt(dto.getCodigo())){
                         if(deta != experto.getDtoFactura().getListaDeDetalles().get(filaAEditar)){
-                            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya se ha ingresado este producto en esta factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya se ha ingresado este producto en esta factura", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                             return;
                         }
                     }
@@ -547,7 +547,7 @@ public class ControladorPanallaFacturacion {
         pantalla.getImprimir().setEnabled(false);
         bloquearTodo();
         if(pantalla.getNumeroFactura().getText().equals("")){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado número de factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Escriba un número de factura válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearParcial();
@@ -559,7 +559,7 @@ public class ControladorPanallaFacturacion {
                 numeroFactura = Long.parseLong(pantalla.getNumeroFactura().getText());
                 experto.guardarNumeroFacutra(numeroFactura);
             }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado un número de factura incorrecto", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El número de factura no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getGuardar().setEnabled(true);
                 pantalla.getImprimir().setEnabled(true);
                 desbloquearParcial();
@@ -569,7 +569,7 @@ public class ControladorPanallaFacturacion {
         }
 
         if(experto.getDtoFactura().isEsFacuraNueva() && experto.existeFacturaConEseNumeroDeFactura()){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya existe una factura con este número de factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ya existe una factura con este número de factura", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearParcial();
@@ -578,7 +578,7 @@ public class ControladorPanallaFacturacion {
         }
 
         if(!experto.esPosteriorFechaDeFacturaRespectoAFacturasAnteriores()){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "La fecha ingresada debe ser posterior a la de las facturas anteriores", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "La fecha ingresada debe ser posterior a la de las facturas anteriores", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
@@ -593,7 +593,7 @@ public class ControladorPanallaFacturacion {
                 nroRemito = Long.parseLong(pantalla.getRemitoNro().getText());
                 experto.guardarNumeroRemito(nroRemito);
             }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado un número de remito incorrecto", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El número de remito no es váildo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getGuardar().setEnabled(true);
                 pantalla.getImprimir().setEnabled(true);
                 desbloquearParcial();
@@ -604,7 +604,7 @@ public class ControladorPanallaFacturacion {
 
         DtoFactura dto = experto.getDtoFactura();
         if(dto.getFactura().getCliente() == null){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha seleccionado un cliente", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha seleccionado un cliente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
@@ -627,7 +627,7 @@ public class ControladorPanallaFacturacion {
 
         
         if(dto.getFactura().getFecha() == null){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha ingresado una fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
@@ -636,7 +636,7 @@ public class ControladorPanallaFacturacion {
         }
 
         if(dto.getListaDeDetalles().isEmpty()){
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se han agregado productos", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se han agregado productos", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearParcial();
@@ -647,11 +647,11 @@ public class ControladorPanallaFacturacion {
         try{
             experto.guardarFactura();
             guardado = true;
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Factura guardada", "", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Factura guardada", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getImprimir().setEnabled(true);
         }catch(Exception e){
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Error al guardar la factura", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Error al guardar la factura", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
@@ -708,7 +708,7 @@ public class ControladorPanallaFacturacion {
                             return;
                         }
                     }catch(fechaException e){
-                        JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                         if(experto.getDtoFactura().getFactura().getFecha() != null){
                             getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
                         }else{
@@ -717,7 +717,7 @@ public class ControladorPanallaFacturacion {
                         getPantalla().getFecha().requestFocus();
 
                     }catch(NullPointerException ex){
-                        JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                         if(experto.getDtoFactura().getFactura().getFecha() != null){
                             getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
                         }else{
@@ -741,9 +741,9 @@ public class ControladorPanallaFacturacion {
 
                     }catch(fechaException e){
                         if(e.getCodigo() == 5){
-                            JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), "Ha ingresado una fecha anterior al 06/06/2010", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), "Ha ingresado una fecha anterior al 06/06/2010", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                         }else{
-                            JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         if(experto.getDtoFactura().getFactura().getFecha() != null){
                             getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
@@ -753,7 +753,7 @@ public class ControladorPanallaFacturacion {
                         getPantalla().getFecha().requestFocus();
 
                     }catch(NullPointerException ex){
-                        JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No ha ingresado fecha", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                         if(experto.getDtoFactura().getFactura().getFecha() != null){
                             getPantalla().getFecha().setText(Validar.formatearFechaAString(experto.getDtoFactura().getFactura().getFecha()));
                         }else{
@@ -806,10 +806,10 @@ public class ControladorPanallaFacturacion {
 
         if(experto.getDtoFactura().getFactura().getFecha() == null){
             getPantalla().getFecha().requestFocus();
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Antes de seleccionar un producto debe ingresar la fecha de facturación", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Antes de seleccionar un producto debe ingresar la fecha de facturación", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }else if(experto.getDtoFactura().getFactura().getCliente() == null){
             getPantalla().getNombre().requestFocus();
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Antes de seleccionar un producto debe seleccionar un cliente", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Antes de seleccionar un producto debe seleccionar un cliente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -931,7 +931,7 @@ public class ControladorPanallaFacturacion {
                 experto.guardarNumeroFacutra(numero);
                 
             }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Ha ingresado un número de factura incorrecto", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El número de factura ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getNumeroFactura().requestFocus();
             }
         }
@@ -1034,7 +1034,7 @@ public class ControladorPanallaFacturacion {
             }
         }catch(NumberFormatException e){
             pantallaBuscarFactura.dispose();
-            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Lo ingresado no es un número", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El número de factura ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             iniciarBusquedaDeFactura();
         }
 

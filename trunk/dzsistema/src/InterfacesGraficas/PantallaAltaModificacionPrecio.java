@@ -120,7 +120,7 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
         if (jTextFieldPU.getText().isEmpty() == false){
             //Valida Precio Unitario
             if(Validar.controlIVA(jTextFieldPU.getText()).equals("falso")){
-                JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
             else{
                 //Pone a los demas precios historios con estado false
@@ -146,14 +146,14 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     Logger.getLogger(PantallaAltaModificacionPrecio.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                JOptionPane.showMessageDialog(null, "Precio Guardado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Precio Guardado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 //Actualizo Tabla
                 GUI.CargarTabla();
                 this.dispose();
             }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Ingrese un Precio Unitario", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ingrese un Precio Unitario", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 

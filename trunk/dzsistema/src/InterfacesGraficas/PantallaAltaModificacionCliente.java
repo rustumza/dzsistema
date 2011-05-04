@@ -238,28 +238,28 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         if (JTextFieldNombre.getText().isEmpty() == false){
             if(!Validar.controlApellido(JTextFieldNombre.getText())){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El Nombre ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Nombre ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else{
             condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         //Valida Direccion
         if (jTextFieldDireccion.getText().isEmpty()){
             condicion = false;
-            JOptionPane.showMessageDialog(null, "Escriba una Dirección válida", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba una Dirección válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         //Valida codigo
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(!Validar.controlCodigo(jTextFieldCodigo.getText())){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else{
             condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         //Verifica condicion y guarda
         if(condicion){
@@ -291,7 +291,7 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
             jTextFieldCUIT.setText(Validar.formatearCUIT(jTextFieldCUIT.getText()));
         }
         else{
-            JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             jTextFieldCUIT.requestFocus();
         }
     }//GEN-LAST:event_jTextFieldCUITFocusLost

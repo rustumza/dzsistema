@@ -226,16 +226,16 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(!Validar.controlCodigo(jTextFieldCodigo.getText())){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else{
             condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         // Valida Descripcion
         if (JTextFieldDescripcion.getText().isEmpty() == true){
-            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         // Valida IVA (Sirve sin combo box, es decir cuando se ingresa iva en un jtextfield)
 //        if (jTextFieldIVA.getText().isEmpty() == false){
@@ -259,7 +259,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                 //Valida Precio Unitario
                 if(Validar.controlIVA(jTextFieldPU.getText()).contains("falso")){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Precio Unitario ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
                 jTextFieldPU.setText(Validar.controlIVA(jTextFieldPU.getText()));
@@ -270,7 +270,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                 ph.setFechaDesdeQueEntroEnVigencia(Validar.validarFechaConBarras(jTextFieldFecha.getText()));
             }
             else{
-                JOptionPane.showMessageDialog(null, "Escriba un Precio Unitario Inicial y la Fecha de su Vigencia", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Escriba un Precio Unitario Inicial y la Fecha de su Vigencia", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 condicion=false;
             }
         }
@@ -308,7 +308,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
             jTextFieldFecha.setText(Validar.formatearFechaAString(fecha));
         }
         catch(validar.fechaException e){
-            JOptionPane.showMessageDialog(null, "Fecha mal ingresada", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ingrese una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             jTextFieldFecha.requestFocus();
         }
     }//GEN-LAST:event_jTextFieldFechaFocusLost

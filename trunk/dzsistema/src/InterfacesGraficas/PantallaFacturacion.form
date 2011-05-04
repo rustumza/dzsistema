@@ -78,7 +78,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="DZ Representaciones - C&amp;C Systems"/>
+    <Property name="title" type="java.lang.String" value="DZ Representaciones - v1.0 - C&amp;C Systems"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
