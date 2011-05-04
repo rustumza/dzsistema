@@ -7,6 +7,7 @@ package Impresion;
 
 import Negocio.Entidades.Factura;
 import com.mysql.jdbc.Connection;
+import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -36,7 +37,6 @@ public class ManejadorImpresion {
 
     public void imprimirFacturaA(Factura factura) {
         try {
-            String archivoCadena = null;
             Map parametro = new HashMap();
 //            parametro.put("factura", factura.getId().toString());
             //este es el parámetro, se pueden agregar más parámetros
@@ -45,7 +45,8 @@ public class ManejadorImpresion {
 //            parametro.put("nombre", factura.getNumero());
             FacturaADataSource facturaDS = new FacturaADataSource();
             facturaDS.addFactura(factura);
-            archivoCadena = "FacturaA.jasper";
+            URL archivoCadena = null;
+            archivoCadena = getClass().getResource("/Impresion/FacturaA.jasper");
             if (archivoCadena == null) {
                 JOptionPane.showMessageDialog(null,"No se encuentra el archivo", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -69,11 +70,11 @@ public class ManejadorImpresion {
 
     public void imprimirFacturaB(Factura factura) {
         try {
-            String archivoCadena = null;
             Map parametro = new HashMap();
             FacturaBDataSource facturaDS = new FacturaBDataSource();
             facturaDS.addFactura(factura);
-            archivoCadena = "FacturaB.jasper";
+            URL archivoCadena = null;
+            archivoCadena = getClass().getResource("/Impresion/FacturaB.jasper");
             if (archivoCadena == null) {
                 JOptionPane.showMessageDialog(null,"No se encuentra el archivo", "Información", JOptionPane.INFORMATION_MESSAGE);
             }

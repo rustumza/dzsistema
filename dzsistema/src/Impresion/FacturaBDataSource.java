@@ -8,6 +8,7 @@ package Impresion;
 import Impresion.DetalleDataSource;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
+import java.net.URL;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
@@ -64,6 +65,14 @@ public class FacturaBDataSource implements JRDataSource {
             detalleDataSource1 = new DetalleDataSource1();
             detalleDataSource1.addAllDetalle(factura.getDetallesDeFactura());
             valor = detalleDataSource1;
+        }else if (jrf.getName().equals("dirdetalle")) {
+            URL archivoCadena = null;
+            archivoCadena = getClass().getResource("/Impresion/DetalleFactura.jasper");
+            valor = String.valueOf(archivoCadena);
+        }else if (jrf.getName().equals("dirdetalle1")) {
+            URL archivoCadena = null;
+            archivoCadena = getClass().getResource("/Impresion/DetalleFactura_1.jasper");
+            valor = String.valueOf(archivoCadena);
         }
         return valor;
     }
