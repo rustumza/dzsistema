@@ -318,10 +318,10 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un CUIT válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un CUIT válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jTextFieldCUITActionPerformed
 
@@ -333,10 +333,10 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
@@ -354,10 +354,10 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El CUIT ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un CUIT válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un CUIT válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jButtonBuscarCUITActionPerformed
 
@@ -369,10 +369,10 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jButtonBuscarCodigoActionPerformed
 
@@ -383,7 +383,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             CargarTabla();
             limpiarFields();
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
@@ -394,7 +394,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             CargarTabla();
             limpiarFields();
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonBuscarNombreActionPerformed
 
@@ -413,7 +413,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             ama.modificarCliente(clienteAModificar);
             ama.setVisible(true);
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un Cliente para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione el cliente a modificar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         listaClientes = controlador.ObtenerClientes();
         CargarTabla();
@@ -422,7 +422,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
     private void jButtonElimiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElimiarActionPerformed
         if (jTableClientes.getSelectedRow() != -1) {
             //Pregunta si esta seguro si dar de baja
-            int rta=JOptionPane.showConfirmDialog(this,"¿Está seguro que desea dar de baja el Cliente?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+            int rta=JOptionPane.showConfirmDialog(this,"¿Está seguro que desea dar de baja al Cliente?", "¡Atención!", JOptionPane.YES_NO_OPTION);
             if(rta==JOptionPane.YES_OPTION){
                 for(int i=0;i<jTableClientes.getRowCount();i++){
                     if(jTableClientes.isRowSelected(i)){
@@ -432,7 +432,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 }
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un Cliente para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione el cliente a eliminar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         listaClientes = controlador.ObtenerClientes();
         CargarTabla();

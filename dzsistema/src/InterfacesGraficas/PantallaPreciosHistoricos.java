@@ -190,7 +190,7 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
         //add your handling code here:
         //Me fijo si no se selecciono ninguno
         if (jTablePrecios.getSelectedRow() != -1) {
-            int rta=JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar el Precio?", "¡Atención!", JOptionPane.YES_NO_OPTION);
+            int rta=JOptionPane.showConfirmDialog(this,"¿Está seguro que desea eliminar el precio?", "¡Atención!", JOptionPane.YES_NO_OPTION);
             if(rta==JOptionPane.YES_OPTION){
                 //Verifica que quede al menos un precio
                 if(producto.getPreciosHistoricos().size()>1){
@@ -218,18 +218,18 @@ public class PantallaPreciosHistoricos extends javax.swing.JFrame {
                         } catch (Exception ex) {
                             Logger.getLogger(PantallaPreciosHistoricos.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        JOptionPane.showMessageDialog(null, "Precio Eliminado", "Información", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Precio Eliminado", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Solo puede eliminarce el último precio", "Información", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Solo puede eliminarce el último precio", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "No puede eliminar el precio", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar el precio", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un Precio para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione el precio a eliminar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         CargarTabla();
     }//GEN-LAST:event_jButtonBorrarActionPerformed

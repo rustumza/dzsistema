@@ -85,7 +85,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBoxIVA" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="jComboBoxIVA" alignment="0" pref="191" max="32767" attributes="1"/>
                                       <Component id="jTextFieldCodigo" alignment="0" pref="191" max="32767" attributes="1"/>
                                       <Component id="jTextFieldDireccion" alignment="0" pref="191" max="32767" attributes="1"/>
                                   </Group>

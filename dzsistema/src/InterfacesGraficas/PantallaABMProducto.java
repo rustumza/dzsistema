@@ -303,10 +303,10 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
@@ -324,10 +324,10 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jButtonBuscarCodigoActionPerformed
 
@@ -338,7 +338,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
             CargarTabla();
             limpiarFields();
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
@@ -349,7 +349,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
             CargarTabla();
             limpiarFields();
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un Nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonBuscarNombreActionPerformed
 
@@ -368,7 +368,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
             amp.modificarProducto(productoAModificar);
             amp.setVisible(true);
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un Producto para modificar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione el producto a modificar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         listaProductos = controlador.ObtenerProductos();
         CargarTabla();
@@ -387,7 +387,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                 }
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Seleccione un Producto para eliminar", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Seleccione el producto a eliminar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         listaProductos = controlador.ObtenerProductos();
         CargarTabla();
@@ -404,7 +404,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
             PantallaPreciosHistoricos iu = new PantallaPreciosHistoricos(productoAModificar, controlador);
             iu.setVisible(true);
         } else{
-        JOptionPane.showMessageDialog(null, "Seleccione un Producto para ver su histórico de precios", "Información", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Seleccione un producto para ver su historial de precios", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonVerPreciosActionPerformed
 
