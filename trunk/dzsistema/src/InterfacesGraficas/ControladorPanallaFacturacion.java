@@ -847,6 +847,7 @@ public class ControladorPanallaFacturacion {
 
 
         getPantalla().getCondicionDeVenta().setEnabled(false);
+        getPantalla().getRemitoNro().setEnabled(false);
 
         pantalla.getFecha().setEnabled(false);
         getPantalla().getNumeroFactura().setEnabled(false);
