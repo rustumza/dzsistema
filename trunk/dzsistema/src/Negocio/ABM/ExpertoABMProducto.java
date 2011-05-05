@@ -71,7 +71,7 @@ class ExpertoABMProducto {
         } else {
             producto = fachada.findProducto(id);
         }
-        if(fachada.buscarPorCodigo(codigo).isEmpty()){
+        if(producto.getId() != null || fachada.buscarPorCodigo(codigo).isEmpty()){
             producto.setCodigo(codigo);
             producto.setDescripcion(descripcion);
             producto.setPorcentajeDeIva(IVA);
