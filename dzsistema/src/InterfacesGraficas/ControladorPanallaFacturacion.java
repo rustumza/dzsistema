@@ -542,7 +542,7 @@ public class ControladorPanallaFacturacion {
 
     }
 
-    public void guardarFactura() {
+    public int guardarFactura() {
         pantalla.getGuardar().setEnabled(false);
         pantalla.getImprimir().setEnabled(false);
         bloquearTodo();
@@ -552,7 +552,7 @@ public class ControladorPanallaFacturacion {
             pantalla.getImprimir().setEnabled(true);
             desbloquearParcial();
             getPantalla().getNumeroFactura().requestFocus();
-            return;
+            return 1;
         }else{
             long numeroFactura = 0;
             try{
@@ -564,7 +564,7 @@ public class ControladorPanallaFacturacion {
                 pantalla.getImprimir().setEnabled(true);
                 desbloquearParcial();
                 getPantalla().getNumeroFactura().requestFocus();
-                return;
+                return 1;
             }
         }
 
@@ -574,7 +574,7 @@ public class ControladorPanallaFacturacion {
             pantalla.getImprimir().setEnabled(true);
             desbloquearParcial();
             getPantalla().getNumeroFactura().requestFocus();
-            return;
+            return 1;
         }
 
         if(!experto.esPosteriorFechaDeFacturaRespectoAFacturasAnteriores()){
@@ -583,7 +583,7 @@ public class ControladorPanallaFacturacion {
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
             getPantalla().getFecha().requestFocus();
-            return;
+            return 1;
 
         }
 
@@ -598,7 +598,7 @@ public class ControladorPanallaFacturacion {
                 pantalla.getImprimir().setEnabled(true);
                 desbloquearParcial();
                 getPantalla().getRemitoNro().requestFocus();
-                return;
+                return 1;
             }
         }
 
@@ -609,7 +609,7 @@ public class ControladorPanallaFacturacion {
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
             getPantalla().getNombre().requestFocus();
-            return;
+            return 1;
         }
 
         int condDeVenta = 1;
@@ -632,7 +632,7 @@ public class ControladorPanallaFacturacion {
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
             getPantalla().getFecha().requestFocus();
-            return;
+            return 1;
         }
 
         if(dto.getListaDeDetalles().isEmpty()){
@@ -641,7 +641,7 @@ public class ControladorPanallaFacturacion {
             pantalla.getImprimir().setEnabled(true);
             desbloquearParcial();
             getPantalla().getCantidad().requestFocus();
-            return;
+            return 1;
         }
 
         try{
@@ -649,12 +649,15 @@ public class ControladorPanallaFacturacion {
             guardado = true;
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Factura guardada", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getImprimir().setEnabled(true);
+            return 0;
+
         }catch(Exception e){
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "Error al guardar la factura", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             desbloquearTodo();
+            return 1;
         }
 
         
@@ -663,14 +666,19 @@ public class ControladorPanallaFacturacion {
     }
 
     public void imprimir() {
-        
+        int retorno = 0;
         if(!guardado){
-            guardarFactura();
+            retorno = guardarFactura();
             guardado = true;
         }
-        ControladorImpresionFactura contImp = new ControladorImpresionFactura();
-        contImp.imprimir(experto.getDtoFactura().getFactura());
-        
+        if(retorno == 0){
+            if(experto.getDtoFactura().getFactura() != null){
+                ControladorImpresionFactura contImp = new ControladorImpresionFactura();
+                contImp.imprimir(experto.getDtoFactura().getFactura());
+            }else{
+                JOptionPane.showMessageDialog( getPantalla().getPanelInfoCliene(), "Error al imprimir, no se a creado una factura", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }
 
     public void limpiarPantalla() {
