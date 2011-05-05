@@ -29,7 +29,7 @@ public class ManejadorImpresion {
     public ManejadorImpresion() {
         try {
             Class.forName("com.mysql.jdbc.Driver"); //se carga el driver
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/binladen", "root", "leviatan");
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/dzrepresentaciones", "cyc", "dzr");
             //JOptionPane.showMessageDialog(null, "Conexión establecida");
         } catch (Exception ex) {
         }
