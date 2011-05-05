@@ -1037,6 +1037,7 @@ public class ControladorPanallaFacturacion {
             DtoFactura dto = experto.abrirFactura(numeroLong, tipo);
             if(dto.getFactura() == null){
                 JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha encontado una facura con ese numero", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                experto = new ExpertoFacturar();
             }else{
                 cargarDatosFacturaAbierta(dto);
             }
