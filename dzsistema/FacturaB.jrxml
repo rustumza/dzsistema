@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
-	<property name="ireport.zoom" value="1.768460768250004"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="2" bottomMargin="0">
+	<property name="ireport.zoom" value="5.0456249619942275"/>
+	<property name="ireport.x" value="1678"/>
+	<property name="ireport.y" value="3025"/>
 	<scriptlet name="scriptlet2" class="net.sf.jasperreports.engine.JRDefaultScriptlet"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/mnt/datos/trabajo/cyc/sitemas/trunk/dzsistema/"]]></defaultValueExpression>
@@ -56,7 +56,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{condicionDeVenta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="477" y="133" width="100" height="12"/>
+				<reportElement x="494" y="133" width="100" height="12"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -93,7 +93,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="477" y="165" width="100" height="12"/>
+				<reportElement x="494" y="165" width="100" height="12"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -135,16 +135,16 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{iva}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="209">
+		<band height="227">
 			<subreport>
-				<reportElement x="12" y="9" width="571" height="200"/>
+				<reportElement x="12" y="9" width="571" height="212"/>
 				<dataSourceExpression><![CDATA[$F{detalles1}]]></dataSourceExpression>
 				<subreportExpression class="java.lang.String"><![CDATA[$F{dirdetalle1}]]></subreportExpression>
 			</subreport>
 		</band>
 		<band height="94">
 			<textField>
-				<reportElement x="488" y="19" width="96" height="27"/>
+				<reportElement x="488" y="10" width="96" height="27"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
