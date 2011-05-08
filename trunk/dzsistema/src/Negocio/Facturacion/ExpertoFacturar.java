@@ -92,6 +92,7 @@ public class ExpertoFacturar {
         dto.getFactura().setCliente(cliente);
         dto.getFactura().setTipoFactura(dto.getFactura().getCliente().getCondicionFrenteAlIva().getTipoDeFactura());
         dto.setListaDeDetalles(new ArrayList<DetalleFactura>());
+        dto.eliminarTodosLosDetalles();
         dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
     }
 

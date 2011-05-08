@@ -135,6 +135,7 @@ public class ControladorPanallaFacturacion {
             try{
                 DtoFactura dto = experto.buscarClientePorNumero(numeroCliente);
                 cargarDatosClienteYFactura(dto);
+                actualizarTablaEImpuestosYTotales(dto);
                 getPantalla().getCondicionDeVenta().requestFocus();
             }catch(ClienteExcepcion e){
                 JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
@@ -159,6 +160,7 @@ public class ControladorPanallaFacturacion {
                 try{
                     DtoFactura dto = experto.buscarClientePorCuit(cuit);
                     cargarDatosClienteYFactura(dto);
+                    actualizarTablaEImpuestosYTotales(dto);
                     getPantalla().getCondicionDeVenta().requestFocus();
                 }catch(ClienteExcepcion e){
                     JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
@@ -696,6 +698,15 @@ public class ControladorPanallaFacturacion {
             guardado = false;
         }
 
+    }
+
+    public void limpiarSoloPantalla(){
+     
+        pantalla.getAnulada().setEnabled(false);
+        desbloquearTodo();
+        pantalla.getGuardar().setEnabled(true);
+        pantalla.getImprimir().setEnabled(true);
+        guardado = false;
 
     }
 
@@ -1039,6 +1050,7 @@ public class ControladorPanallaFacturacion {
                 JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "No se ha encontado una facura con ese numero", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 experto = new ExpertoFacturar();
             }else{
+                limpiarSoloPantalla();
                 cargarDatosFacturaAbierta(dto);
             }
         }catch(NumberFormatException e){
