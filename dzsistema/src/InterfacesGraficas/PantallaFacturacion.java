@@ -923,9 +923,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         int columna = getTablaDetallesFactura().columnAtPoint(evt.getPoint());
         getControlador().limpiarSectorDeIngresoDeDetalle();
         if ((fila > -1) && (columna > -1)){
-            setFilaSeleccionada(fila);
-            getControlador().cargarFilaDetalleParaEditar(getFilaSeleccionada());
-            getEliminar().setEnabled(true);
+            if(!controlador.isGuardado()){
+                setFilaSeleccionada(fila);
+                getControlador().cargarFilaDetalleParaEditar(getFilaSeleccionada());
+                getEliminar().setEnabled(true);
+            }
         }
 
     }//GEN-LAST:event_filaSeleccionada

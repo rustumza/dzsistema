@@ -40,12 +40,16 @@ public class ControladorPanallaFacturacion {
     //private Factura factura;
     private final String[] CondicionesDeVentaA = {"Contado", "Cuenta Corriente"};
     private final String[] CondicionesDeVentaB = {"Contado", "Cuenta Corriente", "Tarjeta"};
+
+
     boolean guardado = false;
 
     public ControladorPanallaFacturacion() {
         experto = new ExpertoFacturar();
     }
-
+     public boolean isGuardado() {
+        return guardado;
+    }
     
     public void iniciarPantalla() {
         try{
@@ -696,6 +700,7 @@ public class ControladorPanallaFacturacion {
             pantalla.getGuardar().setEnabled(true);
             pantalla.getImprimir().setEnabled(true);
             guardado = false;
+            pantalla.getAgregar().setText("Agregar");
         }
 
     }
@@ -706,6 +711,7 @@ public class ControladorPanallaFacturacion {
         desbloquearTodo();
         pantalla.getGuardar().setEnabled(true);
         pantalla.getImprimir().setEnabled(true);
+        pantalla.getAgregar().setText("Agregar");
         guardado = false;
 
     }
@@ -949,7 +955,7 @@ public class ControladorPanallaFacturacion {
                 long numero = Long.parseLong(pantalla.getNumeroFactura().getText());
                 experto.guardarNumeroFacutra(numero);
                 
-            }catch(NumberFormatException e){
+            }catch(NumberFormatException e){                
                 JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El número de factura ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getNumeroFactura().requestFocus();
             }
