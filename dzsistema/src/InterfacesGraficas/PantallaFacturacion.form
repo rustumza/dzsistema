@@ -120,7 +120,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="panelDetalleFactura" alignment="0" max="32767" attributes="0"/>
                       <Component id="panelInfoCliene" alignment="0" max="32767" attributes="0"/>
-                      <Component id="panelCabecera" alignment="0" pref="1002" max="32767" attributes="0"/>
+                      <Component id="panelCabecera" alignment="0" pref="998" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -204,12 +204,12 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="numeroFacturaLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="numeroFactura" pref="148" max="32767" attributes="0"/>
+                                  <Component id="numeroFactura" pref="118" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="fechaLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fecha" pref="188" max="32767" attributes="0"/>
+                                  <Component id="fecha" pref="173" max="32767" attributes="0"/>
                               </Group>
                               <Component id="anulada" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                           </Group>
@@ -319,9 +319,9 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tipoFactura" alignment="0" pref="589" max="32767" attributes="0"/>
-                      <Component id="palabraCodigo" alignment="1" pref="589" max="32767" attributes="0"/>
-                      <Component id="codigoFactura" alignment="0" pref="589" max="32767" attributes="0"/>
+                      <Component id="tipoFactura" alignment="0" pref="579" max="32767" attributes="0"/>
+                      <Component id="palabraCodigo" alignment="1" pref="579" max="32767" attributes="0"/>
+                      <Component id="codigoFactura" alignment="0" pref="579" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -402,7 +402,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="numeroClienteLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="numeroCliente" pref="215" max="32767" attributes="0"/>
+                                  <Component id="numeroCliente" pref="103" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -412,13 +412,13 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="cuit" pref="258" max="32767" attributes="0"/>
+                                          <Component id="cuit" pref="174" max="32767" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="ivaLabel" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="iva" min="-2" pref="295" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="domicilio" alignment="0" pref="592" max="32767" attributes="0"/>
+                                      <Component id="domicilio" alignment="0" pref="520" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -552,7 +552,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="remitonroLabel" min="-2" pref="66" max="-2" attributes="1"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="remitoNro" pref="234" max="32767" attributes="0"/>
+                                  <Component id="remitoNro" pref="276" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -567,7 +567,7 @@
                               <Component id="condicionDeVentaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="condicionDeVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                          <EmptySpace pref="33" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="remitonroLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="remitoNro" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -622,7 +622,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panelIngresoDetalleFactura" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="1" pref="1002" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="1" pref="998" max="32767" attributes="0"/>
                   <Component id="panelImpuestos" alignment="1" max="32767" attributes="1"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -644,9 +644,9 @@
                       <Component id="panelImpuestos" min="-2" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="imprimir" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="guardar" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="limpiar" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="imprimir" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="guardar" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -708,7 +708,7 @@
                               <Component id="iva105Label" min="-2" max="-2" attributes="0"/>
                               <Component id="iva105" min="-2" pref="168" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="248" max="32767" attributes="0"/>
+                          <EmptySpace pref="232" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="total" min="-2" pref="212" max="-2" attributes="0"/>
@@ -842,7 +842,7 @@
                                       <Component id="codigoLabel" min="-2" max="-2" attributes="1"/>
                                       <Component id="codigo" min="-2" pref="56" max="-2" attributes="1"/>
                                   </Group>
-                                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="descripcionLabel" min="-2" max="-2" attributes="0"/>
                                       <Component id="descripcion" min="-2" pref="634" max="-2" attributes="0"/>
