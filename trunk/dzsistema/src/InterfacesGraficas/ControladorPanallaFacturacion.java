@@ -10,6 +10,7 @@ import Impresion.ControladorImpresionFactura;
 import InterfacesGraficas.exceptions.ClienteExcepcion;
 import Negocio.Entidades.Cliente;
 import Negocio.Entidades.DetalleFactura;
+import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
 import validar.fechaException;
 import validar.Validar;
@@ -23,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import java.lang.Math.*;
 import javax.swing.DefaultComboBoxModel;
 import Negocio.Facturacion.DtoFactura;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -336,6 +338,39 @@ public class ControladorPanallaFacturacion {
                     return;
                 }
                 Producto producto = experto.buscarProductoConFechaDeFactura(codigo);
+                if(Integer.parseInt(codigo)==0){
+                    producto = new Producto();
+                    producto.setCodigo(0);
+                    producto.setEstado(true);
+                    producto.setPorcentajeDeIva(21);
+                    String mes = null;
+                    switch (experto.getDtoFactura().getFactura().getFecha().getMonth()){
+                        case 0:mes="enero";
+                        case 1:mes="febrero";
+                        case 2:mes="marzo";
+                        case 3:mes="abril";
+                        case 4:mes="mayo";
+                        case 5:mes="junio";
+                        case 6:mes="julio";
+                        case 7:mes="agosto";
+                        case 8:mes="setiembre";
+                        case 9:mes="octubre";
+                        case 10:mes="noviembre";
+                        case 11:mes="diciembre";
+                    }
+                    String anio = String.valueOf(experto.getDtoFactura().getFactura().getFecha().getYear()+1900);
+                    String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+                    producto.setDescripcion(descripcion);
+                    List<PrecioHistorico> listaPrecioHistorico = new ArrayList<PrecioHistorico>();
+                    PrecioHistorico precHist = new PrecioHistorico();
+                    precHist.setPrecio(0);
+                    precHist.setFechaDesdeQueEntroEnVigencia(new Date(110, 05, 06));
+                    precHist.setProducto(producto);
+                    precHist.setEstado(true);
+                    listaPrecioHistorico.add(precHist);
+                    producto.setPreciosHistoricos(listaPrecioHistorico);
+                }
+
                 if(producto != null ){
                     getPantalla().getFecha().setEnabled(false);
                     getPantalla().getCodigo().setText(String.valueOf(producto.getCodigo()));

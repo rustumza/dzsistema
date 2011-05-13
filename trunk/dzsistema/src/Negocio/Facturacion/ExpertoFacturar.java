@@ -19,11 +19,13 @@ import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import validar.fechaException;
 import validar.Validar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.eclipse.persistence.internal.jpa.parsing.DotNode;
 
@@ -155,6 +157,32 @@ public class ExpertoFacturar {
     public DtoFactura AgregarDetalleALaFactura(DTODetallesDeFacturaParaGUI dtodetalle){
         DetalleFactura detalleFactura = new DetalleFactura();
         detalleFactura.setProducto(buscarProducto(dtodetalle.getCodigo()));
+        if(Integer.valueOf(dtodetalle.getCodigo())==0){
+            detalleFactura.getProducto().setCodigo(0);
+            detalleFactura.getProducto().setEstado(true);
+            detalleFactura.getProducto().setPorcentajeDeIva(21);
+            String mes = null;
+            switch (getDtoFactura().getFactura().getFecha().getMonth()){
+                case 0:mes="enero";
+                case 1:mes="febrero";
+                case 2:mes="marzo";
+                case 3:mes="abril";
+                case 4:mes="mayo";
+                case 5:mes="junio";
+                case 6:mes="julio";
+                case 7:mes="agosto";
+                case 8:mes="setiembre";
+                case 9:mes="octubre";
+                case 10:mes="noviembre";
+                case 11:mes="diciembre";
+            }
+            String anio = String.valueOf(getDtoFactura().getFactura().getFecha().getYear()+1900);
+
+            String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+            detalleFactura.getProducto().setDescripcion(descripcion);
+
+        }
+        
         detalleFactura.setPorcentajeDeIva(detalleFactura.getProducto().getPorcentajeDeIva());
         detalleFactura.setCantidad(dtodetalle.getCantidad());
         detalleFactura.setPrecioUnitario(dtodetalle.getPrecioUnitario());
@@ -169,6 +197,32 @@ public class ExpertoFacturar {
     public DtoFactura editarDetalleALaFactura(DTODetallesDeFacturaParaGUI dtodetalle, int filaAEditar) {
         DetalleFactura detalleFactura = dto.getListaDeDetalles().get(filaAEditar);
         detalleFactura.setProducto(buscarProducto(dtodetalle.getCodigo()));
+        if(Integer.valueOf(dtodetalle.getCodigo())==0){
+            
+            detalleFactura.getProducto().setCodigo(0);
+            detalleFactura.getProducto().setEstado(true);
+            detalleFactura.getProducto().setPorcentajeDeIva(21);
+            String mes = null;
+            switch (getDtoFactura().getFactura().getFecha().getMonth()){
+                case 0:mes="enero";
+                case 1:mes="febrero";
+                case 2:mes="marzo";
+                case 3:mes="abril";
+                case 4:mes="mayo";
+                case 5:mes="junio";
+                case 6:mes="julio";
+                case 7:mes="agosto";
+                case 8:mes="setiembre";
+                case 9:mes="octubre";
+                case 10:mes="noviembre";
+                case 11:mes="diciembre";
+            }
+            String anio = String.valueOf(getDtoFactura().getFactura().getFecha().getYear()+1900);
+
+            String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+            detalleFactura.getProducto().setDescripcion(descripcion);
+
+        }
         detalleFactura.setPorcentajeDeIva(detalleFactura.getProducto().getPorcentajeDeIva());
         detalleFactura.setCantidad(dtodetalle.getCantidad());
         detalleFactura.setPrecioUnitario(dtodetalle.getPrecioUnitario());
@@ -315,6 +369,34 @@ public class ExpertoFacturar {
             for (Factura factura : listaFactura) {
                 if(factura.getTipoFactura().getNombre().equals(tipo)){
                     dto.setFactura(factura);
+                    for (DetalleFactura detalle : factura.getDetallesDeFactura()) {
+
+                        if(detalle.getProducto().getCodigo()==0){
+
+                            detalle.getProducto().setEstado(true);
+                            detalle.getProducto().setPorcentajeDeIva(21);
+                            String mes = null;
+                            switch (factura.getFecha().getMonth()){
+                                case 0:mes="enero";
+                                case 1:mes="febrero";
+                                case 2:mes="marzo";
+                                case 3:mes="abril";
+                                case 4:mes="mayo";
+                                case 5:mes="junio";
+                                case 6:mes="julio";
+                                case 7:mes="agosto";
+                                case 8:mes="setiembre";
+                                case 9:mes="octubre";
+                                case 10:mes="noviembre";
+                                case 11:mes="diciembre";
+                            }
+                            String anio = String.valueOf(factura.getFecha().getYear()+1900);
+
+                            String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+                            detalle.getProducto().setDescripcion(descripcion);
+
+                        }
+                    }
                     dto.setEsFacuraNueva(false);
                     dto.setListaDeDetalles(dto.getFactura().getDetallesDeFactura());
                     dto.setListaDeDetallesAEliminar(new ArrayList<DetalleFactura>());
