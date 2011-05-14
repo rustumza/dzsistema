@@ -989,6 +989,7 @@ public class ControladorPanallaFacturacion {
             try{
                 long numero = Long.parseLong(pantalla.getNumeroFactura().getText());
                 experto.guardarNumeroFacutra(numero);
+                pantalla.getFecha().requestFocus();
                 
             }catch(NumberFormatException e){                
                 JOptionPane.showMessageDialog(getPantalla().getPanelInfoCliene(), "El número de factura ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);

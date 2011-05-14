@@ -140,16 +140,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         numeroFacturaLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 15));
         numeroFacturaLabel.setText("N° 0001 - 00");
 
-        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
+        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
         numeroFactura.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         numeroFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroFacturaActionPerformed(evt);
-            }
-        });
-        numeroFactura.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                guardarNumeroFactura(evt);
             }
         });
 
@@ -997,10 +992,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         getControlador().anularFactura();
     }//GEN-LAST:event_checkAnulado
 
-    private void guardarNumeroFactura(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_guardarNumeroFactura
-        getControlador().guardarNumeroFactura();
-    }//GEN-LAST:event_guardarNumeroFactura
-
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         getControlador().buscarClientePorNombre(getNombre().getText());
     }//GEN-LAST:event_nombreActionPerformed
@@ -1016,7 +1007,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_cuitActionPerformed
 
     private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-       getNombre().requestFocus();
+       if(getFecha().getText().equals(""))
+            getFecha().requestFocus();
+       else
+            getNombre().requestFocus();
     }//GEN-LAST:event_fechaActionPerformed
 
     private void validarFechaIngresada(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_validarFechaIngresada
@@ -1044,7 +1038,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_precioUnitarioActionPerformed
 
     private void numeroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroFacturaActionPerformed
-        getFecha().requestFocus();
+        getControlador().guardarNumeroFactura();
     }//GEN-LAST:event_numeroFacturaActionPerformed
 
     private void agregarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_agregarKeyPressed
