@@ -109,7 +109,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxIVA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10.5", "21" }));
+        jComboBoxIVA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21", "10.5" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,7 +124,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addGap(41, 41, 41)
-                        .addComponent(jTextFieldPU, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                        .addComponent(jTextFieldPU, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,10 +134,10 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxIVA, 0, 182, Short.MAX_VALUE)
-                            .addComponent(JTextFieldDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(jTextFieldFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxIVA, 0, 217, Short.MAX_VALUE)
+                            .addComponent(JTextFieldDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(jTextFieldFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -197,7 +197,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonPrecios)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonguardar)))
