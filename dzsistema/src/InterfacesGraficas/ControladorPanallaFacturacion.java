@@ -345,18 +345,18 @@ public class ControladorPanallaFacturacion {
                     producto.setPorcentajeDeIva(21);
                     String mes = null;
                     switch (experto.getDtoFactura().getFactura().getFecha().getMonth()){
-                        case 0:mes="enero";
-                        case 1:mes="febrero";
-                        case 2:mes="marzo";
-                        case 3:mes="abril";
-                        case 4:mes="mayo";
-                        case 5:mes="junio";
-                        case 6:mes="julio";
-                        case 7:mes="agosto";
-                        case 8:mes="setiembre";
-                        case 9:mes="octubre";
-                        case 10:mes="noviembre";
-                        case 11:mes="diciembre";
+                        case 0:mes="enero";break;
+                        case 1:mes="febrero";break;
+                        case 2:mes="marzo";break;
+                        case 3:mes="abril";break;
+                        case 4:mes="mayo";break;
+                        case 5:mes="junio";break;
+                        case 6:mes="julio";break;
+                        case 7:mes="agosto";break;
+                        case 8:mes="setiembre";break;
+                        case 9:mes="octubre";break;
+                        case 10:mes="noviembre";break;
+                        case 11:mes="diciembre";break;
                     }
                     String anio = String.valueOf(experto.getDtoFactura().getFactura().getFecha().getYear()+1900);
                     String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
