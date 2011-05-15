@@ -11,15 +11,25 @@
 
 package InterfacesGraficas.Reportes;
 
+import Negocio.Entidades.Producto;
+import java.util.Date;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import validar.Validar;
 /**
  *
  * @author rustu
  */
 public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
+    List<Producto> listaProductos = new Vector();
+    Producto ProdSeleccionado;
+    ControladorVentaProductoPorMes controlador = new ControladorVentaProductoPorMes();
 
     /** Creates new form PantallaVentaProductoPorMes */
     public PantallaVentaProductoPorMes() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -31,34 +41,291 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldAño = new javax.swing.JTextField();
+        jComboBoxMes = new javax.swing.JComboBox();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextFieldCodigo = new javax.swing.JTextField();
+        jButtonBuscarCodigo = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jButtonBuscarNombre = new javax.swing.JButton();
+        jTextFieldProducto = new javax.swing.JTextField();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonGenerar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reporte");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setText("Año:");
+
+        jLabel3.setText("Mes:");
+
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldAño))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(230, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel8.setText("Código");
+
+        jTextFieldCodigo.setPreferredSize(new java.awt.Dimension(50, 20));
+        jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCodigoActionPerformed(evt);
+            }
+        });
+
+        jButtonBuscarCodigo.setText("Buscar");
+        jButtonBuscarCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarCodigoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Nombre");
+
+        jTextFieldNombre.setPreferredSize(new java.awt.Dimension(50, 20));
+
+        jButtonBuscarNombre.setText("Buscar");
+        jButtonBuscarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarNombreActionPerformed(evt);
+            }
+        });
+
+        jTextFieldProducto.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonBuscarNombre)
+                            .addComponent(jButtonBuscarCodigo)))
+                    .addComponent(jTextFieldProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBuscarCodigo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jButtonBuscarNombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jButtonGenerar.setText("Generar");
+        jButtonGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonGenerar)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancelar)
+                    .addComponent(jButtonGenerar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarActionPerformed
+
+        // variable logica para validar si se puede guardar o modificar
+        boolean condicion = true;
+        // Valida Año
+        if (jTextFieldAño.getText().isEmpty() == false){
+            if(!Validar.ValidarAño(jTextFieldAño.getText())){
+                condicion=false;
+                JOptionPane.showMessageDialog(null, "El Año ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+         else{
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "Escriba un Año válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+         }
+        //Valida fechas
+        Date hoy = new Date();
+
+        //Valida Producto
+        if (jTextFieldProducto.getText().isEmpty() == false){
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "Seleccione un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        //Genera el reporte
+        if(condicion){
+            controlador.generarReporte(listaProductos, jTextFieldAño.getText(), jComboBoxMes.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_jButtonGenerarActionPerformed
+
+    private void jButtonBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarCodigoActionPerformed
+        if (jTextFieldCodigo.getText().isEmpty() == false){
+            if(Validar.controlCodigo(jTextFieldCodigo.getText())){
+                listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+                jTextFieldProducto.setText(listaProductos.get(0).getDescripcion());
+            } else{
+                JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else{
+            JOptionPane.showMessageDialog(null, "Escriba un código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonBuscarCodigoActionPerformed
+
+    private void jButtonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarNombreActionPerformed
+        if (jTextFieldNombre.getText().isEmpty() == false){
+            listaProductos = controlador.buscarProductoPorParteDelNombre(jTextFieldNombre.getText());
+            if(listaProductos.size() == 1){
+                jTextFieldProducto.setText(listaProductos.get(0).getDescripcion());
+            }
+            else{
+                PantallaElegirProducto iu = new PantallaElegirProducto(listaProductos);
+                iu.setVisible(true);
+                iu.setGUI(this);
+            }
+        } else{
+            JOptionPane.showMessageDialog(null, "Escriba un nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonBuscarNombreActionPerformed
+
+    private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed
+
+        if (jTextFieldCodigo.getText().isEmpty() == false){
+            if(Validar.controlCodigo(jTextFieldCodigo.getText())){
+                listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+                jTextFieldProducto.setText(listaProductos.get(0).getDescripcion());
+            } else{
+                JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else{
+            JOptionPane.showMessageDialog(null, "Escriba un código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jTextFieldCodigoActionPerformed
+
     /**
     * @param args the command line arguments
     */
-    /*public static void main(String args[]) {
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PantallaVentaProductoPorMes().setVisible(true);
             }
         });
     }
-    */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBuscarCodigo;
+    private javax.swing.JButton jButtonBuscarNombre;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonGenerar;
+    private javax.swing.JComboBox jComboBoxMes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField jTextFieldAño;
+    private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldProducto;
     // End of variables declaration//GEN-END:variables
+
+    public void setjTextFieldProducto(Producto producto) {
+        jTextFieldProducto.setText(producto.getDescripcion());
+        listaProductos.clear();
+        listaProductos.add(producto);
+    }
 
 }
