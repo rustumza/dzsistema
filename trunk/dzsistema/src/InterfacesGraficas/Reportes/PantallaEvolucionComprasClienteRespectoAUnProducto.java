@@ -11,15 +11,23 @@
 
 package InterfacesGraficas.Reportes;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author rustu
  */
 public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.swing.JFrame {
-
+    private ControladorEvolucionComprasClienteRespectoAUnProducto controlador;
     /** Creates new form PantallaEvolucionComprasClienteRespectoAUnProducto */
-    public PantallaEvolucionComprasClienteRespectoAUnProducto() {
+    public PantallaEvolucionComprasClienteRespectoAUnProducto(ControladorEvolucionComprasClienteRespectoAUnProducto controlador) {
         initComponents();
+        String[] meses = {"Enero", "Febrero", "Marzo" , "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre","Octubre", "Noviembre", "Diceimbre"};
+        mesInicioComboBox.setModel(new DefaultComboBoxModel(meses));
+        mesFinComboBox.setModel(new DefaultComboBoxModel(meses));
+        this.controlador = controlador;
     }
 
     /** This method is called from within the constructor to
@@ -31,21 +39,102 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        codigoProductoLabel = new javax.swing.JLabel();
+        codigoProducto = new javax.swing.JTextField();
+        aceptar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        fechaInicioLabel = new javax.swing.JLabel();
+        fechaFinLabel = new javax.swing.JLabel();
+        mesInicioComboBox = new javax.swing.JComboBox();
+        mesFinComboBox = new javax.swing.JComboBox();
+        anioInicio = new javax.swing.JTextField();
+        anioFin = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        codigoProductoLabel.setText("Código Producto");
+
+        aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
+
+        cancelar.setText("Cancelar");
+
+        fechaInicioLabel.setText("Fecha inicio");
+
+        fechaFinLabel.setText("Fecha fin");
+
+        mesInicioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        mesFinComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        anioInicio.setText("Año");
+
+        anioFin.setText("Año");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(codigoProductoLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(codigoProducto))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fechaInicioLabel)
+                                .addComponent(fechaFinLabel))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(mesFinComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(mesInicioComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 103, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(anioInicio)
+                                .addComponent(anioFin, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codigoProductoLabel)
+                    .addComponent(codigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fechaInicioLabel)
+                    .addComponent(mesInicioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fechaFinLabel)
+                    .addComponent(mesFinComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anioFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aceptar)
+                    .addComponent(cancelar))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        controlador.buscarProducto();
+    }//GEN-LAST:event_aceptarActionPerformed
 
     /**
     * @param args the command line arguments
@@ -59,6 +148,72 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     }
     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aceptar;
+    private javax.swing.JTextField anioFin;
+    private javax.swing.JTextField anioInicio;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JTextField codigoProducto;
+    private javax.swing.JLabel codigoProductoLabel;
+    private javax.swing.JLabel fechaFinLabel;
+    private javax.swing.JLabel fechaInicioLabel;
+    private javax.swing.JComboBox mesFinComboBox;
+    private javax.swing.JComboBox mesInicioComboBox;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the aceptar
+     */
+    public javax.swing.JButton getAceptar() {
+        return aceptar;
+    }
+
+    /**
+     * @param aceptar the aceptar to set
+     */
+    public void setAceptar(javax.swing.JButton aceptar) {
+        this.aceptar = aceptar;
+    }
+
+    /**
+     * @return the cancelar
+     */
+    public javax.swing.JButton getCancelar() {
+        return cancelar;
+    }
+
+    /**
+     * @param cancelar the cancelar to set
+     */
+    public void setCancelar(javax.swing.JButton cancelar) {
+        this.cancelar = cancelar;
+    }
+
+    /**
+     * @return the codigoProducto
+     */
+    public javax.swing.JTextField getCodigoProducto() {
+        return codigoProducto;
+    }
+
+    /**
+     * @param codigoProducto the codigoProducto to set
+     */
+    public void setCodigoProducto(javax.swing.JTextField codigoProducto) {
+        this.codigoProducto = codigoProducto;
+    }
+
+    /**
+     * @return the codigoProductoLabel
+     */
+    public javax.swing.JLabel getCodigoProductoLabel() {
+        return codigoProductoLabel;
+    }
+
+    /**
+     * @param codigoProductoLabel the codigoProductoLabel to set
+     */
+    public void setCodigoProductoLabel(javax.swing.JLabel codigoProductoLabel) {
+        this.codigoProductoLabel = codigoProductoLabel;
+    }
 
 }

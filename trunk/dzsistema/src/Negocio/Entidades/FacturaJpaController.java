@@ -6,6 +6,7 @@
 package Negocio.Entidades;
 
 import Negocio.Entidades.exceptions.NonexistentEntityException;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,6 +15,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.eclipse.persistence.sessions.Session;
 
 /**
  *
@@ -141,4 +143,32 @@ public class FacturaJpaController {
         return encontrados;
     }
 
+     public List<Factura> buscarTodasLasFacturas() {
+        EntityManager em = getEntityManager();
+        List<Factura> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Factura a WHERE a.estado = '" + 1 + "'").getResultList();
+        return encontrados;
+    }
+    
+     
+    public List<Factura> buscarFacturaEntreFechas1(Date fechaInicio, Date fechaFin) {
+        EntityManager em = getEntityManager();
+        List<Factura> encontrados;
+        String fechaInicioString = String.valueOf(fechaInicio.getYear()+1900) + "-" + String.valueOf(fechaInicio.getMonth()+1) + "-" + String.valueOf(fechaInicio.getDate());
+        String fechaFinString = String.valueOf(fechaFin.getYear()+1900) + "-" + String.valueOf(fechaFin.getMonth()+1) + "-" + String.valueOf(fechaFin.getDate());
+        System.out.println(fechaInicioString);
+        System.out.println(fechaFinString);
+        encontrados = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >= '" + fechaInicioString + "' AND a.fecha <= '" + fechaFinString + "' AND a.estado = '1'").getResultList();
+        return encontrados;
+    }
+
+    public List<Factura> buscarFacturaEntreFechas2(Date fechaInicio, Date fechaFin) {
+        EntityManager em = getEntityManager();
+        List<Factura> encontrados;
+        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.estado = '1'");
+        objQuery.setParameter("regDate1", fechaInicio);
+        objQuery.setParameter("regDate2", fechaFin);
+
+        return objQuery.getResultList();
+    }
 }

@@ -9,11 +9,14 @@ import Negocio.Entidades.CondicionDeVenta;
 import Negocio.Entidades.CondicionDeVentaJpaController;
 import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
+import Negocio.Entidades.Factura;
+import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Numerador;
 import Negocio.Entidades.NumeradorJpaController;
 import Negocio.Entidades.TipoFactura;
 import Negocio.Entidades.TipoFacturaJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,6 +103,33 @@ public class Main {
             fachadaN.create(numerador);
         }
 
+            /*
+            //PRUEBA RUSTU
+
+            FacturaJpaController jpa = new FacturaJpaController();
+            Date date1 = new Date((2011-1900),(10-1), 20);
+            Date date2 = new Date((2012-1900),(12-1), 11);
+            List<Factura> lista = jpa.buscarFacturaEntreFechas1(date1, date2);
+            System.out.println("---------------------------------------------------------");
+            System.out.println("---------------------------------------------------------");
+            System.out.println("---------------------------------------------------------");
+            System.out.println("LISTA 1");
+            System.out.println(lista.size());
+            System.out.println("numeros facturas");
+            for (Factura factura : lista) {
+                System.out.println(factura.getNumero());
+            }
+            List<Factura> lista2 = jpa.buscarFacturaEntreFechas2(date1, date2);
+            System.out.println("---------------------------------------------------------");
+            System.out.println("---------------------------------------------------------");
+            System.out.println("---------------------------------------------------------");
+            System.out.println("LISTA 2");
+            System.out.println(lista2.size());
+            System.out.println("numeros facturas");
+            for (Factura factura : lista2) {
+                System.out.println(factura.getNumero());
+            }
+            */
             // Setea como se ven las pantallas y arranca el sistema
           new ControladorPanallaFacturacion().iniciarPantalla();
         }
