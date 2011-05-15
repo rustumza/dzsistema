@@ -151,18 +151,17 @@ public class FacturaJpaController {
     }
     
      
-    public List<Factura> buscarFacturaEntreFechas1(Date fechaInicio, Date fechaFin) {
+    /*public List<Factura> buscarFacturaEntreFechas1(Date fechaInicio, Date fechaFin) {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
         String fechaInicioString = String.valueOf(fechaInicio.getYear()+1900) + "-" + String.valueOf(fechaInicio.getMonth()+1) + "-" + String.valueOf(fechaInicio.getDate());
         String fechaFinString = String.valueOf(fechaFin.getYear()+1900) + "-" + String.valueOf(fechaFin.getMonth()+1) + "-" + String.valueOf(fechaFin.getDate());
-        System.out.println(fechaInicioString);
-        System.out.println(fechaFinString);
         encontrados = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >= '" + fechaInicioString + "' AND a.fecha <= '" + fechaFinString + "' AND a.estado = '1'").getResultList();
         return encontrados;
     }
-
-    public List<Factura> buscarFacturaEntreFechas2(Date fechaInicio, Date fechaFin) {
+*/
+     
+    public List<Factura> buscarFacturaEntreFechas(Date fechaInicio, Date fechaFin) {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
         Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.estado = '1'");
