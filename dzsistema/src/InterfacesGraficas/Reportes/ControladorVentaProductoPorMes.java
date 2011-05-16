@@ -7,6 +7,7 @@ package InterfacesGraficas.Reportes;
 
 import Negocio.Entidades.Producto;
 import Negocio.Reportes.ExpertoVentaProductoPorMes;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,8 +21,8 @@ public class ControladorVentaProductoPorMes {
         return experto.buscarProductoPorCodigo(codigo);
     }
 
-    public void generarReporte(List<Producto> listaProductos, String año, String mes) {
-        experto.generarReporte(listaProductos, año, mes);
+    public void generarReporte(Producto seleccionado, Date inicio, Date fin) {
+        experto.generarReporte(seleccionado, inicio, fin);
     }
 
     public List<Producto> buscarProductoPorParteDelNombre(String nombre) {

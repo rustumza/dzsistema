@@ -45,7 +45,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldAño = new javax.swing.JTextField();
-        jTextFieldMes = new javax.swing.JTextField();
+        jComboBoxMes = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
@@ -68,7 +68,8 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
 
         jTextFieldAño.setPreferredSize(new java.awt.Dimension(10, 20));
 
-        jTextFieldMes.setPreferredSize(new java.awt.Dimension(10, 20));
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jComboBoxMes.setPreferredSize(new java.awt.Dimension(82, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,22 +81,22 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldMes, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                    .addComponent(jTextFieldAño, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
-                .addGap(315, 315, 315))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldAño, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxMes, 0, 126, Short.MAX_VALUE))
+                .addGap(245, 245, 245))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -197,7 +198,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
                         .addComponent(jButtonGenerar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -211,7 +212,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonGenerar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,62 +233,74 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
                 condicion=false;
                 JOptionPane.showMessageDialog(null, "El año ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
-         else{
+        }
+        else{
             condicion=false;
             JOptionPane.showMessageDialog(null, "Escriba un año válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            }
-         }
-        // Valida Mes
-        if (jTextFieldMes.getText().isEmpty() == false){
-            if(!Validar.ValidarAño(jTextFieldMes.getText()) && Integer.parseInt(jTextFieldMes.getText()) > 12 && Integer.parseInt(jTextFieldMes.getText()) < 1){
-                condicion=false;
-                JOptionPane.showMessageDialog(null, "El mes ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            }
-         else{
-            condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un mes válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            }
-         }
+        }
         //Creamos fecha Inicio
-        Date inicio = Validar.validarFechaConBarras("01"+jTextFieldMes.getText()+jTextFieldAño.getText());
+        int año = Integer.parseInt(jTextFieldAño.getText()) + 2000;
+        int mes = 1;
+        if(jComboBoxMes.getSelectedItem().toString().equals("Enero")){
+            mes = 01;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Febrero")){
+            mes = 02;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Marzo")){
+            mes = 03;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Abril")){
+            mes = 04;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Mayo")){
+            mes = 05;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Junio")){
+            mes = 06;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Julio")){
+            mes = 07;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Agosto")){
+            mes = 8;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Septiembre")){
+            mes = 9;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Octubre")){
+            mes = 10;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Noviembre")){
+            mes = 11;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Diciembre")){
+            mes = 12;
+        }
+        Date inicio = new Date(año-1900, mes-1, 1);
         //Creamos fecha Fin
-        String mesSiguiente = jTextFieldMes.getText();
-        String añoSiguiente = jTextFieldAño.getText();
-        int mes = Integer.parseInt(mesSiguiente);
-        if(mes >= 10){
-            if(mes == 12){
-                mes = 1;
-                mesSiguiente = "0"+Integer.toString(mes);
-                int año = Integer.parseInt(añoSiguiente);
-                año = año + 1;
-                añoSiguiente = Integer.toString(año);
-            }
-            else{
-                mes = mes +1;
-                mesSiguiente = Integer.toString(mes);
-            }
+        if(mes == 12){
+            año = año+1;
+            mes = 1;
         }
         else{
             mes = mes +1;
-            mesSiguiente = "0"+Integer.toString(mes);
         }
-        Date fin = Validar.validarFechaConBarras("01"+mesSiguiente+añoSiguiente);
+        Date fin = new Date (año-1900, mes-1, 1);
         //Valida fechas
         Date hoy = new Date();
-        String aux = "06/06/2010";
-        Date primera = Validar.validarFechaConBarras(aux);
-        if(!inicio.after(primera) && !fin.before(hoy)){
+        Date primera = new Date (2010-1900, 6-1, 6);
+        //Valido la fecha menor
+        if(inicio.getYear() < primera.getYear()){
             condicion=false;
             JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
+        else{
+            if(inicio.getYear() == primera.getYear()){
+                if(inicio.getMonth() < primera.getMonth()){
+                    condicion=false;
+                    JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
         //Valida Producto
-        if (jTextFieldProducto.getText().isEmpty() == false){
+        if (jTextFieldProducto.getText().isEmpty()){
             condicion=false;
             JOptionPane.showMessageDialog(null, "Seleccione un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         //Genera el reporte
         if(condicion){
-            controlador.generarReporte(listaProductos, jTextFieldAño.getText(), jTextFieldMes.getText());
+            ProdSeleccionado = listaProductos.get(0);
+            controlador.generarReporte(ProdSeleccionado, inicio, fin);
         }
     }//GEN-LAST:event_jButtonGenerarActionPerformed
 
@@ -356,6 +369,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBuscarNombre;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGenerar;
+    private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
@@ -364,7 +378,6 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextFieldAño;
     private javax.swing.JTextField jTextFieldCodigo;
-    private javax.swing.JTextField jTextFieldMes;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldProducto;
     // End of variables declaration//GEN-END:variables
