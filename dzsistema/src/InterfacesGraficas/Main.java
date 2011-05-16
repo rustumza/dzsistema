@@ -103,13 +103,13 @@ public class Main {
             fachadaN.create(numerador);
         }
 
-            /*
+            
             //PRUEBA RUSTU
 
             FacturaJpaController jpa = new FacturaJpaController();
             Date date1 = new Date((2011-1900),(10-1), 20);
             Date date2 = new Date((2012-1900),(12-1), 11);
-            List<Factura> lista = jpa.buscarFacturaEntreFechas1(date1, date2);
+            /*List<Factura> lista = jpa.buscarFacturaEntreFechas1(date1, date2);
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
@@ -119,7 +119,8 @@ public class Main {
             for (Factura factura : lista) {
                 System.out.println(factura.getNumero());
             }
-            List<Factura> lista2 = jpa.buscarFacturaEntreFechas2(date1, date2);
+             */
+            /*List<Factura> lista2 = jpa.buscarFacturaEntreFechasSinLaFechaFin(date1, date2);
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
