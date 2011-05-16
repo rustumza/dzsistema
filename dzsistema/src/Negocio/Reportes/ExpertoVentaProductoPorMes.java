@@ -6,8 +6,10 @@
 package Negocio.Reportes;
 
 import InterfacesGraficas.Reportes.PantallaElegirProducto;
+import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -29,7 +31,10 @@ public class ExpertoVentaProductoPorMes {
     }
 
     public void generarReporte(List<Producto> listaProductos, String año, String mes) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        FacturaJpaController fachada = new FacturaJpaController();
+        Date inicio = null;
+        Date fin = null;
+        fachada.buscarFacturaEntreFechas(inicio, fin);
     }
 
     public List<Producto> buscarProductoPorParteDelNombre(String nombre) {

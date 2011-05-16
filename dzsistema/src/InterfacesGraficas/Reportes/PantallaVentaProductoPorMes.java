@@ -45,7 +45,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldAño = new javax.swing.JTextField();
-        jComboBoxMes = new javax.swing.JComboBox();
+        jTextFieldMes = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldCodigo = new javax.swing.JTextField();
@@ -62,11 +62,13 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Año:");
+        jLabel1.setText("Año");
 
-        jLabel3.setText("Mes:");
+        jLabel3.setText("Mes");
 
-        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jTextFieldAño.setPreferredSize(new java.awt.Dimension(10, 20));
+
+        jTextFieldMes.setPreferredSize(new java.awt.Dimension(10, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,16 +76,14 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldAño))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldMes, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                    .addComponent(jTextFieldAño, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
+                .addGap(315, 315, 315))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,11 +92,11 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextFieldMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -136,21 +136,21 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTextFieldProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButtonBuscarNombre)
-                            .addComponent(jButtonBuscarCodigo)))
-                    .addComponent(jTextFieldProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
-                .addContainerGap())
+                            .addComponent(jButtonBuscarCodigo))))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,13 +191,14 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonGenerar)))
-                .addContainerGap())
+                        .addComponent(jButtonGenerar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,16 +230,56 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         if (jTextFieldAño.getText().isEmpty() == false){
             if(!Validar.ValidarAño(jTextFieldAño.getText())){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El Año ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El año ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
          else{
             condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un Año válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un año válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
          }
+        // Valida Mes
+        if (jTextFieldMes.getText().isEmpty() == false){
+            if(!Validar.ValidarAño(jTextFieldMes.getText()) && Integer.parseInt(jTextFieldMes.getText()) > 12 && Integer.parseInt(jTextFieldMes.getText()) < 1){
+                condicion=false;
+                JOptionPane.showMessageDialog(null, "El mes ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+         else{
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "Escriba un mes válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+         }
+        //Creamos fecha Inicio
+        Date inicio = Validar.validarFechaConBarras("01"+jTextFieldMes.getText()+jTextFieldAño.getText());
+        //Creamos fecha Fin
+        String mesSiguiente = jTextFieldMes.getText();
+        String añoSiguiente = jTextFieldAño.getText();
+        int mes = Integer.parseInt(mesSiguiente);
+        if(mes >= 10){
+            if(mes == 12){
+                mes = 1;
+                mesSiguiente = "0"+Integer.toString(mes);
+                int año = Integer.parseInt(añoSiguiente);
+                año = año + 1;
+                añoSiguiente = Integer.toString(año);
+            }
+            else{
+                mes = mes +1;
+                mesSiguiente = Integer.toString(mes);
+            }
+        }
+        else{
+            mes = mes +1;
+            mesSiguiente = "0"+Integer.toString(mes);
+        }
+        Date fin = Validar.validarFechaConBarras("01"+mesSiguiente+añoSiguiente);
         //Valida fechas
         Date hoy = new Date();
-
+        String aux = "06/06/2010";
+        Date primera = Validar.validarFechaConBarras(aux);
+        if(!inicio.after(primera) && !fin.before(hoy)){
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
         //Valida Producto
         if (jTextFieldProducto.getText().isEmpty() == false){
             condicion=false;
@@ -246,7 +287,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         }
         //Genera el reporte
         if(condicion){
-            controlador.generarReporte(listaProductos, jTextFieldAño.getText(), jComboBoxMes.getSelectedItem().toString());
+            controlador.generarReporte(listaProductos, jTextFieldAño.getText(), jTextFieldMes.getText());
         }
     }//GEN-LAST:event_jButtonGenerarActionPerformed
 
@@ -255,6 +296,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
                 listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
                 jTextFieldProducto.setText(listaProductos.get(0).getDescripcion());
+                limpiarFieldsProducto();
             } else{
                 JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -266,17 +308,21 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     private void jButtonBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarNombreActionPerformed
         if (jTextFieldNombre.getText().isEmpty() == false){
             listaProductos = controlador.buscarProductoPorParteDelNombre(jTextFieldNombre.getText());
-            if(listaProductos.size() == 1){
-                jTextFieldProducto.setText(listaProductos.get(0).getDescripcion());
-            }
-            else{
-                PantallaElegirProducto iu = new PantallaElegirProducto(listaProductos);
-                iu.setVisible(true);
-                iu.setGUI(this);
+            if(!listaProductos.isEmpty()){
+                if(listaProductos.size() <= 1){
+                    jTextFieldProducto.setText(listaProductos.get(0).getDescripcion());
+                }
+                else{
+                    PantallaElegirProducto iu = new PantallaElegirProducto(listaProductos);
+                    iu.setVisible(true);
+                    iu.setGUI(this);
+                }
+                limpiarFieldsProducto();
             }
         } else{
             JOptionPane.showMessageDialog(null, "Escriba un nombre válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
+
     }//GEN-LAST:event_jButtonBuscarNombreActionPerformed
 
     private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed
@@ -285,6 +331,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
                 listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
                 jTextFieldProducto.setText(listaProductos.get(0).getDescripcion());
+                limpiarFieldsProducto();
             } else{
                 JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -296,20 +343,19 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaVentaProductoPorMes().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new PantallaVentaProductoPorMes().setVisible(true);
+//            }
+//        });
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscarCodigo;
     private javax.swing.JButton jButtonBuscarNombre;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGenerar;
-    private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
@@ -318,6 +364,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextFieldAño;
     private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldMes;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldProducto;
     // End of variables declaration//GEN-END:variables
@@ -326,6 +373,11 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         jTextFieldProducto.setText(producto.getDescripcion());
         listaProductos.clear();
         listaProductos.add(producto);
+    }
+
+    private void limpiarFieldsProducto() {
+        jTextFieldNombre.setText("");
+        jTextFieldCodigo.setText("");
     }
 
 }

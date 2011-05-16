@@ -49,7 +49,8 @@ public class PantallaElegirProducto extends javax.swing.JFrame {
         jButtonCancelar = new javax.swing.JButton();
         jButtonAceptar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Productos");
 
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,6 +142,7 @@ public class PantallaElegirProducto extends javax.swing.JFrame {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         if(jTableProductos.getSelectedRow() != -1){
             gui.setjTextFieldProducto(producto);
+            this.dispose();
         }
         else{
             JOptionPane.showMessageDialog(null, "Seleccione un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);

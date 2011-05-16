@@ -11,6 +11,7 @@
 
 package InterfacesGraficas;
 
+import InterfacesGraficas.Reportes.PantallaVentaProductoPorMes;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
@@ -119,6 +120,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         menuNuevoProducto = new javax.swing.JMenuItem();
         menuModificarProducto = new javax.swing.JMenuItem();
         reportes = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DZ Representaciones - v1.0 - C&C Systems");
@@ -140,7 +142,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         numeroFacturaLabel.setFont(new java.awt.Font("DejaVu Sans", 0, 15));
         numeroFacturaLabel.setText("N° 0001 - 00");
 
-        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17)); // NOI18N
+        numeroFactura.setFont(new java.awt.Font("DejaVu Sans", 0, 17));
         numeroFactura.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         numeroFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,7 +349,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numeroClienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
                     .addGroup(panelDatosClienteLayout.createSequentialGroup()
                         .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(domicilioLabel)
@@ -355,12 +357,12 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosClienteLayout.createSequentialGroup()
-                                .addComponent(cuit, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(cuit, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(ivaLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))))
+                            .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panelDatosClienteLayout.setVerticalGroup(
@@ -431,7 +433,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)))
+                        .addComponent(remitoNro, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelCondicionDeVentaLayout.setVerticalGroup(
@@ -441,7 +443,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                 .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(condicionDeVentaLabel)
                     .addComponent(condicionDeVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(panelCondicionDeVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(remitonroLabel)
                     .addComponent(remitoNro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -855,6 +857,15 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         menu.add(menuProducto);
 
         reportes.setText(" Reportes ");
+
+        jMenuItem1.setText("Venta de un Producto por Mes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        reportes.add(jMenuItem1);
+
         menu.add(reportes);
 
         setJMenuBar(menu);
@@ -1082,6 +1093,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         controlador.colocarCuitEnFormatoParaEditar();
     }//GEN-LAST:event_cuitColocarEnFormatoParaEditar
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        PantallaVentaProductoPorMes ui = new PantallaVentaProductoPorMes();
+        ui.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
 
 
     /**
@@ -1126,6 +1142,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JTextField iva21;
     private javax.swing.JLabel iva21Label;
     private javax.swing.JLabel ivaLabel;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton limpiar;
     private javax.swing.JMenuBar menu;
