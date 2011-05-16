@@ -6,6 +6,7 @@
 package InterfacesGraficas.Reportes;
 
 import Negocio.Reportes.ExpertoEvolucionComprasClienteRespectoAUnProducto;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
