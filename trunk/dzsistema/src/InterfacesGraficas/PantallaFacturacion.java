@@ -11,7 +11,7 @@
 
 package InterfacesGraficas;
 
-import InterfacesGraficas.Reportes.PantallaVentaProductoPorMes;
+import InterfacesGraficas.Reportes.PantallaVentaProductoADeterminadoClientePorMes;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
@@ -858,7 +858,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         reportes.setText(" Reportes ");
 
-        jMenuItem1.setText("Venta de un Producto por Mes");
+        jMenuItem1.setText("Ventas de Productos a Determinado Cliente Por Mes");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -1094,7 +1094,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_cuitColocarEnFormatoParaEditar
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        PantallaVentaProductoPorMes ui = new PantallaVentaProductoPorMes();
+        PantallaVentaProductoADeterminadoClientePorMes ui = new PantallaVentaProductoADeterminadoClientePorMes();
         ui.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

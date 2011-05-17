@@ -4,22 +4,36 @@
  */
 
 /*
- * PantallaElegirCliente.java
+ * PantallaElegirProducto.java
  *
- * Created on 15/05/2011, 15:56:23
+ * Created on 15/05/2011, 15:56:41
  */
 
 package InterfacesGraficas.Reportes;
+
+import Negocio.Entidades.Cliente;
+import Negocio.Entidades.Producto;
+import Negocio.Reportes.ExpertoProductoADeterminadoClientePorMes;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author juampa
  */
 public class PantallaElegirCliente extends javax.swing.JFrame {
+    Cliente cliente;
+    List<Cliente> listaClientes = new Vector();
+    private PantallaVentaProductoADeterminadoClientePorMes gui;
 
-    /** Creates new form PantallaElegirCliente */
-    public PantallaElegirCliente() {
+    /** Creates new form PantallaElegirProducto */
+    public PantallaElegirCliente(List<Cliente> lista) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        listaClientes = lista;
+        CargarTabla();
     }
 
     /** This method is called from within the constructor to
@@ -31,34 +45,164 @@ public class PantallaElegirCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonAceptar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableClientes = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Clientes");
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
+
+        jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "CUIT", "Nombre", "Domicilio"
+            }
+        ));
+        jTableClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableClientesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableClientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonAceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAceptar)
+                    .addComponent(jButtonCancelar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
+        if(jTableClientes.getSelectedRow() != -1){
+            gui.setjTextFieldProducto(cliente);
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jTableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClientesMouseClicked
+        // TODO add your handling code here:
+        int seleccion = jTableClientes.getSelectedRow();
+        cliente = listaClientes.get(seleccion);
+}//GEN-LAST:event_jTableClientesMouseClicked
+
+   //Muestra todos los clientes en tabla
+    public  void CargarTabla() {
+        try {
+
+            Object[][] datos = null;
+
+            datos = new Object[listaClientes.size()][4];
+            for (int i = 0; i < listaClientes.size(); i++) {
+                datos[i][0] = listaClientes.get(i).getCodigo();
+                datos[i][1] = listaClientes.get(i).getCUIT();
+                datos[i][2] = listaClientes.get(i).getNombre();
+                datos[i][3] = listaClientes.get(i).getDomicilio();
+
+            }
+
+            String[] columnNames = {"Código", "CUIT", "Nombre", "Domicilio"};
+            jTableClientes.setModel(new DefaultTableModel(datos, columnNames) {
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                }
+            });
+
+        } catch (NullPointerException e) {
+        }
+        //Setea tamaños de columnas
+        jTableClientes.getColumnModel().getColumn(0).setPreferredWidth(70);  //codigo
+        jTableClientes.getColumnModel().getColumn(1).setPreferredWidth(130); //cuit
+        jTableClientes.getColumnModel().getColumn(2).setPreferredWidth(180);  //nombre
+        jTableClientes.getColumnModel().getColumn(3).setPreferredWidth(310);  //direccion
+
+    }
+
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaElegirCliente().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new PantallaElegirProducto().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableClientes;
     // End of variables declaration//GEN-END:variables
+
+    void setGUI(PantallaVentaProductoADeterminadoClientePorMes aThis) {
+        gui = aThis;
+    }
 
 }
