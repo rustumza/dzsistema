@@ -131,7 +131,7 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
        try{
             Date fechaInicio = new Date((anioInicioInt-1900),mesInicio,1);
             Date fechaFin = new Date((anioFinInt-1900),mesFin,1);
-            List<DtoMesCantidadProducto> listaDtoResultante = experto.buscarHitorialProducto(codigoInt, fechaInicio, fechaFin);
+            //List<DtoMesCantidadProducto> listaDtoResultante = experto.buscarHitorialProducto(codigoInt, fechaInicio, fechaFin);
        }catch(fechaException e){
             JOptionPane.showMessageDialog(null, e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getAnioInicio().requestFocus();

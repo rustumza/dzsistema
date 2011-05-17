@@ -5,6 +5,7 @@
 
 package Negocio.Reportes;
 
+import Negocio.Entidades.Cliente;
 import Negocio.Entidades.DetalleFactura;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
@@ -20,7 +21,7 @@ import validar.fechaException;
  */
 public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
 
-    public List<DtoMesCantidadProducto> buscarHitorialProducto(int codigo, Date fechaInicio, Date fechaFin) throws fechaException{
+    public List<DtoMesCantidadProducto> buscarHitorialProducto(int codigo, Date fechaInicio, Date fechaFin, Cliente cli) throws fechaException{
 
         if(fechaFin.after(fechaInicio)){
             //fecha inicio posterio a fecha fin
@@ -31,7 +32,7 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
         }
 
         FacturaJpaController jpaFactura = new FacturaJpaController();
-        List<Factura> listaDeFacturas = jpaFactura.buscarFacturaEntreFechas(fechaInicio, fechaFin);
+        List<Factura> listaDeFacturas = jpaFactura.buscarFacturaEntreFechasConCliente(fechaInicio, fechaFin, cli);
         List<DtoMesCantidadProducto> listaDeDto = new ArrayList<DtoMesCantidadProducto>();
 
         for (Factura factura : listaDeFacturas) {
