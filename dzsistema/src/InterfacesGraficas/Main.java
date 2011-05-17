@@ -108,11 +108,12 @@ public class Main {
             
             //PRUEBA RUSTU
 
-            FacturaJpaController jpa = new FacturaJpaController();
+            /*FacturaJpaController jpa = new FacturaJpaController();
             Date date1 = new Date((2011-1900),(10-1), 20);
             Date date2 = new Date((2014-1900),(11-1), 11);
             ClienteJpaController jpaCli = new ClienteJpaController();
             Cliente cli = jpaCli.buscarPorCodigo("3").get(0);
+            */
             /*List<Factura> lista = jpa.buscarFacturaEntreFechas1(date1, date2);
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
@@ -124,7 +125,8 @@ public class Main {
                 System.out.println(factura.getNumero());
             }
             */
-            List<Factura> lista2 = jpa.buscarFacturaEntreFechasSinLaFechaFinYConCliente(date1, date2, cli);
+            /*
+             List<Factura> lista2 = jpa.buscarFacturaEntreFechasSinLaFechaFinYConCliente(date1, date2, cli);
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
             System.out.println("---------------------------------------------------------");
@@ -134,7 +136,7 @@ public class Main {
             for (Factura factura : lista2) {
                 System.out.println(factura.getNumero());
             }
-            
+            */
             
             // Setea como se ven las pantallas y arranca el sistema
           new ControladorPanallaFacturacion().iniciarPantalla();
