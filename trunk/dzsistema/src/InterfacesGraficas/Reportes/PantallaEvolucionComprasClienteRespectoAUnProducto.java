@@ -24,7 +24,7 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     /** Creates new form PantallaEvolucionComprasClienteRespectoAUnProducto */
     public PantallaEvolucionComprasClienteRespectoAUnProducto(ControladorEvolucionComprasClienteRespectoAUnProducto controlador) {
         initComponents();
-        String[] meses = {"Enero", "Febrero", "Marzo" , "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre","Octubre", "Noviembre", "Diceimbre"};
+        String[] meses = {"Enero", "Febrero", "Marzo" , "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre","Octubre", "Noviembre", "Diciembre"};
         mesInicioComboBox.setModel(new DefaultComboBoxModel(meses));
         mesFinComboBox.setModel(new DefaultComboBoxModel(meses));
         this.controlador = controlador;
@@ -42,26 +42,26 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
         codigoProductoLabel = new javax.swing.JLabel();
         codigoProducto = new javax.swing.JTextField();
         aceptar = new javax.swing.JButton();
-        cancelar = new javax.swing.JButton();
         fechaInicioLabel = new javax.swing.JLabel();
         fechaFinLabel = new javax.swing.JLabel();
         mesInicioComboBox = new javax.swing.JComboBox();
         mesFinComboBox = new javax.swing.JComboBox();
         anioInicio = new javax.swing.JTextField();
         anioFin = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Evolucion venta de producto");
 
         codigoProductoLabel.setText("Código Producto");
 
-        aceptar.setText("Aceptar");
+        aceptar.setText("Buscar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
             }
         });
-
-        cancelar.setText("Cancelar");
 
         fechaInicioLabel.setText("Fecha inicio");
 
@@ -75,6 +75,19 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
 
         anioFin.setText("Año");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,10 +95,7 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(codigoProductoLabel)
@@ -102,8 +112,9 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(anioInicio)
-                                .addComponent(anioFin, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                                .addComponent(anioFin, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))))
+                    .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,11 +133,11 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
                     .addComponent(fechaFinLabel)
                     .addComponent(mesFinComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(anioFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar)
-                    .addComponent(cancelar))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aceptar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,11 +162,12 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     private javax.swing.JButton aceptar;
     private javax.swing.JTextField anioFin;
     private javax.swing.JTextField anioInicio;
-    private javax.swing.JButton cancelar;
     private javax.swing.JTextField codigoProducto;
     private javax.swing.JLabel codigoProductoLabel;
     private javax.swing.JLabel fechaFinLabel;
     private javax.swing.JLabel fechaInicioLabel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox mesFinComboBox;
     private javax.swing.JComboBox mesInicioComboBox;
     // End of variables declaration//GEN-END:variables
@@ -172,20 +184,6 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
      */
     public void setAceptar(javax.swing.JButton aceptar) {
         this.aceptar = aceptar;
-    }
-
-    /**
-     * @return the cancelar
-     */
-    public javax.swing.JButton getCancelar() {
-        return cancelar;
-    }
-
-    /**
-     * @param cancelar the cancelar to set
-     */
-    public void setCancelar(javax.swing.JButton cancelar) {
-        this.cancelar = cancelar;
     }
 
     /**
@@ -214,6 +212,62 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
      */
     public void setCodigoProductoLabel(javax.swing.JLabel codigoProductoLabel) {
         this.codigoProductoLabel = codigoProductoLabel;
+    }
+
+    /**
+     * @return the anioFin
+     */
+    public javax.swing.JTextField getAnioFin() {
+        return anioFin;
+    }
+
+    /**
+     * @param anioFin the anioFin to set
+     */
+    public void setAnioFin(javax.swing.JTextField anioFin) {
+        this.anioFin = anioFin;
+    }
+
+    /**
+     * @return the anioInicio
+     */
+    public javax.swing.JTextField getAnioInicio() {
+        return anioInicio;
+    }
+
+    /**
+     * @param anioInicio the anioInicio to set
+     */
+    public void setAnioInicio(javax.swing.JTextField anioInicio) {
+        this.anioInicio = anioInicio;
+    }
+
+    /**
+     * @return the mesFinComboBox
+     */
+    public javax.swing.JComboBox getMesFinComboBox() {
+        return mesFinComboBox;
+    }
+
+    /**
+     * @param mesFinComboBox the mesFinComboBox to set
+     */
+    public void setMesFinComboBox(javax.swing.JComboBox mesFinComboBox) {
+        this.mesFinComboBox = mesFinComboBox;
+    }
+
+    /**
+     * @return the mesInicioComboBox
+     */
+    public javax.swing.JComboBox getMesInicioComboBox() {
+        return mesInicioComboBox;
+    }
+
+    /**
+     * @param mesInicioComboBox the mesInicioComboBox to set
+     */
+    public void setMesInicioComboBox(javax.swing.JComboBox mesInicioComboBox) {
+        this.mesInicioComboBox = mesInicioComboBox;
     }
 
 }

@@ -5,15 +5,28 @@
 
 package Negocio.Reportes;
 
+
 /**
  *
  * @author rustu
  */
-public class dtoMesCantidadProducto {
+public class DtoMesCantidadProducto {
+
 
     float cantidad;
     int mes;
     int anio;
+
+    public DtoMesCantidadProducto(int anio, int mes, float cantidad){
+        this.anio = anio;
+        this.mes = mes;
+        this.cantidad = cantidad;
+
+    }
+
+    public DtoMesCantidadProducto(){
+
+    }
 
     public int getAnio() {
         return anio;
