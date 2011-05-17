@@ -11,7 +11,9 @@
 
 package InterfacesGraficas.Reportes;
 
+import Negocio.Reportes.DtoResultado;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import validar.Validar;
 
@@ -20,10 +22,12 @@ import validar.Validar;
  * @author juampa
  */
 public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
+    ControladorVentaProductoPorMes controlador = new ControladorVentaProductoPorMes();
 
     /** Creates new form PantallaVentaProductoPorMes */
     public PantallaVentaProductoPorMes() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -40,8 +44,11 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldAño = new javax.swing.JTextField();
         jComboBoxMes = new javax.swing.JComboBox();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonGenerar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reporte");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -83,25 +90,145 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jButtonGenerar.setText("Generar");
+        jButtonGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonGenerar)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancelar)
+                    .addComponent(jButtonGenerar))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+
+        this.dispose();
+}//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarActionPerformed
+
+        // variable logica para validar si se puede guardar o modificar
+        boolean condicion = true;
+        // Valida Año
+        if (jTextFieldAño.getText().isEmpty() == false){
+            if(!Validar.ValidarAño(jTextFieldAño.getText())){
+                condicion=false;
+                JOptionPane.showMessageDialog(null, "El año ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else{
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "Escriba un año válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        //Creamos fecha Inicio
+        int año = Integer.parseInt(jTextFieldAño.getText()) + 2000;
+        int mes = 1;
+        if(jComboBoxMes.getSelectedItem().toString().equals("Enero")){
+            mes = 01;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Febrero")){
+            mes = 02;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Marzo")){
+            mes = 03;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Abril")){
+            mes = 04;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Mayo")){
+            mes = 05;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Junio")){
+            mes = 06;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Julio")){
+            mes = 07;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Agosto")){
+            mes = 8;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Septiembre")){
+            mes = 9;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Octubre")){
+            mes = 10;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Noviembre")){
+            mes = 11;
+        }else if (jComboBoxMes.getSelectedItem().toString().equals("Diciembre")){
+            mes = 12;
+        }
+        Date inicio = new Date(año-1900, mes-1, 1);
+        //Creamos fecha Fin
+        if(mes == 12){
+            año = año+1;
+            mes = 1;
+        } else{
+            mes = mes +1;
+        }
+        Date fin = new Date(año-1900, mes-1, 1);
+        //Valida fechas
+        Date hoy = new Date();
+        Date primera = new Date(2010-1900, 6-1, 6);
+        //Valido la fecha menor
+        if(inicio.getYear() < primera.getYear()){
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        } else{
+            if(inicio.getYear() == primera.getYear()){
+                if(inicio.getMonth() < primera.getMonth()){
+                    condicion=false;
+                    JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+        //Valido la fecha mayor
+        if(fin.getYear() > hoy.getYear()){
+            condicion=false;
+            JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        } else{
+            if(fin.getYear() == hoy.getYear()){
+                if(fin.getMonth() > hoy.getMonth()+1){
+                    condicion=false;
+                    JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+        System.out.println(inicio);
+        System.out.println(fin);
+        System.out.println(hoy);
+        System.out.println(primera);
+        //Genera el reporte
+        if(condicion){
+            List<DtoResultado> resultado = controlador.generarReporte(inicio, fin);
+            PantallaResultado pantalla = new PantallaResultado(resultado);
+            pantalla.setVisible(true);
+        }
+}//GEN-LAST:event_jButtonGenerarActionPerformed
 
     /**
     * @param args the command line arguments
@@ -115,6 +242,8 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonGenerar;
     private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

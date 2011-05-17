@@ -12,6 +12,7 @@
 package InterfacesGraficas.Reportes;
 
 import Negocio.Entidades.Cliente;
+import Negocio.Reportes.DtoResultado;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -310,10 +311,6 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                 }
             }
         }
-            System.out.println(inicio);
-            System.out.println(fin);
-            System.out.println(hoy);
-            System.out.println(primera);
         //Valida Producto
         if (jTextFieldCliente.getText().isEmpty()){
             condicion=false;
@@ -322,7 +319,9 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
         //Genera el reporte
         if(condicion){
             ClienteSeleccionado = listaClientes.get(0);
-            controlador.generarReporte(ClienteSeleccionado, inicio, fin);
+            List<DtoResultado> resultado = controlador.generarReporte(ClienteSeleccionado, inicio, fin);
+            PantallaResultado pantalla = new PantallaResultado(resultado);
+            pantalla.setVisible(true);
         }
     }//GEN-LAST:event_jButtonGenerarActionPerformed
 
