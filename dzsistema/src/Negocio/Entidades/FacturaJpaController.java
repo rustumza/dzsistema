@@ -15,7 +15,6 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import org.eclipse.persistence.sessions.Session;
 
 /**
  *
@@ -185,6 +184,17 @@ public class FacturaJpaController {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
         Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.cliente = :regCliente AND a.fecha >=  :regDate1 AND a.fecha <  :regDate2 AND a.estado = '1'");
+        objQuery.setParameter("regDate1", fechaInicio);
+        objQuery.setParameter("regDate2", fechaFin);
+        objQuery.setParameter("regCliente", cliente);
+
+        return objQuery.getResultList();
+    }
+
+    public List<Factura> buscarFacturaEntreFechasConCliente(Date fechaInicio, Date fechaFin, Cliente cliente) {
+        EntityManager em = getEntityManager();
+        List<Factura> encontrados;
+        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.cliente = :regCliente AND a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.estado = '1'");
         objQuery.setParameter("regDate1", fechaInicio);
         objQuery.setParameter("regDate2", fechaFin);
         objQuery.setParameter("regCliente", cliente);
