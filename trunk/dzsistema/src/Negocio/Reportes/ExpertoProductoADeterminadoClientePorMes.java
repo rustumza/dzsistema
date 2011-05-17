@@ -10,6 +10,7 @@ import Negocio.Entidades.ClienteJpaController;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -31,17 +32,30 @@ public class ExpertoProductoADeterminadoClientePorMes {
         return encontrados;
     }
 
-    public void generarReporte(Cliente seleccionado, Date inicio, Date fin) {
+    public List<DtoResultado> generarReporte(Cliente seleccionado, Date inicio, Date fin) {
         FacturaJpaController fachada = new FacturaJpaController();
-        List<Factura> listaFacturas = fachada.buscarFacturaEntreFechasSinLaFechaFin(inicio, fin);
-        float resultado = 0;
+        List<Factura> listaFacturas = fachada.buscarFacturaEntreFechasSinLaFechaFinYConCliente(inicio, fin, seleccionado);
+        List<DtoResultado> resultado = new ArrayList();
+        boolean estaba = false;
         for(int i=0; i<listaFacturas.size();i++){
             for(int j=0; j<listaFacturas.get(i).getDetallesDeFactura().size();j++){
-                listaFacturas.get(i).getDetallesDeFactura().get(j).getProducto().equals(seleccionado);
-                resultado = resultado + listaFacturas.get(i).getDetallesDeFactura().get(j).getPrecioTotal();
+                Producto producto = listaFacturas.get(i).getDetallesDeFactura().get(j).getProducto();
+                for(int k=0;k<resultado.size();k++){
+                    if(resultado.get(k).getProducto().equals(producto)){
+                        resultado.get(k).setTotal(resultado.get(k).getTotal() + listaFacturas.get(i).getDetallesDeFactura().get(j).getPrecioTotal());
+                        estaba = true;
+                    }
+                }
+                if(!estaba){
+                    DtoResultado nuevo = new DtoResultado();
+                    nuevo.setProducto(producto);
+                    nuevo.setTotal(listaFacturas.get(i).getDetallesDeFactura().get(j).getPrecioTotal());
+                    resultado.add(nuevo);
+                }
+                estaba = false;
             }
         }
-        JOptionPane.showMessageDialog(null, "Las ventas totales fueron:"+ resultado , "Informacion", JOptionPane.INFORMATION_MESSAGE);
+        return resultado;
     }
 
     public List<Cliente> buscarClientePorParteDelNombre(String nombre) {

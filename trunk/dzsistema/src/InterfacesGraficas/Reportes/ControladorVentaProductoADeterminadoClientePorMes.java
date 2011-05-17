@@ -6,6 +6,7 @@
 package InterfacesGraficas.Reportes;
 
 import Negocio.Entidades.Cliente;
+import Negocio.Reportes.DtoResultado;
 import Negocio.Reportes.ExpertoProductoADeterminadoClientePorMes;
 import java.util.Date;
 import java.util.List;
@@ -21,8 +22,8 @@ public class ControladorVentaProductoADeterminadoClientePorMes {
         return experto.buscarClientePorCodigo(codigo);
     }
 
-    public void generarReporte(Cliente seleccionado, Date inicio, Date fin) {
-        experto.generarReporte(seleccionado, inicio, fin);
+    public List<DtoResultado> generarReporte(Cliente seleccionado, Date inicio, Date fin) {
+        return experto.generarReporte(seleccionado, inicio, fin);
     }
 
     public List<Cliente> buscarClientePorParteDelNombre(String nombre) {

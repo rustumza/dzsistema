@@ -12,6 +12,7 @@
 package InterfacesGraficas;
 
 import InterfacesGraficas.Reportes.PantallaVentaProductoADeterminadoClientePorMes;
+import InterfacesGraficas.Reportes.PantallaVentaProductoPorMes;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
@@ -121,6 +122,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         menuModificarProducto = new javax.swing.JMenuItem();
         reportes = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DZ Representaciones - v1.0 - C&C Systems");
@@ -858,13 +860,21 @@ public class PantallaFacturacion extends javax.swing.JFrame {
 
         reportes.setText(" Reportes ");
 
-        jMenuItem1.setText("Ventas de Productos a Determinado Cliente Por Mes");
+        jMenuItem1.setText("Ventas de productos a determinado cliente por mes");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         reportes.add(jMenuItem1);
+
+        jMenuItem2.setText("Ventas de productos por mes");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        reportes.add(jMenuItem2);
 
         menu.add(reportes);
 
@@ -1098,6 +1108,11 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         ui.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        PantallaVentaProductoPorMes ui = new PantallaVentaProductoPorMes();
+        ui.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
 
 
     /**
@@ -1143,6 +1158,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JLabel iva21Label;
     private javax.swing.JLabel ivaLabel;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton limpiar;
     private javax.swing.JMenuBar menu;
