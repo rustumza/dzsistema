@@ -218,10 +218,6 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
                 }
             }
         }
-        System.out.println(inicio);
-        System.out.println(fin);
-        System.out.println(hoy);
-        System.out.println(primera);
         //Genera el reporte
         if(condicion){
             List<DtoResultado> resultado = controlador.generarReporte(inicio, fin);
@@ -233,13 +229,13 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaVentaProductoPorMes().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new PantallaVentaProductoPorMes().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
