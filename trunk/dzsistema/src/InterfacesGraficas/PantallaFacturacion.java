@@ -11,6 +11,7 @@
 
 package InterfacesGraficas;
 
+import InterfacesGraficas.Reportes.ControladorEvolucionComprasClienteRespectoAUnProducto;
 import InterfacesGraficas.Reportes.PantallaVentaProductoADeterminadoClientePorMes;
 import InterfacesGraficas.Reportes.PantallaVentaProductoPorMes;
 import java.awt.Dimension;
@@ -123,6 +124,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         reportes = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DZ Representaciones - v1.0 - C&C Systems");
@@ -351,7 +353,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numeroClienteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
+                        .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
                     .addGroup(panelDatosClienteLayout.createSequentialGroup()
                         .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(domicilioLabel)
@@ -359,12 +361,12 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosClienteLayout.createSequentialGroup()
-                                .addComponent(cuit, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                                .addComponent(cuit, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(ivaLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE))))
+                            .addComponent(domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panelDatosClienteLayout.setVerticalGroup(
@@ -393,7 +395,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(iva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ivaLabel)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         panelCondicionDeVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -403,11 +405,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         remitonroLabel.setText("Remito N°");
 
         condicionDeVenta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        condicionDeVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                condicionDeVentaActionPerformed(evt);
-            }
-        });
         condicionDeVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 condicionDeVentaKeyPressed(evt);
@@ -431,7 +428,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
                     .addGroup(panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(condicionDeVentaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(condicionDeVenta, 0, 195, Short.MAX_VALUE))
+                        .addComponent(condicionDeVenta, 0, 208, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCondicionDeVentaLayout.createSequentialGroup()
                         .addComponent(remitonroLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
@@ -876,6 +873,14 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         });
         reportes.add(jMenuItem2);
 
+        jMenuItem3.setText("Evolución de compras de un cliente respecto a un producto");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        reportes.add(jMenuItem3);
+
         menu.add(reportes);
 
         setJMenuBar(menu);
@@ -1038,10 +1043,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         getControlador().compararFechaFactura();
     }//GEN-LAST:event_validarFechaIngresada
 
-    private void condicionDeVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_condicionDeVentaActionPerformed
-        getRemitoNro().requestFocus();
-    }//GEN-LAST:event_condicionDeVentaActionPerformed
-
     private void remitoNroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remitoNroActionPerformed
        getCantidad().requestFocus();
     }//GEN-LAST:event_remitoNroActionPerformed
@@ -1113,6 +1114,10 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         ui.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        new ControladorEvolucionComprasClienteRespectoAUnProducto(this).iniciarPantalla();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
 
 
     /**
@@ -1159,6 +1164,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     private javax.swing.JLabel ivaLabel;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton limpiar;
     private javax.swing.JMenuBar menu;

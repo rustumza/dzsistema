@@ -89,6 +89,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Evoluci&#xf3;n de compras de un cliente respecto a un producto"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -419,7 +427,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="numeroClienteLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="numeroCliente" pref="74" max="32767" attributes="0"/>
+                                  <Component id="numeroCliente" pref="90" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -429,13 +437,13 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="cuit" pref="156" max="32767" attributes="0"/>
+                                          <Component id="cuit" pref="161" max="32767" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="ivaLabel" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="iva" min="-2" pref="295" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="domicilio" alignment="0" pref="502" max="32767" attributes="0"/>
+                                      <Component id="domicilio" alignment="0" pref="507" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -477,7 +485,7 @@
                                   <Component id="ivaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -564,7 +572,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="condicionDeVentaLabel" min="-2" max="-2" attributes="1"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="condicionDeVenta" pref="195" max="32767" attributes="0"/>
+                                  <Component id="condicionDeVenta" pref="208" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="remitonroLabel" min="-2" pref="66" max="-2" attributes="1"/>
@@ -617,7 +625,6 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="condicionDeVentaActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="condicionDeVentaKeyPressed"/>
                   </Events>
                 </Component>
