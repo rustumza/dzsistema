@@ -178,7 +178,7 @@ public class ExpertoFacturar {
             }
             String anio = String.valueOf(getDtoFactura().getFactura().getFecha().getYear()+1900);
 
-            String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+            String descripcion = "Comisiones por ventas y cobranzas "+  mes + " de " + anio;
             detalleFactura.getProducto().setDescripcion(descripcion);
 
         }
@@ -219,7 +219,7 @@ public class ExpertoFacturar {
             }
             String anio = String.valueOf(getDtoFactura().getFactura().getFecha().getYear()+1900);
 
-            String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+            String descripcion = "Comisiones por ventas y cobranzas "+  mes + " de " + anio;
             detalleFactura.getProducto().setDescripcion(descripcion);
 
         }
@@ -392,7 +392,7 @@ public class ExpertoFacturar {
                             }
                             String anio = String.valueOf(factura.getFecha().getYear()+1900);
 
-                            String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+                            String descripcion = "Comisiones por ventas y cobranzas "+  mes + " de " + anio;
                             detalle.getProducto().setDescripcion(descripcion);
 
                         }

@@ -359,7 +359,7 @@ public class ControladorPanallaFacturacion {
                         case 11:mes="diciembre";break;
                     }
                     String anio = String.valueOf(experto.getDtoFactura().getFactura().getFecha().getYear()+1900);
-                    String descripcion = "Comisiones devengadas durante el mes de "+  mes + " de " + anio +", por ventas y cobranzas a clientes de las zonas 04-109-270, conforme a v/liquidación";
+                    String descripcion = "Comisiones por ventas y cobranzas "+  mes + " de " + anio;
                     producto.setDescripcion(descripcion);
                     List<PrecioHistorico> listaPrecioHistorico = new ArrayList<PrecioHistorico>();
                     PrecioHistorico precHist = new PrecioHistorico();
