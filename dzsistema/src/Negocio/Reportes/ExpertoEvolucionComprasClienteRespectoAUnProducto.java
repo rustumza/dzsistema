@@ -34,7 +34,7 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
             //fecha inicio posterior fecha actual
             throw new fechaException(7);
         }
-        if(!fechaInicio.before(new Date(110, 05, 06))){
+        if(fechaInicio.before(new Date(110, 05, 06))){
             //fecha inicio anterior al 6/6/2010
             throw new fechaException(8);
         }
@@ -49,7 +49,7 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
 
 
         FacturaJpaController jpaFactura = new FacturaJpaController();
-        List<Factura> listaDeFacturas = jpaFactura.buscarFacturaEntreFechasConCliente(fechaInicio, fechaFin, cli);
+        List<Factura> listaDeFacturas = jpaFactura.buscarFacturaEntreFechasSinLaFechaFinYConCliente(fechaInicio, fechaFin, cli);
         List<DtoMesCantidadProducto> listaDeDto = new ArrayList<DtoMesCantidadProducto>();
 
         for (Factura factura : listaDeFacturas) {

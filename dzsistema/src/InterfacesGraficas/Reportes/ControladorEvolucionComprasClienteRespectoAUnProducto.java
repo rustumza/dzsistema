@@ -149,29 +149,30 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
             String mesFinString = (String)pantalla.getMesFinComboBox().getSelectedItem();
             mesFin = 0;
             if(mesFinString.equals("Enero")){
-                mesFin = 0;
-            }else if(mesFinString.equals("Febrero")){
                 mesFin = 1;
-            }else if(mesFinString.equals("Marzo")){
+            }else if(mesFinString.equals("Febrero")){
                 mesFin = 2;
-            }else if(mesFinString.equals("Abril")){
+            }else if(mesFinString.equals("Marzo")){
                 mesFin = 3;
-            }else if(mesFinString.equals("Mayo")){
+            }else if(mesFinString.equals("Abril")){
                 mesFin = 4;
-            }else if(mesFinString.equals("Junio")){
+            }else if(mesFinString.equals("Mayo")){
                 mesFin = 5;
-            }else if(mesFinString.equals("Julio")){
+            }else if(mesFinString.equals("Junio")){
                 mesFin = 6;
-            }else if(mesFinString.equals("Agosto")){
+            }else if(mesFinString.equals("Julio")){
                 mesFin = 7;
-            }else if(mesFinString.equals("Setiembre")){
+            }else if(mesFinString.equals("Agosto")){
                 mesFin = 8;
-            }else if(mesFinString.equals("Octubre")){
+            }else if(mesFinString.equals("Setiembre")){
                 mesFin = 9;
-            }else if(mesFinString.equals("Noviembre")){
+            }else if(mesFinString.equals("Octubre")){
                 mesFin = 10;
-            }else if(mesFinString.equals("Diciembre")){
+            }else if(mesFinString.equals("Noviembre")){
                 mesFin = 11;
+            }else if(mesFinString.equals("Diciembre")){
+                mesFin = 0;
+                anioFinInt++;
             }
 
        }catch(NumberFormatException e){
@@ -274,6 +275,11 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
 
 
 
+    public void colocarCuitEnFormatoParaEditar() {
+        pantalla.getCuitCliente().setText(Validar.desformatearCUIT(pantalla.getCuitCliente().getText()));
+    }
+
+
 //ACA COMIENZA EL CONTROL DE LA PANTALLA PARA ELEGIR CLIENTE
 
     private PantallaElegirClienteEvolucionDeCompras PantallaElegirClienteEvolucionDeCompras;
@@ -335,6 +341,20 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
         PantallaElegirClienteEvolucionDeCompras.dispose();
 
      }
+
+    public void limpiarPantalla() {
+        pantalla.getCodigoProducto().setText("");
+        pantalla.getNombreProducto().setText("");
+        pantalla.getNombreCliente().setText("");
+        pantalla.getNumeroCliente().setText("");
+        pantalla.getCuitCliente().setText("");
+        pantalla.getAnioInicio().setText("");
+        pantalla.getAnioFin().setText("");
+        pantalla.getMesInicioComboBox().setSelectedIndex(0);
+        pantalla.getMesFinComboBox().setSelectedIndex(0);
+        cliente = null;
+        prod = null;
+    }
 
 //ACA TERMINA EL CONTROL DE LA PANTALLA PARA ELEGIR CLIENTE
 

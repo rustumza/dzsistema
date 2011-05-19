@@ -169,8 +169,18 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
                 cuitClienteActionPerformed(evt);
             }
         });
+        cuitCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cuitClienteFocusGained(evt);
+            }
+        });
 
         limpiarPantalla.setText("Limpiar Pantalla");
+        limpiarPantalla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarPantallaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -339,6 +349,14 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             }
 
     }//GEN-LAST:event_mesFinComboBoxKeyPressed
+
+    private void cuitClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cuitClienteFocusGained
+        controlador.colocarCuitEnFormatoParaEditar();
+    }//GEN-LAST:event_cuitClienteFocusGained
+
+    private void limpiarPantallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarPantallaActionPerformed
+        controlador.limpiarPantalla();
+    }//GEN-LAST:event_limpiarPantallaActionPerformed
 
     /**
     * @param args the command line arguments
