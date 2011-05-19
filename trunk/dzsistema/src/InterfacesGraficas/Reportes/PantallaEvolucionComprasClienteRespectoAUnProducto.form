@@ -336,12 +336,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuitClienteActionPerformed"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cuitClienteFocusGained"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="limpiarPantalla">
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpiar Pantalla"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="limpiarPantallaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

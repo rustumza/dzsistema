@@ -163,7 +163,7 @@ public class FacturaJpaController {
     public List<Factura> buscarFacturaEntreFechas(Date fechaInicio, Date fechaFin) {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
-        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.estado = '1'");
+        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.estado = '1' ORDER BY a.fecha");
         objQuery.setParameter("regDate1", fechaInicio);
         objQuery.setParameter("regDate2", fechaFin);
 
@@ -173,7 +173,7 @@ public class FacturaJpaController {
     public List<Factura> buscarFacturaEntreFechasSinLaFechaFin(Date fechaInicio, Date fechaFin) {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
-        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >=  :regDate1 AND a.fecha <  :regDate2 AND a.estado = '1'");
+        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.fecha >=  :regDate1 AND a.fecha <  :regDate2 AND a.estado = '1' ORDER BY a.fecha");
         objQuery.setParameter("regDate1", fechaInicio);
         objQuery.setParameter("regDate2", fechaFin);
 
@@ -183,7 +183,7 @@ public class FacturaJpaController {
     public List<Factura> buscarFacturaEntreFechasSinLaFechaFinYConCliente(Date fechaInicio, Date fechaFin, Cliente cliente) {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
-        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.cliente = :regCliente AND a.fecha >=  :regDate1 AND a.fecha <  :regDate2 AND a.estado = '1'");
+        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.cliente = :regCliente AND a.fecha >=  :regDate1 AND a.fecha <  :regDate2 AND a.estado = '1' ORDER BY a.fecha");
         objQuery.setParameter("regDate1", fechaInicio);
         objQuery.setParameter("regDate2", fechaFin);
         objQuery.setParameter("regCliente", cliente);
@@ -194,7 +194,7 @@ public class FacturaJpaController {
     public List<Factura> buscarFacturaEntreFechasConCliente(Date fechaInicio, Date fechaFin, Cliente cliente) {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
-        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.cliente = :regCliente AND a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.estado = '1'");
+        Query objQuery = em.createQuery("SELECT a FROM Factura a WHERE a.cliente = :regCliente AND a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.estado = '1' ORDER BY a.fecha");
         objQuery.setParameter("regDate1", fechaInicio);
         objQuery.setParameter("regDate2", fechaFin);
         objQuery.setParameter("regCliente", cliente);
