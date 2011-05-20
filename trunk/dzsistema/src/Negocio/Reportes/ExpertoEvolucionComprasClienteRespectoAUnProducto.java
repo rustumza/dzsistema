@@ -13,7 +13,6 @@ import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

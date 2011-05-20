@@ -108,7 +108,7 @@ public class Main {
             
             //PRUEBA RUSTU
 
-            FacturaJpaController jpa = new FacturaJpaController();
+            /*FacturaJpaController jpa = new FacturaJpaController();
             Date date1 = new Date((2011-1900),(10-1), 20);
             Date date2 = new Date((2014-1900),(11-1), 11);
             ClienteJpaController jpaCli = new ClienteJpaController();
@@ -137,7 +137,7 @@ public class Main {
                 System.out.println(factura.getNumero());
             }
             
-            
+            */
             // Setea como se ven las pantallas y arranca el sistema
           new ControladorPanallaFacturacion().iniciarPantalla();
         }

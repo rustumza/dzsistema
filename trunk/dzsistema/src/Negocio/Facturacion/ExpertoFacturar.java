@@ -19,15 +19,12 @@ import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import validar.fechaException;
 import validar.Validar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import org.eclipse.persistence.internal.jpa.parsing.DotNode;
 
 /**
  *
