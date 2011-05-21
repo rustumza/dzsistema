@@ -47,7 +47,6 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
         pantalla = new PantallaEvolucionComprasClienteRespectoAUnProducto(this);
         pantalla.setLocationRelativeTo(pantallaFacturacion);
         pantalla.setVisible(true);
-        pantalla.getTabla().setModel(new ModeloTablaReporteEvolucionCompraClienteProducto());
     }
 
 
@@ -183,8 +182,8 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
        try{
             Date fechaInicio = new Date((anioInicioInt-1900),mesInicio,1);
             Date fechaFin = new Date((anioFinInt-1900),mesFin,1);
-            List<DtoMesCantidadProducto> listaDtoResultante = experto.buscarHitorialProducto(prod.getCodigo(), fechaInicio, fechaFin, cliente.getCodigo());
-            pantalla.getTabla().setModel(new ModeloTablaReporteEvolucionCompraClienteProducto(listaDtoResultante));
+            List<DtoMesCantidadProducto> listaDtoResultante = experto.buscarHitorialProducto(prod.getCodigo(), fechaInicio, fechaFin, cliente.getCodigo(),pantalla.getMostrarMesesEnCero().isSelected());
+            new PantallaTablaResultadosEvolucionComprasClientesRespectoAUnProducto().iniciar(cliente, prod, fechaInicio, fechaFin, listaDtoResultante);
        }catch(fechaException e){
             JOptionPane.showMessageDialog(pantalla, e.getMessage(), "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             pantalla.getAnioInicio().requestFocus();
@@ -343,17 +342,25 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
      }
 
     public void limpiarPantalla() {
+        //producto
         pantalla.getCodigoProducto().setText("");
         pantalla.getNombreProducto().setText("");
+        prod = null;
+        //cliente
         pantalla.getNombreCliente().setText("");
         pantalla.getNumeroCliente().setText("");
         pantalla.getCuitCliente().setText("");
+        pantalla.getClienteSeleccionado().setText("");
+        cliente = null;
+        //años
         pantalla.getAnioInicio().setText("");
         pantalla.getAnioFin().setText("");
         pantalla.getMesInicioComboBox().setSelectedIndex(0);
         pantalla.getMesFinComboBox().setSelectedIndex(0);
-        cliente = null;
-        prod = null;
+        pantalla.getMostrarMesesEnCero().setSelected(false);
+
+        
+        
     }
 
 //ACA TERMINA EL CONTROL DE LA PANTALLA PARA ELEGIR CLIENTE
