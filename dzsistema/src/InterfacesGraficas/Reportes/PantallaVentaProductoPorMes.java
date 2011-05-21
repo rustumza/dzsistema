@@ -48,15 +48,21 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         jButtonGenerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Reporte");
+        setTitle("Ventas de productos por mes");
+        setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fecha"));
 
         jLabel1.setText("Año");
 
         jLabel3.setText("Mes");
 
         jTextFieldAño.setPreferredSize(new java.awt.Dimension(10, 20));
+        jTextFieldAño.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldAñoFocusLost(evt);
+            }
+        });
 
         jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         jComboBoxMes.setPreferredSize(new java.awt.Dimension(82, 20));
@@ -221,10 +227,23 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
         //Genera el reporte
         if(condicion){
             List<DtoResultado> resultado = controlador.generarReporte(inicio, fin);
-            PantallaResultado pantalla = new PantallaResultado(resultado);
+            PantallaResultado pantalla = new PantallaResultado(resultado, jComboBoxMes.getSelectedItem().toString(), Integer.toString(año));
             pantalla.setVisible(true);
         }
 }//GEN-LAST:event_jButtonGenerarActionPerformed
+
+    private void jTextFieldAñoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldAñoFocusLost
+        if (jTextFieldAño.getText().isEmpty() == false){
+            if(!Validar.ValidarAño(jTextFieldAño.getText())){
+                JOptionPane.showMessageDialog(null, "El año ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                jTextFieldAño.setText("");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Escriba un año válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            jTextFieldAño.setText("");
+        }
+    }//GEN-LAST:event_jTextFieldAñoFocusLost
 
     /**
     * @param args the command line arguments
