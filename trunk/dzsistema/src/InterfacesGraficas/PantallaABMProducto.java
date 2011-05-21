@@ -299,7 +299,12 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
+                try{
                 listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+                }
+                catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
                 CargarTabla();
                 limpiarFields();
             } else{
@@ -320,7 +325,12 @@ public class PantallaABMProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
+                try{
                 listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+                }
+                catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
                 CargarTabla();
                 limpiarFields();
             } else{

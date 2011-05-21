@@ -55,19 +55,26 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
         jTextFieldNombre = new javax.swing.JTextField();
         jButtonBuscarNombre = new javax.swing.JButton();
         jTextFieldCliente = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jButtonCancelar = new javax.swing.JButton();
         jButtonGenerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Reporte");
+        setTitle("Ventas productos de determinado cliente");
+        setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fechas"));
 
         jLabel1.setText("Año");
 
         jLabel3.setText("Mes");
 
         jTextFieldAño.setPreferredSize(new java.awt.Dimension(10, 20));
+        jTextFieldAño.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldAñoFocusLost(evt);
+            }
+        });
 
         jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         jComboBoxMes.setPreferredSize(new java.awt.Dimension(82, 20));
@@ -101,7 +108,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cliente"));
 
         jLabel8.setText("Código");
 
@@ -137,27 +144,32 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
 
         jTextFieldCliente.setEnabled(false);
 
+        jLabel2.setText("Cliente Seleccionado");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextFieldCliente, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonBuscarNombre)
-                            .addComponent(jButtonBuscarCodigo))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonBuscarCodigo)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +181,13 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                     .addComponent(jButtonBuscarCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBuscarNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -218,7 +232,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonGenerar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -320,7 +334,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
         if(condicion){
             ClienteSeleccionado = listaClientes.get(0);
             List<DtoResultado> resultado = controlador.generarReporte(ClienteSeleccionado, inicio, fin);
-            PantallaResultado pantalla = new PantallaResultado(resultado);
+            PantallaResultado pantalla = new PantallaResultado(resultado, jComboBoxMes.getSelectedItem().toString(), Integer.toString(año));
             pantalla.setVisible(true);
         }
     }//GEN-LAST:event_jButtonGenerarActionPerformed
@@ -328,7 +342,12 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
     private void jButtonBuscarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarCodigoActionPerformed
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
+                try{
                 listaClientes = controlador.buscarClientePorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+                }
+                catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
                 jTextFieldCliente.setText(listaClientes.get(0).getNombre());
                 limpiarFieldsProducto();
             } else{
@@ -363,7 +382,12 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
 
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(Validar.controlCodigo(jTextFieldCodigo.getText())){
+                try{
                 listaClientes = controlador.buscarClientePorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
+                }
+                catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
                 jTextFieldCliente.setText(listaClientes.get(0).getNombre());
                 limpiarFieldsProducto();
             } else{
@@ -393,6 +417,19 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
         }
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
+    private void jTextFieldAñoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldAñoFocusLost
+        if (jTextFieldAño.getText().isEmpty() == false){
+            if(!Validar.ValidarAño(jTextFieldAño.getText())){
+                JOptionPane.showMessageDialog(null, "El año ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                jTextFieldAño.setText("");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Escriba un año válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            jTextFieldAño.setText("");
+        }
+    }//GEN-LAST:event_jTextFieldAñoFocusLost
+
     /**
     * @param args the command line arguments
     */
@@ -411,6 +448,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
     private javax.swing.JButton jButtonGenerar;
     private javax.swing.JComboBox jComboBoxMes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
