@@ -38,33 +38,68 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buscar = new javax.swing.JButton();
+        limpiarPantalla = new javax.swing.JButton();
+        producto = new javax.swing.JPanel();
         codigoProductoLabel = new javax.swing.JLabel();
         codigoProducto = new javax.swing.JTextField();
-        buscar = new javax.swing.JButton();
-        fechaInicioLabel = new javax.swing.JLabel();
-        fechaFinLabel = new javax.swing.JLabel();
-        mesInicioComboBox = new javax.swing.JComboBox();
-        mesFinComboBox = new javax.swing.JComboBox();
-        anioInicio = new javax.swing.JTextField();
-        anioFin = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
         nombreProductoLabel = new javax.swing.JLabel();
         nombreProducto = new javax.swing.JTextField();
-        mesInicioLabel = new javax.swing.JLabel();
-        anioInicioLabel = new javax.swing.JLabel();
-        mesFinLabel = new javax.swing.JLabel();
-        anioFinLabel = new javax.swing.JLabel();
+        buscarProducto = new javax.swing.JButton();
+        cliente = new javax.swing.JPanel();
         nombreLabel = new javax.swing.JLabel();
         numeroLabel = new javax.swing.JLabel();
-        cuitLabel = new javax.swing.JLabel();
         nombreCliente = new javax.swing.JTextField();
         numeroCliente = new javax.swing.JTextField();
+        cuitLabel = new javax.swing.JLabel();
         cuitCliente = new javax.swing.JTextField();
-        limpiarPantalla = new javax.swing.JButton();
+        buscarPorNombreCliente = new javax.swing.JButton();
+        buscarPorNumeroCliente = new javax.swing.JButton();
+        buscarPorCuitCliente = new javax.swing.JButton();
+        clienteSeleccionado = new javax.swing.JTextField();
+        clienteSeleccionadoLabel = new javax.swing.JLabel();
+        fechas = new javax.swing.JPanel();
+        fechaInicioLabel = new javax.swing.JLabel();
+        mesInicioLabel = new javax.swing.JLabel();
+        mesInicioComboBox = new javax.swing.JComboBox();
+        anioInicio = new javax.swing.JTextField();
+        anioFinLabel = new javax.swing.JLabel();
+        fechaFinLabel = new javax.swing.JLabel();
+        mesFinLabel = new javax.swing.JLabel();
+        mesFinComboBox = new javax.swing.JComboBox();
+        anioFin = new javax.swing.JTextField();
+        anioInicioLabel = new javax.swing.JLabel();
+        mostrarMesesEnCero = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Evolucion venta de producto");
+        setTitle("Evolucion venta de producto respecto a un cliente");
+        setResizable(false);
+
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+        buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscarKeyPressed(evt);
+            }
+        });
+
+        limpiarPantalla.setText("Limpiar Pantalla");
+        limpiarPantalla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarPantallaActionPerformed(evt);
+            }
+        });
+        limpiarPantalla.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                limpiarPantallaKeyPressed(evt);
+            }
+        });
+
+        producto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Producto"));
 
         codigoProductoLabel.setText("Código Producto");
 
@@ -75,58 +110,6 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             }
         });
 
-        buscar.setText("Buscar");
-        buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
-            }
-        });
-
-        fechaInicioLabel.setText("Fecha inicio");
-
-        fechaFinLabel.setText("Fecha fin");
-
-        mesInicioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        mesInicioComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                mesInicioComboBoxKeyPressed(evt);
-            }
-        });
-
-        mesFinComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        mesFinComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                mesFinComboBoxKeyPressed(evt);
-            }
-        });
-
-        anioInicio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        anioInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anioInicioActionPerformed(evt);
-            }
-        });
-
-        anioFin.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        anioFin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anioFinActionPerformed(evt);
-            }
-        });
-
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tabla);
-
         nombreProductoLabel.setText("Nombre Producto");
 
         nombreProducto.setEnabled(false);
@@ -136,19 +119,56 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             }
         });
 
-        mesInicioLabel.setText("Mes");
+        buscarProducto.setText("Buscar Producto");
+        buscarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarProductoActionPerformed(evt);
+            }
+        });
+        buscarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscarProductoKeyPressed(evt);
+            }
+        });
 
-        anioInicioLabel.setText("Año");
+        javax.swing.GroupLayout productoLayout = new javax.swing.GroupLayout(producto);
+        producto.setLayout(productoLayout);
+        productoLayout.setHorizontalGroup(
+            productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(productoLayout.createSequentialGroup()
+                        .addComponent(codigoProductoLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(codigoProducto)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(productoLayout.createSequentialGroup()
+                        .addComponent(nombreProductoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        productoLayout.setVerticalGroup(
+            productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productoLayout.createSequentialGroup()
+                .addGroup(productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codigoProductoLabel)
+                    .addComponent(codigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarProducto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreProductoLabel)
+                    .addComponent(nombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        mesFinLabel.setText("Mes");
-
-        anioFinLabel.setText("Año");
+        cliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cliente"));
 
         nombreLabel.setText("Nombre");
 
         numeroLabel.setText("Número");
-
-        cuitLabel.setText("CUIT");
 
         nombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +183,8 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             }
         });
 
+        cuitLabel.setText("CUIT");
+
         cuitCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cuitCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,12 +197,197 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             }
         });
 
-        limpiarPantalla.setText("Limpiar Pantalla");
-        limpiarPantalla.addActionListener(new java.awt.event.ActionListener() {
+        buscarPorNombreCliente.setText("Buscar");
+        buscarPorNombreCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiarPantallaActionPerformed(evt);
+                buscarPorNombreClienteActionPerformed(evt);
             }
         });
+        buscarPorNombreCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscarPorNombreClienteKeyPressed(evt);
+            }
+        });
+
+        buscarPorNumeroCliente.setText("Buscar");
+        buscarPorNumeroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPorNumeroClienteActionPerformed(evt);
+            }
+        });
+        buscarPorNumeroCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscarPorNumeroClienteKeyPressed(evt);
+            }
+        });
+
+        buscarPorCuitCliente.setText("Buscar");
+        buscarPorCuitCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPorCuitClienteActionPerformed(evt);
+            }
+        });
+        buscarPorCuitCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buscarPorCuitClienteKeyPressed(evt);
+            }
+        });
+
+        clienteSeleccionado.setEnabled(false);
+
+        clienteSeleccionadoLabel.setText("Cliente Seleccionado");
+
+        javax.swing.GroupLayout clienteLayout = new javax.swing.GroupLayout(cliente);
+        cliente.setLayout(clienteLayout);
+        clienteLayout.setHorizontalGroup(
+            clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(clienteLayout.createSequentialGroup()
+                        .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nombreLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, clienteLayout.createSequentialGroup()
+                                .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(numeroLabel)
+                                    .addComponent(cuitLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cuitCliente)
+                                    .addComponent(nombreCliente)
+                                    .addComponent(numeroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buscarPorNombreCliente)
+                            .addComponent(buscarPorNumeroCliente)
+                            .addComponent(buscarPorCuitCliente)))
+                    .addGroup(clienteLayout.createSequentialGroup()
+                        .addComponent(clienteSeleccionadoLabel)
+                        .addGap(3, 3, 3)
+                        .addComponent(clienteSeleccionado)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        clienteLayout.setVerticalGroup(
+            clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreLabel)
+                    .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarPorNombreCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numeroLabel)
+                    .addComponent(numeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarPorNumeroCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuitLabel)
+                    .addComponent(cuitCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarPorCuitCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clienteSeleccionadoLabel)
+                    .addComponent(clienteSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        fechas.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Fechas"));
+
+        fechaInicioLabel.setText("Fecha inicio");
+
+        mesInicioLabel.setText("Mes");
+
+        mesInicioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        mesInicioComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mesInicioComboBoxKeyPressed(evt);
+            }
+        });
+
+        anioInicio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        anioInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anioInicioActionPerformed(evt);
+            }
+        });
+
+        anioFinLabel.setText("Año");
+
+        fechaFinLabel.setText("Fecha fin");
+
+        mesFinLabel.setText("Mes");
+
+        mesFinComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        mesFinComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                mesFinComboBoxKeyPressed(evt);
+            }
+        });
+
+        anioFin.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        anioFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anioFinActionPerformed(evt);
+            }
+        });
+
+        anioInicioLabel.setText("Año");
+
+        javax.swing.GroupLayout fechasLayout = new javax.swing.GroupLayout(fechas);
+        fechas.setLayout(fechasLayout);
+        fechasLayout.setHorizontalGroup(
+            fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fechasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaInicioLabel)
+                    .addGroup(fechasLayout.createSequentialGroup()
+                        .addGroup(fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fechasLayout.createSequentialGroup()
+                                    .addComponent(mesFinLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(mesFinComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fechasLayout.createSequentialGroup()
+                                    .addComponent(mesInicioLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(mesInicioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fechaFinLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fechasLayout.createSequentialGroup()
+                                .addComponent(anioInicioLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(anioInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                            .addGroup(fechasLayout.createSequentialGroup()
+                                .addComponent(anioFinLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(anioFin, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        fechasLayout.setVerticalGroup(
+            fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fechasLayout.createSequentialGroup()
+                .addComponent(fechaInicioLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mesInicioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mesInicioLabel)
+                    .addComponent(anioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anioInicioLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fechaFinLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(fechasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mesFinLabel)
+                    .addComponent(mesFinComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anioFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anioFinLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        mostrarMesesEnCero.setText("Mostrar meses que estén en cero");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,113 +396,33 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(numeroLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cuitLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cuitCliente))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(nombreLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nombreCliente))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombreProductoLabel)
-                                    .addComponent(codigoProductoLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(codigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(60, 60, 60))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fechaInicioLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(limpiarPantalla))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(mesFinLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(mesFinComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(mesInicioLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(mesInicioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(anioInicioLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(anioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(anioFinLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(anioFin)))
-                                .addGap(103, 103, 103))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(fechaFinLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 421, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21))))
+                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(limpiarPantalla)
+                        .addGap(18, 18, 18)
+                        .addComponent(mostrarMesesEnCero)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoProductoLabel)
-                    .addComponent(codigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreProductoLabel)
-                    .addComponent(nombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreLabel)
-                    .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numeroLabel)
-                    .addComponent(numeroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuitLabel)
-                    .addComponent(cuitCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fechaInicioLabel)
+                .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(mesInicioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mesInicioLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fechaFinLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(mesFinLabel)
-                            .addComponent(mesFinComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buscar)
-                            .addComponent(limpiarPantalla)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(anioInicioLabel)
-                            .addComponent(anioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(anioFinLabel)
-                            .addComponent(anioFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(fechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscar)
+                    .addComponent(limpiarPantalla)
+                    .addComponent(mostrarMesesEnCero))
+                .addContainerGap())
         );
 
         pack();
@@ -322,15 +449,15 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     }//GEN-LAST:event_anioFinActionPerformed
 
     private void nombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreClienteActionPerformed
-        controlador.buscarClientePorNombre(nombreCliente.getText());
+        controlador.buscarClientePorNombre(getNombreCliente().getText());
     }//GEN-LAST:event_nombreClienteActionPerformed
 
     private void numeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroClienteActionPerformed
-        controlador.buscarClientePorNumero(numeroCliente.getText());
+        controlador.buscarClientePorNumero(getNumeroCliente().getText());
     }//GEN-LAST:event_numeroClienteActionPerformed
 
     private void cuitClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuitClienteActionPerformed
-        controlador.buscarClientePorCuit(cuitCliente.getText());
+        controlador.buscarClientePorCuit(getCuitCliente().getText());
     }//GEN-LAST:event_cuitClienteActionPerformed
 
     private void mesInicioComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mesInicioComboBoxKeyPressed
@@ -358,6 +485,68 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
         controlador.limpiarPantalla();
     }//GEN-LAST:event_limpiarPantallaActionPerformed
 
+    private void buscarPorNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorNombreClienteActionPerformed
+        controlador.buscarClientePorNombre(getNombreCliente().getText());
+    }//GEN-LAST:event_buscarPorNombreClienteActionPerformed
+
+    private void buscarPorNumeroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorNumeroClienteActionPerformed
+        controlador.buscarClientePorNumero(getNumeroCliente().getText());
+
+    }//GEN-LAST:event_buscarPorNumeroClienteActionPerformed
+
+    private void buscarPorCuitClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorCuitClienteActionPerformed
+       controlador.buscarClientePorCuit(getCuitCliente().getText());
+    }//GEN-LAST:event_buscarPorCuitClienteActionPerformed
+
+    private void buscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProductoActionPerformed
+        controlador.buscarProducto();
+    }//GEN-LAST:event_buscarProductoActionPerformed
+//REVISAR DESDE ACA BOTONES
+
+    private void buscarProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarProductoKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+                controlador.buscarProducto();
+            }
+
+    }//GEN-LAST:event_buscarProductoKeyPressed
+
+    private void buscarPorNombreClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarPorNombreClienteKeyPressed
+       if (evt.getKeyCode()==10)
+            {
+                controlador.buscarClientePorNombre(getNombreCliente().getText());
+            }
+    }//GEN-LAST:event_buscarPorNombreClienteKeyPressed
+
+    private void buscarPorNumeroClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarPorNumeroClienteKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+                controlador.buscarClientePorNumero(getNumeroCliente().getText());
+            }
+    }//GEN-LAST:event_buscarPorNumeroClienteKeyPressed
+
+    private void buscarPorCuitClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarPorCuitClienteKeyPressed
+       if (evt.getKeyCode()==10)
+            {
+               controlador.buscarClientePorCuit(getCuitCliente().getText());
+            }
+    }//GEN-LAST:event_buscarPorCuitClienteKeyPressed
+
+    private void buscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+               controlador.buscarEvolucion();
+            }
+    }//GEN-LAST:event_buscarKeyPressed
+
+    private void limpiarPantallaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_limpiarPantallaKeyPressed
+       if (evt.getKeyCode()==10)
+            {
+                 controlador.limpiarPantalla();
+            }
+    }//GEN-LAST:event_limpiarPantallaKeyPressed
+                                        
+
     /**
     * @param args the command line arguments
     */
@@ -375,25 +564,33 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     private javax.swing.JTextField anioInicio;
     private javax.swing.JLabel anioInicioLabel;
     private javax.swing.JButton buscar;
+    private javax.swing.JButton buscarPorCuitCliente;
+    private javax.swing.JButton buscarPorNombreCliente;
+    private javax.swing.JButton buscarPorNumeroCliente;
+    private javax.swing.JButton buscarProducto;
+    private javax.swing.JPanel cliente;
+    private javax.swing.JTextField clienteSeleccionado;
+    private javax.swing.JLabel clienteSeleccionadoLabel;
     private javax.swing.JTextField codigoProducto;
     private javax.swing.JLabel codigoProductoLabel;
     private javax.swing.JTextField cuitCliente;
     private javax.swing.JLabel cuitLabel;
     private javax.swing.JLabel fechaFinLabel;
     private javax.swing.JLabel fechaInicioLabel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel fechas;
     private javax.swing.JButton limpiarPantalla;
     private javax.swing.JComboBox mesFinComboBox;
     private javax.swing.JLabel mesFinLabel;
     private javax.swing.JComboBox mesInicioComboBox;
     private javax.swing.JLabel mesInicioLabel;
+    private javax.swing.JCheckBox mostrarMesesEnCero;
     private javax.swing.JTextField nombreCliente;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField nombreProducto;
     private javax.swing.JLabel nombreProductoLabel;
     private javax.swing.JTextField numeroCliente;
     private javax.swing.JLabel numeroLabel;
-    private javax.swing.JTable tabla;
+    private javax.swing.JPanel producto;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -464,6 +661,104 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
      */
     public void setBuscar(javax.swing.JButton buscar) {
         this.buscar = buscar;
+    }
+
+    /**
+     * @return the buscarPorCuitCliente
+     */
+    public javax.swing.JButton getBuscarPorCuitCliente() {
+        return buscarPorCuitCliente;
+    }
+
+    /**
+     * @param buscarPorCuitCliente the buscarPorCuitCliente to set
+     */
+    public void setBuscarPorCuitCliente(javax.swing.JButton buscarPorCuitCliente) {
+        this.buscarPorCuitCliente = buscarPorCuitCliente;
+    }
+
+    /**
+     * @return the buscarPorNombreCliente
+     */
+    public javax.swing.JButton getBuscarPorNombreCliente() {
+        return buscarPorNombreCliente;
+    }
+
+    /**
+     * @param buscarPorNombreCliente the buscarPorNombreCliente to set
+     */
+    public void setBuscarPorNombreCliente(javax.swing.JButton buscarPorNombreCliente) {
+        this.buscarPorNombreCliente = buscarPorNombreCliente;
+    }
+
+    /**
+     * @return the buscarPorNumeroCliente
+     */
+    public javax.swing.JButton getBuscarPorNumeroCliente() {
+        return buscarPorNumeroCliente;
+    }
+
+    /**
+     * @param buscarPorNumeroCliente the buscarPorNumeroCliente to set
+     */
+    public void setBuscarPorNumeroCliente(javax.swing.JButton buscarPorNumeroCliente) {
+        this.buscarPorNumeroCliente = buscarPorNumeroCliente;
+    }
+
+    /**
+     * @return the buscarProducto
+     */
+    public javax.swing.JButton getBuscarProducto() {
+        return buscarProducto;
+    }
+
+    /**
+     * @param buscarProducto the buscarProducto to set
+     */
+    public void setBuscarProducto(javax.swing.JButton buscarProducto) {
+        this.buscarProducto = buscarProducto;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public javax.swing.JPanel getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(javax.swing.JPanel cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * @return the clienteSeleccionado
+     */
+    public javax.swing.JTextField getClienteSeleccionado() {
+        return clienteSeleccionado;
+    }
+
+    /**
+     * @param clienteSeleccionado the clienteSeleccionado to set
+     */
+    public void setClienteSeleccionado(javax.swing.JTextField clienteSeleccionado) {
+        this.clienteSeleccionado = clienteSeleccionado;
+    }
+
+    /**
+     * @return the clienteSeleccionadoLabel
+     */
+    public javax.swing.JLabel getClienteSeleccionadoLabel() {
+        return clienteSeleccionadoLabel;
+    }
+
+    /**
+     * @param clienteSeleccionadoLabel the clienteSeleccionadoLabel to set
+     */
+    public void setClienteSeleccionadoLabel(javax.swing.JLabel clienteSeleccionadoLabel) {
+        this.clienteSeleccionadoLabel = clienteSeleccionadoLabel;
     }
 
     /**
@@ -551,31 +846,17 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     }
 
     /**
-     * @return the jScrollPane1
+     * @return the fechas
      */
-    public javax.swing.JScrollPane getjScrollPane1() {
-        return jScrollPane1;
+    public javax.swing.JPanel getFechas() {
+        return fechas;
     }
 
     /**
-     * @param jScrollPane1 the jScrollPane1 to set
+     * @param fechas the fechas to set
      */
-    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
-
-    /**
-     * @return the jTable1
-     */
-    public javax.swing.JTable getTabla() {
-        return tabla;
-    }
-
-    /**
-     * @param jTable1 the jTable1 to set
-     */
-    public void setTabla(javax.swing.JTable jTable1) {
-        this.tabla = jTable1;
+    public void setFechas(javax.swing.JPanel fechas) {
+        this.fechas = fechas;
     }
 
     /**
@@ -646,6 +927,20 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
      */
     public void setMesInicioLabel(javax.swing.JLabel mesInicioLabel) {
         this.mesInicioLabel = mesInicioLabel;
+    }
+
+    /**
+     * @return the mostrarMesesEnCero
+     */
+    public javax.swing.JCheckBox getMostrarMesesEnCero() {
+        return mostrarMesesEnCero;
+    }
+
+    /**
+     * @param mostrarMesesEnCero the mostrarMesesEnCero to set
+     */
+    public void setMostrarMesesEnCero(javax.swing.JCheckBox mostrarMesesEnCero) {
+        this.mostrarMesesEnCero = mostrarMesesEnCero;
     }
 
     /**
@@ -731,5 +1026,20 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     public void setNumeroLabel(javax.swing.JLabel numeroLabel) {
         this.numeroLabel = numeroLabel;
     }
+
+    /**
+     * @return the producto
+     */
+    public javax.swing.JPanel getProducto() {
+        return producto;
+    }
+
+    /**
+     * @param producto the producto to set
+     */
+    public void setProducto(javax.swing.JPanel producto) {
+        this.producto = producto;
+    }
+
     
 }
