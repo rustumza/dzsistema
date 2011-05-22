@@ -265,9 +265,10 @@ public class ControladorEvolucionComprasClienteRespectoAUnProducto {
     }
 
     private void cargarDatosClienteYFactura(Cliente cliente) {
-        pantalla.getNombreCliente().setText(cliente.getNombre());
-        pantalla.getNumeroCliente().setText(String.valueOf(cliente.getCodigo()));
-        pantalla.getCuitCliente().setText(cliente.getCUIT());
+        pantalla.getNombreCliente().setText("");
+        pantalla.getNumeroCliente().setText("");
+        pantalla.getCuitCliente().setText("");
+        pantalla.getClienteSeleccionado().setText(cliente.getNombre());
         this.cliente=cliente;
 
     }
