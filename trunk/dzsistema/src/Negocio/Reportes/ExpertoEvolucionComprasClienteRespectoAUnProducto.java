@@ -127,24 +127,12 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
 
     private List<DtoMesCantidadProducto> agregarMesesEnCero(List<DtoMesCantidadProducto> listaDeDto, Date fechaInicio, Date fechaFin) {
         List<DtoMesCantidadProducto> retorno = new ArrayList<DtoMesCantidadProducto>();
-        int primerMesFaltante = 0;
-        int primerAnioFaltante = 0;
-        //int mesAGenerar = 0;
-        //int anioAGenerar = 0;
-        int mesFinal = 0;
-        int anioFinal = 0;
         boolean bandera = true;
-        if(listaDeDto.isEmpty()){
-            return listaDeDto;
-        }else{
-            //mesAGenerar = fechaInicio.getMonth()+1;
-            //anioAGenerar = fechaInicio.getYear()+1900-2000;
-
-            primerMesFaltante = fechaInicio.getMonth()+1;
-            primerAnioFaltante = ((fechaInicio.getYear() + 1900)-2000);
-            mesFinal = fechaFin.getMonth()+1;
-            anioFinal = fechaFin.getYear()+1900-2000;
-        }
+        int primerMesFaltante = fechaInicio.getMonth()+1;
+        int primerAnioFaltante = (fechaInicio.getYear() + 1900);
+        int mesFinal = fechaFin.getMonth()+1;
+        int anioFinal = fechaFin.getYear()+1900;
+        
 
 
         /*DtoMesCantidadProducto dto;
@@ -159,6 +147,25 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
         //TERMINAR!!!!
             while(bandera){
                 while(true){
+                    if(listaDeDto.isEmpty()){
+                        for (int i = primerAnioFaltante; i <= anioFinal; i++) {
+                            if(anioFinal == i){
+                                for (int j = 1; j < mesFinal; j++) {
+                                    retorno.add(new DtoMesCantidadProducto(i, j, 0));
+
+                                }
+                            }else{
+                                for (int j = 1; j < 13; j++) {
+                                    retorno.add(new DtoMesCantidadProducto(i, j, 0));
+                                }
+                            }
+
+
+                        }
+                        bandera = false;
+                        break;
+                        
+                    }
                     DtoMesCantidadProducto dto = listaDeDto.get(0);
                     if(dto.getAnio()>primerAnioFaltante){
                         for (int i = primerMesFaltante; i < 13; i++) {
@@ -168,7 +175,7 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
                         primerMesFaltante = 1;
                     }else{
                         if(dto.getMes()>primerMesFaltante){
-                            retorno.add(new DtoMesCantidadProducto(primerAnioFaltante, primerAnioFaltante, 0));
+                            retorno.add(new DtoMesCantidadProducto(primerAnioFaltante, primerMesFaltante, 0));
                             if(primerMesFaltante==12){
                                 primerMesFaltante = 1;
                                 primerAnioFaltante++;
@@ -184,11 +191,14 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
                             }else{
                                 primerMesFaltante++;
                             }
+                            if(anioFinal >  primerAnioFaltante & mesFinal > primerMesFaltante){
+                                bandera = false;
+                            }
                             break;
                         }
 
                     }
-                    if(anioFinal >=  primerAnioFaltante & mesFinal >= primerMesFaltante){
+                    if(anioFinal >  primerAnioFaltante & mesFinal > primerMesFaltante){
                         bandera = false;
                         break;
 

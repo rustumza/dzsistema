@@ -103,7 +103,7 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
 
         codigoProductoLabel.setText("Código Producto");
 
-        codigoProducto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        codigoProducto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         codigoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 codigoProductoActionPerformed(evt);
@@ -137,18 +137,17 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(productoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombreProductoLabel)
+                    .addComponent(codigoProductoLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(productoLayout.createSequentialGroup()
-                        .addComponent(codigoProductoLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(codigoProducto)
+                        .addComponent(codigoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(buscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(productoLayout.createSequentialGroup()
-                        .addComponent(nombreProductoLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(nombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                .addContainerGap())
         );
         productoLayout.setVerticalGroup(
             productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +175,7 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             }
         });
 
-        numeroCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        numeroCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         numeroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroClienteActionPerformed(evt);
@@ -185,7 +184,7 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
 
         cuitLabel.setText("CUIT");
 
-        cuitCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cuitCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         cuitCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuitClienteActionPerformed(evt);
