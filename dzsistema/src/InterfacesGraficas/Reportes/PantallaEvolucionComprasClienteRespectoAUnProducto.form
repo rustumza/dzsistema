@@ -101,21 +101,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="nombreProductoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigoProductoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="1">
-                          <Component id="codigoProductoLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="codigoProducto" max="32767" attributes="0"/>
+                          <Component id="codigoProducto" pref="245" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="buscarProducto" min="-2" pref="117" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="nombreProductoLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="nombreProducto" pref="380" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="nombreProducto" alignment="0" pref="380" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -145,7 +144,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="codigoProducto">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="codigoProductoActionPerformed"/>
@@ -276,7 +275,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="numeroCliente">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeroClienteActionPerformed"/>
@@ -289,7 +288,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="cuitCliente">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuitClienteActionPerformed"/>

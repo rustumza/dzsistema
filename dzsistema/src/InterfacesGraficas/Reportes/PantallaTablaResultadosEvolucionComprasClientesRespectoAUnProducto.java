@@ -164,6 +164,7 @@ public class PantallaTablaResultadosEvolucionComprasClientesRespectoAUnProducto 
 
 
     public void iniciar(Cliente cli, Producto prod, Date FechIn, Date FechFi, List<DtoMesCantidadProducto> lista){
+        setVisible(true);
         cliente.setText(cli.getNombre());
         productoNombre.setText(prod.getDescripcion());
         productoCodigo.setText(String.valueOf(prod.getCodigo()));
@@ -195,34 +196,38 @@ public class PantallaTablaResultadosEvolucionComprasClientesRespectoAUnProducto 
         }
 
         String mesFin = null;
-        if(FechIn.getMonth() == 0){
+        int anioFin = FechFi.getYear()+1900;
+        if(FechFi.getMonth() == 1){
             mesFin = "Enero";
-        }else if(FechIn.getMonth() == 1){
+        }else if(FechFi.getMonth() == 2){
             mesFin = "Febrero";
-        }else if(FechIn.getMonth() == 2){
+        }else if(FechFi.getMonth() == 3){
             mesFin = "Marzo";
-        }else if(FechIn.getMonth() == 3){
+        }else if(FechFi.getMonth() == 4){
             mesFin = "Abril";
-        }else if(FechIn.getMonth() == 4){
+        }else if(FechFi.getMonth() == 5){
             mesFin = "Mayo";
-        }else if(FechIn.getMonth() == 5){
+        }else if(FechFi.getMonth() == 6){
             mesFin = "Junio";
-        }else if(FechIn.getMonth() == 6){
+        }else if(FechFi.getMonth() == 7){
             mesFin = "Julio";
-        }else if(FechIn.getMonth() == 7){
+        }else if(FechFi.getMonth() == 8){
             mesFin = "Agosto";
-        }else if(FechIn.getMonth() == 8){
+        }else if(FechFi.getMonth() == 9){
             mesFin = "Setiembre";
-        }else if(FechIn.getMonth() == 9){
+        }else if(FechFi.getMonth() == 10){
             mesFin = "Octubre";
-        }else if(FechIn.getMonth() == 10){
+        }else if(FechFi.getMonth() == 11){
             mesFin = "Noviembre";
-        }else if(FechIn.getMonth() == 11){
+        }else if(FechFi.getMonth() == 0){
             mesFin = "Diciembre";
+            anioFin--;
+
         }
 
-        fechaInicio.setText(mesInicio + " " + ((FechIn.getYear()+1900)-2000));
-        fechaFin.setText(mesFin + " " + ((FechFi.getYear()+1900)-2000));
+
+        fechaInicio.setText(mesInicio + " " + (FechIn.getYear()+1900));
+        fechaFin.setText(mesFin + " " + anioFin);
         tabla.setModel(new ModeloTablaReporteEvolucionCompraClienteProducto(lista));
 
 
