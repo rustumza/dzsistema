@@ -19,7 +19,7 @@
 			<textField>
 				<reportElement x="111" y="0" width="282" height="14"/>
 				<textElement verticalAlignment="Middle">
-					<font size="5"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
