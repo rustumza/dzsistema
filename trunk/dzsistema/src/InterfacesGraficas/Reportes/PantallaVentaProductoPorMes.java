@@ -213,17 +213,17 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
             }
         }
         //Valido la fecha mayor
-        if(fin.getYear() > hoy.getYear()){
-            condicion=false;
-            JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-        } else{
-            if(fin.getYear() == hoy.getYear()){
-                if(fin.getMonth() > hoy.getMonth()+1){
-                    condicion=false;
-                    JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-                }
-            }
-        }
+//        if(fin.getYear() > hoy.getYear()){
+//            condicion=false;
+//            JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+//        } else{
+//            if(fin.getYear() == hoy.getYear()){
+//                if(fin.getMonth() > hoy.getMonth()+1){
+//                    condicion=false;
+//                    JOptionPane.showMessageDialog(null, "La fecha ingresada no es válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+//                }
+//            }
+//        }
         //Genera el reporte
         if(condicion){
             List<DtoResultado> resultado = controlador.generarReporte(inicio, fin);

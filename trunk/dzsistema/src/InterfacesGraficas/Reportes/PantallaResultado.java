@@ -58,7 +58,6 @@ public class PantallaResultado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Resultado");
-        setResizable(false);
 
         jButtonCancelar.setText("Cerrar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -67,33 +66,42 @@ public class PantallaResultado extends javax.swing.JFrame {
             }
         });
 
+        jTableClientes.setAutoCreateRowSorter(true);
         jTableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Producto", "Total"
+                "Código", "Producto", "Total"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableClientes);
 
         jLabel1.setText("Reporte correspondiente a");
@@ -113,16 +121,16 @@ public class PantallaResultado extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                            .addContainerGap())
+                        .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabelMes)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabelAño))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-                            .addContainerGap()))
+                            .addComponent(jLabelAño)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonCancelar)
                         .addContainerGap())))
@@ -137,8 +145,8 @@ public class PantallaResultado extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabelAño))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonCancelar)
                 .addContainerGap())
         );
@@ -156,13 +164,15 @@ public class PantallaResultado extends javax.swing.JFrame {
 
             Object[][] datos = null;
 
-            datos = new Object[resultado.size()][2];
+            datos = new Object[resultado.size()][3];
             for (int i = 0; i < resultado.size(); i++) {
-                datos[i][0] = resultado.get(i).getProducto().getDescripcion();
-                datos[i][1] = resultado.get(i).getTotal();
+                datos[i][0] = resultado.get(i).getProducto().getCodigo();
+                datos[i][1] = resultado.get(i).getProducto().getDescripcion();
+                datos[i][2] = resultado.get(i).getTotal();
+
             }
 
-            String[] columnNames = {"Producto", "total"};
+            String[] columnNames = {"Código","Producto", "total"};
             jTableClientes.setModel(new DefaultTableModel(datos, columnNames) {
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
