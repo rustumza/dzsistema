@@ -328,7 +328,7 @@ public class PantallaABMProducto extends javax.swing.JFrame {
                 try{
                 listaProductos = controlador.buscarProductoPorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
                 }
-                catch(NumberFormatException e){
+                catch(Exception e){
                     JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 CargarTabla();

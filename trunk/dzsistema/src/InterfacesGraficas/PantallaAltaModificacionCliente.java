@@ -98,9 +98,9 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos"));
 
-        jLabel1.setText("Dirección");
+        jLabel1.setText("Dirección:");
 
-        jLabel7.setText("Código:");
+        jLabel7.setText("Número:");
 
         jLabel6.setText("CUIT:");
 
@@ -221,6 +221,7 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonguardarActionPerformed
+        try{
         // variable logica para validar si se puede guardar o modificar
         boolean condicion = true;
         // Valida CUIT (no parece que sea necesario)
@@ -254,12 +255,12 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         if (jTextFieldCodigo.getText().isEmpty() == false){
             if(!Validar.controlCodigo(jTextFieldCodigo.getText())){
                 condicion=false;
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else{
             condicion=false;
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un número válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
         //Verifica condicion y guarda
         if(condicion){
@@ -277,6 +278,9 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
             this.setVisible(false);
         }
         this.dispose();
+        }
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al guardar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonguardarActionPerformed
 

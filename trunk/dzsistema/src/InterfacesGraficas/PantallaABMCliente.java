@@ -138,7 +138,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
 
         jLabel2.setText("CUIT");
 
-        jLabel3.setText("Código");
+        jLabel3.setText("Número");
 
         jTextFieldCUIT.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldCUIT.addActionListener(new java.awt.event.ActionListener() {
@@ -203,9 +203,9 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addComponent(jTextFieldCUIT, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCUIT, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonBuscarNombre)
@@ -273,7 +273,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonNuevo)
@@ -281,7 +281,7 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                         .addComponent(jButtonModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonElimiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -332,16 +332,16 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 try{
                 listaClientes = controlador.buscarAfiliadoPorCodigo(jTextFieldCodigo.getText());
                 }
-                catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un número válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
@@ -373,16 +373,16 @@ public class PantallaABMCliente extends javax.swing.JFrame {
                 try{
                 listaClientes = controlador.buscarAfiliadoPorCodigo(jTextFieldCodigo.getText());
                 }
-                catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 CargarTabla();
                 limpiarFields();
             } else{
-                JOptionPane.showMessageDialog(null, "El Código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un Código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un número válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jButtonBuscarCodigoActionPerformed
 

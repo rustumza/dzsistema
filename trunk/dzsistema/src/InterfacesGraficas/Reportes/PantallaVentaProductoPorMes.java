@@ -147,7 +147,7 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
 }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarActionPerformed
-
+        try{
         // variable logica para validar si se puede guardar o modificar
         boolean condicion = true;
         // Valida Año
@@ -229,6 +229,10 @@ public class PantallaVentaProductoPorMes extends javax.swing.JFrame {
             List<DtoResultado> resultado = controlador.generarReporte(inicio, fin);
             PantallaResultado pantalla = new PantallaResultado(resultado, jComboBoxMes.getSelectedItem().toString(), Integer.toString(año));
             pantalla.setVisible(true);
+            }
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Error al generar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
 }//GEN-LAST:event_jButtonGenerarActionPerformed
 
