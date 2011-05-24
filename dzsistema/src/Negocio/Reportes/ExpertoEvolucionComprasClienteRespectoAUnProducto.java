@@ -150,14 +150,16 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
                     if(listaDeDto.isEmpty()){
                         for (int i = primerAnioFaltante; i <= anioFinal; i++) {
                             if(anioFinal == i){
-                                for (int j = 1; j < mesFinal; j++) {
+                                for (int j = primerMesFaltante; j < mesFinal; j++) {
                                     retorno.add(new DtoMesCantidadProducto(i, j, 0));
 
                                 }
+                                primerMesFaltante = 1;
                             }else{
-                                for (int j = 1; j < 13; j++) {
+                                for (int j = primerMesFaltante; j < 13; j++) {
                                     retorno.add(new DtoMesCantidadProducto(i, j, 0));
                                 }
+                                primerMesFaltante = 1;
                             }
 
 
@@ -191,14 +193,14 @@ public class ExpertoEvolucionComprasClienteRespectoAUnProducto {
                             }else{
                                 primerMesFaltante++;
                             }
-                            if(anioFinal >  primerAnioFaltante & mesFinal > primerMesFaltante){
+                            if(anioFinal <=  primerAnioFaltante & mesFinal <= primerMesFaltante){
                                 bandera = false;
                             }
                             break;
                         }
 
                     }
-                    if(anioFinal >  primerAnioFaltante & mesFinal > primerMesFaltante){
+                    if(anioFinal <=  primerAnioFaltante & mesFinal<= primerMesFaltante){
                         bandera = false;
                         break;
 
