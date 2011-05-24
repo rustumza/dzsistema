@@ -26,6 +26,7 @@ public class PantallaTablaResultadosEvolucionComprasClientesRespectoAUnProducto 
     /** Creates new form PantallaTablaResultadosEvolucionComprasClientesRespectoAUnProducto */
     public PantallaTablaResultadosEvolucionComprasClientesRespectoAUnProducto() {
         initComponents();
+        setLocationRelativeTo(null);
         tabla.setModel(new ModeloTablaReporteEvolucionCompraClienteProducto());
     }
 
