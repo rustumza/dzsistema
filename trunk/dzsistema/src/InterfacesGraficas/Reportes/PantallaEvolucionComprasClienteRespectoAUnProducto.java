@@ -70,12 +70,13 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
         anioFin = new javax.swing.JTextField();
         anioInicioLabel = new javax.swing.JLabel();
         mostrarMesesEnCero = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Evolucion venta de producto respecto a un cliente");
         setResizable(false);
 
-        buscar.setText("Buscar");
+        buscar.setText("Generar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarActionPerformed(evt);
@@ -143,10 +144,10 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(productoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(productoLayout.createSequentialGroup()
-                        .addComponent(codigoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                        .addComponent(codigoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(buscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                    .addComponent(nombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE))
                 .addContainerGap())
         );
         productoLayout.setVerticalGroup(
@@ -264,7 +265,7 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
                         .addComponent(clienteSeleccionadoLabel)
                         .addGap(3, 3, 3)
                         .addComponent(clienteSeleccionado)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         clienteLayout.setVerticalGroup(
             clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,11 +359,11 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
                             .addGroup(fechasLayout.createSequentialGroup()
                                 .addComponent(anioInicioLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(anioInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                                .addComponent(anioInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
                             .addGroup(fechasLayout.createSequentialGroup()
                                 .addComponent(anioFinLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(anioFin, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)))))
+                                .addComponent(anioFin, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         fechasLayout.setVerticalGroup(
@@ -388,6 +389,8 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
 
         mostrarMesesEnCero.setText("Mostrar meses que estén en cero");
 
+        jButton1.setText("Cancelar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -395,17 +398,18 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mostrarMesesEnCero)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addComponent(limpiarPantalla)
-                        .addGap(18, 18, 18)
-                        .addComponent(mostrarMesesEnCero)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,9 +422,10 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
                 .addComponent(fechas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mostrarMesesEnCero)
                     .addComponent(buscar)
-                    .addComponent(limpiarPantalla)
-                    .addComponent(mostrarMesesEnCero))
+                    .addComponent(jButton1)
+                    .addComponent(limpiarPantalla))
                 .addContainerGap())
         );
 
@@ -577,6 +582,7 @@ public class PantallaEvolucionComprasClienteRespectoAUnProducto extends javax.sw
     private javax.swing.JLabel fechaFinLabel;
     private javax.swing.JLabel fechaInicioLabel;
     private javax.swing.JPanel fechas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton limpiarPantalla;
     private javax.swing.JComboBox mesFinComboBox;
     private javax.swing.JLabel mesFinLabel;
