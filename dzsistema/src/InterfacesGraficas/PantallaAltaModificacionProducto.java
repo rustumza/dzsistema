@@ -220,6 +220,7 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonguardarActionPerformed
+        try{
         // variable logica para validar si se puede guardar o modificar
         boolean condicion = true;
         // Valida Codigo
@@ -287,6 +288,9 @@ public class PantallaAltaModificacionProducto extends javax.swing.JFrame {
             PantallaABMProducto.CargarTabla();
         }
         this.dispose();
+        }
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al guardar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonguardarActionPerformed
 

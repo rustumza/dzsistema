@@ -114,7 +114,7 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        //add your handling code here:
+        try{
         PrecioHistorico nuevo = new PrecioHistorico();
         //Verifica campo
         if (jTextFieldPU.getText().isEmpty() == false){
@@ -154,6 +154,9 @@ public class PantallaAltaModificacionPrecio extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showMessageDialog(null, "Ingrese un Precio Unitario", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Error al guardar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 

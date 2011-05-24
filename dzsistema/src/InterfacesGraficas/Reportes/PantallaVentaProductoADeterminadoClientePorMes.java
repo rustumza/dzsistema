@@ -110,7 +110,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cliente"));
 
-        jLabel8.setText("Código");
+        jLabel8.setText("Número:");
 
         jTextFieldCodigo.setPreferredSize(new java.awt.Dimension(50, 20));
         jTextFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -159,8 +159,8 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
+                            .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonBuscarNombre)
@@ -168,7 +168,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                        .addComponent(jTextFieldCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -217,7 +217,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonGenerar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -244,7 +244,7 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarActionPerformed
-
+        try{
         // variable logica para validar si se puede guardar o modificar
         boolean condicion = true;
         // Valida Año
@@ -332,10 +332,15 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
         }
         //Genera el reporte
         if(condicion){
+
             ClienteSeleccionado = listaClientes.get(0);
             List<DtoResultado> resultado = controlador.generarReporte(ClienteSeleccionado, inicio, fin);
             PantallaResultado pantalla = new PantallaResultado(resultado, jComboBoxMes.getSelectedItem().toString(), Integer.toString(año));
             pantalla.setVisible(true);
+            }
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Error al generar", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonGenerarActionPerformed
 
@@ -346,15 +351,20 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                 listaClientes = controlador.buscarClientePorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
                 }
                 catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
+                try{
                 jTextFieldCliente.setText(listaClientes.get(0).getNombre());
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
                 limpiarFieldsProducto();
             } else{
-                JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un número válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButtonBuscarCodigoActionPerformed
 
@@ -386,15 +396,15 @@ public class PantallaVentaProductoADeterminadoClientePorMes extends javax.swing.
                 listaClientes = controlador.buscarClientePorCodigo(Integer.parseInt(jTextFieldCodigo.getText()));
                 }
                 catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 jTextFieldCliente.setText(listaClientes.get(0).getNombre());
                 limpiarFieldsProducto();
             } else{
-                JOptionPane.showMessageDialog(null, "El código ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número ingresado no es válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         } else{
-            JOptionPane.showMessageDialog(null, "Escriba un código válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escriba un número válido", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
 
