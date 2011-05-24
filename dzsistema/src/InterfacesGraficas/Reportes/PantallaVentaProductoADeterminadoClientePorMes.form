@@ -180,8 +180,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextFieldCodigo" pref="217" max="32767" attributes="1"/>
-                              <Component id="jTextFieldNombre" alignment="0" pref="217" max="32767" attributes="1"/>
+                              <Component id="jTextFieldCodigo" pref="232" max="32767" attributes="1"/>
+                              <Component id="jTextFieldNombre" alignment="0" pref="232" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -192,7 +192,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextFieldCliente" pref="193" max="32767" attributes="1"/>
+                          <Component id="jTextFieldCliente" pref="242" max="32767" attributes="1"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
