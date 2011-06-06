@@ -61,7 +61,19 @@ public class PantallaAltaModificacionCliente extends javax.swing.JFrame {
         JTextFieldNombre.setText(clienteAModificar.getNombre());
         jTextFieldDireccion.setText(clienteAModificar.getDomicilio());
         jTextFieldCUIT.setText(clienteAModificar.getCUIT());
-        jComboBoxIVA.setSelectedItem(clienteAModificar.getCondicionFrenteAlIva());
+        int i = 0;
+        if(cliente.getCondicionFrenteAlIva().getNombre().equals("Responsable Inscripto")){
+            i = 0;
+        }else if(cliente.getCondicionFrenteAlIva().getNombre().equals("Monotributista")){
+            i = 1;
+        }else if(cliente.getCondicionFrenteAlIva().getNombre().equals("Consumidor Final")){
+            i = 2;
+        }else if(cliente.getCondicionFrenteAlIva().getNombre().equals("Exento")){
+            i = 3;
+        }else if(cliente.getCondicionFrenteAlIva().getNombre().equals("No Responsable")){
+            i = 4;
+        }
+        jComboBoxIVA.setSelectedIndex(i);
     }
 
     void setGUI(PantallaABMCliente aThis) {
