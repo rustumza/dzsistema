@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -31,6 +32,16 @@ public class Producto implements Serializable {
     private boolean estado;
     @OneToMany(cascade = CascadeType.ALL)
     List<PrecioHistorico> preciosHistoricos;
+    @OneToOne
+    private Stock stock;
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
 
     public void setPreciosHistoricos(List<PrecioHistorico> preciosHistoricos) {
         this.preciosHistoricos = preciosHistoricos;
