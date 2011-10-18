@@ -8,6 +8,8 @@ package Negocio.ABM;
 import Negocio.Entidades.PrecioHistorico;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.ProductoJpaController;
+import Negocio.Entidades.Stock;
+import Negocio.Entidades.StockJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
@@ -68,6 +70,12 @@ class ExpertoABMProducto {
             if(ph != null){
                 producto.addPrecio(ph);
             }
+            //Crea, guarda y agrega stock
+            StockJpaController fachadaS = new StockJpaController();
+            Stock stock = new Stock();
+            fachadaS.create(stock);
+            producto.setStock(stock);
+
         } else {
             producto = fachada.findProducto(id);
         }

@@ -11,6 +11,9 @@
     <class>Negocio.Entidades.Producto</class>
     <class>Negocio.Entidades.PrecioHistorico</class>
     <class>Negocio.Entidades.Numerador</class>
+    <class>Negocio.Entidades.Stock</class>
+    <class>Negocio.Entidades.MovimientoStock</class>
+    <class>Negocio.Entidades.TipoMovimiento</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dzrepresentaciones"/>
       <property name="javax.persistence.jdbc.password" value="dzr"/>

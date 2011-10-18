@@ -15,8 +15,14 @@ import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
 import Negocio.Entidades.Numerador;
 import Negocio.Entidades.NumeradorJpaController;
+import Negocio.Entidades.Producto;
+import Negocio.Entidades.ProductoJpaController;
+import Negocio.Entidades.Stock;
+import Negocio.Entidades.StockJpaController;
 import Negocio.Entidades.TipoFactura;
 import Negocio.Entidades.TipoFacturaJpaController;
+import Negocio.Entidades.TipoMovimiento;
+import Negocio.Entidades.TipoMovimientoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import java.util.Date;
 import java.util.List;
@@ -104,8 +110,58 @@ public class Main {
             numerador.setFacturaB(2);
             fachadaN.create(numerador);
         }
+        //Verifica si se inicializo la base de datos en su version 1.1
+        ///*
+        TipoMovimientoJpaController fachadaTM = new TipoMovimientoJpaController();
+        if(fachadaTM.getTipoMovimientoCount() == 0){
+            //Inicializa los tipos de movimiento de stock
+            TipoMovimiento tipo = new TipoMovimiento();
+            tipo.setNombre("Ingreso");
+            TipoMovimiento tipo1 = new TipoMovimiento();
+            tipo1.setNombre("Egreso");
+            fachadaTM.create(tipo);
+            fachadaTM.create(tipo1);
+            //Verifico que todos los productos tengan stock si no tienen les agrego uno
+            ProductoJpaController fachadaProd = new ProductoJpaController();
+            List<Producto> productos = fachadaProd.findProductoEntities();
+            for(int i = 0; i<productos.size(); i++){
+                if(productos.get(i).getStock() == null){
+                    try {
+                        Stock stock = new Stock();
+                        StockJpaController fachadaStock = new StockJpaController();
+                        fachadaStock.create(stock);
+                        productos.get(i).setStock(stock);
+                        fachadaProd.edit(productos.get(i));
+                    } catch (NonexistentEntityException ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            //Hay q arreglar el abm de producto para q aparezca
+        }
+        //*/
 
-            
+        //Prueba juampa 1
+        /*
+        ProductoJpaController fachadaX = new ProductoJpaController();
+        Producto prod = new Producto();
+        Stock stock = new Stock();
+        prod.setStock(stock);
+        prod.setDescripcion("pipoelpobre");
+        StockJpaController fachadaY = new StockJpaController();
+        fachadaY.create(stock);
+        fachadaX.create(prod);
+         */
+
+        //Prueba juampa 2
+        /*
+        ProductoJpaController fachadaX = new ProductoJpaController();
+        long id = 1402;
+        System.out.println(fachadaX.findProducto(id).getStock());
+        */
+         
             //PRUEBA RUSTU
 
             /*FacturaJpaController jpa = new FacturaJpaController();
