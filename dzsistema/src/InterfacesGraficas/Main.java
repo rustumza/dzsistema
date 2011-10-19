@@ -162,39 +162,8 @@ public class Main {
         System.out.println(fachadaX.findProducto(id).getStock());
         */
          
-            //PRUEBA RUSTU
-
-            /*FacturaJpaController jpa = new FacturaJpaController();
-            Date date1 = new Date((2011-1900),(10-1), 20);
-            Date date2 = new Date((2014-1900),(11-1), 11);
-            ClienteJpaController jpaCli = new ClienteJpaController();
-            Cliente cli = jpaCli.buscarPorCodigo("3").get(0);
-            
-            List<Factura> lista = jpa.buscarFacturaEntreFechasConCliente(date1, date2, cli);
-            System.out.println("---------------------------------------------------------");
-            System.out.println("---------------------------------------------------------");
-            System.out.println("---------------------------------------------------------");
-            System.out.println("LISTA 1");
-            System.out.println(lista.size());
-            System.out.println("numeros facturas");
-            for (Factura factura : lista) {
-                System.out.println(factura.getNumero());
-            }
-            
-            
-             List<Factura> lista2 = jpa.buscarFacturaEntreFechasSinLaFechaFinYConCliente(date1, date2, cli);
-            System.out.println("---------------------------------------------------------");
-            System.out.println("---------------------------------------------------------");
-            System.out.println("---------------------------------------------------------");
-            System.out.println("LISTA 2");
-            System.out.println(lista2.size());
-            System.out.println("numeros facturas");
-            for (Factura factura : lista2) {
-                System.out.println(factura.getNumero());
-            }
-            
-            */
-            // Setea como se ven las pantallas y arranca el sistema
+           
+          // Setea como se ven las pantallas y arranca el sistema
           new ControladorPanallaFacturacion().iniciarPantalla();
         }
 

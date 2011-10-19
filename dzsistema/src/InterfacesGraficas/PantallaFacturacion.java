@@ -127,7 +127,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DZ Representaciones - v1.0 - C&C Systems");
+        setTitle("C&C IT Solutions - v1.1 - Facturación");
         setResizable(false);
 
         panelPrincipal.setMaximumSize(new java.awt.Dimension(1022, 1581));
