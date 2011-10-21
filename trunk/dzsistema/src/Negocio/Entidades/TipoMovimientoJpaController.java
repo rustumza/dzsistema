@@ -134,4 +134,11 @@ public class TipoMovimientoJpaController {
         }
     }
 
+    public TipoMovimiento buscarPorNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        TipoMovimiento encontrado;
+        encontrado = (TipoMovimiento) em.createQuery("SELECT a FROM TipoMovimiento a WHERE a.nombre = '"+nombre+"'").getSingleResult();
+        return encontrado;
+    }
+
 }

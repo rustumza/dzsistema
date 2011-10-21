@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -6,11 +6,13 @@
 package Negocio.Entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -22,6 +24,10 @@ public class MovimientoStock implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha;
+    private int movimiento;
+    private int stockDespuesDelMovimiento;
     @ManyToOne
     private Stock stock;
     @ManyToOne
@@ -50,6 +56,31 @@ public class MovimientoStock implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getMovimiento() {
+        return movimiento;
+    }
+
+    public void setMovimiento(int movimiento) {
+        this.movimiento = movimiento;
+    }
+
+    public int getStockDespuesDelMovimiento() {
+        return stockDespuesDelMovimiento;
+    }
+
+    public void setStockDespuesDelMovimiento(int stockDespuesDelMovimiento) {
+        this.stockDespuesDelMovimiento = stockDespuesDelMovimiento;
+    }
+
 
     @Override
     public int hashCode() {
