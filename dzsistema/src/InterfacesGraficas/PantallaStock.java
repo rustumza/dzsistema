@@ -67,6 +67,8 @@ public class PantallaStock extends javax.swing.JFrame {
         tablaUltimosMovimientos = new javax.swing.JTable();
         menu = new javax.swing.JMenuBar();
         reportes = new javax.swing.JMenu();
+        jMenuItemStockActual = new javax.swing.JMenuItem();
+        jMenuItemStockPorFecha = new javax.swing.JMenuItem();
         producto = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,11 +105,11 @@ public class PantallaStock extends javax.swing.JFrame {
                     .addGroup(panelProductoLayout.createSequentialGroup()
                         .addComponent(codigoLabel)
                         .addGap(48, 48, 48)
-                        .addComponent(codigoProductoEncontradoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))
+                        .addComponent(codigoProductoEncontradoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
                     .addGroup(panelProductoLayout.createSequentialGroup()
                         .addComponent(descripcionLable)
                         .addGap(18, 18, 18)
-                        .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))))
+                        .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))))
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +217,7 @@ public class PantallaStock extends javax.swing.JFrame {
             panelUltimosMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelUltimosMovimientosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelUltimosMovimientosLayout.setVerticalGroup(
@@ -226,6 +228,13 @@ public class PantallaStock extends javax.swing.JFrame {
         );
 
         reportes.setText("reportes");
+
+        jMenuItemStockActual.setText("Stock Actual");
+        reportes.add(jMenuItemStockActual);
+
+        jMenuItemStockPorFecha.setText("Stock por fecha");
+        reportes.add(jMenuItemStockPorFecha);
+
         menu.add(reportes);
 
         producto.setText("producto");
@@ -481,6 +490,8 @@ public class PantallaStock extends javax.swing.JFrame {
     private javax.swing.JLabel codigoProductoEncontradoLabel;
     private javax.swing.JLabel descripcionLable;
     private javax.swing.JLabel descripcionProductoEncontradoLAbel;
+    private javax.swing.JMenuItem jMenuItemStockActual;
+    private javax.swing.JMenuItem jMenuItemStockPorFecha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menu;
     private javax.swing.JLabel movimientoStockLabel;

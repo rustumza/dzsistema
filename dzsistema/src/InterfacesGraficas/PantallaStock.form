@@ -8,6 +8,18 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="reportes"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemStockActual">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stock Actual"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemStockPorFecha">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stock por fecha"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="producto">
           <Properties>
@@ -95,12 +107,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="codigoProductoEncontradoLabel" pref="566" max="32767" attributes="0"/>
+                          <Component id="codigoProductoEncontradoLabel" pref="581" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="descripcionLable" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="descripcionProductoEncontradoLAbel" pref="566" max="32767" attributes="0"/>
+                          <Component id="descripcionProductoEncontradoLAbel" pref="578" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -280,7 +292,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="646" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="666" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
