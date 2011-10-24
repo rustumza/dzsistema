@@ -41,15 +41,23 @@ public class MetodosUtilesParaLosDos {
         return lista.get((lista.size())-1);
     }
 
+    public Date fechaUnMesAnterior(Date fecha){
 
-    public List<MovimientoStock> bucarMovimientosEntreFechas(Producto producto, Date fechaInicio, Date fechaFin){
+        int nuevoMes;
+        if(fecha.getMonth() == 0){
+            nuevoMes = 11;
+        }else{
+            nuevoMes = fecha.getMonth() - 1;
+        }
+        int nuevoDia;
+        if(fecha.getDate()>=28){
+           nuevoDia = 28;
+        }else{
+            nuevoDia= fecha.getDate();
+        }
+        Date fechaRetorno = new Date(fecha.getYear(), nuevoMes, nuevoDia);
 
-        producto.getStock();
-        //MovimientoStockJpaController.
-
-       //TODO
-
-        return null;
+        return fechaRetorno;
     }
 
 }

@@ -6,10 +6,16 @@
 package InterfacesGraficas;
 
 import Negocio.Entidades.MovimientoStock;
+import Negocio.Entidades.MovimientoStockJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Stock.ExpertoStock;
 import Negocio.Stock.MetodosUtilesParaLosDos;
+import Negocio.Stock.StockException.StockExcepcion;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,8 +26,14 @@ public class ControladorPantallaStock {
 
     ExpertoStock experto;
     PantallaStock pantalla;
+    ControladorPantallaPrincipal controladorPantallaPrincipal;
 
-    public ControladorPantallaStock(){
+    /*public ControladorPantallaStock(){
+        experto = new ExpertoStock();
+    }*/
+
+    ControladorPantallaStock(ControladorPantallaPrincipal controlador) {
+        controladorPantallaPrincipal = controlador;
         experto = new ExpertoStock();
     }
 
@@ -75,8 +87,14 @@ public class ControladorPantallaStock {
         
         }
 
-        Producto prod = experto.agregarStock(cantidadInt);
-        cargarDatosStockEnPantalla(new MetodosUtilesParaLosDos().ordenarMovimientosPorFechaDescendente(prod.getStock().getMovimientos()));
+        Producto prod = null;
+        try {
+            prod = experto.agregarStock(cantidadInt);
+        } catch (StockExcepcion ex) {
+            JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        cargarDatosStockEnPantalla(new MovimientoStockJpaController().buscarMovimientosStockEntreFechas(prod.getStock(), new MetodosUtilesParaLosDos().fechaUnMesAnterior(new Date()), new Date()));
     }
 
 
@@ -94,8 +112,18 @@ public class ControladorPantallaStock {
 
         }
 
-        Producto prod = experto.restarStock(cantidadInt);
-        cargarDatosStockEnPantalla(new MetodosUtilesParaLosDos().ordenarMovimientosPorFechaDescendente(prod.getStock().getMovimientos()));
+        Producto prod = null;
+        try {
+            prod = experto.restarStock(cantidadInt);
+        } catch (StockExcepcion ex) {
+            if(ex.getCodigo() == 2){
+                JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada es mayor que la cantidad disponible", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                pantalla.getNuevoStockTextField().requestFocus();
+            }else{
+                JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        cargarDatosStockEnPantalla(new MovimientoStockJpaController().buscarMovimientosStockEntreFechas(prod.getStock(), new MetodosUtilesParaLosDos().fechaUnMesAnterior(new Date()), new Date()));
 
     }
 
@@ -104,5 +132,13 @@ public class ControladorPantallaStock {
         MovimientoStock mov = new MetodosUtilesParaLosDos().ultimoMovimientoDeLaLista(listaOrdenadaDeMovimientos);
         pantalla.getStockActual().setText(String.valueOf(mov.getStockDespuesDelMovimiento()));
         pantalla.getTablaUltimosMovimientos().setModel(new ModeloTablaUltimosMovimientos(listaOrdenadaDeMovimientos));
+    }
+
+
+    public int salir(){
+
+        pantalla.dispose();
+        controladorPantallaPrincipal.iniciarPantalla();
+        return JFrame.DISPOSE_ON_CLOSE;
     }
 }

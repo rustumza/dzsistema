@@ -103,7 +103,9 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection code="salir()" type="code"/>
+    </Property>
     <Property name="title" type="java.lang.String" value="C&amp;C IT Solutions - v1.1 - Facturaci&#xf3;n"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>

@@ -136,7 +136,7 @@ public class MovimientoStockJpaController {
     }
 
 
-        public List<MovimientoStock> buscarFacturaEntreFechas(Stock stock, Date fechaInicio, Date fechaFin) {
+        public List<MovimientoStock> buscarMovimientosStockEntreFechas(Stock stock, Date fechaInicio, Date fechaFin) {
         EntityManager em = getEntityManager();
         List<MovimientoStock> encontrados;
         Query objQuery = em.createQuery("SELECT a FROM MovimientoStock a WHERE a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.stock = :regStock ORDER BY a.fecha");
@@ -144,7 +144,8 @@ public class MovimientoStockJpaController {
         objQuery.setParameter("regDate2", fechaFin);
         objQuery.setParameter("regStock", stock);
 
-        return objQuery.getResultList();
+         encontrados = objQuery.getResultList();
+         return encontrados;
     }
 
 

@@ -17,6 +17,7 @@ import InterfacesGraficas.Reportes.PantallaVentaProductoPorMes;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import validar.Validar;
 
@@ -126,7 +127,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(salir());
         setTitle("C&C IT Solutions - v1.1 - Facturación");
         setResizable(false);
 
@@ -1118,6 +1119,12 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         new ControladorEvolucionComprasClienteRespectoAUnProducto(this).iniciarPantalla();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private int salir(){
+        this.dispose();
+        //controlador.salir();
+        return JFrame.DO_NOTHING_ON_CLOSE;
+
+    }
 
 
     /**

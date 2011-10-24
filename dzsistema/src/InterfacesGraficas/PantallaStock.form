@@ -25,6 +25,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="producto"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuNuevoProducto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nuevo Producto"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuNuevoProductoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuModificarProducto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modificar Producto"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuModificarProductoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
@@ -107,12 +125,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="codigoLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="codigoProductoEncontradoLabel" pref="581" max="32767" attributes="0"/>
+                          <Component id="codigoProductoEncontradoLabel" pref="586" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="descripcionLable" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="descripcionProductoEncontradoLAbel" pref="578" max="32767" attributes="0"/>
+                          <Component id="descripcionProductoEncontradoLAbel" pref="586" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -209,7 +227,7 @@
                           <Component id="stockActual" min="-2" pref="87" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

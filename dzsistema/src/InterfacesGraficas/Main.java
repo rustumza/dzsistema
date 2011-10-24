@@ -164,7 +164,8 @@ public class Main {
          
            
           // Setea como se ven las pantallas y arranca el sistema
-          new ControladorPanallaFacturacion().iniciarPantalla();
+        new ControladorPantallaPrincipal().iniciarPantalla();
+        //new ControladorPanallaFacturacion().iniciarPantalla();
         }
 
 }
