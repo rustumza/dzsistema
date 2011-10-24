@@ -28,12 +28,13 @@ public class PantallaStock extends javax.swing.JFrame {
 
 
     private ControladorPantallaStock controlador;
-    /** Creates new form PantallaStock */
+
     public PantallaStock() {
         initComponents();
     }
 
-    PantallaStock(ControladorPantallaStock controlador) {
+    public PantallaStock(ControladorPantallaStock controlador) {
+        initComponents();
         this.controlador = controlador;
     }
 
@@ -70,6 +71,8 @@ public class PantallaStock extends javax.swing.JFrame {
         jMenuItemStockActual = new javax.swing.JMenuItem();
         jMenuItemStockPorFecha = new javax.swing.JMenuItem();
         producto = new javax.swing.JMenu();
+        menuNuevoProducto = new javax.swing.JMenuItem();
+        menuModificarProducto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,11 +108,11 @@ public class PantallaStock extends javax.swing.JFrame {
                     .addGroup(panelProductoLayout.createSequentialGroup()
                         .addComponent(codigoLabel)
                         .addGap(48, 48, 48)
-                        .addComponent(codigoProductoEncontradoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
+                        .addComponent(codigoProductoEncontradoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE))
                     .addGroup(panelProductoLayout.createSequentialGroup()
                         .addComponent(descripcionLable)
                         .addGap(18, 18, 18)
-                        .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))))
+                        .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE))))
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +181,7 @@ public class PantallaStock extends javax.swing.JFrame {
                         .addComponent(stockActualLabel)
                         .addGap(6, 6, 6)
                         .addComponent(stockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         panelStockLayout.setVerticalGroup(
             panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,6 +241,23 @@ public class PantallaStock extends javax.swing.JFrame {
         menu.add(reportes);
 
         producto.setText("producto");
+
+        menuNuevoProducto.setText("Nuevo Producto");
+        menuNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoProductoActionPerformed(evt);
+            }
+        });
+        producto.add(menuNuevoProducto);
+
+        menuModificarProducto.setText("Modificar Producto");
+        menuModificarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarProductoActionPerformed(evt);
+            }
+        });
+        producto.add(menuModificarProducto);
+
         menu.add(producto);
 
         setJMenuBar(menu);
@@ -469,6 +489,16 @@ public class PantallaStock extends javax.swing.JFrame {
         controlador.restarStock();
     }//GEN-LAST:event_quitarButtonActionPerformed
 
+    private void menuModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarProductoActionPerformed
+       PantallaABMProducto iu = new PantallaABMProducto();
+       iu.setVisible(true);
+    }//GEN-LAST:event_menuModificarProductoActionPerformed
+
+    private void menuNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoProductoActionPerformed
+        PantallaAltaModificacionProducto iu = new PantallaAltaModificacionProducto();
+        iu.setVisible(true);
+    }//GEN-LAST:event_menuNuevoProductoActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -494,6 +524,8 @@ public class PantallaStock extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemStockPorFecha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenuItem menuModificarProducto;
+    private javax.swing.JMenuItem menuNuevoProducto;
     private javax.swing.JLabel movimientoStockLabel;
     private javax.swing.JTextField nuevoStockTextField;
     private javax.swing.JPanel panelProducto;

@@ -26,6 +26,7 @@ import javax.swing.DefaultComboBoxModel;
 import Negocio.Facturacion.DtoFactura;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -39,6 +40,7 @@ public class ControladorPanallaFacturacion {
 
     private PantallaFacturacion pantalla;
     private ExpertoFacturar experto;
+    private ControladorPantallaPrincipal controladorPantallaPrincipal;
     //private Factura factura;
     private final String[] CondicionesDeVentaA = {"Contado", "Cuenta Corriente"};
     private final String[] CondicionesDeVentaB = {"Contado", "Cuenta Corriente", "Tarjeta"};
@@ -46,20 +48,20 @@ public class ControladorPanallaFacturacion {
 
     boolean guardado = false;
 
-    public ControladorPanallaFacturacion() {
+    /*public ControladorPanallaFacturacion() {
         experto = new ExpertoFacturar();
+    }
+    */
+    public ControladorPanallaFacturacion(ControladorPantallaPrincipal controlador) {
+        experto = new ExpertoFacturar();
+        controladorPantallaPrincipal = controlador;
     }
      public boolean isGuardado() {
         return guardado;
     }
     
     public void iniciarPantalla() {
-        try{
-            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
-        }
-        catch(Exception ex) {
-            System.out.println("Fallo lookandfell");
-        }
+
         pantalla = new PantallaFacturacion(this);
         configurarTablaInicial();
         getPantalla().setVisible(true);
@@ -359,7 +361,7 @@ public class ControladorPanallaFacturacion {
                         case 11:mes="diciembre";break;
                     }
                     String anio = String.valueOf(experto.getDtoFactura().getFactura().getFecha().getYear()+1900);
-                    String descripcion = "Comisiones por ventas y cobranzas "+  mes + " de " + anio;
+                    String descripcion = "Comisiones ControladorPanallaFacturacion.java:1015por ventas y cobranzas "+  mes + " de " + anio;
                     producto.setDescripcion(descripcion);
                     List<PrecioHistorico> listaPrecioHistorico = new ArrayList<PrecioHistorico>();
                     PrecioHistorico precHist = new PrecioHistorico();
@@ -1001,6 +1003,11 @@ public class ControladorPanallaFacturacion {
 
     void colocarCuitEnFormatoParaEditar() {
         pantalla.getCuit().setText(Validar.desformatearCUIT(pantalla.getCuit().getText()));
+    }
+
+
+    public void salir(){
+        controladorPantallaPrincipal.iniciarPantalla();
     }
 
 
