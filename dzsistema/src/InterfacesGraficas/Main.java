@@ -24,10 +24,12 @@ import Negocio.Entidades.TipoFacturaJpaController;
 import Negocio.Entidades.TipoMovimiento;
 import Negocio.Entidades.TipoMovimientoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
+import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
 
 /**
  *
@@ -37,6 +39,15 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+        try{
+            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
+        }
+        catch(Exception ex) {
+            System.out.println("Fallo lookandfell");
+        }
+        PantallaPresentacion pantalla = new PantallaPresentacion();
+        pantalla.setVisible(true);
         //Script de inicializacion de Base de Datos
         CondicionFrenteAlIvaJpaController fachadaCFI = new CondicionFrenteAlIvaJpaController();
         //Verifica si la base de datos se inicializo
@@ -164,6 +175,7 @@ public class Main {
          
            
           // Setea como se ven las pantallas y arranca el sistema
+        pantalla.dispose();
         new ControladorPantallaPrincipal().iniciarPantalla();
         //new ControladorPanallaFacturacion().iniciarPantalla();
         }
