@@ -6,6 +6,7 @@
 package Negocio.Entidades;
 
 import Negocio.Entidades.exceptions.NonexistentEntityException;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -133,5 +134,19 @@ public class MovimientoStockJpaController {
             em.close();
         }
     }
+
+
+        public List<MovimientoStock> buscarFacturaEntreFechas(Stock stock, Date fechaInicio, Date fechaFin) {
+        EntityManager em = getEntityManager();
+        List<MovimientoStock> encontrados;
+        Query objQuery = em.createQuery("SELECT a FROM MovimientoStock a WHERE a.fecha >=  :regDate1 AND a.fecha <=  :regDate2 AND a.stock = :regStock ORDER BY a.fecha");
+        objQuery.setParameter("regDate1", fechaInicio);
+        objQuery.setParameter("regDate2", fechaFin);
+        objQuery.setParameter("regStock", stock);
+
+        return objQuery.getResultList();
+    }
+
+
 
 }
