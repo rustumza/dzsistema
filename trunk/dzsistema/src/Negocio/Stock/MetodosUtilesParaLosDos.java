@@ -6,6 +6,7 @@
 package Negocio.Stock;
 
 import Negocio.Entidades.MovimientoStock;
+import Negocio.Entidades.MovimientoStockJpaController;
 import Negocio.Entidades.Producto;
 import Negocio.Entidades.TipoMovimientoJpaController;
 import java.util.ArrayList;
@@ -42,6 +43,9 @@ public class MetodosUtilesParaLosDos {
 
 
     public List<MovimientoStock> bucarMovimientosEntreFechas(Producto producto, Date fechaInicio, Date fechaFin){
+
+        producto.getStock();
+        //MovimientoStockJpaController.
 
        //TODO
 
