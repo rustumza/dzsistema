@@ -44,10 +44,13 @@ public class MetodosUtilesParaLosDos {
     public Date fechaUnMesAnterior(Date fecha){
 
         int nuevoMes;
+        int anio;
         if(fecha.getMonth() == 0){
             nuevoMes = 11;
+            anio = fecha.getYear() - 1;
         }else{
             nuevoMes = fecha.getMonth() - 1;
+            anio = fecha.getYear();
         }
         int nuevoDia;
         if(fecha.getDate()>=28){
@@ -55,7 +58,7 @@ public class MetodosUtilesParaLosDos {
         }else{
             nuevoDia= fecha.getDate();
         }
-        Date fechaRetorno = new Date(fecha.getYear(), nuevoMes, nuevoDia);
+        Date fechaRetorno = new Date(anio, nuevoMes, nuevoDia);
 
         return fechaRetorno;
     }

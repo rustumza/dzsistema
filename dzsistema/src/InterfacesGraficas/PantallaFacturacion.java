@@ -16,6 +16,8 @@ import InterfacesGraficas.Reportes.PantallaVentaProductoADeterminadoClientePorMe
 import InterfacesGraficas.Reportes.PantallaVentaProductoPorMes;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -40,6 +42,17 @@ public class PantallaFacturacion extends javax.swing.JFrame {
     public PantallaFacturacion(ControladorPanallaFacturacion controladorP) {
         controlador = controladorP;
         initComponents();
+
+        //toma el evento cuando cierro la pantalla, y asi puedo volver a la pantalla principal
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                controlador.salir();
+            }
+        });
+
+
+
         this.setLocationRelativeTo(null);
         condicionDeVenta.setModel(new DefaultComboBoxModel());
     }
@@ -127,8 +140,9 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(salir());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("C&C IT Solutions - v1.1 - Facturación");
+        setFocusable(false);
         setResizable(false);
 
         panelPrincipal.setMaximumSize(new java.awt.Dimension(1022, 1581));
@@ -1119,12 +1133,6 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         new ControladorEvolucionComprasClienteRespectoAUnProducto(this).iniciarPantalla();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private int salir(){
-        this.dispose();
-        //controlador.salir();
-        return JFrame.DO_NOTHING_ON_CLOSE;
-
-    }
 
 
     /**

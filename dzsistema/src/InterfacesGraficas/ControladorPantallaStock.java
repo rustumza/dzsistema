@@ -135,10 +135,7 @@ public class ControladorPantallaStock {
     }
 
 
-    public int salir(){
-
-        pantalla.dispose();
+    public void salir(){
         controladorPantallaPrincipal.iniciarPantalla();
-        return JFrame.DISPOSE_ON_CLOSE;
     }
 }

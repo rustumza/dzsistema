@@ -19,13 +19,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     ControladorPantallaPrincipal controlador;
 
     /** Creates new form PantallaPrincipal */
-    public PantallaPrincipal() {
+    /*public PantallaPrincipal() {
         initComponents();
-    }
+    }*/
 
     PantallaPrincipal(ControladorPantallaPrincipal controlador) {
         initComponents();
         this.controlador = controlador;
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -44,6 +45,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         imagenLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C&C IT Solutions - v1.1 - DZ Representaciones");
+        setResizable(false);
 
         botonFacturacion.setText("FACTURACIÓN");
         botonFacturacion.addActionListener(new java.awt.event.ActionListener() {

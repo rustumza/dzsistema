@@ -51,7 +51,7 @@ public class ControladorPantallaPrincipal {
     }
 
     public void acercaDe() {
-        new PantallaAcercaDe().setVisible(true);
+        new PantallaAcercaDe(pantalla).setVisible(true);
     }
 
     public void salir() {
