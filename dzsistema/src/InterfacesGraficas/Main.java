@@ -13,6 +13,8 @@ import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
 import Negocio.Entidades.Factura;
 import Negocio.Entidades.FacturaJpaController;
+import Negocio.Entidades.MovimientoStock;
+import Negocio.Entidades.MovimientoStockJpaController;
 import Negocio.Entidades.Numerador;
 import Negocio.Entidades.NumeradorJpaController;
 import Negocio.Entidades.Producto;
@@ -172,7 +174,6 @@ public class Main {
         long id = 1402;
         System.out.println(fachadaX.findProducto(id).getStock());
         */
-         
            
           // Setea como se ven las pantallas y arranca el sistema
         pantalla.dispose();

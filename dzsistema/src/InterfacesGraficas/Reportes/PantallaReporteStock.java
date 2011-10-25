@@ -13,6 +13,7 @@ package InterfacesGraficas.Reportes;
 
 import InterfacesGraficas.DTOStockProducto;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,9 +29,12 @@ public class PantallaReporteStock extends javax.swing.JFrame {
         initComponents();
     }
     
-    public PantallaReporteStock(List<DTOStockProducto> dtos) {
+    public PantallaReporteStock(List<DTOStockProducto> dtos, Date fecha) {
         initComponents();
         stocks = dtos;
+        jLabelDia.setText(Integer.toString(fecha.getDay()));
+        jLabelAño.setText(Integer.toString(fecha.getYear() + 1900));
+        jLabelMes.setText(cargarMes(fecha));
         CargarTabla();
     }
 
@@ -196,5 +200,35 @@ public class PantallaReporteStock extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableStocks;
     // End of variables declaration//GEN-END:variables
+
+    private String cargarMes(Date fecha) {
+        String mes = "Enero";
+        if(fecha.getMonth() == 0){
+            mes = "Enero";
+        }else if (fecha.getMonth() == 1){
+            mes = "Febrero";
+        }else if (fecha.getMonth() == 2){
+            mes = "Marzo";
+        }else if (fecha.getMonth() == 3){
+            mes = "Abril";
+        }else if (fecha.getMonth() == 4){
+            mes = "Mayo";
+        }else if (fecha.getMonth() == 5){
+            mes = "Junio";
+        }else if (fecha.getMonth() == 6){
+            mes = "Julio";
+        }else if (fecha.getMonth() == 7){
+            mes = "Agosto";
+        }else if (fecha.getMonth() == 8){
+            mes = "Septiembre";
+        }else if (fecha.getMonth() == 9){
+            mes = "Octubre";
+        }else if (fecha.getMonth() == 10){
+            mes = "Noviembre";
+        }else if (fecha.getMonth() == 11){
+            mes = "Diciembre";
+        }
+        return mes;
+    }
 
 }
