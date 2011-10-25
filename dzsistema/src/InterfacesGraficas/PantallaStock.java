@@ -11,6 +11,7 @@
 
 package InterfacesGraficas;
 
+import InterfacesGraficas.Reportes.ControladorReporteStock;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
@@ -125,11 +126,11 @@ public class PantallaStock extends javax.swing.JFrame {
                     .addGroup(panelProductoLayout.createSequentialGroup()
                         .addComponent(codigoLabel)
                         .addGap(48, 48, 48)
-                        .addComponent(codigoProductoEncontradoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE))
+                        .addComponent(codigoProductoEncontradoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE))
                     .addGroup(panelProductoLayout.createSequentialGroup()
                         .addComponent(descripcionLable)
                         .addGap(18, 18, 18)
-                        .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE))))
+                        .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))))
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,7 +238,7 @@ public class PantallaStock extends javax.swing.JFrame {
             panelUltimosMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelUltimosMovimientosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelUltimosMovimientosLayout.setVerticalGroup(
@@ -247,12 +248,22 @@ public class PantallaStock extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        reportes.setText("reportes");
+        reportes.setText(" Reportes");
 
-        jMenuItemStockActual.setText("Stock Actual");
+        jMenuItemStockActual.setText("Stock actual");
+        jMenuItemStockActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemStockActualActionPerformed(evt);
+            }
+        });
         reportes.add(jMenuItemStockActual);
 
         jMenuItemStockPorFecha.setText("Stock por fecha");
+        jMenuItemStockPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemStockPorFechaActionPerformed(evt);
+            }
+        });
         reportes.add(jMenuItemStockPorFecha);
 
         menu.add(reportes);
@@ -515,6 +526,16 @@ public class PantallaStock extends javax.swing.JFrame {
         PantallaAltaModificacionProducto iu = new PantallaAltaModificacionProducto();
         iu.setVisible(true);
     }//GEN-LAST:event_menuNuevoProductoActionPerformed
+
+    private void jMenuItemStockPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemStockPorFechaActionPerformed
+        ControladorReporteStock controladorReporte = new ControladorReporteStock();
+        controladorReporte.iniciarPantallaSeleccionarFecha();
+    }//GEN-LAST:event_jMenuItemStockPorFechaActionPerformed
+
+    private void jMenuItemStockActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemStockActualActionPerformed
+        ControladorReporteStock controladorReporte = new ControladorReporteStock();
+        controladorReporte.iniciarPantalla();
+    }//GEN-LAST:event_jMenuItemStockActualActionPerformed
 
     /**
     * @param args the command line arguments

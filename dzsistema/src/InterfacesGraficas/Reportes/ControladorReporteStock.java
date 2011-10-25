@@ -49,9 +49,4 @@ public class ControladorReporteStock {
         pantallaFecha.setLocationRelativeTo(null);
         pantallaFecha.setVisible(true);
     }
-
-    public void formatearFecha(){
-        pantallaFecha.setjTextFieldFecha(Validar.formatearFechaConBarrasAFechaConFormatoDeIngreso(pantallaFecha.getjTextFieldFecha().toString()));
-    }
-
 }

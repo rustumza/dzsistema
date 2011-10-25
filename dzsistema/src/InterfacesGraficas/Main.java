@@ -174,6 +174,29 @@ public class Main {
         long id = 1402;
         System.out.println(fachadaX.findProducto(id).getStock());
         */
+
+        //Prueba juampa 3
+        /*
+        ProductoJpaController fachadaX = new ProductoJpaController();
+        MovimientoStockJpaController fachadaM = new MovimientoStockJpaController();
+        StockJpaController fachadaS = new StockJpaController();
+        MovimientoStock mov = new MovimientoStock();
+        Date hoy = new Date();
+        mov.setFecha(hoy);
+        mov.setMovimiento(10);
+        mov.setStockDespuesDelMovimiento(10);
+        fachadaM.create(mov);
+        Producto prod = fachadaX.findProductoEntities().get(0);
+        Stock stock = prod.getStock();
+        stock.addMovimiento(mov);
+        try{
+            fachadaS.edit(stock);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
            
           // Setea como se ven las pantallas y arranca el sistema
         pantalla.dispose();

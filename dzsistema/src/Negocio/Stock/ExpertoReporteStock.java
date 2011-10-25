@@ -28,15 +28,31 @@ public class ExpertoReporteStock {
         List<Producto> productos = fachadaProducto.findProductoEntities();
         //Cargo la lista de dto con los datos de los productos y sus stock
         for(int i = 0; i<productos.size(); i++){
-            DTOStockProducto dto = new DTOStockProducto();
-            dto.setCodigo(productos.get(i).getCodigo());
-            dto.setNombre(productos.get(i).getDescripcion());
-            //Busco ultimo movimiento de stock segun el parametro fecha y obtengo el stock del momento
+            //Busco la lista de los ultimos movimientos (1 mes para atras) de stock segun el parametro fecha para obtener el stock del momento
             MetodosUtilesParaLosDos util = new MetodosUtilesParaLosDos();
             MovimientoStockJpaController fachadaMovimientos = new MovimientoStockJpaController();
-            MovimientoStock movimiento = util.ultimoMovimientoDeLaLista(fachadaMovimientos.buscarMovimientosStockEntreFechas(productos.get(i).getStock(), fecha, util.fechaUnMesAnterior(fecha)));
-            dto.setStock(movimiento.getStockDespuesDelMovimiento());
-            resultado.add(dto);
+            List<MovimientoStock> movimientos = fachadaMovimientos.buscarMovimientosStockEntreFechas(productos.get(i).getStock(), util.fechaUnMesAnterior(fecha), fecha);
+            //Si la lista de movimientos no esta vacia creo un dto y guardo
+            if(!movimientos.isEmpty()){
+                MovimientoStock movimiento = util.ultimoMovimientoDeLaLista(movimientos);
+                DTOStockProducto dto = new DTOStockProducto();
+                dto.setCodigo(productos.get(i).getCodigo());
+                dto.setNombre(productos.get(i).getDescripcion());
+                dto.setStock(movimiento.getStockDespuesDelMovimiento());
+                resultado.add(dto);
+            }
+            //Si la lista estaba vasia busco movimientos desde la fecha hacia atras
+            else{
+                //Si la lista de movimientos no esta vacia creo un dto y guardo
+                if(!fachadaMovimientos.buscarMovimientosDesdeFechaHaciaAtras(productos.get(i).getStock(), fecha).isEmpty()){
+                    MovimientoStock movimiento = util.ultimoMovimientoDeLaLista(fachadaMovimientos.buscarMovimientosDesdeFechaHaciaAtras(productos.get(i).getStock(), fecha));
+                    DTOStockProducto dto = new DTOStockProducto();
+                    dto.setCodigo(productos.get(i).getCodigo());
+                    dto.setNombre(productos.get(i).getDescripcion());
+                    dto.setStock(movimiento.getStockDespuesDelMovimiento());
+                    resultado.add(dto);
+                }
+            }
         }
         return resultado;
     }
