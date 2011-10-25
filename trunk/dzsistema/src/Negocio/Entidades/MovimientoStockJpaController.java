@@ -148,6 +148,17 @@ public class MovimientoStockJpaController {
          return encontrados;
     }
 
+    public List<MovimientoStock> buscarMovimientosDesdeFechaHaciaAtras(Stock stock, Date fecha) {
+        EntityManager em = getEntityManager();
+        List<MovimientoStock> encontrados;
+        Query objQuery = em.createQuery("SELECT a FROM MovimientoStock a WHERE a.fecha <=  :regDate AND a.stock = :regStock ORDER BY a.fecha");
+        objQuery.setParameter("regDate", fecha);
+        objQuery.setParameter("regStock", stock);
+
+         encontrados = objQuery.getResultList();
+         return encontrados;
+    }
+
 
 
 }

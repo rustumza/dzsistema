@@ -32,7 +32,7 @@ public class PantallaReporteStock extends javax.swing.JFrame {
     public PantallaReporteStock(List<DTOStockProducto> dtos, Date fecha) {
         initComponents();
         stocks = dtos;
-        jLabelDia.setText(Integer.toString(fecha.getDay()));
+        jLabelDia.setText(Integer.toString(fecha.getDate()));
         jLabelAño.setText(Integer.toString(fecha.getYear() + 1900));
         jLabelMes.setText(cargarMes(fecha));
         CargarTabla();
@@ -127,15 +127,12 @@ public class PantallaReporteStock extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelAño)
-                        .addGap(159, 159, 159))
+                        .addComponent(jLabelAño))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 503, Short.MAX_VALUE)
-                                .addComponent(jButtonCerrar)))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 503, Short.MAX_VALUE)
+                        .addComponent(jButtonCerrar)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

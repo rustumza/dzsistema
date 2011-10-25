@@ -13,6 +13,7 @@ package InterfacesGraficas.Reportes;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import validar.Validar;
 
@@ -29,8 +30,9 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
     }
 
     public PantallaSeleccionarFecha(ControladorReporteStock controlador) {
-        this.controlador = controlador;
         initComponents();
+        this.controlador = controlador;
+        jButtonAceptar.setEnabled(false);
     }
 
     /** This method is called from within the constructor to
@@ -47,7 +49,8 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
         jButtonAceptar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ingresar Fecha");
 
         jLabel1.setText("Fecha");
 
@@ -56,11 +59,6 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
         jTextFieldFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFechaActionPerformed(evt);
-            }
-        });
-        jTextFieldFecha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldFechaFocusLost(evt);
             }
         });
 
@@ -118,18 +116,25 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         //Fijarce bien cual es el metodo validar que hay que usar
-        controlador.iniciarPantalla(Validar.validarFecha(jTextFieldFecha.getText()));
+        controlador.iniciarPantalla(Validar.validarFecha(Validar.formatearFechaConBarrasAFechaConFormatoDeIngreso(jTextFieldFecha.getText())));
         this.dispose();
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
-    private void jTextFieldFechaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldFechaFocusLost
-        //Fijarce bien cual es el metodo validar que hay que usar
-        controlador.formatearFecha();
-    }//GEN-LAST:event_jTextFieldFechaFocusLost
-
     private void jTextFieldFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaActionPerformed
-        //Fijarce bien cual es el metodo validar que hay que usar
-        controlador.formatearFecha();
+
+        if(getjTextFieldFecha().getText().equals("")){
+            getjTextFieldFecha().requestFocus();
+        }
+        else{
+            try{
+            jTextFieldFecha.setText(Validar.formatearFechaAString(Validar.validarFecha(getjTextFieldFecha().getText())));
+            }
+            catch(validar.fechaException e){
+                //e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            jButtonAceptar.setEnabled(true);
+        }
     }//GEN-LAST:event_jTextFieldFechaActionPerformed
 
     /**
