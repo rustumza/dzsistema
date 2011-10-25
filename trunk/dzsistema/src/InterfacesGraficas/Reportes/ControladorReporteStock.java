@@ -30,7 +30,7 @@ public class ControladorReporteStock {
         Date fecha = new Date();
         List<DTOStockProducto> stocks = experto.buscarStocks(fecha);
         //Mando los dto en el contructor de la pantalla para que los cargue en la tabla y los muestre
-        pantalla = new PantallaReporteStock();
+        pantalla = new PantallaReporteStock(stocks, fecha);
         pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
     }
@@ -39,7 +39,7 @@ public class ControladorReporteStock {
         //Aca llamo al experto para buscar los dto resultantes segun fecha
         List<DTOStockProducto> stocks = experto.buscarStocks(fecha);
         //Envio los dto en el contructor de la pantalla para que los cargue en la tabla y los muestre
-        pantalla = new PantallaReporteStock(stocks);
+        pantalla = new PantallaReporteStock(stocks, fecha);
         pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
     }
