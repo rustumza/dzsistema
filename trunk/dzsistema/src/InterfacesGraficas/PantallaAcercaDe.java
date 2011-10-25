@@ -18,8 +18,14 @@ package InterfacesGraficas;
 public class PantallaAcercaDe extends javax.swing.JFrame {
 
     /** Creates new form PantallaAcercaDe */
-    public PantallaAcercaDe() {
+    /*public PantallaAcercaDe() {
         initComponents();
+    }*/
+
+    PantallaAcercaDe(PantallaPrincipal pantalla) {
+        initComponents();
+        setLocationRelativeTo(pantalla);
+        
     }
 
     /** This method is called from within the constructor to
@@ -31,7 +37,8 @@ public class PantallaAcercaDe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,13 +57,13 @@ public class PantallaAcercaDe extends javax.swing.JFrame {
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PantallaAcercaDe().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

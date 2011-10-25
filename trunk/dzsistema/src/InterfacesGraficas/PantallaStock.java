@@ -11,6 +11,8 @@
 
 package InterfacesGraficas;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -33,9 +35,22 @@ public class PantallaStock extends javax.swing.JFrame {
         initComponents();
     }
 
-    public PantallaStock(ControladorPantallaStock controlador) {
+    public PantallaStock(ControladorPantallaStock controladorP) {
+        
+        this.controlador = controladorP;
         initComponents();
-        this.controlador = controlador;
+        this.setLocationRelativeTo(null);
+        
+        //toma el evento cuando cierro la pantalla, y asi puedo volver a la pantalla principal
+          addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                controlador.salir();
+            }
+        });
+
+
+        
     }
 
     /** This method is called from within the constructor to
@@ -74,7 +89,9 @@ public class PantallaStock extends javax.swing.JFrame {
         menuNuevoProducto = new javax.swing.JMenuItem();
         menuModificarProducto = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("C&C IT Solutions - v1.1 - Stock");
+        setResizable(false);
 
         panelProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Producto"));
 
