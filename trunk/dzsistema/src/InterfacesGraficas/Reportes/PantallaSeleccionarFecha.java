@@ -11,6 +11,7 @@
 
 package InterfacesGraficas.Reportes;
 
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -115,8 +116,12 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        //Fijarce bien cual es el metodo validar que hay que usar
-        controlador.iniciarPantalla(Validar.validarFecha(Validar.formatearFechaConBarrasAFechaConFormatoDeIngreso(jTextFieldFecha.getText())));
+        Date fecha = Validar.validarFecha(Validar.formatearFechaConBarrasAFechaConFormatoDeIngreso(jTextFieldFecha.getText()));
+        fecha.setSeconds(59);
+        fecha.setHours(23);
+        fecha.setMinutes(59);
+        System.out.println(fecha);
+        controlador.iniciarPantalla(fecha);
         this.dispose();
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
