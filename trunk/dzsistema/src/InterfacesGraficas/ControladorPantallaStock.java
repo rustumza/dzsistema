@@ -11,12 +11,12 @@ import Negocio.Entidades.Producto;
 import Negocio.Stock.ExpertoStock;
 import Negocio.Stock.MetodosUtilesParaLosDos;
 import Negocio.Stock.StockException.StockExcepcion;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -40,6 +40,7 @@ public class ControladorPantallaStock {
 
     public void iniciarPantalla(){
         pantalla = new PantallaStock(this);
+        cargarDatosStockEnPantalla(null);
         getPantalla().setVisible(true);
     }
 
@@ -68,7 +69,7 @@ public class ControladorPantallaStock {
             }
             pantalla.getCodigoProductoEncontradoLabel().setText(String.valueOf(producto.getCodigo()));
             pantalla.getDescripcionProductoEncontradoLAbel().setText(producto.getDescripcion());
-            List<MovimientoStock> listaOrdenadaDeMovimientos = new MetodosUtilesParaLosDos().ordenarMovimientosPorFechaDescendente(producto.getStock().getMovimientos());
+            List<MovimientoStock> listaOrdenadaDeMovimientos = experto.buscarUltimosMovimientos(producto);
             cargarDatosStockEnPantalla(listaOrdenadaDeMovimientos);
         }
     }
@@ -80,21 +81,20 @@ public class ControladorPantallaStock {
             try{
                 cantidadInt = Integer.parseInt(cantidadString);
             }catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada no es un número", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada no es un número", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);                
                 pantalla.getNuevoStockTextField().requestFocus();
                 return;
             }
         
         }
 
-        Producto prod = null;
         try {
-            prod = experto.agregarStock(cantidadInt);
+            experto.agregarStock(cantidadInt);
         } catch (StockExcepcion ex) {
             JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
 
         }
-        cargarDatosStockEnPantalla(new MovimientoStockJpaController().buscarMovimientosStockEntreFechas(prod.getStock(), new MetodosUtilesParaLosDos().fechaUnMesAnterior(new Date()), new Date()));
+        cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
     }
 
 
@@ -112,30 +112,66 @@ public class ControladorPantallaStock {
 
         }
 
-        Producto prod = null;
         try {
-            prod = experto.restarStock(cantidadInt);
+            experto.restarStock(cantidadInt);
         } catch (StockExcepcion ex) {
             if(ex.getCodigo() == 2){
                 JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada es mayor que la cantidad disponible", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
                 pantalla.getNuevoStockTextField().requestFocus();
+
             }else{
                 JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        cargarDatosStockEnPantalla(new MovimientoStockJpaController().buscarMovimientosStockEntreFechas(prod.getStock(), new MetodosUtilesParaLosDos().fechaUnMesAnterior(new Date()), new Date()));
+
+        
+        cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
 
     }
 
     private void cargarDatosStockEnPantalla(List<MovimientoStock> listaOrdenadaDeMovimientos) {
 
-        MovimientoStock mov = new MetodosUtilesParaLosDos().ultimoMovimientoDeLaLista(listaOrdenadaDeMovimientos);
-        pantalla.getStockActual().setText(String.valueOf(mov.getStockDespuesDelMovimiento()));
-        pantalla.getTablaUltimosMovimientos().setModel(new ModeloTablaUltimosMovimientos(listaOrdenadaDeMovimientos));
+        if(listaOrdenadaDeMovimientos == null){
+            pantalla.getStockActual().setText("0");
+        }else{
+            MovimientoStock mov = new MetodosUtilesParaLosDos().ultimoMovimientoDeLaLista(listaOrdenadaDeMovimientos);
+            pantalla.getStockActual().setText(String.valueOf(mov.getStockDespuesDelMovimiento()));
+        }
+        cargarTabla(listaOrdenadaDeMovimientos);
+        pantalla.getNuevoStockTextField().setText("");
     }
 
 
     public void salir(){
         controladorPantallaPrincipal.iniciarPantalla();
     }
+
+    public void cancelar() {
+        pantalla.getNuevoStockTextField().setText("");
+    }
+
+
+    private void cargarTabla(List<MovimientoStock> lista){
+
+        if(lista == null){
+            pantalla.getTablaUltimosMovimientos().setModel(new ModeloTablaUltimosMovimientos());
+        }else{
+            pantalla.getTablaUltimosMovimientos().setModel(new ModeloTablaUltimosMovimientos(lista));
+        }
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(0).setPreferredWidth(65);  //fecha
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(1).setPreferredWidth(60);  //tipo movimiento
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(2).setPreferredWidth(60);  //movimiento
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(3).setPreferredWidth(115);  //stock despues del movimiento
+
+        //alinear a la derecha las columnas
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(JLabel.RIGHT);
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(2).setCellRenderer(tcr); //moviemiento
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(3).setCellRenderer(tcr); //stock despues del movimiento
+
+
+
+    }
+
+
 }
