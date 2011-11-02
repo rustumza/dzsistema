@@ -55,7 +55,8 @@ public class ControladorPantallaPrincipal {
     }
 
     public void salir() {
-
+        pantalla.dispose();
+        System.exit(0);
     }
 
 }
