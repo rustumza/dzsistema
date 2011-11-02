@@ -6,9 +6,6 @@
 package Negocio.Stock;
 
 import Negocio.Entidades.MovimientoStock;
-import Negocio.Entidades.MovimientoStockJpaController;
-import Negocio.Entidades.Producto;
-import Negocio.Entidades.TipoMovimientoJpaController;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,5 +59,25 @@ public class MetodosUtilesParaLosDos {
 
         return fechaRetorno;
     }
+
+     public Date fechaUnAnioAnterior(Date fecha){
+
+
+        int nuevoMes = fecha.getMonth();
+        int anio = fecha.getYear()-1;
+        int nuevoDia;
+        if(fecha.getDate()>=28){
+           nuevoDia = 28;
+        }else{
+            nuevoDia= fecha.getDate();
+        }
+        Date fechaRetorno = new Date(anio, nuevoMes, nuevoDia);
+        if(fechaRetorno.before(new Date(100, 0, 1))){
+            return new Date(100, 0, 1);
+        }
+
+        return fechaRetorno;
+    }
+
 
 }
