@@ -71,6 +71,7 @@ public class ControladorPantallaStock {
             pantalla.getDescripcionProductoEncontradoLAbel().setText(producto.getDescripcion());
             List<MovimientoStock> listaOrdenadaDeMovimientos = experto.buscarUltimosMovimientos(producto);
             cargarDatosStockEnPantalla(listaOrdenadaDeMovimientos);
+            pantalla.getNuevoStockTextField().requestFocus();
         }
     }
 
@@ -100,6 +101,7 @@ public class ControladorPantallaStock {
 
             }
             cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
+            pantalla.getNuevoStockTextField().requestFocus();
         }
     }
 
@@ -137,7 +139,8 @@ public class ControladorPantallaStock {
 
 
             cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
-    }
+            pantalla.getNuevoStockTextField().requestFocus();
+        }
     }
 
     private void cargarDatosStockEnPantalla(List<MovimientoStock> listaOrdenadaDeMovimientos) {

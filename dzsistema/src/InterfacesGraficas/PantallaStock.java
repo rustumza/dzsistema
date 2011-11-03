@@ -98,6 +98,12 @@ public class PantallaStock extends javax.swing.JFrame {
 
         codigoDeBusquedaLabel.setText("Código de producto");
 
+        codigoDeBusquedaTextBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codigoDeBusquedaTextBoxKeyPressed(evt);
+            }
+        });
+
         buscarProducto.setText("Buscar");
         buscarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -549,6 +555,13 @@ public class PantallaStock extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         controlador.cancelar();
     }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void codigoDeBusquedaTextBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoDeBusquedaTextBoxKeyPressed
+        if (evt.getKeyCode()==10)
+            {
+                getControlador().buscarProducto();
+            }
+    }//GEN-LAST:event_codigoDeBusquedaTextBoxKeyPressed
 
     /**
     * @param args the command line arguments
