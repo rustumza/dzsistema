@@ -14,6 +14,7 @@ import Negocio.Entidades.TipoMovimiento;
 import Negocio.Entidades.TipoMovimientoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import Negocio.Stock.StockException.StockExcepcion;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -68,6 +69,7 @@ public class ExpertoStock {
             movStock.setTipoMovimiento(tipMov);
             producto.getStock().addMovimiento(movStock);
             new StockJpaController().edit(producto.getStock());
+            producto.getStock().setMovimientos(new ArrayList<MovimientoStock>());
             return producto;
             
         } catch (NonexistentEntityException ex) {
@@ -114,6 +116,7 @@ public class ExpertoStock {
                 movStock.setTipoMovimiento(tipMov);
                 producto.getStock().addMovimiento(movStock);
                 new StockJpaController().edit(producto.getStock());
+                producto.getStock().setMovimientos(new ArrayList<MovimientoStock>());
                 return producto;
 
             }catch(StockExcepcion ex){

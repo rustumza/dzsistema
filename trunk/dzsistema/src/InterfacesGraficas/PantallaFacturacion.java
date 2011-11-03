@@ -818,6 +818,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         getContentPane().add(panelPrincipal, java.awt.BorderLayout.PAGE_START);
 
         menuFactura.setText("  Factura");
+        menuFactura.setMargin(new java.awt.Insets(0, 3, 0, 5));
 
         menuBuscarFactura.setText("Buscar factura");
         menuBuscarFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -830,7 +831,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         menu.add(menuFactura);
 
         menuCliente.setText(" Cliente ");
-        menuCliente.setMargin(new java.awt.Insets(0, 1, 0, 0));
+        menuCliente.setMargin(new java.awt.Insets(0, 3, 0, 5));
 
         menuNuevoCliente.setText("Nuevo Cliente");
         menuNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -851,6 +852,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         menu.add(menuCliente);
 
         menuProducto.setText(" Producto ");
+        menuProducto.setMargin(new java.awt.Insets(0, 3, 0, 5));
 
         menuNuevoProducto.setText("Nuevo Producto");
         menuNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -871,6 +873,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         menu.add(menuProducto);
 
         reportes.setText(" Reportes ");
+        reportes.setMargin(new java.awt.Insets(0, 3, 0, 5));
 
         jMenuItem1.setText("Ventas de productos a determinado cliente por mes");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {

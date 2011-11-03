@@ -7,6 +7,9 @@
         <Menu class="javax.swing.JMenu" name="menuFactura">
           <Properties>
             <Property name="text" type="java.lang.String" value="  Factura"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 3, 0, 5]"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuBuscarFactura">
@@ -23,7 +26,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value=" Cliente "/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-              <Insets value="[0, 1, 0, 0]"/>
+              <Insets value="[0, 3, 0, 5]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -48,6 +51,9 @@
         <Menu class="javax.swing.JMenu" name="menuProducto">
           <Properties>
             <Property name="text" type="java.lang.String" value=" Producto "/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 3, 0, 5]"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuNuevoProducto">
@@ -71,6 +77,9 @@
         <Menu class="javax.swing.JMenu" name="reportes">
           <Properties>
             <Property name="text" type="java.lang.String" value=" Reportes "/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 3, 0, 5]"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">

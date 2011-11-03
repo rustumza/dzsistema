@@ -49,6 +49,10 @@ public class Stock implements Serializable {
         this.id = id;
     }
 
+    public void setMovimientos(List<MovimientoStock> movimientos){
+        this.movimientos = movimientos;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
