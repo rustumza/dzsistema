@@ -76,6 +76,11 @@ public class ControladorPantallaStock {
 
     public void agregarStock(){
         String cantidadString = pantalla.getNuevoStockTextField().getText();
+        if(experto.getProducto() == null){
+            JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Debe seleccionar un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantalla.getCodigoDeBusquedaTextBox().requestFocus();
+            return;
+        }
         int cantidadInt = 0;
         if(!(cantidadString.equals(""))){
             try{
@@ -86,21 +91,27 @@ public class ControladorPantallaStock {
                 return;
             }
         
-        }
+        
 
-        try {
-            experto.agregarStock(cantidadInt);
-        } catch (StockExcepcion ex) {
-            JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            try {
+                experto.agregarStock(cantidadInt);
+            } catch (StockExcepcion ex) {
+                JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
 
+            }
+            cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
         }
-        cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
     }
 
 
     public void restarStock(){
         String cantidadString = pantalla.getNuevoStockTextField().getText();
         int cantidadInt = 0;
+        if(experto.getProducto() == null){
+            JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Debe seleccionar un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantalla.getCodigoDeBusquedaTextBox().requestFocus();
+            return;
+        }
         if(!(cantidadString.equals(""))){
             try{
                 cantidadInt = Integer.parseInt(cantidadString);
@@ -110,23 +121,23 @@ public class ControladorPantallaStock {
                 return;
             }
 
-        }
-
-        try {
-            experto.restarStock(cantidadInt);
-        } catch (StockExcepcion ex) {
-            if(ex.getCodigo() == 2){
-                JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada es mayor que la cantidad disponible", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-                pantalla.getNuevoStockTextField().requestFocus();
-
-            }else{
-                JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-
         
-        cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
 
+            try {
+                experto.restarStock(cantidadInt);
+            } catch (StockExcepcion ex) {
+                if(ex.getCodigo() == 2){
+                    JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada es mayor que la cantidad disponible", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                    pantalla.getNuevoStockTextField().requestFocus();
+
+                }else{
+                    JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+
+
+            cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
+    }
     }
 
     private void cargarDatosStockEnPantalla(List<MovimientoStock> listaOrdenadaDeMovimientos) {
