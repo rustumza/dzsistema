@@ -5,16 +5,10 @@
 
 package InterfacesGraficas;
 
-import Negocio.Entidades.Cliente;
-import Negocio.Entidades.ClienteJpaController;
 import Negocio.Entidades.CondicionDeVenta;
 import Negocio.Entidades.CondicionDeVentaJpaController;
 import Negocio.Entidades.CondicionFrenteAlIva;
 import Negocio.Entidades.CondicionFrenteAlIvaJpaController;
-import Negocio.Entidades.Factura;
-import Negocio.Entidades.FacturaJpaController;
-import Negocio.Entidades.MovimientoStock;
-import Negocio.Entidades.MovimientoStockJpaController;
 import Negocio.Entidades.Numerador;
 import Negocio.Entidades.NumeradorJpaController;
 import Negocio.Entidades.Producto;
@@ -27,7 +21,6 @@ import Negocio.Entidades.TipoMovimiento;
 import Negocio.Entidades.TipoMovimientoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
