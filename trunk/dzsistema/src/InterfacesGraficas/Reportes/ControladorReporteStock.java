@@ -28,16 +28,16 @@ public class ControladorReporteStock {
     public void iniciarPantalla(){
         //Aca llamo al experto para buscar los dto resultantes con la fecha actual
         Date fecha = new Date();
-        List<DTOStockProducto> stocks = experto.buscarStocks(fecha);
+        List<DTOStockProducto> stocks = experto.buscarStocks(fecha, true);
         //Mando los dto en el contructor de la pantalla para que los cargue en la tabla y los muestre
         pantalla = new PantallaReporteStock(stocks, fecha);
         pantalla.setLocationRelativeTo(null);
         pantalla.setVisible(true);
     }
 
-    public void iniciarPantalla(Date fecha){
+    public void iniciarPantalla(Date fecha, boolean mostrarProductosSinStock){
         //Aca llamo al experto para buscar los dto resultantes segun fecha
-        List<DTOStockProducto> stocks = experto.buscarStocks(fecha);
+        List<DTOStockProducto> stocks = experto.buscarStocks(fecha, mostrarProductosSinStock);
         //Envio los dto en el contructor de la pantalla para que los cargue en la tabla y los muestre
         pantalla = new PantallaReporteStock(stocks, fecha);
         pantalla.setLocationRelativeTo(null);

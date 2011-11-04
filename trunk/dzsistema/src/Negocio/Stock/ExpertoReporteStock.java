@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ExpertoReporteStock {
 
-    public List<DTOStockProducto> buscarStocks(Date fecha) {
+    public List<DTOStockProducto> buscarStocks(Date fecha, boolean mostrarProductosSinStock) {
         //Creo la lista de dtos
         List<DTOStockProducto> resultado = new ArrayList();
         //Traigo todos los productos
@@ -35,22 +35,46 @@ public class ExpertoReporteStock {
             //Si la lista de movimientos no esta vacia creo un dto y guardo
             if(!movimientos.isEmpty()){
                 MovimientoStock movimiento = util.ultimoMovimientoDeLaLista(movimientos);
-                DTOStockProducto dto = new DTOStockProducto();
-                dto.setCodigo(productos.get(i).getCodigo());
-                dto.setNombre(productos.get(i).getDescripcion());
-                dto.setStock(movimiento.getStockDespuesDelMovimiento());
-                resultado.add(dto);
+                //Verifico si quiero mostrar productos con stock 0
+                if(movimiento.getStockDespuesDelMovimiento() != 0){
+                    DTOStockProducto dto = new DTOStockProducto();
+                    dto.setCodigo(productos.get(i).getCodigo());
+                    dto.setNombre(productos.get(i).getDescripcion());
+                    dto.setStock(movimiento.getStockDespuesDelMovimiento());
+                    resultado.add(dto);
+                }
+                else{
+                    if(mostrarProductosSinStock){
+                        DTOStockProducto dto = new DTOStockProducto();
+                        dto.setCodigo(productos.get(i).getCodigo());
+                        dto.setNombre(productos.get(i).getDescripcion());
+                        dto.setStock(movimiento.getStockDespuesDelMovimiento());
+                        resultado.add(dto);
+                    }
+                }
             }
             //Si la lista estaba vasia busco movimientos desde la fecha hacia atras
             else{
                 //Si la lista de movimientos no esta vacia creo un dto y guardo
                 if(!fachadaMovimientos.buscarMovimientosDesdeFechaHaciaAtras(productos.get(i).getStock(), fecha).isEmpty()){
                     MovimientoStock movimiento = util.ultimoMovimientoDeLaLista(fachadaMovimientos.buscarMovimientosDesdeFechaHaciaAtras(productos.get(i).getStock(), fecha));
-                    DTOStockProducto dto = new DTOStockProducto();
-                    dto.setCodigo(productos.get(i).getCodigo());
-                    dto.setNombre(productos.get(i).getDescripcion());
-                    dto.setStock(movimiento.getStockDespuesDelMovimiento());
-                    resultado.add(dto);
+                    //Verifico si quiero mostrar productos con stock 0
+                    if(movimiento.getStockDespuesDelMovimiento() != 0){
+                        DTOStockProducto dto = new DTOStockProducto();
+                        dto.setCodigo(productos.get(i).getCodigo());
+                        dto.setNombre(productos.get(i).getDescripcion());
+                        dto.setStock(movimiento.getStockDespuesDelMovimiento());
+                        resultado.add(dto);
+                    }
+                    else{
+                        if(mostrarProductosSinStock){
+                            DTOStockProducto dto = new DTOStockProducto();
+                            dto.setCodigo(productos.get(i).getCodigo());
+                            dto.setNombre(productos.get(i).getDescripcion());
+                            dto.setStock(movimiento.getStockDespuesDelMovimiento());
+                            resultado.add(dto);
+                        }
+                    }
                 }
             }
         }
