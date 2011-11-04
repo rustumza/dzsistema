@@ -34,7 +34,6 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
     public PantallaSeleccionarFecha(ControladorReporteStock controlador) {
         initComponents();
         this.controlador = controlador;
-        jButtonAceptar.setEnabled(false);
     }
 
     /** This method is called from within the constructor to
@@ -171,7 +170,6 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
                 fecha.setHours(23);
                 fecha.setMinutes(59);
                 controlador.iniciarPantalla(fecha, jCheckBoxMostrarProductosEnCero.isSelected());
-                this.dispose();
             }
             catch(validar.fechaException e){
                 //e.printStackTrace();
@@ -189,7 +187,6 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
         else{
             try{
             jTextFieldFecha.setText(Validar.formatearFechaAString(Validar.validarFecha(getjTextFieldFecha().getText())));
-            jButtonAceptar.setEnabled(true);
             }
             catch(validar.fechaException e){
                 //e.printStackTrace();
