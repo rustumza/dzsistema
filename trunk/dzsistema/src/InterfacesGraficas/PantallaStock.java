@@ -136,7 +136,7 @@ public class PantallaStock extends javax.swing.JFrame {
                         .addComponent(descripcionLable)
                         .addGap(18, 18, 18)
                         .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         panelProductoLayout.setVerticalGroup(
             panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +250,7 @@ public class PantallaStock extends javax.swing.JFrame {
             panelUltimosMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUltimosMovimientosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelUltimosMovimientosLayout.setVerticalGroup(
@@ -282,7 +282,7 @@ public class PantallaStock extends javax.swing.JFrame {
 
         menu.add(reportes);
 
-        producto.setText("producto");
+        producto.setText("Producto");
         producto.setMargin(new java.awt.Insets(0, 3, 0, 5));
 
         menuNuevoProducto.setText("Nuevo Producto");

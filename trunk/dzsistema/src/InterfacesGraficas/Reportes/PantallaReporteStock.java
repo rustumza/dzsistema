@@ -167,8 +167,8 @@ public class PantallaReporteStock extends javax.swing.JFrame {
             
             datos = new Object[stocks.size()][3];
             for (int i = 0; i < stocks.size(); i++) {
-                datos[i][0] = stocks.get(i).getNombre();
-                datos[i][1] = stocks.get(i).getCodigo();
+                datos[i][0] = stocks.get(i).getCodigo();
+                datos[i][1] = stocks.get(i).getNombre();
                 datos[i][2] = stocks.get(i).getStock();
 
             }
@@ -180,6 +180,11 @@ public class PantallaReporteStock extends javax.swing.JFrame {
                     return false;
                 }
             });
+
+            //Setea tamaños de columnas
+        jTableStocks.getColumnModel().getColumn(0).setPreferredWidth(70);  //codigo
+        jTableStocks.getColumnModel().getColumn(1).setPreferredWidth(300); //nombre
+        jTableStocks.getColumnModel().getColumn(2).setPreferredWidth(70);  //stock
 
         } catch (NullPointerException e) {
             e.printStackTrace();
