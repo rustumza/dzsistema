@@ -120,7 +120,6 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
         fecha.setSeconds(59);
         fecha.setHours(23);
         fecha.setMinutes(59);
-        System.out.println(fecha);
         controlador.iniciarPantalla(fecha);
         this.dispose();
     }//GEN-LAST:event_jButtonAceptarActionPerformed

@@ -20,11 +20,9 @@ import Negocio.Entidades.TipoFacturaJpaController;
 import Negocio.Entidades.TipoMovimiento;
 import Negocio.Entidades.TipoMovimientoJpaController;
 import Negocio.Entidades.exceptions.NonexistentEntityException;
-import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.UIManager;
 
 /**
  *
@@ -34,15 +32,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        try{
-            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
-        }
-        catch(Exception ex) {
-            System.out.println("Fallo lookandfell");
-        }
+        //Lanza splash screen
         PantallaPresentacion pantalla = new PantallaPresentacion();
-        pantalla.setVisible(true);
+        pantalla.setVisible (true);
+        
         //Script de inicializacion de Base de Datos
         CondicionFrenteAlIvaJpaController fachadaCFI = new CondicionFrenteAlIvaJpaController();
         //Verifica si la base de datos se inicializo
@@ -145,56 +138,11 @@ public class Main {
                     }
                 }
             }
-            //Hay q arreglar el abm de producto para q aparezca
         }
-        //*/
-
-        //Prueba juampa 1
-        /*
-        ProductoJpaController fachadaX = new ProductoJpaController();
-        Producto prod = new Producto();
-        Stock stock = new Stock();
-        prod.setStock(stock);
-        prod.setDescripcion("pipoelpobre");
-        StockJpaController fachadaY = new StockJpaController();
-        fachadaY.create(stock);
-        fachadaX.create(prod);
-         */
-
-        //Prueba juampa 2
-        /*
-        ProductoJpaController fachadaX = new ProductoJpaController();
-        long id = 1402;
-        System.out.println(fachadaX.findProducto(id).getStock());
-        */
-
-        //Prueba juampa 3
-        /*
-        ProductoJpaController fachadaX = new ProductoJpaController();
-        MovimientoStockJpaController fachadaM = new MovimientoStockJpaController();
-        StockJpaController fachadaS = new StockJpaController();
-        MovimientoStock mov = new MovimientoStock();
-        Date hoy = new Date();
-        mov.setFecha(hoy);
-        mov.setMovimiento(10);
-        mov.setStockDespuesDelMovimiento(10);
-        fachadaM.create(mov);
-        Producto prod = fachadaX.findProductoEntities().get(0);
-        Stock stock = prod.getStock();
-        stock.addMovimiento(mov);
-        try{
-            fachadaS.edit(stock);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
            
           // Setea como se ven las pantallas y arranca el sistema
         pantalla.dispose();
         new ControladorPantallaPrincipal().iniciarPantalla();
-        //new ControladorPanallaFacturacion().iniciarPantalla();
         }
 
 }

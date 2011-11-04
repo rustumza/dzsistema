@@ -32,7 +32,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="producto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="producto"/>
+            <Property name="text" type="java.lang.String" value="Producto"/>
             <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
               <Insets value="[0, 3, 0, 5]"/>
             </Property>
@@ -146,7 +146,7 @@
                           <Component id="descripcionProductoEncontradoLAbel" min="-2" pref="543" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -331,7 +331,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="638" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="658" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
