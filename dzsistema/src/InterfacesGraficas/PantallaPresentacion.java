@@ -43,6 +43,7 @@ public class PantallaPresentacion extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("C&C IT Solutions");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(254, 254, 254));
         setResizable(false);
@@ -53,21 +54,21 @@ public class PantallaPresentacion extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo cyc chico.jpg"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 0, 25)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 0, 25));
         jLabel2.setForeground(new java.awt.Color(31, 23, 98));
         jLabel2.setText("SISTEMA DE FACTURACIÓN Y");
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 0, 25)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 0, 25));
         jLabel3.setForeground(new java.awt.Color(31, 23, 98));
         jLabel3.setText("GESTIÓN DE STOCK");
 
-        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 0, 16));
         jLabel4.setText("DZ Representaciones");
 
-        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 16));
         jLabel5.setText("Versión 1.1");
 
-        jLabel6.setFont(new java.awt.Font("DejaVu Sans", 1, 17)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("DejaVu Sans", 1, 17));
         jLabel6.setText("Cargando...");
 
         jLabel7.setText("www.cycitsolutions.com.ar");
@@ -87,8 +88,7 @@ public class PantallaPresentacion extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(51, 51, 51)
-                                    .addComponent(jLabel3)
-                                    .addGap(63, 63, 63)))
+                                    .addComponent(jLabel3)))
                             .addComponent(jLabel6))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()

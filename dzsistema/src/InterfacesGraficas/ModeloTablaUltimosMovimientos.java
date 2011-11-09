@@ -155,22 +155,21 @@ public class ModeloTablaUltimosMovimientos extends AbstractTableModel {
         fechaString += String.valueOf(fecha.getDate()) + " de ";
 
         switch (fecha.getMonth()){
-                        case 0:fechaString = "Enero";break;
-                        case 1:fechaString = "Febrero";break;
-                        case 2:fechaString = "Marzo";break;
-                        case 3:fechaString = "Abril";break;
-                        case 4:fechaString = "Mayo";break;
-                        case 5:fechaString = "Junio";break;
-                        case 6:fechaString = "Julio";break;
-                        case 7:fechaString = "Agosto";break;
-                        case 8:fechaString = "Setiembre";break;
-                        case 9:fechaString = "Octubre";break;
-                        case 10:fechaString = "Noviembre";break;
-                        case 11:fechaString = "Diciembre";break;
+                        case 0:fechaString += "Ene ";break;
+                        case 1:fechaString += "Feb ";break;
+                        case 2:fechaString += "Mar ";break;
+                        case 3:fechaString += "Abr ";break;
+                        case 4:fechaString += "May ";break;
+                        case 5:fechaString += "Jun ";break;
+                        case 6:fechaString += "Jul ";break;
+                        case 7:fechaString += "Ago ";break;
+                        case 8:fechaString += "Set ";break;
+                        case 9:fechaString += "Oct ";break;
+                        case 10:fechaString += "Nov ";break;
+                        case 11:fechaString += "Dic ";break;
                     }
 
-        fechaString += " de " + String.valueOf(fecha.getYear() + 1900);
-
+        fechaString += String.valueOf(fecha.getYear() + 1900);        
         return fechaString;
     }
 
