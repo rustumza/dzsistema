@@ -75,6 +75,15 @@ public class ExpertoReporteStock {
                             resultado.add(dto);
                         }
                     }
+                }else{
+                    //en caso que el producto no tenga movimientos, le asigna stock 0
+                    if(mostrarProductosSinStock){
+                        DTOStockProducto dto = new DTOStockProducto();
+                        dto.setCodigo(productos.get(i).getCodigo());
+                        dto.setNombre(productos.get(i).getDescripcion());
+                        dto.setStock(0);
+                        resultado.add(dto);
+                    }
                 }
             }
         }
