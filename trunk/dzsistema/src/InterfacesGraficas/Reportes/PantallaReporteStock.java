@@ -61,6 +61,7 @@ public class PantallaReporteStock extends javax.swing.JFrame {
         setTitle("Resultado");
         setResizable(false);
 
+        jTableStocks.setAutoCreateRowSorter(true);
         jTableStocks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -130,7 +131,7 @@ public class PantallaReporteStock extends javax.swing.JFrame {
                         .addComponent(jLabelAño))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 503, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 508, Short.MAX_VALUE)
                         .addComponent(jButtonCerrar)))
                 .addContainerGap())
         );
