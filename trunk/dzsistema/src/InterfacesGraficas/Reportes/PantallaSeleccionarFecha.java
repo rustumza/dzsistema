@@ -186,7 +186,8 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
         }
         else{
             try{
-            jTextFieldFecha.setText(Validar.formatearFechaAString(Validar.validarFecha(getjTextFieldFecha().getText())));
+                jTextFieldFecha.setText(Validar.formatearFechaAString(Validar.validarFecha(getjTextFieldFecha().getText())));
+                jButtonAceptar.requestFocus();
             }
             catch(validar.fechaException e){
                 //e.printStackTrace();
