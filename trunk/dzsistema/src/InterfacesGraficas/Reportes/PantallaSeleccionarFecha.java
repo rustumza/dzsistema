@@ -193,10 +193,11 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonAceptarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonAceptarKeyPressed
-        generar();
+        if (evt.getKeyCode()==10)
+            {
+                generar();
+            }
     }//GEN-LAST:event_jButtonAceptarKeyPressed
-
-
     public ControladorReporteStock getControlador() {
         return controlador;
     }
