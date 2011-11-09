@@ -172,8 +172,8 @@ public class ControladorPantallaStock {
         }else{
             pantalla.getTablaUltimosMovimientos().setModel(new ModeloTablaUltimosMovimientos(lista));
         }
-        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(0).setPreferredWidth(65);  //fecha
-        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(1).setPreferredWidth(60);  //tipo movimiento
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(0).setPreferredWidth(85);  //fecha
+        getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(1).setPreferredWidth(50);  //tipo movimiento
         getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(2).setPreferredWidth(60);  //movimiento
         getPantalla().getTablaUltimosMovimientos().getColumnModel().getColumn(3).setPreferredWidth(115);  //stock despues del movimiento
 
