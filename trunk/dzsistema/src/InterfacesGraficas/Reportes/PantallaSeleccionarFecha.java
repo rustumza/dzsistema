@@ -13,7 +13,6 @@ package InterfacesGraficas.Reportes;
 
 import java.util.Date;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
