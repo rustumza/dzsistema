@@ -62,6 +62,11 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
                 jButtonAceptarActionPerformed(evt);
             }
         });
+        jButtonAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonAceptarKeyPressed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,25 +163,7 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        if(getjTextFieldFecha().getText().equals("")){
-            getjTextFieldFecha().requestFocus();
-            JOptionPane.showMessageDialog(null, "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-            try{
-                Validar.validarFechaConBarras(jTextFieldFecha.getText());
-                Date fecha = Validar.validarFecha(Validar.formatearFechaConBarrasAFechaConFormatoDeIngreso(jTextFieldFecha.getText()));
-                fecha.setSeconds(59);
-                fecha.setHours(23);
-                fecha.setMinutes(59);
-                controlador.iniciarPantalla(fecha, jCheckBoxMostrarProductosEnCero.isSelected());
-            }
-            catch(validar.fechaException e){
-                //e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-                getjTextFieldFecha().requestFocus();
-            }
-        }
+        generar();
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jTextFieldFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaActionPerformed
@@ -204,6 +191,10 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
         getjTextFieldFecha().setText(null);
         getjTextFieldFecha().requestFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonAceptarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonAceptarKeyPressed
+        generar();
+    }//GEN-LAST:event_jButtonAceptarKeyPressed
 
 
     public ControladorReporteStock getControlador() {
@@ -248,6 +239,28 @@ public class PantallaSeleccionarFecha extends javax.swing.JFrame {
 
     public boolean getjCheckBoxMostrarProductosEnCero() {
         return jCheckBoxMostrarProductosEnCero.isSelected();
+    }
+
+    public void generar(){
+        if(getjTextFieldFecha().getText().equals("")){
+            getjTextFieldFecha().requestFocus();
+            JOptionPane.showMessageDialog(null, "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            try{
+                Validar.validarFechaConBarras(jTextFieldFecha.getText());
+                Date fecha = Validar.validarFecha(Validar.formatearFechaConBarrasAFechaConFormatoDeIngreso(jTextFieldFecha.getText()));
+                fecha.setSeconds(59);
+                fecha.setHours(23);
+                fecha.setMinutes(59);
+                controlador.iniciarPantalla(fecha, jCheckBoxMostrarProductosEnCero.isSelected());
+            }
+            catch(validar.fechaException e){
+                //e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Escriba una fecha válida", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+                getjTextFieldFecha().requestFocus();
+            }
+        }
     }
 
 
