@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -79,6 +80,7 @@ public class PantallaStock extends javax.swing.JFrame {
         agregarButton = new javax.swing.JButton();
         quitarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
+        nuevoStockQuitarTextField = new javax.swing.JTextField();
         panelUltimosMovimientos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUltimosMovimientos = new javax.swing.JTable();
@@ -153,7 +155,7 @@ public class PantallaStock extends javax.swing.JFrame {
                 .addGroup(panelProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(descripcionLable)
                     .addComponent(descripcionProductoEncontradoLAbel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(6, Short.MAX_VALUE))
         );
 
         panelStock.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Stock"));
@@ -165,6 +167,11 @@ public class PantallaStock extends javax.swing.JFrame {
         nuevoStockTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoStockTextFieldActionPerformed(evt);
+            }
+        });
+        nuevoStockTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nuevoStockTextFieldKeyPressed(evt);
             }
         });
 
@@ -189,6 +196,12 @@ public class PantallaStock extends javax.swing.JFrame {
             }
         });
 
+        nuevoStockQuitarTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nuevoStockQuitarTextFieldKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelStockLayout = new javax.swing.GroupLayout(panelStock);
         panelStock.setLayout(panelStockLayout);
         panelStockLayout.setHorizontalGroup(
@@ -197,25 +210,27 @@ public class PantallaStock extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelStockLayout.createSequentialGroup()
-                        .addComponent(movimientoStockLabel)
-                        .addGap(4, 4, 4)
-                        .addComponent(nuevoStockTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(quitarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelStockLayout.createSequentialGroup()
                         .addComponent(stockActualLabel)
                         .addGap(6, 6, 6)
-                        .addComponent(stockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(stockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelStockLayout.createSequentialGroup()
+                        .addComponent(movimientoStockLabel)
+                        .addGap(4, 4, 4)
+                        .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nuevoStockQuitarTextField)
+                            .addComponent(nuevoStockTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelStockLayout.createSequentialGroup()
+                                .addComponent(quitarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                                .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         panelStockLayout.setVerticalGroup(
             panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelStockLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
                 .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stockActualLabel)
                     .addComponent(stockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -223,10 +238,13 @@ public class PantallaStock extends javax.swing.JFrame {
                 .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(movimientoStockLabel)
                     .addComponent(nuevoStockTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregarButton)
+                    .addComponent(agregarButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(quitarButton)
+                    .addComponent(nuevoStockQuitarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelarButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         panelUltimosMovimientos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ultimos movimientos"));
@@ -312,19 +330,19 @@ public class PantallaStock extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(panelUltimosMovimientos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelUltimosMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelUltimosMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -517,6 +535,48 @@ public class PantallaStock extends javax.swing.JFrame {
         this.tablaUltimosMovimientos = tablaUltimosMovimientos;
     }
 
+    public JMenuItem getjMenuItemStockActual() {
+        return jMenuItemStockActual;
+    }
+
+    public void setjMenuItemStockActual(JMenuItem jMenuItemStockActual) {
+        this.jMenuItemStockActual = jMenuItemStockActual;
+    }
+
+    public JMenuItem getjMenuItemStockPorFecha() {
+        return jMenuItemStockPorFecha;
+    }
+
+    public void setjMenuItemStockPorFecha(JMenuItem jMenuItemStockPorFecha) {
+        this.jMenuItemStockPorFecha = jMenuItemStockPorFecha;
+    }
+
+    public JMenuItem getMenuModificarProducto() {
+        return menuModificarProducto;
+    }
+
+    public void setMenuModificarProducto(JMenuItem menuModificarProducto) {
+        this.menuModificarProducto = menuModificarProducto;
+    }
+
+    public JMenuItem getMenuNuevoProducto() {
+        return menuNuevoProducto;
+    }
+
+    public void setMenuNuevoProducto(JMenuItem menuNuevoProducto) {
+        this.menuNuevoProducto = menuNuevoProducto;
+    }
+
+    public JTextField getNuevoStockQuitarTextField() {
+        return nuevoStockQuitarTextField;
+    }
+
+    public void setNuevoStockQuitarTextField(JTextField nuevoStockQuitarTextField) {
+        this.nuevoStockQuitarTextField = nuevoStockQuitarTextField;
+    }
+
+  
+
     private void nuevoStockTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoStockTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nuevoStockTextFieldActionPerformed
@@ -564,6 +624,21 @@ public class PantallaStock extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_codigoDeBusquedaTextBoxKeyPressed
 
+    private void nuevoStockTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nuevoStockTextFieldKeyPressed
+        if (evt.getKeyCode()==10)
+                {
+                    getControlador().agregarStock();
+                }
+
+    }//GEN-LAST:event_nuevoStockTextFieldKeyPressed
+
+private void nuevoStockQuitarTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nuevoStockQuitarTextFieldKeyPressed
+        if (evt.getKeyCode() == 10) {
+            getControlador().restarStock();
+        }
+    
+}//GEN-LAST:event_nuevoStockQuitarTextFieldKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -592,6 +667,7 @@ public class PantallaStock extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuModificarProducto;
     private javax.swing.JMenuItem menuNuevoProducto;
     private javax.swing.JLabel movimientoStockLabel;
+    private javax.swing.JTextField nuevoStockQuitarTextField;
     private javax.swing.JTextField nuevoStockTextField;
     private javax.swing.JPanel panelProducto;
     private javax.swing.JPanel panelStock;
