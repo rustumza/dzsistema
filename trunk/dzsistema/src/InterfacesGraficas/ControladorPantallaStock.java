@@ -79,6 +79,7 @@ public class ControladorPantallaStock {
         String cantidadString = pantalla.getNuevoStockTextField().getText();
         if(experto.getProducto() == null){
             JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Debe seleccionar un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantalla.getNuevoStockTextField().setText("");
             pantalla.getCodigoDeBusquedaTextBox().requestFocus();
             return;
         }
@@ -107,10 +108,11 @@ public class ControladorPantallaStock {
 
 
     public void restarStock(){
-        String cantidadString = pantalla.getNuevoStockTextField().getText();
+        String cantidadString = pantalla.getNuevoStockQuitarTextField().getText();
         int cantidadInt = 0;
         if(experto.getProducto() == null){
             JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Debe seleccionar un producto", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+            pantalla.getNuevoStockQuitarTextField().setText("");
             pantalla.getCodigoDeBusquedaTextBox().requestFocus();
             return;
         }
@@ -119,7 +121,7 @@ public class ControladorPantallaStock {
                 cantidadInt = Integer.parseInt(cantidadString);
             }catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada no es un número", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-                pantalla.getNuevoStockTextField().requestFocus();
+                pantalla.getNuevoStockQuitarTextField().requestFocus();
                 return;
             }
 
@@ -130,7 +132,8 @@ public class ControladorPantallaStock {
             } catch (StockExcepcion ex) {
                 if(ex.getCodigo() == 2){
                     JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "La cantidad ingresada es mayor que la cantidad disponible", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
-                    pantalla.getNuevoStockTextField().requestFocus();
+                    pantalla.getNuevoStockQuitarTextField().requestFocus();
+                    return;
 
                 }else{
                     JOptionPane.showMessageDialog(getPantalla().getPanelStock(), "Error al guardar el Stock, vuelva a intentarlo", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
@@ -139,7 +142,7 @@ public class ControladorPantallaStock {
 
 
             cargarDatosStockEnPantalla(experto.buscarUltimosMovimientos(experto.getProducto()));
-            pantalla.getNuevoStockTextField().requestFocus();
+            pantalla.getNuevoStockQuitarTextField().requestFocus();
         }
     }
 
@@ -153,6 +156,7 @@ public class ControladorPantallaStock {
         }
         cargarTabla(listaOrdenadaDeMovimientos);
         pantalla.getNuevoStockTextField().setText("");
+        pantalla.getNuevoStockQuitarTextField().setText("");
     }
 
 
@@ -162,6 +166,7 @@ public class ControladorPantallaStock {
 
     public void cancelar() {
         pantalla.getNuevoStockTextField().setText("");
+        pantalla.getNuevoStockQuitarTextField().setText("");
     }
 
 
