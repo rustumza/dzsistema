@@ -142,6 +142,13 @@ public class FacturaJpaController {
         return encontrados;
     }
 
+    public List<Factura> buscarNoAnuladaPorNumero(long numero) {
+        EntityManager em = getEntityManager();
+        List<Factura> encontrados;
+        encontrados = em.createQuery("SELECT a FROM Factura a WHERE a.numero = '"+numero+"' AND a.estado = " + true).getResultList();
+        return encontrados;
+    }
+
      public List<Factura> buscarTodasLasFacturas() {
         EntityManager em = getEntityManager();
         List<Factura> encontrados;
