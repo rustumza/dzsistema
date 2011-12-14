@@ -464,7 +464,7 @@ public class ExpertoFacturar {
 
         FacturaJpaController jpa = new FacturaJpaController();
         for (long i = (dto.getFactura().getNumero()-1) ; i>0; i--) {
-            List<Factura> lista = jpa.buscarPorNumero(i);
+            List<Factura> lista = jpa.buscarNoAnuladaPorNumero(i);
             for (Factura factura : lista) {
                 if(factura.getTipoFactura().getNombre().equals(dto.getFactura().getTipoFactura().getNombre())){
                     if(0 < factura.getFecha().compareTo(dto.getFactura().getFecha())){
