@@ -15,7 +15,6 @@ import Negocio.Entidades.Producto;
 import validar.fechaException;
 import validar.Validar;
 import Negocio.Facturacion.ExpertoFacturar;
-import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
