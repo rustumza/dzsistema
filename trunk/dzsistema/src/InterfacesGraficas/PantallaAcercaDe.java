@@ -56,17 +56,17 @@ public class PantallaAcercaDe extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo cyc chico.jpg"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 33)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 33));
         jLabel1.setForeground(new java.awt.Color(21, 2, 204));
         jLabel1.setText("C&C IT Solutions");
 
         jLabel3.setFont(new java.awt.Font("DejaVu Sans", 0, 20)); // NOI18N
-        jLabel3.setText("Versión 1.1");
+        jLabel3.setText("Versión 1.2");
 
-        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         jLabel4.setText("Sistema de facturación y stock ");
 
-        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 1, 14));
         jLabel5.setText("para DZ Representaciones");
 
         jLabel6.setText("info@cycitsolutions.com.ar");

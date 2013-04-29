@@ -5,9 +5,9 @@
 
 package InterfacesGraficas;
 
-import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
 import javax.swing.UIManager;
 
+import javax.swing.UIManager.*;
 /**
  *
  * @author rustu
@@ -18,13 +18,41 @@ public class ControladorPantallaPrincipal {
 
 
     public void iniciarPantalla(){
+        
+        
+        
 
-        try{
-            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
-        }
-        catch(Exception ex) {
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+            
+            
+        } catch (Exception e) {
             System.out.println("Fallo lookandfell");
+            e.printStackTrace();
         }
+        
+        
+        
+
+//        try{
+//            //UIManager.setLookAndFeel(new Plastic3DLookAndFeel());
+//            //UIManager.setLookAndFeel("com.jgoodies.looks.windows.WindowsLookAndFeel");
+//            //UIManager.setLookAndFeel("com.jgoodies.looks.plastic.PlasticLookAndFeel");
+//            //UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
+//            //UIManager.setLookAndFeel("com.jgoodies.looks.plastic.PlasticXPLookAndFeel");
+//            //PlafOptions.setAsLookAndFeel();
+//            //UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
+//            UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
+//        }
+//        catch(Exception ex) {
+//            System.out.println("Fallo lookandfell");
+//        }
 
         pantalla = new PantallaPrincipal(this);
         getPantalla().setVisible(true);

@@ -141,7 +141,7 @@ public class PantallaFacturacion extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("C&C IT Solutions - v1.1 - Facturación");
+        setTitle("C&C IT Solutions - v1.2 - Facturación");
         setFocusable(false);
         setResizable(false);
 
