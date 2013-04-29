@@ -65,8 +65,8 @@ public class PantallaPresentacion extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("DejaVu Sans", 0, 16));
         jLabel4.setText("DZ Representaciones");
 
-        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 16));
-        jLabel5.setText("Versión 1.1");
+        jLabel5.setFont(new java.awt.Font("DejaVu Sans", 0, 16)); // NOI18N
+        jLabel5.setText("Versión 1.2");
 
         jLabel6.setFont(new java.awt.Font("DejaVu Sans", 1, 17));
         jLabel6.setText("Cargando...");
