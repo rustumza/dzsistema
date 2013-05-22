@@ -24,7 +24,7 @@ public class ControladorPantallaPrincipal {
 
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                System.out.println(info.getName());
+                //System.out.println(info.getName());
                 if ("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
