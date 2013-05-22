@@ -464,7 +464,8 @@ public class ControladorPanallaFacturacion {
                     DTODetallesDeFacturaParaGUI dto = new DTODetallesDeFacturaParaGUI();
                     dto.setCantidad(Float.valueOf(getPantalla().getCantidad().getText()));
                     dto.setCodigo(getPantalla().getCodigo().getText());
-                    dto.setPrecioUnitario(Float.valueOf(getPantalla().getPrecioUnitario().getText()));
+                    dto.setPrecioUnitario(Float.valueOf(getPantalla().getPrecioUnitario().getText()));                    
+                    //dto.setImporte(((float)Math.round((Float.valueOf(getPantalla().getImporte().getText())) * 100))/100);
                     dto.setImporte(Float.valueOf(getPantalla().getImporte().getText()));
                     for (DetalleFactura deta : experto.getDtoFactura().getListaDeDetalles()) {
                         if(deta.getProducto().getCodigo() == Integer.parseInt(dto.getCodigo())){
@@ -486,6 +487,7 @@ public class ControladorPanallaFacturacion {
                 dto.setCantidad(Float.valueOf(getPantalla().getCantidad().getText()));
                 dto.setCodigo(getPantalla().getCodigo().getText());
                 dto.setPrecioUnitario(Float.valueOf(getPantalla().getPrecioUnitario().getText()));
+                //dto.setImporte(((float)Math.round((Float.valueOf(getPantalla().getImporte().getText())) * 100))/100);
                 dto.setImporte(Float.valueOf(getPantalla().getImporte().getText()));
                 for (DetalleFactura deta : experto.getDtoFactura().getListaDeDetalles()) {
                     if(deta.getProducto().getCodigo() == Integer.parseInt(dto.getCodigo())){
@@ -532,13 +534,13 @@ public class ControladorPanallaFacturacion {
                 for (DetalleFactura detalleFactura : listaDetalles) {
                     if(detalleFactura.getPorcentajeDeIva() == 21){
                         float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
-                        iva = ((float)Math.round(iva * 100))/100;
+                        //iva = ((float)Math.round(iva * 100))/100;
                         iva21 += iva;
                         total += detalleFactura.getPrecioTotal() + iva;
                         subtotal += detalleFactura.getPrecioTotal();
                     }else{
                         float iva = detalleFactura.getPrecioTotal() * (detalleFactura.getPorcentajeDeIva()/100);
-                        iva = ((float)Math.round(iva * 100))/100;
+                        //iva = ((float)Math.round(iva * 100))/100;
                         iva105 += iva;
                         total += detalleFactura.getPrecioTotal() + iva;
                         subtotal += detalleFactura.getPrecioTotal();
